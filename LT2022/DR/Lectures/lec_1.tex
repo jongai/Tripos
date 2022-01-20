@@ -1,0 +1,65 @@
+\lecture{1}{20 Jan. 10:00}{Introduction}
+\section{Introduction}
+Books
+\begin{enumerate}
+    \item Classical Mechanics - Douglas (more examples)
+    \item Classical Mechanics - Tom Kibblet (more chatty)
+    \item Lecture Notes - David Tong
+\end{enumerate}
+\subsection{Newtonian Mechanics}
+A \textit{particle} is an object of insignificant size. For now, its only attribute is its position.
+
+For large objects, we take the center of mass to define the position and treat them like a particle.
+
+To describe the position, we pick a \textit{reference frame}: a choice of origin and 3 coordinate axes. With respect to this frame, a particle sweep out a \textit{trajectory} $\mathbf{x} (t).$ (sometimes, we may write $\mathbf{r} (t)$).
+
+\begin{figure}[H]
+    \centering
+    \incfig{va}
+    \caption{position and acceleration of a particle}
+    \label{fig:va}
+\end{figure}
+
+Given two vector functions $\mathbf{f}(t)$ and $\mathbf{g} (t)$, $\frac{d}{dt}(\mathbf{f} \cdot \mathbf{g} ) = \frac{d \mathbf{g} }{t}\cdot \mathbf{g}  + \mathbf{f}  \cdot \frac{d \mathbf{g} }{dt}$ and $\frac{d}{dt}(\mathbf{f} \times \mathbf{g} ) = \frac{d \mathbf{g} }{t}\times \mathbf{g}  + \mathbf{f}  \times \frac{d \mathbf{g} }{dt}$.
+
+\subsection{Newtonian Laws of Motion}
+The framework of Newtonian mechanics rely on these axioms, known as \textit{Newton's Laws}:
+\begin{definition}[Newton's Laws]
+    The following are true (for inertial frames):
+\begin{itemize}
+    \item \textbf{N1}: Left alone, a particle moves with constant velocity.
+    \item \textbf{N2}: The rate of change of momentum is proportional to the force.
+    \item \textbf{N3}: Every action has an equal and opposite reaction.
+\end{itemize}
+\end{definition}
+\subsection{Inertial Frames and The First Law}
+For many reference frames, \textbf{N1} isn't true! It only holds for frames that are not themselves accelerating. Such frames are called \textit{inertial frames}:
+\begin{definition}[Inertial Frame]
+    In an inertial frame, $\ddot{\mathbf{x} }=0$ when left alone.
+\end{definition}
+
+A better framing of the 1st law is (N1' inertial frames exist).
+
+For most purposes, this room approximates an inertial frame.
+
+\subsection{Galilean Relativity}
+Inertial frames are not unique. Given an inertial frame $S$, in which a particle has coordinates $\mathbf{x} $, we can construct another inertial frame $S^\prime $ in which the coordinates of the particle are given by $\mathbf{x} ^\prime $.
+\begin{enumerate}
+    \item Translations: $\mathbf{x} ^\prime =\mathbf{x}  + \mathbf{a} $, where $a$ is a constant.
+    \item Rotations: $\mathbf{x} ^\prime = R\mathbf{x} $, where $R$ is a $3\times 3$ matrix with $R^{T}R=I$.
+    \item (Galilean) Boost: $\mathbf{x}^\prime =\mathbf{x}  + \mathbf{v} t$.
+\end{enumerate}
+
+For each of these, if there is no force on a particle.
+\(\ddot{\mathbf{x}} = 0 \implies \ddot{\textbf{x}}^\prime =0 \) 
+
+The \textit{Galilean principle of relativity} tells us that the laws of physics are the same
+\begin{enumerate}
+    \item At every point in space.
+    \item No matter which direction you face.
+    \item No matter what constant velocity you move at.
+    \item At all moments in time.
+\end{enumerate}
+The above are experimentally tested facts.
+
+There is no such thing as "absolutely stationary", but notice that acceleration is absolute. You don't have to accelerate relative to something.
