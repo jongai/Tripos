@@ -1,4 +1,4 @@
-# Tripos
+# Tripos Notes
 This is the list of notes I am taking for the Mathematical Tripos at University of Cambridge.
 
 # Acknowledge
