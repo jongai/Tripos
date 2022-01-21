@@ -4,8 +4,7 @@
     \item \textit{Complex Analysis} -Ahlfors
     \item \textit{Real and Complex Analysis} -Rudin
 \end{enumerate}
-\section{Basic Notions}
-\subsection{Notation}
+\section{Analytic Functions}
 \begin{notation}
     We have the following notations.
     \begin{itemize}
@@ -30,7 +29,7 @@ This course is about complex valued functions of a single complex variables. i.e
     Identifying \(\mathbb{C}\) with \(\mathbb{R}^2\) in the usual way, we.
 \end{remark}
 
-Almost exclusively we'll focus on differentiable function \(f\) Let's start by recalling continuity.
+Almost exclusively we'll focus on differentiable function \(f\). Let's start by recalling continuity.
 
 \begin{definition}
     The function \(f\) is \textit{continuous} at a point \(w \in A\) if \(\forall \epsilon > 0, \exists \delta > 0\) such that
@@ -47,7 +46,7 @@ Almost exclusively we'll focus on differentiable function \(f\) Let's start by r
 We extend the definition of derivatives in this section.
 \begin{definition}
     \begin{enumerate}
-        We have below some definitions of differentiation in \(\mathbb{C}\) .
+        We have some definitions of differentiation in \(\mathbb{C}\) .
         \item \(f\) is \textit{differentiable} at \(w \in U\) if the limit
         \[
             f'(w)=\lim\limits_{z \to w}\frac{f(z)-f(w)}{z-w}.
@@ -64,7 +63,7 @@ Usual rules of differentiation of real functions of a real variable hold for com
 
 The chain rule for composite functions also holds:
 \[
-    f:U\to\mathbb{C},g:V\to \mathbb{C},f(U)\subset V,h=g\circ f:U \to \mathbb{C}.
+    f:U\to\mathbb{C},~g:V\to \mathbb{C},~f(U)\subset V,~h=g\circ f:U \to \mathbb{C}.
 \]
 If \(f\) is differentiable at \(w \in U\) \(g\) is differentiable at \(f(w)\), then \(h\) is differentiable at \(w\) and \(h'(w)=g'(f(w))f'(w)\).
 
@@ -94,9 +93,11 @@ The answer for the above question though is no. The theorem below characterizes 
         \iff \lim_{z \to w} \frac{f(z) - f(w)}{z - w} = p + iq\\
         \iff \lim_{z \to w} \frac{f(z) - f(w) - (z - w)(p + iq)}{\left\vert z-w \right\vert} = 0\\
     \end{gather*}
-    Writing \(f = u + iv\) and separating real and imaginary parts,
-
-    \todo{def of the two parts}
+    Writing \(f = u + iv\) and separating real and imaginary parts, we have
+    \begin{align*}
+        \iff &\lim\limits_{(x, y) \to (c, d)} \frac{u(x,y) - u(c,d) - p(x - c) + q(y - d)}{\sqrt{(x - c)^2 + (y - d)^2} } = 0,\\
+        \text{and}~&\lim\limits_{(x, y)) \to (c,d)} \frac{v(x,y) - v(c,d) - q(y - d) - p(x - c)}{\sqrt{(x - c)^2 + (y - d)^2} } = 0.
+    \end{align*}
 
     \(\iff \) \(u\) is differentiable at \((c,d)\) with \(Du(c,d)(x,y) = px - qy\), and \(v\) is differentiable at \((c,d)\) with \(Dv(c,d)(x,y) = qx + py\).
 
@@ -105,7 +106,7 @@ The answer for the above question though is no. The theorem below characterizes 
     We also get from the above that if \(f\) is differentiable at \(w\), then \(f'(w) = p + iq = u_x(c,d) + iv_x(c,d)\).
 \end{proof}
 \begin{remark}
-    \(u, v\) satisfying the Cauchy-Riemann equations at a point does not guarantee differentiability of \(f\). (See ex. sheet 1\todo{Example from example sheet}).
+    \(u, v\) satisfying the Cauchy-Riemann equations at a point does not guarantee differentiability of \(f\). (See ex. sheet 1).
 \end{remark}
 
 \begin{remark}

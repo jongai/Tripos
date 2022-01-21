@@ -1,1 +1,102 @@
-\lecture{1}{05 Jan. 9:00}{}
+\lecture{1}{21 Jan. 10:00}{Introduction}
+\begin{problem}
+Why do we do Vector Calculus?
+\end{problem}
+\begin{enumerate}
+    \item Calculus is important, and we want to apply it to a wider range of functions.
+    \item It is a tool that is needed throughout quantitative sciences.
+\end{enumerate}
+Lecture notes are online.
+
+We will learn to differentiate and integrate function (or maps) of the form
+\[
+    f: \mathbb{R}^m \to \mathbb{R}^n.
+\]
+An element of \(\mathbb{R}^m\) or \(\mathbb{R}^n\) is a vector, so the subject is called vector calculus.
+
+We present some examples of multivariable functions. In general, for a physicist, there are two types of functions, ones where the domain represents a physical space and the ones where the codomain represents a physical space.
+\begin{enumerate}
+    \item A function \(f: \mathbb{R} \to \mathbb{R}^n\) defines a \textit{curve} in \(\mathbb{R}^n\).
+
+    In physics, we might think of \(\mathbb{R}\) as time and \(\mathbb{R}^n\) as space and write this as
+    \[
+        f: t \mapsto \mathbf{x} (t)~\text{with}~\mathbf{x} \in \mathbb{R}^n.
+    \]
+    (Obviously we should take \(n = 3\)).
+
+    Generalizing, a map
+    \[
+        f: \mathbb{R}^2 \to \mathbb{R}^n
+    \]
+    defines a \textit{surface} in \(\mathbb{R}^n\), and so on.
+    \item In other applications, the domain \(\mathbb{R}^m\) might be viewed as physical space. For example, in physics a \textit{scalar fielid} is a map
+    \[
+        f: \mathbb{R}^3 \to \mathbb{R}.
+    \]
+    \begin{eg}
+        The temperature \(T(x)\) is a scalar field, as is the Higgs Field
+    \end{eg}
+
+    A \textit{vector field} is a map
+    \[
+        f: \mathbb{R}^3 \to \mathbb{R}^3
+    \]
+    where the domain is physical space and the codomain is something more abstract.
+    \begin{eg}
+        The electric field \(\mathbf{E} (\mathbf{x})\) and magnetic field \(\mathbf{B} (\mathbf{x} )\) are vector fields.
+    \end{eg}
+\end{enumerate}
+\section{Curves}
+We consider maps of the form
+\[
+    f:\mathbb{R}\to \mathbb{R}^n.
+\]
+We assign a coordinate \(t\) to \(\mathbb{R}\) and the Cartesian coordinates on \(\mathbb{R}^n\)
+\[
+    \mathbf{x} = (x^1, \ldots, x^n ) = x^i \mathbf{e}_i
+\]
+where \(\mathbf{e} _i\) is orthonormal basis such that \(\mathbf{e} _i \mathbf{e} _j = \delta_{ij}\). (For \(\mathbb{R}^3\)) we also use notation \(\{\mathbf{e} _i\} = \{\mathbf{x} ,\mathbf{y} ,\mathbf{z} \}\).
+
+The image of the function \(f\) is a \textit{parameterised curve} \(\mathbf{x} (t)\), with \(t\) the parameter. We will call the curve \(C\).
+
+\begin{eg}
+    Here we give some familiar examples of parameterised curves.
+    \begin{enumerate}
+        \item Consider the map \(\mathbb{R}\to\mathbb{R}^3\) given by
+        \[
+            \mathbf{x} (t) = (at, bt^2, 0).
+        \]
+        The curve \(C\) is the parabola \(ay = bx^2\) in the plane \(z = 0\).
+        \begin{note}
+            When plotting the curve, we lose information about the parameter \(t\).
+        \end{note}
+        \item Consider \(\mathbf{x} (t) = (\cos t, \sin t, t)\).
+
+        The curve \(C\) is a helix. The choice of parameterisation is not unique. For example, the map \(\mathbf{x} (t) = (\cos \lambda t,\sin \lambda t, \lambda t)\) gives exactly the same helix.
+
+        Sometimes the choice of parameterisation matters.
+        \begin{eg}
+            If \(t\)  is time and \(\mathbf{x} (t)\) is position, the velocity is proportional to \(\lambda\).
+        \end{eg}
+        But we will see that some questions are independent of the choice of parameterisation.
+    \end{enumerate}
+    \subsection{Differentiating the Curve}
+    A vector function \(\mathbf{x} (t)\) is \textit{differentiable} at \(t\) if as \(\delta t \to 0\), we have
+    \[
+        \mathbf{x} (t + \delta t) - \mathbf{x} (t) = \dot{\textbf{x} }(t)\delta t + O(\delta t^2).
+    \]
+    \begin{note}
+        "Big-O" notation \(O(\delta t^2)\) means terms are proportional to \(\delta t^2\) or smaller.
+    \end{note}
+
+    In physics, the dot is usually used for time derivatives, and the prime is used for spacial derivatives. In math, these are used interchangeably.
+
+    We write
+    \[
+        \delta \mathbf{x} (t) = \mathbf{x} (t + \delta t) - \mathbf{x} (t),
+    \]
+    and the derivative is then
+    \[
+        \dot{\mathbf{x}} = \frac{d \mathbf{x} }{dt}\coloneqq \lim\limits_{\delta t \to 0} \frac{\delta \mathbf{x}}{dt}.
+    \]
+\end{eg}
