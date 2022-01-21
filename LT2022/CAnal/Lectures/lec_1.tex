@@ -1,1 +1,113 @@
-\lecture{1}{05 Jan. 9:00}{}
+\lecture{1}{21 Jan. 10:00}{Introduction}
+\subsubsection*{Textbook}
+\begin{enumerate}
+    \item \textit{Complex Analysis} -Ahlfors
+    \item \textit{Real and Complex Analysis} -Rudin
+\end{enumerate}
+\section{Basic Notions}
+\subsection{Notation}
+\begin{remark}
+    \begin{itemize}
+        \item \(\mathbb{C}\): Complex plane.
+        \item \(\bar{z}\): complex conjugate of \(z \in \mathbb{C}\)
+        \item \(\left\vert z \right\vert \): modulus of \(z \in \mathbb{C}\)
+            Note that \(\left\vert z - w \right\vert \) defines a metric on \(\mathbb{C}\).
+        \item \(D(a, r) = \{z\in \mathbb{C}\mid \left\vert z - a \right\vert <r\}\) is the open disk with centre \(a\) and radius \(r\).
+    \end{itemize}
+\end{remark}
+\begin{definition}
+    A subset \(U \in \mathbb{C}\) is \textit{open} if it is open with respect to the above metric, i.e. if for every \(a \in U\) there exists \(r > 0\) 
+\end{definition}
+All topological notions we will use (limits, continuity of function, compactness)
+
+This course is about complex valued functions of a single complex variables. i.e. function
+\[
+    f:A\to \mathbb{C},\quad \text{where}~ A\subset \mathbb{C}.
+\]
+\begin{remark}
+    Identifying \(\mathbb{C}\) with \(\mathbb{R}^2\) in the usual way, we.
+\end{remark}
+
+Almost exclusively we'll focus on differentiable function \(f\) Let's start by recalling continuity.
+
+\begin{definition}
+    The function \(f\) is continuous at a point \(w \in A\) if \(\forall \epsilon > 0, \exists \delta > 0\) such that
+    \[
+        z \in A, \left\vert z - w \right\vert <\delta \implies \left\vert f(z)-f(w) < \epsilon \right\vert.
+    \]
+    This is the same as saying that \(\lim\limits_{z \to w} f(z)=f(w)\).
+\end{definition}
+\begin{remark}
+    \(f\) is continuous if and only if \(u,v\) is continuous with respect to the metric on \(\mathbb{R}^2\).
+\end{remark}
+
+\subsection{Complex Differentiation}
+We extend the definition of derivatives in this section.
+\begin{definition}
+    \begin{enumerate}
+        We have below some definitions of differentiation in \(\mathbb{C}\) .
+    \item \(f\)  is differentiable at \(w \in U\) if the limit
+    \[
+        f'(w)=\lim\limits_{z \to w}\frac{f(z)-f(w)}{z-w}.
+    \]
+    exists as a complex numbers. \(f'(w)\) is called the derivative of \(f\) at \(w\).
+    \item \(f\) is holomorphic at \(w \in U\) if there is \(\epsilon>0\) such that \(D(w, \epsilon) \subset U\) and \(f\) is differentiable at every point in \(D(w, \epsilon)\). (Locally differentiable everywhere).
+    \item \(f\)  is holomorphic in \(U\) if \(f\) is holomorphic at every point in \(U\), or equivalently, \(f\) is differentiable at every point in \(U\).
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    Sometimes we use "analytic" to mean holomorphic. But precisely "analytic" means that the function has a convergent Taylor series at the point. It means the function is very nice behaving. However, in \(\mathbb{C}\), holomorphic if and only if analytic which we will prove later on.
+\end{remark}
+Usual rules of differentiation of real functions of a real variable hold for complex functions. Derivatives of sums, products, quotients of functions are obtained in the same way (as can easily be checked).
+
+The chain rule for composite functions also holds:
+\[
+    f:U\to\mathbb{C},g:V\to \mathbb{C},f(U)\subset V,h=g\circ f:U \to \mathbb{C}.
+\]
+If \(f\) is differentiable at \(w \in U\) \(g\) is differentiable at \(f(w)\), then \(h\) is differentiable at \(w\) and \(h'(w)=g'(f(w))f'(w)\).
+
+\begin{problem}
+    Write \(f(z) = u(x,y)+iv(x,y),z=x+iy\). Is differentiability of \(f\) at a point \(w = c + id \in U\) is the same as differentiability of \(u\) and \(v\) at \((c,d)\)?
+\end{problem}
+
+Recall from Analysis \& Topology that \(u: U \to \mathbb{R}\) is differentiable at \((c,d)\in U\) if there is a "good affine approximation of \(u\) at \((c,d)\)." i.e. if there is a linear transformation
+\[
+    \lim\limits_{(x,y) \to (c,d)} \frac{u(x,y) - (u(c,d) + L(x-c,y-d))}{\sqrt{(x-c)^2 + (y-d)^2}} = 0.
+\]
+
+The answer for the above question though is no. The theorem below characterizes differentiability of \(f\) in terms of \(u\) and \(v\).
+
+\begin{theorem}[Cauchy-Riemann equations]
+    The function \(f = u + iv:U\to \mathbb{C}\) is differentiable at \(w = c + id \in U \iff  u,v: U \to \mathbb{R}\) are differentiable at \((c,d) \in U\) and \(u, v\) satisfy the Cauchy-Riemann equations at \((c,d)\), i.e.
+    \begin{align*}
+        \frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y}\\
+        \frac{\partial u}{\partial y} &= - \frac{\partial v}{\partial x}\quad\text{at}\quad(c,d).
+    \end{align*}
+    If \(f\) is differentiable at \(w = c + id\), then \(f'(w) = \frac{\partial u}{\partial x} (c,d) + i \frac{\partial v}{\partial x} (c,d)\) (and three other expressions following from the Cauchy-Riemann equations).
+\end{theorem}
+
+\begin{proof}
+    \(f\) is differentiable at \(w\) with derivative \(f'(w) = p + iq\)
+    \begin{gather*}
+        \iff \lim_{z \to w} \frac{f(z) - f(w)}{z - w} = p + iq\\
+        \iff \lim_{z \to w} \frac{f(z) - f(w) - (z - w)(p + iq)}{\left\vert z-w \right\vert} = 0\\
+    \end{gather*}
+    Writing \(f = u + iv\) and separating real and imaginary parts,
+
+    \todo{def of the two parts}
+
+    \(\iff \) \(u\) is differentiable at \((c,d)\) with \(Du(c,d)(x,y) = px - qy\), and \(v\) is differentiable at \((c,d)\) with \(Dv(c,d)(x,y) = qx + py\).
+
+    \(\iff \) \(u,v\) are differentiable at \((c,d)\) and \(u_x (c,d) = p = v_y(c,d)\), and \(u_y(c,d) = -q = -v_x(c,d)\) i.e. Cauchy-Riemann equations hold at \((c,d)\).
+
+    We also get from the above that if \(f\) is differentiable at \(w\), then \(f'(w) = p + iq = u_x(c,d) + iv_x(c,d)\).
+\end{proof}
+\begin{remark}
+    \(u, v\) satisfying the Cauchy-Riemann equations at a point does not guarantee differentiability of \(f\). (See ex. sheet 1\todo{Example from example sheet}).
+\end{remark}
+
+\begin{remark}
+    If we just want to show:
+
+    Differentiability of \(f\) at \(w = c + id\) implies the partial derivatives \(u_x, u_y, v_x, v_y\) exist and satisfy the Cauchy-Riemann equations, the proof can be much simpler.
+\end{remark}
