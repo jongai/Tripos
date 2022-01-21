@@ -6,15 +6,17 @@
 \end{enumerate}
 \section{Basic Notions}
 \subsection{Notation}
-\begin{remark}
+\begin{notation}
+    We have the following notations.
     \begin{itemize}
-        \item \(\mathbb{C}\): Complex plane.
-        \item \(\bar{z}\): complex conjugate of \(z \in \mathbb{C}\)
-        \item \(\left\vert z \right\vert \): modulus of \(z \in \mathbb{C}\)
-            Note that \(\left\vert z - w \right\vert \) defines a metric on \(\mathbb{C}\).
+        \item \(\mathbb{C}\): complex plane.
+        \item \(\bar{z}\): complex conjugate of \(z \in \mathbb{C}\).
+        \item \(\left\vert z \right\vert \): modulus of \(z \in \mathbb{C}\).
+
+        Note that \(d(z, w) = \left\vert z - w \right\vert \) defines a metric on \(\mathbb{C}\) (the usual or standard metric).
         \item \(D(a, r) = \{z\in \mathbb{C}\mid \left\vert z - a \right\vert <r\}\) is the open disk with centre \(a\) and radius \(r\).
     \end{itemize}
-\end{remark}
+\end{notation}
 \begin{definition}
     A subset \(U \in \mathbb{C}\) is \textit{open} if it is open with respect to the above metric, i.e. if for every \(a \in U\) there exists \(r > 0\) 
 \end{definition}
@@ -31,7 +33,7 @@ This course is about complex valued functions of a single complex variables. i.e
 Almost exclusively we'll focus on differentiable function \(f\) Let's start by recalling continuity.
 
 \begin{definition}
-    The function \(f\) is continuous at a point \(w \in A\) if \(\forall \epsilon > 0, \exists \delta > 0\) such that
+    The function \(f\) is \textit{continuous} at a point \(w \in A\) if \(\forall \epsilon > 0, \exists \delta > 0\) such that
     \[
         z \in A, \left\vert z - w \right\vert <\delta \implies \left\vert f(z)-f(w) < \epsilon \right\vert.
     \]
@@ -46,13 +48,13 @@ We extend the definition of derivatives in this section.
 \begin{definition}
     \begin{enumerate}
         We have below some definitions of differentiation in \(\mathbb{C}\) .
-    \item \(f\)  is differentiable at \(w \in U\) if the limit
-    \[
-        f'(w)=\lim\limits_{z \to w}\frac{f(z)-f(w)}{z-w}.
-    \]
-    exists as a complex numbers. \(f'(w)\) is called the derivative of \(f\) at \(w\).
-    \item \(f\) is holomorphic at \(w \in U\) if there is \(\epsilon>0\) such that \(D(w, \epsilon) \subset U\) and \(f\) is differentiable at every point in \(D(w, \epsilon)\). (Locally differentiable everywhere).
-    \item \(f\)  is holomorphic in \(U\) if \(f\) is holomorphic at every point in \(U\), or equivalently, \(f\) is differentiable at every point in \(U\).
+        \item \(f\) is \textit{differentiable} at \(w \in U\) if the limit
+        \[
+            f'(w)=\lim\limits_{z \to w}\frac{f(z)-f(w)}{z-w}.
+        \]
+        exists as a complex numbers. \(f'(w)\) is called the derivative of \(f\) at \(w\).
+        \item \(f\) is \textit{holomorphic at \(w \in U\)} if there is \(\epsilon>0\) such that \(D(w, \epsilon) \subset U\) and \(f\) is differentiable at every point in \(D(w, \epsilon)\). (Locally differentiable everywhere).
+        \item \(f\)  is \textit{holomorphic in \(U\)} if \(f\) is holomorphic at every point in \(U\), or equivalently, \(f\) is differentiable at every point in \(U\).
     \end{enumerate}
 \end{definition}
 \begin{remark}
