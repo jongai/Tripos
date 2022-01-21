@@ -1,1 +1,103 @@
-\lecture{1}{21 Jan. 11:00}{}
+\lecture{1}{21 Jan. 11:00}{Introduction}
+\section{Topological surfaces}
+\subsection{Definition}
+We start with some definitions.
+\begin{definition}
+    A \textit{topological surface} is a topological space \(\Sigma\) such that
+    \begin{enumerate}
+        \item \(\forall p \in \Sigma\) there is an open neighborhood \(p \in U \subseteq \Sigma\) such that \(U\) is homeomorphic to \(\mathbb{R}^2\) , or a disc \(D^2 \subseteq \mathbb{R}^2\) with its usual Euclidean topology.
+        \item \(\Sigma\) is Hausdorff and second countable.
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    We have the following remarks.
+    \begin{enumerate}
+        \item \(\mathbb{R}\equiv D(0,1)\) 
+        \item A space \(X\)is \textit{Hausdorff} if for \(p \neq q \in X\), there exists disjoint open sets \(p \in U\) and \(q \in V\) in \(X\)
+        \item A space \(X\) is \textit{second countable} if it has a countable base i.e. \(\exists \{u_i\}_{i \in \mathbb{N}}\) open sets s.t. every open set is a union of some \(u\).
+        \item 1 is the point and 2 is for technical honesty.
+        \item If \(X\) is Hausdorff/ second countable, so are subspaces of \(X\). In particular, Euclidean space has these properties. (For second countable, consider open balls with rational center and rational radius).
+    \end{enumerate}
+\end{remark}
+\subsection{Examples of topological surfaces}
+\begin{eg}
+    \begin{enumerate}
+        \item \(\mathbb{R}^2\) the plane
+        \item Any open subset of \(\mathbb{R}^2\), i.e. \(\mathbb{R}^2 \setminus Z\) where \(Z\) is closed. 
+        \begin{itemize}
+            \item \(Z = \{0\}\)
+            \item \(Z = \{(0,0)\}\cup \{(0,\frac{1}{n}\mid n = 1,2,3, \ldots )\}\)
+        \end{itemize}
+        \item Graphs:
+
+        Let \(f: \mathbb{R}^2 \to R\) be a continuous function. The graph \(\Gamma_f = \{(x,y,f(x, y))\mid (x,y) \in \mathbb{R}^2\} \subseteq \mathbb{R}^2\) (subspace topology).
+
+        Recall that if \(X, Y\) are spaces, the product topology on \(X \times Y\) has basic open sets \(U \times V\) with \(U\) open and \(V\) open.
+
+        It has the feature that \(f: Z \to  X \times Y\) is continuous if and open if the two projective maps are continuous.
+        \todo{Commu- tative diagram}
+
+        Application: \(\Gamma_f \subseteq X \times Y \), if \(f: X \to Y\) is continuous, if homeomorphic to \(X\).
+
+        So \(\Gamma_f \equiv \mathbb{R^2}\) for any \(f: \mathbb{R^2} \to  R\) that is continuous, so \(\Gamma_f\) is a topological surface.
+
+        \begin{note}
+            As a topological surface, \(\Gamma_f\) is independent of \(f\), but later on as a geometric object, it will reflect features of \(f\). 
+        \end{note}
+        \item The sphere (subspace topology):
+        \[
+            S^2 = \{(x,y,z) \in \mathbb{R}^3 \mid x^2 + y^2 + z^2 = 1\}.
+        \]
+        \todo{Stereo- graphic projection graph}
+        Stereographic projection
+        \begin{align*}
+            \pi_+: S^2 \setminus \{(0,0,1)\} &\to \mathbb{R}^2\\
+            (x,y,z) &\mapsto (\frac{x}{1-z}, \frac{y}{1 - z})
+        \end{align*}
+        \begin{note}
+            The map is continuous and has an inverse,
+            \todo{Explicit formula for inverse}
+            \(\pi_+\) is a continuous bijection with continuous inverse, and hence a homeomorphism.
+
+            Stereographic projection from the South Pole is also a homeomorphism from \(S^2 \setminus \{(0,0,1)\} \to \mathbb{R}^2\). 
+        \end{note}
+        So \(S^2\) is a topological surface:
+
+        \(\forall p \in S^2\), either \(p\) lies in the domain of \(\pi_+\) or of \(\pi_-\) (or both) and so it lies in an open set homeomorphic to \(\mathbb{R}^2\). (And Hausdorff and second countable from \(\mathbb{R}^2\)).
+        \begin{remark}
+            \(S^2\) has a global property as it is compact as a topological space, since it is a closed bounded set in \(\mathbb{R}^3\) .
+        \end{remark}
+        \item The real projective place:
+        
+        The group \(\mathbb{Z} / 2\) acts on \(S^2\) by homeomorphism via the \textit{antipodal map} \(a: S^2 \to S^2\).
+        \[
+            a(x,y,z) = (-x,-y,-t).
+        \]
+        i.e. There exists a homomorphism \(\mathbb{Z} / 2 \to  \mathrm{Homeo} (S^2)\), such that it maps the non-identity element to the antipodal map.
+
+        \begin{definition}
+            The \textit{real projective plane} is the quotient space of \(S^2\) given by identifying every point with its antipodal image:
+            \[
+                \mathbb{RP}^2 = S^2 / \mathbb{Z}/ 2.
+            \]
+        \end{definition}
+
+        \begin{lemma}
+            As a set, \(\mathbb{RP}^2\) is naturally in bijection with the set of straight lines in \(\mathbb{R}^3\) through the origin.
+        \end{lemma}
+        \begin{proof}
+            \todo{Graph of the sphere} Any straight line that goes through the origin meets the sphere exactly twice, and any such pair determines a straight line.
+        \end{proof}
+        \begin{lemma}
+            \(\mathbb{RP}^2\) is a topological surface.
+        \end{lemma}
+        \begin{proof}
+            We check that it is Hausdorff:
+
+            Recall if \(X\) is a space and \(q: X \to Y\) is a quotient map, \(V \subseteq Y\) is open \(\iff q^{-1}V \subseteq X\) open. 
+
+            \todo{More balls}
+            If \([p],[q] \in \mathbb{RP}^2\), then \(\pm p, \pm q \in S^2\) are distinct antipodal pairs. Take small open discs around \(p,q\) and their antipodal images, as in the picture.
+        \end{proof}
+    \end{enumerate}
+\end{eg}
