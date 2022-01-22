@@ -1,1 +1,114 @@
-\lecture{1}{05 Jan. 9:00}{}
+\lecture{1}{20 Jan. 9:00}{Introduction}
+\section{Fundamentals}
+\subsection{Electric Charge}
+From experiments, we know all objects possess \textit{electric charge} \(Q\). If we have two bodies at rest with charges \(Q_1\), \(Q_2\), we know the force between them given by \textit{Coulomb's Law}
+\[
+    F_1 = \frac{Q_1 Q_2 (\mathbf{x} _1 - \mathbf{x} _2)}{4\pi \epsilon_0 (\mathbf{x} _1 - \mathbf{x} _2)^3}
+\]
+(inverse square law). \(Q\) is measured in Coulombs (\(C\)). And
+\[
+    \epsilon_0 = 8.85 \ldots \times 10^{-12} \unit{m^{-3}kg^{-1}s^{2}C^{2}}\quad\text{(permittivity of free space)}.
+\]
+The electric charge can be either positive or negative. Opposite charges attract, like charges repel. Gravitational force is another force that follows inverse square law, but gravitational force is different in that it can only be positive. And the electromagnetic force is a much stronger force than the gravitational force.
+
+Experimentally, it is shown that charge is conserved. It can be transferred from one body to another, but the total amount is unchanged.
+
+There are other fundamental particles that have charges other than electrons and protons. All particles have electric charge that is an integer multiple of
+\[
+    e = \num{1.602176634e-19}\unit{C}.
+\]
+Note that it's exact as it is the definition of Coulomb. The charges of basic particles are: electron: \(-e\), proton: \(+e\), neutron: \(0\). Atoms have the same number of electrons and protons generally, so most matters are neutral charged. Electrons are not always conserved, but the charge is \textit{always} conserved. The charge conservation is more fundamental.
+
+We next compare the strength of Coulomb force and the gravitational force between two protons,
+\[
+    \frac{F_{\text{Coulomb}}}{F_{\text{grav}}} = \frac{e^2}{4\pi\epsilon_0 G m_p^2} \approx 10^{36}.
+\]
+This is why we say Coulomb force is much stronger than gravity, 36 orders of magnitude stronger for proton and 42 for electrons. We notice gravity because matter is mostly neutral, and the Earth is massive.
+
+\subsection{Charge \& Current Density}
+On macroscopic scales (large compared to size of atoms), we can treat charge as continuous distribution.
+\begin{definition}
+    The \textit{charge density} is a scalar field \(\rho(t, \mathbf{x} )\) such that the total charge in volume \(dV\) centered on \(\mathbf{x} \) is \(\rho(t, \mathbf{x} )dV\).
+\end{definition}
+\begin{definition}
+    The \textit{current density} is a vector field \(J(t, \mathbf{x})\) such that the charge crossing surface element \(d \mathbf{S}\) in time \(dt\) is \(\mathbf{J}\cdot d \mathbf{S} dt\).
+\end{definition}
+\begin{eg}
+    We have a plasma (gas of charge particles) with \(N\) types of charged particles, and we have \(n_i(t, \mathbf{x})dV\) particles of type \(i\) in \(dV\). The total charge in \(dV\) is \(\sum\limits_{i=1}^{N} q_i n_i dV\). So by definition of the charge density, we have
+    \[
+        \rho = \sum\limits_{i=1}^{N} q_i n_i.
+    \]
+    If we assume all particles of type \(i\) have the same velocity \(v_i (t, \mathbf{x})\). If time \(dt\)  all such particles in volume \(\mathbf{v}_i d \mathbf{S}\) cross \(d \mathbf{S} \). So, we have
+    \[
+        \mathbf{J} = \sum\limits_{i=1}^{N} q_i n_i \mathbf{v}_i.
+    \]
+\end{eg}
+\begin{definition}
+    For \(S\) a finite surface, the \textit{electric current across \(S\)} is
+    \[
+        I = \int_S \mathbf{J} \cdot d \mathbf{S},
+    \]
+    which is the charge per unit time crossing \(S\). The unit is Amperes \((\unit{A})\), and \(\unit{A} = \unit{Cs^{-1}}\).
+\end{definition}
+\begin{eg}
+    Let \(V\) be a time-independent volume, \(S\) be the boundary of \(V\), so the charge in \(V\) is \(Q(t) = \int_V \rho(t,\mathbf{x})dV\). The charge crossing \(S\) in time \(dt\) is \(Idt\). From charge conservation we have
+    \[
+        -\frac{dQ}{dt}dt = Idt \implies \frac{dQ}{dt} = -I.
+    \]
+    That is,
+    \begin{align*}
+        \frac{dQ}{dt} &= -\int_S \mathbf{J} \cdot d \mathbf{S}\\
+        \int_V \frac{\partial \rho}{\partial t} dV &= - \int_V \nabla \cdot \mathbf{J} dV\\
+        \int_V(\frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} )&=0
+    \end{align*}
+    Because \(V\) is an arbitrary volume, we have
+    \[
+        \frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0.
+    \]
+    Here we have mathematical equations of charge conservation in integral and differential form. Especially equations similar to the differential form often reappears in physics in different settings where an amount is conserved.
+\end{eg}
+
+    Here we described continuous quantities, but we can discuss particles using the same language using delta functions learned in Methods last term.
+    \[
+        \delta^{(3)}(\mathbf{x}) = \delta(x)\delta(y)\delta(z).
+    \]
+    \begin{note}
+        In this lecture, we will often use upper case \(Q\) to describe charge at a macroscopic level and lower case \(q\) to describe charge at a microscopic level.
+    \end{note}
+    If we have a particle of charge \(q\) with position \(\mathbf{x}_1 (t)\).
+    \begin{align*}
+        \rho(t, \mathbf{x}) &= q\delta^{(3)}(\mathbf{x} - \mathbf{x}_1(t)),\\
+        \mathbf{J} (t,\mathbf{x}) &= q \dot{\mathbf{x}}_1(t)\delta^{(3)}(\mathbf{x} - \mathbf{x} _1(t)).
+    \end{align*}
+    If we have \(N\) particles instead,
+    \begin{align*}
+        \rho(t, \mathbf{x}) &= \sum\limits_{i=1}^{N} q_i\delta^{(3)}(\mathbf{x} - \mathbf{x}_i(t)),\\
+        \mathbf{J} (t,\mathbf{x}) &= \sum\limits_{i=1}^{N} q_i \dot{\mathbf{x}}_i(t)\delta^{(3)}(\mathbf{x} - \mathbf{x} _i(t)). 
+    \end{align*}
+\subsection{Lorentz Force Law}
+We idealize certain properties of an object to make calculations possible.
+\begin{definition}
+    A \textit{test body} is an object with very small charge and size.
+\end{definition}
+From experiments, a test body of charge \(q\) experiences a force given by
+\begin{theorem}[Lorentz Force Law]
+    We have
+    \[\textbf{F} = q[\textbf{E}(t, \textbf{x}) + \textbf{v}\times \textbf{B}(t, \textbf{x})]\]
+    where \(\mathbf{E} \) is the electric field (vector field), and \(\mathbf{B} \) is the magnetic field (pseudovector field).
+\end{theorem}
+
+\begin{eg}
+    We can use Coulomb's law by considering the force on a static test body created by static body of charge \(Q\).
+    \[
+        \mathbf{E}  = \frac{Q (\mathbf{x} - \mathbf{x} _1)}{4\pi \epsilon_0 (\mathbf{x} - \mathbf{x} _1)^3},
+    \]
+    and the electric field due to \(N\) static bodies
+    \[
+        \mathbf{E} = \sum\limits_{i=1}^{N}\frac{Q (\mathbf{x} - \mathbf{x} _i)}{4\pi \epsilon_0 (\mathbf{x} - \mathbf{x} _i)^3}
+    \] 
+    The second term describes a force that is perpendicular to the direction the test body is moving in. If we have a constant \(\mathbf{B}\), the trajectories of the test bodies are helices whose axis is the direction of the \(\mathbf{B} \) field.
+
+    Lorentz Force Law is not test body responding to another object from a distance, but rather to a field around it.
+
+    We can look at the \textit{electric field lines} that are the curves \(\mathbf{x} (\lambda)\) such that \(\frac{\mathbf{dx}}{d\lambda} = \mathbf{E} (t, \mathbf{x} )\). The field lines are tangent to the field everywhere.
+\end{eg}
