@@ -13,6 +13,10 @@
 \usepackage{cleveref}
 \usepackage{tikz-cd}
 % useful macro for class
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
 \newcommand{\probability}[2]{\mathbb{\MakeUppercase{P}}_{#1} \left(#2\right)}
 \newcommand{\variance}[2]{\mathrm{Var}_{#1} \left[ #2 \right]}
 \newcommand{\expectation}[2]{\mathbb{\MakeUppercase{E}}_{#1} \left[#2\right]}
@@ -63,9 +67,9 @@
 % Bold math
 \usepackage{bm}
 
-% Add \conta symbol to denote contradiction
+% Add \contra symbol to denote contradiction
 \usepackage{stmaryrd} % for \lightning
-\newcommand\conta{\scalebox{1.5}{$\lightning$}}
+\newcommand\contra{\scalebox{1.5}{$\lightning$}}
 
 % \let\phi\varphi
 
@@ -95,7 +99,7 @@
 \theoremstyle{definition}
 \newmdtheoremenv[nobreak=true]{definition}{Definition}[section]
 \providecommand*\definitionautorefname{Definition}
-\newtheorem*{eg}{Example}
+\newtheorem*{example}{Example}
 \newtheorem*{notation}{Notation}
 \newtheorem*{prev}{As previously seen}
 \newtheorem*{remark}{Remark}

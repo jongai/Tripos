@@ -1,0 +1,105 @@
+\lecture{2}{22 Jan. 11:00}{Finite Probability Space}
+\begin{example}[Coincidental Birthday]
+    There we have \(n\) people, what is the probability that at least two share a birthday? To be precise, we first make the following assumptions,
+    \begin{itemize}
+        \item No leap years; (365 days in a year)
+        \item All birthdays are equally likely.
+    \end{itemize}
+    We have the probability space
+    \begin{align*}
+        \Omega &= \{1, \ldots, 365 \}^n\\
+        \mathcal{F} &= \mathcal{P} (\Omega)\\
+        A &= \{\text{at least 2 people share birthday}\}\\
+        A^c &= \{\text{all \(n\) birthdays are different}\}.
+    \end{align*}
+    So we have the probability
+    \begin{align*}
+        \probability{}{A^c} &= \frac{365\times 364\times \ldots \times (365-n-1)}{365^n},\\
+        \probability{}{A} &= 1 - \frac{365\times 364\times \ldots \times (365-n-1)}{365^n}.
+    \end{align*}
+    \begin{remark}
+        \leavevmode
+        \begin{itemize}
+        \item We note several special \(n\) values,
+        \begin{align*}
+            n=22\quad&:\quad \probability{}{A} \approx 0.479\\
+            n=23\quad&:\quad \probability{}{A} \approx 0.507\\
+            n\geq 366\quad&:\quad \probability{}{A} = 1
+        \end{align*}
+        \item The probability of birthday is not equal in real life though. It is more likely to be born about 9 months after christmas.
+        \item Sometimes it would be easier to calculate the probability of the complement of an event.
+        \end{itemize}
+    \end{remark}
+\end{example}
+
+\subsection{Combinatorial Analysis}
+If \(\Omega\) is a finite set such that \(\left\vert \Omega \right\vert = n\),
+\begin{problem}
+    How many ways to partition \(\Omega\) into \(k\) disjoint subsets \(\Omega_1, \ldots \Omega_k \) with \(\left\vert \Omega_i \right\vert =n_i\) (\(\sum\limits_{i=1}^{k} n_i = n\))?
+\end{problem}
+The total number of ways \(M\) is
+\begin{align*}
+    M &= \binom{n}{n_i} \binom{n-n_1}{n_2} \binom{n - n_1 - n_2}{n_3}\cdots \binom{n - n_1 - n_2 \cdots - n_{k - 1}}{n_k}\\
+    &= \binom{n}{n_i} \binom{n-n_1}{n_2} \binom{n - n_1 - n_2}{n_3}\cdots \binom{n_k}{n_k}\\
+    &= \frac{n!}{n!(n - n_1)!}\times \frac{(n-n_1)!}{n_2!(n-n_{1}-n_2)!}\times \cdots\times \frac{(n - n_1 - n_2 - \cdots - n_{k-1})!}{x_k!0!}\\
+    &=\frac{n!}{n_1!n_2!\cdots n_k!}\\
+    &=\binom{n}{n_1,n_2, \ldots ,n_k}
+\end{align*}
+which is called the \textit{multinomial coefficient}, and denoted by the last term in the equations.
+\begin{remark}
+    The ordering of the subsets do matter in this setting.
+\end{remark}
+
+\subsection{Random Walks}
+\begin{figure}[htpb]
+    \begin{subfigure}{0.48\textwidth}
+    \centering
+        \begin{tikzpicture}[yscale=0.6]
+        \draw (0,0) \foreach ~ in {0,...,8}{node[circle,fill,inner sep=1pt]{} -- ++(0.5,{random(0,1)-0.5})};
+        \draw[->] (0,0)--(5,0) node[right]{$t$};
+        \draw[->] (0,-5)--(0,5) node[above]{$x$};
+        \end{tikzpicture}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+    \centering
+        \begin{tikzpicture}[yscale=0.6]
+        \draw (0,0) \foreach ~ in {0,...,8}{node[circle,fill,inner sep=1pt]{} -- ++(0.5,{random(0,1)-0.5})};
+        \draw[->] (0,0)--(5,0) node[right]{$t$};
+        \draw[->] (0,-5)--(0,5) node[above]{$x$};
+        \end{tikzpicture}
+    \end{subfigure}
+    \caption{Random Walks}
+    \label{fig:}
+\end{figure}
+We have the following uniform probability space
+\begin{align*}
+    \Omega &= \{(x_0, x_1, \ldots ,x_n) \mid x_0 = 0, \left\vert x_k - x_{k-1} \right\vert = 1, k = 1, \ldots, n\},\\
+    \left\vert \Omega \right\vert &= 2^n.
+\end{align*}
+\begin{problem}
+    What's \(\probability{}{x_n = 0}\) and \(\probability{}{x_n = n} \)?
+\end{problem}
+We have \(\probability{}{x_n = n} = \frac{1}{2^n}\).
+
+When \(n\) is odd, \(\probability{}{x_n = 0} = 0\) because after every step the value changes parity. To find the probability when \(n\) is even, we need to choose \(\frac{n}{2}\) ks for which \(x_k = x_{k-1} + 1\), and the rest \(x_k = x_{k-1}-1\). So
+\begin{align*}
+    \probability{}{x_n=0} &= 2^{-n}\binom{n}{\nicefrac{n}{2}}\\
+    &= \frac{n!}{2^n[(\frac{n}{2})]!}.
+\end{align*}
+\begin{problem}
+    What happens when \(n\) is large?
+\end{problem}
+We next present Stirling's Formula, and we adopt the following notation for the time being.
+\begin{notation}
+    If \((a_n)\), \(b_n\) are two sequences, we say \(a_{n} \sim b_n \) as \(n \to \infty\) if \(\frac{a_n}{b_n}\to 1\) as \(n \to \infty\).
+\end{notation}
+\begin{theorem}[Stirling's Formula]
+    \leavevmode
+    \[
+        n! \sim \sqrt{2\pi} n^{n+\frac{1}{2}}e^{-n} \quad \text{as}\quad n \to \infty.
+    \]
+    We also have the weaker version
+    \[
+        \log(n!)\sim n\log n.
+    \]
+\end{theorem}

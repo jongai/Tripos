@@ -33,7 +33,7 @@ On macroscopic scales (large compared to size of atoms), we can treat charge as 
 \begin{definition}
     The \textit{current density} is a vector field \(J(t, \mathbf{x})\) such that the charge crossing surface element \(d \mathbf{S}\) in time \(dt\) is \(\mathbf{J}\cdot d \mathbf{S} dt\).
 \end{definition}
-\begin{eg}
+\begin{example}
     We have a plasma (gas of charge particles) with \(N\) types of charged particles, and we have \(n_i(t, \mathbf{x})dV\) particles of type \(i\) in \(dV\). The total charge in \(dV\) is \(\sum\limits_{i=1}^{N} q_i n_i dV\). So by definition of the charge density, we have
     \[
         \rho = \sum\limits_{i=1}^{N} q_i n_i.
@@ -42,7 +42,7 @@ On macroscopic scales (large compared to size of atoms), we can treat charge as 
     \[
         \mathbf{J} = \sum\limits_{i=1}^{N} q_i n_i \mathbf{v}_i.
     \]
-\end{eg}
+\end{example}
 \begin{definition}
     For \(S\) a finite surface, the \textit{electric current across \(S\)} is
     \[
@@ -50,7 +50,7 @@ On macroscopic scales (large compared to size of atoms), we can treat charge as 
     \]
     which is the charge per unit time crossing \(S\). The unit is Amperes \((\unit{A})\), and \(\unit{A} = \unit{Cs^{-1}}\).
 \end{definition}
-\begin{eg}
+\begin{example}
     Let \(V\) be a time-independent volume, \(S\) be the boundary of \(V\), so the charge in \(V\) is \(Q(t) = \int_V \rho(t,\mathbf{x})dV\). The charge crossing \(S\) in time \(dt\) is \(Idt\). From charge conservation we have
     \[
         -\frac{dQ}{dt}dt = Idt \implies \frac{dQ}{dt} = -I.
@@ -66,7 +66,7 @@ On macroscopic scales (large compared to size of atoms), we can treat charge as 
         \frac{\partial \rho}{\partial t} + \nabla \cdot \mathbf{J} = 0.
     \]
     Here we have mathematical equations of charge conservation in integral and differential form. Especially equations similar to the differential form often reappears in physics in different settings where an amount is conserved.
-\end{eg}
+\end{example}
 
     Here we described continuous quantities, but we can discuss particles using the same language using delta functions learned in Methods last term.
     \[
@@ -97,7 +97,7 @@ From experiments, a test body of charge \(q\) experiences a force given by
     where \(\mathbf{E} \) is the electric field (vector field), and \(\mathbf{B} \) is the magnetic field (pseudovector field).
 \end{theorem}
 
-\begin{eg}
+\begin{example}
     We can use Coulomb's law by considering the force on a static test body created by static body of charge \(Q\).
     \[
         \mathbf{E}  = \frac{Q (\mathbf{x} - \mathbf{x} _1)}{4\pi \epsilon_0 (\mathbf{x} - \mathbf{x} _1)^3},
@@ -111,4 +111,4 @@ From experiments, a test body of charge \(q\) experiences a force given by
     Lorentz Force Law is not test body responding to another object from a distance, but rather to a field around it.
 
     We can look at the \textit{electric field lines} that are the curves \(\mathbf{x} (\lambda)\) such that \(\frac{\mathbf{dx}}{d\lambda} = \mathbf{E} (t, \mathbf{x} )\). The field lines are tangent to the field everywhere.
-\end{eg}
+\end{example}
