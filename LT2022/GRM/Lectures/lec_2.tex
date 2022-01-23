@@ -1,0 +1,156 @@
+\lecture{2}{22 Jan. 12:00}{Isomorphism Theorems}
+We will next talk about a special kind of homomorphism.
+\begin{definition}
+    An \textit{isomorphism} of groups is a group homomorphism that is also a bijection.
+
+    We say that \(G\) and \(H\) are isomorphic (written \(G\cong H\)) if there exists an isomorphism \(\phi: G \to H\).
+\end{definition}
+
+\begin{exercise}
+    Check that \(\phi^{-1}: H\to G\) is a group homomorphism.
+\end{exercise}
+
+\begin{theorem}[First Isomorphism Theorem]
+    Let \(\phi:G\to H\) be a group homomorphism. Then \(\ker(\phi)\trianglelefteq\) and \(\nicefrac{G}{\ker(\phi)}\cong \Ima(\phi)\).
+\end{theorem}
+\begin{proof}
+    Let \(K = \ker(\phi)\). We already checked that \(K\) is normal.
+
+    Define \(\Phi: \nicefrac{G}{K}\to \Ima(\phi)\), \(gK\mapsto\phi(g)\). We need to check that \(\Phi\) is well-defined first.
+    \begin{align*}
+        g_1 K = g_2 K &\iff g_2^{-1}g_1 \in K\\
+        &\iff  \phi(g_2^{-1}g_1) = 1\\
+        &\iff  \phi(g_1) = \phi(g_2).
+    \end{align*}
+    Note that we showed that \(\Phi\) is injective at the same time because we can just go the other way.
+
+    Next, we show that \(\Phi\) is a group homomorphism.
+    \begin{align*}
+        \Phi(g_{1}Kg_{2}K) &= \Phi(g_1 g_2 K)\\
+        &=\phi(g_1 g_2)\\
+        &=\Phi(g_1 K)\Phi(g_2 K).
+    \end{align*}
+
+    Lastly, we show that \(\Phi\) is surjective. Let \(x \in \Ima (\phi)\), say \(x = \phi(g)\) for some \(g \in G\), then \(x = \Phi(gK)\). So it is indeed an isomorphism.
+\end{proof}
+
+\begin{eg}
+    If we consider the function
+    \begin{equation*}
+    \begin{aligned}
+      \phi\colon \mathbb{C} & \longrightarrow \mathbb{C}^\times      \\
+      z          & \longmapsto e^z 
+    \end{aligned}
+    \end{equation*}
+    Since \(e^{z + w} = e^z e^w\), this is a group homomorphism from \((\mathbb{C}, +) \to (\mathbb{C}, \times)\). It is well known that
+    \begin{align*}
+        \ker(\phi) &= 2\pi i \mathbb{Z},\\
+        \Ima(\phi) &= \mathbb{C}^\times \quad \text{by existence of \(\log\) }.
+    \end{align*}
+    Thus, \(\nicefrac{\mathbb{C}}{2\pi i \mathbb{Z}} \cong \mathbb{C}^\times\).
+\end{eg}
+
+From the naming for the First Isomorphism Theorem, we have the following Isomorphism Theorems as well.
+
+\begin{theorem}[Second Isomorphsim Theorem]
+    Let \(H \leq G\), and \(K \trianglelefteq G\). Then \(HK = \{hk \mid h \in H, k\in K\} \leq G\) and \(H \cap K \trianglelefteq H\). Moreover,
+    \[
+        \frac{HK}{K} \cong \frac{H}{H\cap K}.
+    \]
+\end{theorem}
+\begin{proof}
+    Let \(h_1 k_1, h_2 k_2 \in HK\) with \(h_1, h_2 \in H\), \(g_1, g_2 \in G\). It suffices to show that
+    \begin{equation*}
+        h_1 k_1 (h_2 k_2)^{-1} = \underbrace{h_1 h_2^{-1}}_H \underbrace{(h_2 k_1 k_2^{-1} h_2^{-1})}_K\in HK.
+    \end{equation*}
+    Thus, \(HK \leq G\) by remark from last lecture. Let
+    \begin{equation*}
+    \begin{aligned}
+      \phi\colon H & \longrightarrow \nicefrac{G}{K}      \\
+      h    & \longmapsto hK.
+    \end{aligned}
+    \end{equation*}
+    This is the composition of inclusion map \(H \to G\) and quotient map \(G \to \nicefrac{G}{K}\) hence \(\phi\) is a group homomorphism.
+    \begin{align*}
+        \ker(\phi) &= \{h\in H\mid hK = K\} = H \cap K \trianglelefteq H,\\
+        \Ima(\phi) &= \{hK\mid h\in H\} = \nicefrac{HK}{K}.
+    \end{align*}
+    First isomorphism theorem gives
+    \[
+        \frac{HK}{K} \cong \frac{H}{H\cap K}.
+    \]
+\end{proof}
+\begin{remark}
+    Suppose \(K \trianglelefteq G\), there is a bijection
+    \begin{align*}
+        \{\text{Subgroups of }\nicefrac{G}{K}\} &\longleftrightarrow\{\text{Subgroups of }G\text{ containing }K\},\\
+        x &\longmapsto \{g\in G\mid gK \in X\},\\
+        \nicefrac{H}{K}&\longmapsfrom H.
+    \end{align*}
+    Restricts to a bijection between the normal subgroups.
+    \[
+        \{\text{Normal subgroups of }\nicefrac{G}{K}\} \longleftrightarrow\{\text{Normal subgroups of }G\text{ containing }K\}.
+    \]
+\end{remark}
+\begin{theorem}[Third Isomorphism Theorem]
+    Let \(K \leq  H \leq  G\) be normal subgroups of \(G\). Then
+    \[
+        \frac{\nicefrac{G}{K}}{\nicefrac{H}{K}}\cong \frac{G}{H}.
+    \]
+\end{theorem}
+\begin{proof}
+    Let
+    \begin{equation*}
+    \begin{aligned}
+      \phi\colon \nicefrac{G}{K} & \longrightarrow \nicefrac{G}{H}      \\
+      gK          & \longmapsto gH.
+    \end{aligned}
+    \end{equation*}
+    If \(g_1 K = g_2 K\), then \(g_2^{-1} g_1 \in K \leq  H\implies g_{1} H = g_2 H\). So \(\phi\) is well-defined.
+
+    \(\phi\) is a surjective group homomorphism with \(\ker(\phi) = \nicefrac{H}{K}\).
+
+    Now apply First Isomorphism Theorem.
+\end{proof}
+
+\subsection{Simple Groups}
+If \(K \trianglelefteq G\), then studying the group \(K\) and \(\nicefrac{G}{K}\) gives some information about \(G\).
+
+This approach is not always available.
+\begin{definition}[Simple Group]
+    A group \(G\) is \textit{simple} if \(\textbf{1} \) (the trivial subgroup) and \(G\) are its only normal subgroups.
+\end{definition}
+\begin{notation}
+    We do not consider the trivial group to be a simple group.
+\end{notation}
+Similar to the prime numbers, we can think of finite simple groups as the building block of finite groups. One of the greatest achievements in math is that we classified \textit{all} finite simple groups!
+
+\begin{lemma}
+    Let \(G\) be an Abelian group. \(G\) is simple if and only if \(G \cong C_p\) for some prime \(p\).
+\end{lemma}
+\begin{proof}
+    We prove the \(\impliedby \) direction first. Let \(H \leq C_p\). Lagrange's Theorem tells us
+    \[
+        \left\vert H \right\vert \big\vert \left\vert C_p \right\vert = p.
+    \]
+    So \(\left\vert H \right\vert = 1\) or \(p\) by primality of p. That is, \(H = \{1\}\) or \(C_p\). Thus, \(C_p\) is simple.
+
+    To prove the \(\implies\) direction. Let \(1 \neq g \in G\). \(G\) contains the subgroup
+    \[
+        \langle g\rangle = \langle\ldots ,g^{-2},g^{-1},e,g,g, \ldots\rangle 
+    \]
+    which is the subgroup generated by \(g\). It is normal in \(G\) since \(G\) is Abelian. Since \(G\) simple, \(\langle g\rangle = G\).
+
+    If \(G\) is infinite, \(G \cong (\mathbb{Z}, +)\) which cannot be true by simplicity of \(G\) because \(2\mathbb{Z}\trianglelefteq \mathbb{Z}\).
+
+    Otherwise, \(G \cong C_n\) for some \(n\), let \(g\) be a generator. If \(m\mid n\), then \(g^{\nicefrac{n}{m}}\) generates a subgroup of order m. Because \(G\) is simple, the order of the subgroup can only be \(1\) or \(n\). So the only factors of \(n\) is \(1\) and \(n\), and we have \(n\) prime.
+\end{proof}
+\begin{lemma}
+    If \(G\) is a finite group, then it has a composition series
+    \[
+        \textbf{1} \cong G_0 \trianglelefteq G_1 \trianglelefteq \ldots \trianglelefteq G_m \cong G
+    \]
+    with each quotient \(\nicefrac{G_i}{G_{i + 1}}\) simple.
+
+    Note that \(G_i\) need not be normal in \(G\).
+\end{lemma}
