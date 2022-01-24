@@ -98,6 +98,24 @@ We start with some definitions.
 
             \todo{More balls}
             If \([p],[q] \in \mathbb{RP}^2\), then \(\pm p, \pm q \in S^2\) are distinct antipodal pairs. Take small open discs around \(p,q\) and their antipodal images, as in the picture.
+
+            We can then take small balls \(B_{\pm p}(\delta)\), \(B_{\pm 1}(\delta)\), which intersects \(S^2\) with open sets around \(\pm q\) and \(\pm p\).
+
+            \(\mathbb{RP}^2\) is also second countable.
+
+            Let \(\mathcal{U} \) be a countable base for the topology on \(S^2\), such that for all \(u \in \mathcal{U} \), the antipodal image is in \(\mathcal{U} \).
+
+            Let \(\bar{\mathcal{U} }\) be the family of open sets in \(\mathbb{RP}^2\) of the form \(q(u) \cup q(-u)\), \(u \in \mathcal{U} \).
+
+            Now, if \(v \in \mathbb{RP}^2\) is open, by definition \(q^{-1}v\) is open in \(S^2\), so \(q^{-1}v\) contains some \(u\in \mathcal{U} \), and hence contains \(u \cup (-u)\). So \(\bar{\mathcal{U}}\) is a countable base for the quotient topology on \(\mathbb{RP}^2\) consider all such \(u\) that covers \(q^{-1}v\).
+
+            Finally, let \(p \in S^2\) and \([p] \in \mathbb{RP}^2\) its image. Let \(\bar{D}\) be a small (contained in an open hemisphere) closed disc neighborhood of \(p \in S^2\).
+
+            If we consider \(q\) restricted to \(\bar{D}\), it is a continuous map from a compact space to a Hausdorff space.
+
+            Also, on \(\bar{D}\), the map \(q\) is injective. Recall "Topological inverse function theorem": A continuous bijection from a compact space to a Hausdorff space is a homeomorphism. So \(q\) restricted to the disk is a homeomorphism.
+
+            It then induces another homeomorphism of \(q\) restricted to \(D\), and open disk contained in \(\bar{D}\). So \([q]\in q(D)\) has an open neighborhood in \(\mathbb{RP}^2\) that is homeomorphic to an open disk, and we are done.
         \end{proof}
     \end{enumerate}
 \end{example}

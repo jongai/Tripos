@@ -1,0 +1,92 @@
+\lecture{2}{24 Jan. 10:00}{}
+\leavevmode
+\begin{example}
+    Here we give a non-example of Cauchy-Riemann equations. When \(f(z) = \overline{z} = x - iy\). For this, \(u(x,y) = x, v(x,y) = -y\), so \(u_x = 1, v_y = 0, v_x = 0, v_y = -1\). So Cauchy-Riemann equations do not hold anywhere, and \(f\) is not differentiable at any point.
+\end{example}
+\begin{corollary}
+    Let \(f = u + iv: U \to \mathbb{C}\). If \(u, v\) have continuous partial derivatives at a point \((c,d) \in U\) and satisfy the Cauchy-Riemann equations at \((c,d)\), then \(f\) is differentiable at \(w = c + id\).
+
+    In particular, if \(u, v\) are \(C^1\) functions on \(U\) satisfying the Cauchy-Riemann equations in \(U\), then \(f\) is holomorphic in \(U\). 
+\end{corollary}
+\begin{proof}
+    Continuity of partial derivatives of \(u\) implies that \(u\) is differentiable, and similarly for \(v\) from Analysis \& Topology. So the corollary follows from Theorem 1.1.
+\end{proof}
+\begin{note}
+    Quite remarkably, we can relax the requirement of continuity of partial derivatives of \(u,v\) in \(U\) to just continuity of \(u, v\) in \(U\). Thus, if \(f = u + iv\) is defined on an open set \(U\) and is continuous in \(U\), and if \(u, v\) satisfy the Cauchy-Riemann equations in \(U\), then \(f\) is holomorphic in \(U\). This is called the \textbf{Looman-Menchoff} theorem. It is quite non-trivial to prove.
+\end{note}
+\begin{remark}
+    Complex differentiability is much more restrictive than real differentiability of real and imaginary parts (because of the additional requirement that C-R equations must hold). This leads to some surprising theorems compared to the real case. For instance:
+    \begin{enumerate}
+        \item if \(f: \mathbb{C} \to \mathbb{C}\) is holomorphic and bounded, then \(f\) is constant! (Liouville's Theorem)
+        \item if \(f: U\to \mathbb{C}\) is holomorphic, then \( f\) is automatically infinitely differentiable on \(U\).
+    \end{enumerate}
+\end{remark}
+\begin{note}
+    (2) implies partial derivatives of \(u, v\) of all orders exists. So we can differentiate C-R equations to get
+    \begin{align*}
+        (u_x)_x = (v_y)_x &\implies u_{xx} = v_{yx}\\
+        (u_y)_y = (-v_x)_y &\implies u_{yy} = -v_{xy}.
+    \end{align*}
+    Since \(v_{yx} = v_{xy}\) this gives, for \((x,y) \in U\),
+    \[
+        \Delta u = u_{xx} + u_{yy} = 1.
+    \]
+    Similarly, \(\Delta u = 0\) in \(U\).
+
+    That is, real and imaginary parts of a holomorphic function are harmonic.
+\end{note}
+For the next corollary, we need the following,
+\begin{definition}
+    \leavevmode
+    \begin{itemize}
+        \item A \textit{curve} is a continuous map \(\gamma: [a,b] \to \mathbb{C}\), where \([a,b]\subseteq \mathbb{R}\) is a closed interval. We say that \(\gamma\) is a \textit{\(C^1\) curve} if \(\gamma'\) exists and is continuous on \([a,]\). (If \(\gamma(t) = x(t) + y(t)\) then \(\gamma'(t) = x'(t) + iy'(t)\); at the end points, \(\gamma'\) is the one-sided derivative.)
+        \item An open set \(U \subseteq \mathbb{C}\) is \textit{path connected} if for any two points \(z,w \in U\), there is a curve \(\gamma: [0,1] \to U\) such that \(\gamma(0) = z\) and \(\gamma(1) = w\).
+        \item A \textit{domain} is a non-empty, open, path connected subset of \(C\).
+    \end{itemize}
+\end{definition}
+\begin{corollary}
+    If \(U\subseteq C\) is a domain, \(f: U\to \mathbb{C}\) is holomorphic with \(f'(z) = 0\) for every \(z \in U\), then \(f\) is constant.
+\end{corollary}
+\begin{proof}
+    Write \(f = u + iv\). By the Cauchy-Riemann equations, \(f'=0 \implies Du = 0, Dv=0\) in \(U\). Since \(U\) is a domain, this means (by a theorem from Analysis and Topology) that \(u,v\) are constants; that is, \(f\) is constant.
+\end{proof}
+So far we've only seen very few explicit holomorphic functions (namely, polynomials on \(\mathbb{C}\) and rational functions on their domains). We'd like to generate more. We do this by looking at power series.
+
+\subsection{Power Series}
+Recall (from IA Analysis)
+\begin{theorem}[Radius of Convergence]
+    If \((c_n)\) is a sequence of complex numbers then there is a unique number \(R \in [0, \infty]\) such that the power series
+    \[
+        \sum\limits_{i=1}^{\infty} c_n(z-a)^n, z,a\in\mathbb{C}
+    \]
+    converges absolutely if \(\left\vert z - a \right\vert <R\) and diverges if \(\left\vert z - a \right\vert > R\). If \(0<r<R\), then the series converges uniformly (with respect to the variable \(z\)) on the compact disk \(\overline{D(a, r)} = \{z\in\mathbb{C}\mid \left\vert z - a \right\vert \leq r\}\).
+\end{theorem}
+\(R\) is called the radius of convergence of the power series. Note that there is no claim about convergence when \(\left\vert z - a \right\vert = R, R>0\). There are various expressions for \(R\). For example,
+\begin{itemize}
+    \item \(R = \sup \{r \geq  0 \mid \left\vert c_n \right\vert r^n \to 0 \text{ as } n \to \infty\}\),
+    \item \(\frac{1}{R} = \limsup_{n\to \infty}\left\vert c_n \right\vert^{\frac{1}{n}}\).
+\end{itemize}
+\begin{theorem}
+    Let \(\sum\limits_{n=0}^{\infty} c_n(z-a)^n\) be a power series with radius of convergence equal to \(R > 0\). Fix \(a \in \mathbb{C}\), and define \(f: D(a, R) \to \mathbb{C}\) by \(f(z) = \sum\limits_{n=0}^{\infty} (z-a)^n\). Then:
+    \begin{enumerate}
+        \item \(f\) is holomorphic on \(D(a,R)\);
+        \item the derived series also has radius of convergence equal to \(R\), and \(f'(x)\); 
+        \item \(f\) has derivatives of all orders on \(D(a,R))\), and \(c_n = \frac{f^{(n)}(a)}{n!}\);
+        \item if \(f\) vanishes on \(D(a,\epsilon)\) for some \(\epsilon >0\), then \(f = 0\) on \(D(a,R)\).
+    \end{enumerate}
+\end{theorem}
+\begin{remark}
+    \begin{enumerate}
+    \item This theorem provides a way to generate a large class of holomorphic
+    functions on a disk.
+    \item Later we will show that every holomorphic function is locally given by a power series (Taylor series theorem). Once we have that, part (iii) above gives that holomorphic functions are automatically infinitely differentiable in their domain. (regardless of what the domain looks like)
+    \end{enumerate}
+\end{remark}
+\begin{proof}
+    \todo{finish}
+    \begin{enumerate}
+        \item[1,2.]
+        \item[3.] Repeated apply (2). The formula \(c_n = \frac{f^(n)(a)}{n!}\) follows by differentiating the series \(n\) times and setting \(z = a\).
+        \item[4.]
+    \end{enumerate}
+\end{proof}

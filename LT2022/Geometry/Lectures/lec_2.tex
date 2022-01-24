@@ -1,0 +1,22 @@
+\lecture{2}{24 Jan. 11:00}{More Examples}
+\begin{enumerate}
+    \setcounter{enumi}{5}
+    \item Let \(S^1 = \{z \in \mathbb{C}\mid \left\vert z \right\vert =1\}\).
+    
+    The \textit{torus} \(S^1 \times S^1\)
+    \item Let \(P\) be a planar Euclidean polygon. Assume the edges are \textit{oriented} and paired, and for simplicity assume the Euclidean length for \(e, \hat{e}\) are equal if they are paired.
+
+    If \(\{e, \hat{e}\}\) are paired edges, there is a unique isometry from \(e\) to \(\hat{e} \) respecting their orientations, say \(f_{e\hat{e}}: e \to \hat{e} \).
+
+    There maps generate an equivalence relation on \(P\) where we identify \(x \in P\) with \(f_{e \hat{e} }(x)\) whenever \(x \in e\).
+    \begin{lemma}
+        \(\nicefrac{P}{\sim}\) (with the quotient topology) is a topological surface.
+    \end{lemma}
+    \begin{example}
+        The torus as \(\nicefrac{[0,1]^2}{\sim}\). We consider three different kinds of points.
+
+        If \(p\) is in the interior. We can find a small enough neighborhood that is injective, and again by topological inverse function theorem, that small enough disk is homeomorphic to an open disk.
+
+        If \(p\) is on the edge. Say \(p = (0,y) \sim (1,y)\) and \(\delta >0\) is small enough such that a half disk of radius \(\delta\) does not touch vertices. Define a map from the union of the half-disks to \(B(0,\delta) \subseteq \mathbb{R}^2\) by \((x,y) \mapsto x, y - y_0\) and \((x,y)\mapsto (x-1,y-y_0)\) on each part of the half-disk. If \(X = A \cup B\) is a union then they define a continuous map from \(X\) to \(Y\).
+    \end{example}
+\end{enumerate}
