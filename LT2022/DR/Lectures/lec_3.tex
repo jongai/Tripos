@@ -1,0 +1,76 @@
+\lecture{3}{25 Jan. 10:00}{}
+\begin{enumerate}
+    \setcounter{enumi}{2}
+    \item \(x_0 > 2 \text{ or } x_0 < -1 \implies \) particle keeps on going.
+    \item \(x_0 = 2 \implies\) is a special case. It reaches \(x = -1\), but how long does it take?
+    
+    Write \(x = -1 + \epsilon\) and as \(\epsilon \to 0\),
+    \[
+        V(x) \approx 2m - 3m \epsilon^2.
+    \]
+    So we have
+    \begin{align*}
+        t \setminus  t_0 0&= - \int_{x_0}^x \frac{dx'}{\sqrt{\frac{2}{m}(E-V(x'))} }\\
+        &=-\int_{\epsilon_0}^\epsilon \frac{d\epsilon'}{\sqrt{6}\epsilon'}\\
+        &= -\frac{1}{\sqrt{6} }\log (\frac{\epsilon}{\epsilon_0}).
+    \end{align*}
+    So \(t \to \infty\) as \(\epsilon \to 0\) that is it takes infinite time.
+\end{enumerate}
+\begin{definition}
+    A particle placed at an \textit{equilibrium point} \(x_0\) will stay there for all time.
+
+    \(\ddot{x}=-\frac{\mathrm{d}V}{\mathrm{d}x}\) so equilibrium points obey \(\left.\frac{\mathrm{d}V}{\mathrm{d}x} \right|_{x_0} = 0\) that is critical points of \(V\)
+\end{definition}
+
+We can look at motion near equilibrium point. Taylor expanding,
+\[
+    V(x) \approx V(x_0) + \frac{1}{2}(x-x_0)^{2}V''(x) + \ldots.
+\]
+There are several cases,
+\begin{enumerate}
+    \item \(V''(x_0) > 0 \implies \) minimum of \(V\), similar to potential of harmonic oscillator
+    \[
+        m\ddot{x} \approx -V''(x_0)(x-x_0).
+    \]
+    This point is \textit{stable}. Particle oscillates with frequency \(\omega = \sqrt{\frac{V''(x_0)}{m}} \).
+    \item \(V''(x_0) < 0 \implies \) minimum of \(V\), the point is \textit{unstable}.
+    \[
+    x - x_0 \approx Ae^{\alpha t} + B e^{-\alpha t}
+    \]
+    with \(\alpha = \sqrt{\frac{-V''(x_0)}{m}} \).
+    \(A \neq 0\), and the particle moves quickly away from \(x_0\).
+    \item \(V''(x_0) = 0\implies\) more work needed. We need to expand out higher terms of the Taylor expansion.
+\end{enumerate}
+
+\begin{example}[the pendulum]
+    The equation of motion is
+    \[
+        \ddot{\theta} = -\frac{g}{l}\sin \theta.
+    \]
+    The energy is
+    \[
+        E = \frac{1}{2}ml^2\dot{\theta}^2 - mgl\cos \theta.
+    \]
+    When
+    \begin{enumerate}
+        \item \(E>mgl \implies \dot{\theta} \neq 0\) for all \(t\).
+        \item \(E<mgl \implies \dot{\theta} = 0\) for some point \(\theta_0\).
+
+        The pendulum oscillates back and forth and
+        \[
+            E = -mgl\cos \theta_0.
+        \]
+
+        Using the general solution for 1-dimensional system,
+        \begin{align*}
+            T &= 4\int_0^{\theta_0}\frac{d\theta}{\sqrt{\frac{2E}{ml^2} + (\frac{2g}{l})\cos \theta} }\\
+            &= 4\sqrt{\frac{l}{g}} \int_0^{\theta_0}\frac{d\theta}{\sqrt{2\cos \theta - 2\cos \theta_0} }.
+        \end{align*}
+        The integral is a bit tricky. But for small \(\theta\), \(\cos \theta \approx 1 - \frac{\theta^2}{2}\), so
+        \[
+            T \approx 4 \sqrt{\frac{l}{g}}\int_0^{\theta_0}\frac{d\theta}{\sqrt{\theta_0^2 - \theta^2} } .
+        \]
+        Note the independence of \(\theta_0\).
+    \end{enumerate}
+    This is the result for the harmonic oscillator, of course.
+\end{example}
