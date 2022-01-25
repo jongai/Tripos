@@ -1,0 +1,89 @@
+\lecture{3}{25 Jan. 11:00}{}
+\begin{proof}
+    We have
+    \[
+        \log (n!) = \log 2 + \log 3 + \ldots + \log n.
+    \]
+    So
+    \begin{align*}
+        \int^n_1 \log x dx \leq &\log (n!)\leq int_1^{n+1}\log x dx\\
+        \underbrace{n\log n - n + 1}_{n\log n} \leq &\log (n!)\leq \underbrace{(n+1)\log (n+1) - n}_{n\log n}.
+    \end{align*}
+    \(\log (n!)\) is sandwiched between the lower and upper integrals, so \(\log (n!)\) must be approximately \(n\log n\) as well. In this calculation, these facts helped
+    \begin{enumerate}
+        \item \(\log x\) is increasing, so it's easier to bounded by the integrals.
+        \item \(\log x\) has a nice integral. So the integrals have closed forms.
+    \end{enumerate}
+\end{proof}
+\subsection*{(Ordered) Compositions}
+\leavevmode
+\begin{definition}
+    A \textit{composition} of \(m\) with \(k\) parts is sequence \((m1, \ldots , m_k )\) of non-negative integers with \(\sum\limits_{i=1}^{k} m_i = m\).
+\end{definition}
+We use stars and bars. There are \(m\) stars and \(k - 1\) bars, and
+\[
+    \#\text{Compositions} = \binom{m+k-1}{m}.
+\]
+
+\subsection{Properties of Probability Measures}
+Recall Definition \eqref{prospace}. We prove the following properties.
+\begin{property}
+    \leavevmode
+    \begin{enumerate}
+        \item Countable sub-additivity
+
+        Let \((A_n)_{n\geq 1}\) sequence of events in \(\mathcal{F} \). Then
+        \[
+            \probability{}{\cup_{n\geq 1}A_n}\leq \sum\limits_{n\geq 1}\probability{}{A_n} .
+        \]
+        \begin{proof}
+            We rewrite \(\cup_{n\geq 1}\) as a disjoint union.
+            
+            Define \(B_1 = A_1\) and \(B_n = A_n \setminus (A_1\cup \ldots \cup A_{n-1} )\).
+
+            So
+            \begin{itemize}
+                \item \(\cup_{n\geq 1} B_n = \cup_{n\geq 1}A_n\),
+                \item \((B_n)_{n\geq 1}\) disjoint (by construction),
+                \item \(B_n \subseteq A_n \implies \probability{}{B_n} \leq \probability{}{A_n}\).
+            \end{itemize}
+
+            And we have
+            \[
+                \probability{}{\cup_{n\geq 1}A_n} = \probability{}{\cup_{n\geq 1}B_n} = \sum\limits_{n\geq 1}\probability{}{B_n} = \sum\limits_{n\geq 1}\probability{}{A_n}.
+            \]
+        \end{proof}
+        \item Continuity
+        \((A_n)_{n\geq 1}\) increasing sequence of events in \(\mathcal{F} \) that is \(A_n \subseteq A_{n+1}\) for all \(n\).
+
+        In fact, \(\lim\limits_{n \to \infty} \probability{}{A_n} = \probability{}{\cup_{n\geq 1}A_n} \).
+        
+        \begin{proof}
+            We reuse the \(B_n\)s, and we have
+            \begin{itemize}
+                \item \(\sqcup_{k=1}^n B_k = A_n\),
+                \item \(\cup_{n\geq 1}B_n = \cup_{n\geq 1}A_n\).
+            \end{itemize}
+            So we have
+            \[
+                \probability{}{A_n} =\sum\limits_{k=1}^{n} \probability{}{B_k} \to \sum\limits_{k\geq 1}^{}\probability{}{B_k}=\probability{}{\cup_{n\geq 1}B_{n}} = \probability{}{\cup_{n\geq 1}A_n}.
+            \]
+        \end{proof}
+        \item Inclusion-Exclusion Principle
+
+        Background: \(\probability{}{A\cup B} = \probability{}{A} +\probability{}{B} -\probability{}{A\cap B} \).
+
+        Similarly, for \(A,B,C \in \mathcal{F} \),
+        \begin{align*}
+            \probability{}{A\cup B \cup C} = &\probability{}{A} +\probability{}{B} +\probability{}{C} -\probability{}{A\cap B} -\probability{}{B\cap C}\\
+            &- \probability{}{C\cap A} + \probability{}{A\cap B\cap C}.
+        \end{align*}
+
+        The full Inclusion-Exclusion principle statement is the following. Let \(A_1, \ldots ,A_n \in \mathcal{F}  \), then
+        \begin{align*}
+            \probability{}{\cup_{i=1}^{n}A_i} = &\sum\limits_{i=1}^{n} \probability{}{A_i} - \sum\limits_{1\leq i_1<i_2\leq n} \probability{}{A_{i_1}\cap A_{i_2}} + \ldots\\
+            & + (-1)^{n+1} \probability{}{A_1\cap \ldots \cap A_n }\\
+            =& \sum\limits_{\substack{I \subseteq \{1, \ldots ,n \}\\ I \neq \varnothing}} (-1)^{\left\vert I \right\vert +1} \probability{}{\cap_{i\in I}A_i} .
+        \end{align*}
+    \end{enumerate}
+\end{property}
