@@ -25,9 +25,9 @@
 
         Note we already know that \(S^1 \times S^1\) is compact and Hausdorff. (closed and bounded in \(\mathbb{R}^4\)).
 
-        As for \(S^2 \to \mathbb{RP}^2\), pick \([p] = q(p), p \in \mathbb{R}\) and a small closed disk \(\overline{D}(p)\in \mathbb{R}^2\) such that for all \((n,m)\in \mathbb{Z}^2\), we have \(\overline{D}(p)\cap (\overline{D}(p) + (n,m))=\varnothing \). Then \(e\) and \(q\) restricted to the small closed disk is injective. They are bijective continuous maps from compact spaces to Hausdorff spaces, so they are homeomorphisms. Restricting it further to a smaller open disk, and we have a neighborhood of \([p]\) that is homeomorphic to a disk. Since \([p]\) is arbitrary, and \(S^1 \times S^1\) is a topological surface.
+        As for \(S^2 \to \mathbb{RP}^2\), pick \([p] = q(p), p \in \mathbb{R}\) and a small closed disk \(\overline{D}(p)\in \mathbb{R}^2\) such that for all \((n,m)\in \mathbb{Z}\setminus \{(0,0)\}\), we have \(\overline{D}(p)\cap (\overline{D}(p) + (n,m))=\varnothing \). Then \(e\) and \(q\) restricted to the small closed disk is injective. They are bijective continuous maps from compact spaces to Hausdorff spaces, so they are homeomorphisms. Restricting it further to a smaller open disk, and we have a neighborhood of \([p]\) that is homeomorphic to a disk. Since \([p]\) is arbitrary, and \(S^1 \times S^1\) is a topological surface.
     \end{proof}
-    \item Let \(P\) be a planar Euclidean polygon. Assume the edges are \textit{oriented} and paired, and for simplicity assume the Euclidean length for \(e, \hat{e}\) are equal if they are paired.
+    Let \(P\) be a planar Euclidean polygon. Assume the edges are \textit{oriented} and paired, and for simplicity assume the Euclidean length for \(e, \hat{e}\) are equal if they are paired.
 
     If \(\{e, \hat{e}\}\) are paired edges, there is a unique isometry from \(e\) to \(\hat{e} \) respecting their orientations, say \(f_{e\hat{e}}: e \to \hat{e} \).
 
@@ -41,5 +41,31 @@
         If \(p\) is in the interior. We can find a small enough neighborhood that is injective, and again by topological inverse function theorem, that small enough disk is homeomorphic to an open disk.
 
         If \(p\) is on the edge. Say \(p = (0,y) \sim (1,y)\) and \(\delta >0\) is small enough such that a half disk of radius \(\delta\) does not touch vertices. Define a map from the union of the half-disks to \(B(0,\delta) \subseteq \mathbb{R}^2\) by \((x,y) \mapsto x, y - y_0\) and \((x,y)\mapsto (x-1,y-y_0)\) on each part of the half-disk. Recall if \(X = A \cup B\) is a union of closed subspaces, and we have continuous maps \(f: A\to Y, g: B\to Y\), and \(\left.f\right|_{A\cap B} = \left.g\right|_{A\cap B}\), they define a continuous map from \(X\) to \(Y\).
+
+        Explicitly: \(f_u\), \(f_v\) are continuous on \(u,v \in [0,1]^2\) on each of the two half-disks, so they induce a continuous map on \(qU, qV \subseteq T^2\).
+
+        In \(T^2\), the two maps overlap but agree, so by the recalled fact, we can define a map from the torus to a disk in \(\mathbb{R}^2\).
+
+        Finally, we use the usual argument (pass a closed disk, use T.I.F.T, pass back its interior), then it has an open neighborhood homeomorphic to a disc.
+
+        Analogously at the vertex of \([0,1]^2\), we split it into 4 maps.
+        
+        This shows that \(\nicefrac{[0,1]^2}{\sim}\) is a topological surface.
     \end{example}
+    \begin{proof}
+        For a general planar polygon, We can consider the suitable disc for interior points, and points on the edge as well.
+
+        Our equivalence relation induces an equivalence relation on the vertices in the obvious fashion. If \(v \in \mathrm{Vert}(P)\) has \(r\) vertices in its equivalence class. There are \(r\) sectors in \(P\) with a total angle of \(\alpha_v\). Any sector can be identified with a standard sector with angle \(\frac{2\pi}{r}\). Combining the sectors, and we would get a disc as required.
+
+        If \(r = 1\), we just glue the two neighboring edges together, and we get a cone. If we look from above, we get an open disc centered around the vertex.
+
+        These open neighborhoods of points in \(\nicefrac{P}{\sim}\) show that \(\nicefrac{P}{\sim}\) is locally homeomorphic to a disc. We can also see \(\nicefrac{P}{\sim}\) is Hausdorff and second countable:
+
+        It's Hausdorff because for any non-equivalent points, we can find discs with small enough radius that lie in different equivalence classes. They are open disjoint sets in the quotient space as well. So \(\nicefrac{P}{\sim}\) is Hausdorff.
+
+        For second countability, I can consider disks in the interior of \(P\) with rational centers and radii, and for \(e\) in the edge of P, there is an isometry from \(e\) to an interval. And the points on the edge with correspond to rational centered and rational radius discs. And at vertices allow rational radius sectors. This gives me a countable base.
+    \end{proof}
+    \begin{remark}
+        This might look less rigorous, but it conveys the same information as providing explicit homeomorphisms.
+    \end{remark}
 \end{enumerate}

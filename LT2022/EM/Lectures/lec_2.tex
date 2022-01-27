@@ -33,16 +33,22 @@ Similarly, we can find the torque on the body.
 \end{proposition}
 \begin{proof}
     \[
-        0 = \frac{\partial }{\partial t} (\nabla \mathbf{E} - \frac{\rho}{\epsilon_0}) = \nabla \cdot \frac{\partial \mathbf{E} }{\partial t} - \frac{1}{\epsilon_0}\frac{\partial \rho}{\partial t} = 
+        0 = \frac{\partial }{\partial t} (\nabla \mathbf{E} - \frac{\rho}{\epsilon_0}) = \nabla \cdot \frac{\partial \mathbf{E} }{\partial t} - \frac{1}{\epsilon_0}\frac{\partial \rho}{\partial t} = c^2 \nabla  \cdot (\nabla  \times \mathbf{B} )-c^2\mu_{0}\nabla \cdot \mathbf{J} -\frac{1}{\epsilon_0}\frac{\partial \rho}{\partial t} .
     \]
 \end{proof}
-\todo{Finish}
-Also we note that
-\todo{Finish}
+Also, we note the conservation of charge equation from before. We must have \(c^2 = \frac{1}{\mu_0 \epsilon_0}\).
 \begin{align*}
     \nabla \times (\nabla \times \mathbf{E} ) &= - \frac{\partial }{\partial t} (\nabla \times \mathbf{E} )\\
-    \nabla (\nabla\times \mathbf{E}) &= - \mu_0 \frac{\partial \mathbf{J}}{\partial t} - \frac{1}{c^2}\frac{\partial^2 \mathbf{E} }{\partial t^2}  
+    \nabla (\nabla\times \mathbf{E}) - \nabla ^2 \mathbf{E}  &= - \mu_0 \frac{\partial \mathbf{J}}{\partial t} - \frac{1}{c^2}\frac{\partial^2 \mathbf{E} }{\partial t^2}  
 \end{align*}
+Using \textbf{M!}, we have
+\[
+    -\frac{1}{c^{2}}\frac{\partial^2\mathbf{E}}{\partial x^2} +\nabla ^2 \mathbf{E} =\frac{1}{\epsilon_0}\nabla \rho + \mu_0 \frac{\partial \mathbf{J}}{\partial t} .
+\] 
+Similarly, we have
+\[
+    -\frac{1}{c^2}\frac{\partial^2 \mathbf{B}}{\partial t^2} = - \mu_0 \nabla \times \mathbf{J} .
+\]
 \(\mathbf{E},\mathbf{B} \) obey inhomogeneous wave equations. In vacuum (\(\rho = \mathbf{J} = 0\)) obey homogeneous wave equations. \(c\) is speed parameter of light, so solutions describing waves of speed of light. Light is an electromagnetic wave.
 \subsection{Averaging}
 \textbf{M1} - \textbf{M4} are microscopic. Maxwell equations are valid even at short (subatomic) distance. Inside charged matter, we average to obtain smooth \(\rho, \mathbf{J} \). \(\mathbf{E} , \mathbf{B} \) also need averaging. So we get new fields \(\mathbf{D}, \textbf{H} \), and new macroscopic Maxwell equations.
@@ -57,12 +63,12 @@ The equations we learn are valid for
 \subsection{Coulomb's and Ohm's Laws}
 \leavevmode
 \begin{definition}
-    A \textit{conductor} is a material containing "free charges" that can 
+    A \textit{conductor} is a material containing "free charges" that can move in response to \(\mathbf{E}, \mathbf{B} \) fields. For example, a solid metal - some electrons can move through the lattice of ions.
 
     An \textit{insulator} is a material with no free charge, that is a poor conductor.
 \end{definition}
-    \todo{What}
 \begin{theorem}[Ohm's Law]
+    Conductor at rest in a field, it is an experimental fact that the current density obeys
     \[
         \mathbf{J} = \sigma \mathbf{E}
     \]
@@ -70,9 +76,17 @@ The equations we learn are valid for
 \end{theorem}
 The conductivity is very large for a good conductor (e.g., metals), and very small for insulator (e.g., diamond).
 
+There is a theoretical explanation that will be covered in Part II Electrodynamics.
+
 Consider a conductor occupying region \(V\).
-\todo{The equation}
-so charge density always decrease rapidly in \(V\), the charge ends up on surface of the conductor.
+\[
+    0 = \frac{\partial \rho}{\partial t} +\nabla \mathbf{J} = \frac{\partial \rho}{\partial t} + \sigma \nabla \cdot \mathbf{E} = \frac{\partial \rho}{\partial t} + \frac{\sigma}{\epsilon_0}\rho.
+\]
+We have a first order differential equation that we can solve, and we have
+\[
+    \rho(t,\mathbf{x} ) = \rho_0(\mathbf{x} )e^{-\nicefrac{t}{t_{\text{decay}}}}. \quad t_{\text{decay}} = \frac{\epsilon_0}{\sigma}
+\]
+So charge density always decrease rapidly in \(V\), the charge ends up on surface of the conductor.
 
 Consider instead metal moving with velocity \(v\) (i.e. lattice ions have velocity \(v\)), then Ohm's law is
 \[
@@ -96,8 +110,18 @@ Strictly, electrostatics means that
     \item \(\mathbf{B} = 0\) ;
 \end{enumerate*}
 \subsection{Scalar Potential}
-Equation \textbf{1B} means that the field is curl field, thus conservative. So
+Equation \textbf{1B} means that the field is curl free, thus conservative. So
 \[
-    \mathbf{E} = -\nabla.
+    \mathbf{E} = -\nabla\Phi
 \]
-\todo{finish}
+where \(\Phi(\mathbf{x} )\) is called the scalar potential.
+
+Consider a test body in a time-independent \(\mathbf{E} \)-field. Equation of motion is just
+\[
+    m\ddot{\mathbf{x} } = \mathbf{F}  = q\mathbf{E} =-q \nabla  \Phi.
+\]
+And we have
+\[
+    0 = m\dot{\mathbf{x} }\cdot \ddot{\mathbf{x} } + q \dot{\mathbf{x} }\cdot \nabla \Phi = \frac{\mathrm{d}E}{\mathrm{d}t}
+\]
+where \(E = \) 
