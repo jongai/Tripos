@@ -1,0 +1,121 @@
+\lecture{3}{26 Jan. 11:00}{}
+We have the following important example,
+\begin{example}[Geometric Series]
+    \(x\in\mathbb{R}\), set \(a_n = x^{n-1}\) with \(n\geq 1\). So the partial sums are
+    \[
+        S_n = \sum\limits_{i=1}^{\infty} a_i = 1 + x + x^2 + \cdots + x^{n-1}.
+    \]
+    Then we have
+    \[
+        S_n = \begin{dcases}
+            \frac{1-x^n}{1-x}, &\text{ if } x\neq 1\\
+            n, &\text{ if } x = 1\\
+        \end{dcases}.
+    \]
+    You can derive this by the equation
+    \[
+        xS_n = x + x^2 + \cdots + x^n = S_n - 1 + x^n,
+    \]
+    and we have \(S_n(1-x) = 1-x^n\).
+
+    If \(\left\vert x \right\vert <1\), \(x^n\to 0\) and \(S_n \to \frac{1}{1-x}\).
+    
+    If \(x > 1\), \(x^n \to \infty\) and \(S_n \to \infty\).
+
+    If \(x<-1\), \(S_n\) does not converge (oscillates).
+
+    If \(x=-1\), \(S_n=\begin{dcases}
+        1, &\text{ if } n \text{ odd}\\
+        0, &\text{ if } n \text{ even}\\
+    \end{dcases}\).
+
+    Thus, the geometric series converges if and only if \(\left\vert x \right\vert < 1\).
+
+    To see for example that \(x^n \to 0\) if \(\left\vert x \right\vert <1\), consider first the case \(0< x< 1\). Write \(\frac{1}{x}=1 + \delta, \delta>0\), so \(x^n = \frac{1}{(1+\delta)^n}\leq \frac{1}{1+n\delta}\to 0\) because \((1+\delta)^n \geq 1 + n\delta\) from binomial expansion.
+\end{example}
+
+\begin{definition}
+    \leavevmode
+    \(S_n \to \infty\) if given \(A\), there exists an \(N\) such that \(S_n > A\) for all \(n > N\).
+
+    \(S_n \to -\infty\) if given \(A\), there exists an \(N\) such that \(S_n < -A\) for all \(n > N\).
+\end{definition}
+
+\begin{lemma}
+    If \(\sum\limits_{i=1}^{\infty} a_n\) converges, then \(\lim\limits_{i \to \infty} a_i = 0\).
+\end{lemma}
+\begin{proof}
+    Let \(S_n = \sum\limits_{i=1}^{\infty} a_i\), note that \(a_n = S_n - s_{n-1}\). If \(S_n \to a\), we have \(a_n \to  0\) because \(S_{n-1} \to  a\) also.
+\end{proof}
+\begin{remark}
+    The converse of the preceding lemma is false. One example is \(\sum \frac{1}{n}\), the \textit{harmonic series}. We can see that it diverges because
+    \begin{align*}
+        S_n &= \sum\limits_{i=1}^{\infty}\\
+        S_{2n} &= S_n + \frac{1}{n + 1} + \frac{1}{n+2}+\cdots + \frac{1}{2n}>S_n + \frac{1}{2}\\
+    \end{align*}
+    since \(\frac{1}{n+k}\geq \frac{1}{2n}\) for \(k=1,2, \ldots ,n \).
+
+    So if \(S_n \to a\), then \(S_{2n}\to a\), also we have \(a\geq a+\frac{1}{2}\). Contradiction.
+\end{remark}
+\subsection{Series of Non-negative Terms}
+We first consider sequences with positive terms, but it gives monotonicity of partial sums.
+\begin{theorem}[The Comparison Test]
+    Suppose \(0\leq b_n\leq a_n\) for all \(n\). Then if \(\sum\limits_{n=1}^{\infty} a_n\) converges, so does \(\sum\limits_{n=1}^{\infty} b_n\).
+\end{theorem}
+\begin{proof}
+    Let \(s_N = \sum\limits_{n=1}^{N} a_n\), \(d_N = \sum\limits_{n=1}^{N} b_n\). Because \(b_n \leq a_n\), we know \(d_N \leq s_N\). But \(s_N \to s\), then \(d_n \leq s_n \leq 2\) for all n, and \(d_N\) is a increasing sequence bounded above. So \(d_N\) converges.
+\end{proof}
+\begin{example}
+    We consider \(\sum\limits_{n=1}^{\infty} \frac{1}{n^2}\). We have
+    \[
+        \frac{1}{n^2} < \frac{1}{n(n-1)} = \frac{1}{n - 1}-\frac{1}{n}.
+    \]
+    So we have
+    \[
+        \sum\limits_{n=2}^{N} a_n = 1 - \frac{1}{2} + \frac{1}{2}- \frac{1}{3}+\cdots+\frac{1}{N-1}-\frac{1}{N} = 1 - \frac{1}{N}.
+    \]
+    It is clear that \(\sum\limits_{n=1}^{\infty} a_n\) converges, so \(\sum\limits_{n=1}^{\infty} \frac{1}{n^{2}}\) converges.
+
+    In fact, we get \(\sum\limits_{n=1}^{\frac{1}{n^2}} \leq 1 + 1 = 2\).
+\end{example}
+For the rest of the lecture, we establish two more tests.
+\begin{theorem}[Root test/ Cauchy's Test for Convergence]
+    Assume \(a_n \geq 0\) and \(a_n^{\nicefrac{1}{n}}\to a\) as \(n\to \infty\). Then if \(a<1\), \(\sum\limits_{n=1}^{\infty} a_n\) converges; if \(a>1\), \(\sum\limits_{n=1}^{\infty} a_n\) diverges.
+\end{theorem}
+\begin{remark}
+    Nothing can be said if \(a=1\).
+\end{remark}
+\begin{proof}[]
+    If \(a<1\), choose \(a<r<1\). By definition of limit and hypothesis, there exists \(N\) such that \(\forall n \geq N\),
+    \[
+        a_n^{\nicefrac{1}{n}}<r \implies a_n < r^n.
+    \]
+    But since \(r<1\), the geometric series converges, and by comparison test, the series \(\sum a_n\) converges as well.
+
+    To prove the second part of the theorem, if \(a>1\), for \(n\geq N\),
+    \[a_n^{\nicefrac{1}{n}}>1\implies a_n > 1.\]
+    Thus, \(\sum\limits_{n=1}^{\infty} a_{n}\) diverges, since \(a_n\) does not tend to zero.
+\end{proof}
+\begin{theorem}[Ratio Test/ D'Alembert's Test]
+    Suppose \(a_n > 0\) and \(\frac{a_{n+1}}{a_n}\to \ell\). If \(\ell<1\), \(\sum\limits_{n=1}^{\infty} a_n\) converges. If \(\ell > 1\), \(\sum\limits_{n=1}^{\infty} a_n\) diverges.
+\end{theorem}
+\begin{remark}
+    As before, nothing can be said for \(\ell = 1\).
+\end{remark}
+\begin{proof}
+    Supposed \(\ell < 1\) and choose \(r\) with \(\ell < r < 1\). Then \(\exists N \) such that \(\forall n \geq N\),
+    \[
+        \frac{a_{n+1}}{a_n} < r.
+    \]
+    Therefore,
+    \[
+        a_n = \frac{a_n}{a_{n-1}}\frac{a_{n-1}}{a_{n-2}}\cdots \frac{a_{N+1}}{a_N}a_N<a_N r^{n-N},~n>N.
+    \]
+    So, \(a_n < kr^n\) with \(k\) independent of \(n\). Since \(\sum\limits_{n=1}^{\infty} r^n\) converges, so does \(\sum\limits_{n=1}^{\infty} a_n\) by Comparison Test.
+
+    If \(\ell > 1\), choose \(1<r<\ell\). Then \(\frac{a_{n+1}}{a_n}>r\) for all \(n \geq N\), and as before
+    \[
+        a_n = \frac{a_n}{a_{n-1}}\frac{a_{n-1}}{a_{n-2}}\cdots \frac{a_{N+1}}{a_N}a_N>a_N r^{n-N},~n>N.
+    \]
+    So the series diverges.
+\end{proof}
