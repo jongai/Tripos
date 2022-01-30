@@ -1,0 +1,79 @@
+\lecture{3}{27 Jan. 2022}{Inclusion-Exclusion Principle}
+\begin{proof}
+    We used induction. The \(n = 2\) case is proved in the example sheet.
+    \begin{align*}
+        \probability{}{\bigcup_{i=1}^n A_i} &= \probability{}{(\bigcup_{i=1}^{n-1}A_i)\bigcup A_n}\\
+        &= \probability{}{\bigcup_{i=1}^{n-1}A_i} + \probability{}{A_n} -\probability{}{(\bigcup_{i=1}^{n-1}A_i)\bigcap A_n}.
+    \end{align*}
+    Note that for \(J \subseteq \{1, \ldots ,n-1 \}\),
+    \[
+        \bigcap_{i\in J}(A_i\cap A_{n})=\bigcap_{i\in J\cup \{n\}}A_i.
+    \]
+    The inductive statement tells us
+    \begin{align*}
+        \probability{}{\bigcup_{i=1}^n A_i} =& \sum\limits_{\substack{J\subseteq \{1, \ldots ,n-1 \}\\ J \neq \varnothing}} (-1)^{\left\vert J \right\vert +1} \mathbb{\MakeUppercase{p}}(\bigcap_{i\in J}A_i) + \probability{}{A_n}\\
+        &- \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1 \}\\ J \neq \varnothing }}(-1)^{\left\vert J \right\vert +1}\probability{}{\bigcap_{i\in J \cup \{n\}}A_i}\\
+        =& \sum\limits_{\substack{I\subseteq \{1, \ldots ,n-1 \}\\ I \neq \varnothing}} (-1)^{\left\vert I \right\vert +1} \mathbb{\MakeUppercase{p}}(\bigcap_{i\in I}A_i) + \probability{}{A_n}\\
+        &+ \sum\limits_{\substack{I\subseteq \{1, \ldots , n - 1 \}\\ n\in I, \left\vert I \right\vert \geq 2}}(-1)^{\left\vert I \right\vert +1}\probability{}{\bigcap_{i\in I}A_i}\\
+        =& \sum\limits_{\substack{I \subseteq \{1, \ldots ,n \}\\ I \neq \varnothing}} (-1)^{\left\vert I \right\vert +1} \probability{}{\bigcap_{i\in I}A_i}.
+    \end{align*}
+\end{proof}
+\subsection{Bonferroni Inequalities}
+\begin{problem}
+    What if you truncate Inclusion-Exclusion Principle?
+\end{problem}
+Recall countable subadditivity states that \(\probability{}{\cup A_i}\leq \sum \probability{}{A_i} \), also known as union bound. We have the following inequalities.
+\begin{itemize}
+    \item \(\probability{}{\cup_{i=1}^n A_i} \leq \sum\limits_{k=1}^{r} (-1)^{k+1}\sum\limits_{i_1 < \ldots < i_k}\probability{}{A_{i_1}\cap \ldots \cap A_{i_k} } \) when \(r\) is odd;
+    \item \(\probability{}{\cup_{i=1}^n A_i} \geq \sum\limits_{k=1}^{r} (-1)^{k+1}\sum\limits_{i_1 < \ldots < i_k}\probability{}{A_{i_1}\cap \ldots \cap A_{i_k} } \) when \(r\) is even.
+\end{itemize}
+\begin{problem}
+    When is it good to truncate at, for example, \(r = 2\)?
+\end{problem}
+\begin{proof}
+    We induct on \(r\) and \(n\). When \(r\) is odd
+     \begin{align*}
+         \probability{}{\bigcup_{i=1}^n A_i} =& \probability{}{\bigcup_{i = 1} A_i} + \probability{}{A_n} - \probability{}{\bigcup_{i=1}^{n-1}(A_i \cap A_n)}\\
+         \leq& \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1\}\\1 \leq  \left\vert J \right\vert \leq r }} (-1)^{\left\vert J \right\vert +1}\probability{}{\bigcap_{i\in J} A_i}+\probability{}{A_n} \\
+         &- \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1\}\\1 \leq  \left\vert J \right\vert \leq r -1}} (-1)^{\left\vert J \right\vert +1}\probability{}{\bigcap_{i\in J \cup \{n\}} A_i}\\
+         \leq& \sum\limits_{\substack{I\subseteq \{1, \ldots , n\}\\1 \leq  \left\vert I \right\vert \leq r }} (-1)^{\left\vert I \right\vert +1}\probability{}{\bigcap_{i\in I} A_i}.
+     \end{align*}
+     And a similar argument follows when \(r\) is even.
+\end{proof}
+\subsection{Counting with IEP}
+Inclusion Exclusion Principle gives up a route to solve questions that do not have a closed form answer.
+
+When we have a uniform probability measure on \(\Omega\) with \(\left\vert \Omega \right\vert < \infty\),
+\[
+    \probability{}{A} =\frac{\left\vert A \right\vert}{\left\vert \Omega \right\vert }~\forall A \subseteq \Omega.
+\]
+Then \(\forall A_1, \ldots, A_n \subseteq \Omega \),
+\[
+    \left\vert A_1 \cup \ldots \cup A_n \right\vert = \sum\limits_{k=1}^{n} (-1)^{n+1}\sum\limits_{i_1< \ldots < i_k }\left\vert A_{i_1}\cap \ldots \cap A_{i_k}  \right\vert,
+\]
+and similarly for Bonferroni inequalities.
+
+\begin{example}
+    We count the number of surjections \(f: \{1, \ldots, n\}\to \{1, \ldots ,m \}\) with \(n \geq m\).
+
+    We have the probability space and event
+    \begin{align*}
+        \Omega &= \{f:\{1, \ldots ,n\}\to \{1, \ldots , m \}\},\\
+        A &= \{f: \Ima(f) = \{1, \ldots , m \}\}.
+    \end{align*}
+
+    For all \(i \in \{1, \ldots ,m \}\), let \(B_i = \{f\in \Omega\mid i \notin \Ima(f)\}\). We have the following key observations:
+    \begin{itemize}
+        \item \(A = B_1^c \cap \ldots B_m^c = (B_1 \cup \ldots \cup B_m )^c \).
+        \item \(\left\vert B_{i_1}\cap \ldots \cap B_{i_k} \right\vert \) is nice to calculate, and we have
+        \[
+            \left\vert B_{i_1}\cap \ldots \cap B_{i_k}  \right\vert = \left\vert \{f\in \Omega\mid i_1, \ldots, i_k \notin \Ima(f) \} \right\vert = (m-k)^n.
+        \]
+        So by IEP, we have 
+        \begin{align*}
+            \left\vert B_1 \cup \ldots \cup B_m \right\vert &= \sum\limits_{k=1}^{m} (-1)^{k+1}\sum\limits_{i_1<\ldots<i_{k}} \left\vert B_{i_1}\cap \ldots \cap B_{i_k}\right\vert\\
+            &= \sum\limits_{k=1}^{m} (-1)^{k+1} \binom{m}{k}(m-k)^n.
+        \end{align*}
+        So \(\left\vert A \right\vert = m^n - \sum\limits_{k=1}^{m} (-1)^{k+1}\binom{m}{k}(m-k)^n = \sum\limits_{k=0}^{m} (-1)^k \binom{m}{k}(m-k)^n\).
+    \end{itemize}
+\end{example}

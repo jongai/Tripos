@@ -1,0 +1,124 @@
+\lecture{5}{29 Jan. 2022}{Independence}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\begin{example}[Derangements]
+    We try to find the number of permutations with no fixed points, for a Secret Santa for example.
+    We have the sample space and event
+    \begin{align*}
+        \Omega &= \{\text{permutations of } \{1, \ldots, n\}\},\\
+        D &= \{\sigma\in \Omega\mid \sigma(i) \neq i ~\forall i = 1, \ldots, n\}.
+    \end{align*}
+    For all \(i \in {1, \ldots, n}\), let \(A_i = \{\sigma\in \Omega\mid \sigma(i) = i\}\).
+    \begin{problem}
+        Is \(\probability{}{D} \) large or small when \(n \to \infty\).
+    \end{problem}
+
+    Similar to the last example, \(D = A_1^c \cap \ldots\cap A_n^c = (\cup_{i=1}^n A_i)^c\), and
+    \[
+        \probability{}{A_{i_1}\cap \ldots \cap A_{i_k}}=\frac{(n-k)!}{n!} .
+    \]
+
+    So by IEP, we have
+    \begin{align*}
+        \probability{}{\bigcup_{i=1}^n A_i} &= \sum\limits_{k=1}^{n} (-1)^{k+1} \sum\limits_{i_1 < \ldots <i_k}\probability{}{A_{i_1}\cap \ldots \cap A_{i_k}} \\
+        &= \sum\limits_{k=1}^{n} (-1)^{k+1}\binom{n}{k}\frac{(n-k)!}{n!}.
+    \end{align*}
+    So \(\probability{}{D} = 1 - \probability{}{cup_{i=1}^n A_i}= 1 - \sum\limits_{k=1}^{n} \frac{(-1)^{k+1}}{k!} = \sum\limits_{k=0}^{n} \frac{(-1)^k}{k!}\).
+
+    In fact, when \(n \to \infty\), \(\probability{}{D} \to \sum\limits_{k=0}^{\infty} \frac{(-1)^k}{k!}=e^{-1}\approx 0.37\).
+\end{example}
+\begin{note}
+    What if instead \(\Omega' = \{\text{all functions } f : \{1, \ldots, n\}\to \{1, \ldots, n\}\}\)?
+
+    We have \(D = \{f \in \Omega' \mid f(i) \neq i ~\forall i = 1, \ldots, n\}\), and
+    \[
+        \probability{}{D} = \frac{(n-1)^n}{n^n} = (1-\frac{1}{n})^n \to e^{-1}.
+    \]
+    Can we just say \(\probability{}{D}=(\frac{n-1}{n})^n\)? We would need independence to say that.
+
+    Also note that \(f(i)\) is a random quantity associated to \(\Omega\). We will study these later as a random variable.
+
+    We are allowed to toss a fair coin \(n\) times, but we can't toss an unfair coin \(n\) times so far.
+\end{note}
+\subsection{Independence}
+\begin{definition}
+    Events \(A, B \in \mathcal{F}\) are \textit{independent} if
+    \[
+        \probability{}{A \cap B} = \probability{}{A} \probability{}{B}. \text{ (denoted as \(A\independent B\))}
+    \]
+    A countable collection of events \((A_n)\) is \textit{independent} if for all distinct \(i_1, \ldots, i_k\), we have
+    \[
+        \probability{}{A_{i_1}\cap \ldots\cap A_{i_k}} = \prod\limits_{j = 1}^{k}\probability{}{A_{i_j}}.
+    \]
+\end{definition}
+\begin{remark}
+    \textit{Pairwise independence} does not imply independence.
+\end{remark}
+\begin{example}
+    If we have the uniform probability space
+    \[
+        \Omega = \{(H, H), (H, T), (T, H), (T, T)\},
+    \]
+    and \(\probability{}{\{\omega\}} = \frac{1}{4}\) for all \(\omega\in \Omega\). And we define the following events
+    \begin{align*}
+        A &= \text{first coin \(H\)}=\{(H,H),(H,T)\}\\
+        B &= \text{second coin \(H\)}=\{(H,H),(T,H)\}\\
+        C &= \text{same outcome} = \{(H,H),(T,T)\}
+    \end{align*}
+    Note that probability of each of these happening is \(\probability{}{A} =\probability{}{B} =\probability{}{C} = \frac{1}{2}\), and \(A\cap B = A \cap C = B\cap C = \{(H,H)\}\), so they are pairwise independent. But
+    \[
+        \probability{}{A\cap B \cap C} = \frac{1}{4} \neq \probability{}{A} \probability{}{B} \probability{}{C}.
+    \]
+    The three events are not independent.
+\end{example}
+\begin{example}
+    \leavevmode
+    \begin{itemize}
+        \item If we have \(\Omega' = \{\text{all functions } f : \{1, \ldots, n\}\to \{1, \ldots, n\}\}\), and let \(A_i = \{f\in \Omega'\mid f(i) = i\}\). Then,
+        \begin{align*}
+            \probability{}{A_i} &= \frac{n^(n-1)}{n^n} = \frac{1}{n}\\
+            \probability{}{A_{i_1} \cap \ldots \cap A_{i_{k}}} &= \frac{n^{n - k}}{n^n} = \frac{1}{n^k} = \prod\limits_{j=1}^{k} \probability{}{A_{i_j}}.
+        \end{align*}
+        Here, \((A_i)\) are independent events.
+        \item If we have \(\Omega = \{\sigma\mid \text{permutation of \(\{1, \ldots, n\}\) }\}\), and let \(A_i = \{\sigma\in \Omega\mid \sigma(i) = i\}\). Then,
+        \begin{align*}
+            \probability{}{A_i} &= \frac{n^(n-1)}{n^n} = \frac{1}{n}\\
+            \probability{}{A_{i} \cap A_{j}} &= \frac{(n-1)!}{n!} = \frac{1}{n(n-1)} \neq \probability{}{A_i} \probability{}{A_j}.
+        \end{align*}
+        Here, \((A_i)\) are not independent.
+    \end{itemize}
+\end{example}
+\begin{property}
+    \leavevmode
+    \begin{enumerate}
+        \item If \(A\) is independent of \(B\) then \(A\) is also independent of \(B^c\).
+        \begin{proof}
+            \(\begin{aligned}[t]\probability{}{A\cap B^c} &= \probability{}{A} - \probability{}{A\cap B} \\
+                 &=\probability{}{A} - \probability{}{A} \probability{}{B}\\
+                 &=\probability{}{A} (1- \probability{}{B} )\\
+                 &=\probability{}{A} \probability{}{B^c}.
+                \end{aligned}\)\par
+        \end{proof}
+        \item \(A\) is independent of \(B = \Omega\) and of \(C = \varnothing\).
+        \begin{proof}
+            \(\probability{}{A\cap \Omega} = \probability{}{A} = \probability{}{A} \probability{}{\Omega} \), and \(A \independent \varnothing \) by part 1.
+        \end{proof}
+        \item \(\probability{}{B} = 0\) or \(1\) Then \(A\) is independent of \(B\).
+    \end{enumerate}
+\end{property}
+\subsection{Conditional Probability}
+\leavevmode
+\begin{definition}[Conditional Probability]
+    If we have a probability space \((\Omega, \mathcal{F}, \mathbb{\MakeUppercase{P}})\) as before. Consider \(B \in \mathcal{F} \) with \(\probability{}{B} >0\), and we have \(\probability{}{A} \), The \textit{conditional probability of \(A\) given \(B\)} is
+    \[
+        \probability{}{A\mid B}\coloneqq \frac{\probability{}{A\cap B} }{\probability{}{B} }.
+    \]
+    We can interpret this informally as the probability of \(A\) if we know \(B\) happened.
+\end{definition}
+\begin{example}
+    If \(A, B\) are independent events,
+    \[
+        \probability{}{A\mid B} = \frac{\probability{}{A\cap B}}{\probability{}{B} } = \frac{\probability{}{A} \probability{}{B} }{\probability{}{B} }=\probability{}{A} .
+    \]
+    Informally, we know that if \(A, B\) are independent, then knowing where \(B\) happened doesn't affect probability of \(A\).
+\end{example}
