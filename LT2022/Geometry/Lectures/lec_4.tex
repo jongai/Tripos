@@ -1,0 +1,99 @@
+\lecture{4}{28 Jan. 2022}{}
+\leavevmode
+\begin{definition}
+    A \textit{subdivision} of a compact topological surface \(\Sigma\) comprises
+    \begin{enumerate}
+        \item a finite set \(V \in \Sigma\) of vertices;
+        \item a finite collection \(E = \{e_i: [0,1] \to \Sigma\}_{i\in E}\) of \textit{edges} such that
+        \begin{itemize}
+            \item for all \(i\), \(e_i\) is a continuous injection on its interior and \(e_i^{-1}V = \{e_i(0),e_i(1)\}\),
+            \item \(e_i\) and \(e_j\) have disjoint image except perhaps at their endpoints in \(V\);
+        \end{itemize}
+        \item such that each connected component of \(\Sigma \setminus (\cup e_i[0,1]\cup V)\) is homeomorphic to an open disc called a \textit{face}. (So the closure of a face has boundary \(\overline{F}\setminus F\) lying in \(E\cup V\)).
+    \end{enumerate}
+
+    A subdivision is a \textit{triangulation} if each \textit{closed} face (closure of a face) contains exactly 3 edges, and two closed faces are disjoint or meet in exactly one edge (or possible just one vertex).
+\end{definition}\todo{what}
+\begin{example}
+    \leavevmode
+    \begin{itemize}
+        \item A cube displays a subdivision of \(S^2\).
+        \item A tetrahedron displays a triangulation of \(S^2\).
+        \item We can describe subdivisions using planar polygons. For example, the normal depiction of \(T^2\) has 1 vertex, 2 edges and 1 face.
+        \item By our definition, we can have degenerate subdivisions like a subdivision of \(S^2\) with 1 vertex, 0 edge and 1 face.
+    \end{itemize}
+\end{example}
+\begin{definition}
+    The \textit{Euler characteristic} of a subdivision is the number \(\# V - \# E + \# F\).
+\end{definition}
+\begin{theorem}
+    \leavevmode
+    \begin{enumerate}
+        \item Every compact topological surface admits subdivision, and indeed triangulation.
+        \item The Euler characteristic denoted \(\chi (\Sigma)\) does not depend on the choice of subdivision and defines a topological invariant of the surface. (depends only on the homeomorphic type of \(\Sigma\))
+    \end{enumerate}
+\end{theorem}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item \(\chi(S^2) = 2\);
+        \item \(\chi(T^2) = 0\);
+        \item If \(\Sigma_1\) and \(\Sigma_{2}\) are compact topological surfaces, we can form \(\Sigma_1 \# \Sigma_2\) by removing an open disc \(D_i \subseteq \Sigma_i\) which is a face of a triangulation, and gluing the boundary circles \(\partial D_i\) by a homeomorphism taking edges to edges.
+        
+        The resulting surface \(\Sigma_1 \# \Sigma_2\) inherits a subdivision, and we have
+        \[
+            \chi (\Sigma_1 \# \Sigma_2) = \chi(\Sigma_1) + \chi(\Sigma_{2}) - 2.
+        \]
+
+        In particular, if we take a surface with \(g\) holes, which is \(\Sigma_g = \#^{g}_{i=1}T^2\), then \(\chi(\Sigma_g) = 2 - 2g\); \(g\) is called the \textit{genus} of \(\Sigma\).
+    \end{enumerate}
+\end{example}
+\begin{remark}
+    \leavevmode
+    \begin{enumerate}
+        \item Part 1 is hard to prove.
+        \item You should believe Part 2 since I can turn a subdivision into a triangulation, and I can relate triangulations by local moves. It is easy to check both subdividing and switch diagonal preserves \(\chi\).
+
+        But it is hard to rigorize this result, and you learn essentially nothing from the combinatorial proof. A much cleaner approach is developed in Part II algebraic topology.
+    \end{enumerate}
+\end{remark}
+Recalled if \(\Sigma\) is a topological surface, every \(p \in \Sigma\) lies in an open neighborhood \(p \in u \subseteq \Sigma\) with \(u\) homeomorphic to an open disc (or equivalently to \(\mathbb{R}^2\)).
+\begin{definition}
+    A pair \((u, \phi)\) where \(u\) is an open set in \(\Sigma\) and \(\phi : u \to V \) an open set in \(\mathbb{R}^2\) which is a homeomorphism is called a \textit{chart} for \(\Sigma\). (If \(p\in u\) we might say "a chart for \(\Sigma\) at \(p\)")
+
+    A collection \(\{(u_i, \phi_1)_{i\in I}\}\) of charts such that \(@cup_{i\in I} = \Sigma\) is called an \textit{atlas} for \(\Sigma\).
+
+    The inverse \(\sigma = \phi^{-1}:v \to u \in \Sigma\) is called a \textit{local parametrization} for \(\Sigma\).
+\end{definition}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item If \(Z \subseteq \mathbb{R}^2\) is a closed set, \(\mathbb{R}^2 \setminus Z\) is a topological surface with an atlas with one chart that is \((\mathbb{R}^2,\mathbf{id})\).
+        \item For \(S^2\), we have an atlas with 2 charts, the 2 stereographic projections.
+    \end{enumerate}
+\end{example}
+\begin{definition}
+    Let \((u_i, \phi_i)\) be charts containing \(p\), the map \[\left.\phi_2 \circ \phi_1^{-1} \right|_{\phi_1 (u_1\cap u_2)}\] is called the \textit{transition map} between the charts. This is a homeomorphism of open sets in \(\mathbb{R}^2\)
+\end{definition}
+Recall that if \(V \subseteq \mathbb{R}^2\) and \(V' \subseteq \mathbb{R}^m\) open subsets, then a map \(f: V \to V'\) is called \textit{smooth} if it is infinitely differentiable; that is, it has partial derivatives of all orders of all variables.
+
+If \(n = m\), a homeomorphism \(f: V \to V'\) is called a \textit{diffeomorphism} if it is smooth and has smooth inverse.
+
+\begin{definition}
+    An \textit{abstract smooth surface} \(\Sigma\) is a topological surface with an atlas of charts \(\{(u_i, \phi_i)\}_{i\in I}\) such that all transition maps
+    \[
+        \phi_i \circ \phi_j^{-1}: \phi_j(u_i\cap u_j) \to \phi_i(u_i \cap u_j)
+    \]
+    are diffeomorphisms of open sets in \(\mathbb{R}^2\).
+\end{definition}
+\begin{note}
+    It would not make sense to ask for the \(\phi_i\) themselves to be smooth, as \(\Sigma\) is just a topological space.
+\end{note}
+\begin{example}[Example Sheet 2]
+    The atlas of 2 charts with stereographic projections gives \(S^2\) the structure of an abstract smooth surface.
+\end{example}
+\begin{example}
+    The torus \(T^2 = \nicefrac{\mathbb{R}^2}{\mathbb{Z}^2}\) is also an abstract smooth surface. Recall we obtained charts from the inverse of the projection restricted to small discs in \(\mathbb{R}^2\), the ones that are disjoint from translation by \(\mathbb{Z}^2 \setminus \{(0,0)\}\).
+
+    The transition maps are the translations, so \(T^2\) inherits the structure of an abstract smooth surface.
+\end{example}
