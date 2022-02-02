@@ -23,7 +23,7 @@
         \probability{}{\bigcup_{i=1}^n A_i} &= \sum\limits_{k=1}^{n} (-1)^{k+1} \sum\limits_{i_1 < \ldots <i_k}\probability{}{A_{i_1}\cap \ldots \cap A_{i_k}} \\
         &= \sum\limits_{k=1}^{n} (-1)^{k+1}\binom{n}{k}\frac{(n-k)!}{n!}.
     \end{align*}
-    So \(\probability{}{D} = 1 - \probability{}{cup_{i=1}^n A_i}= 1 - \sum\limits_{k=1}^{n} \frac{(-1)^{k+1}}{k!} = \sum\limits_{k=0}^{n} \frac{(-1)^k}{k!}\).
+    So \(\probability{}{D} = 1 - \probability{}{\cup_{i=1}^n A_i}= 1 - \sum\limits_{k=1}^{n} \frac{(-1)^{k+1}}{k!} = \sum\limits_{k=0}^{n} \frac{(-1)^k}{k!}\).
 
     In fact, when \(n \to \infty\), \(\probability{}{D} \to \sum\limits_{k=0}^{\infty} \frac{(-1)^k}{k!}=e^{-1}\approx 0.37\).
 \end{example}
