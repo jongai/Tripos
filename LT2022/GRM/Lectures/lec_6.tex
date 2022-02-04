@@ -1,0 +1,42 @@
+\lecture{6}{1 Feb. 2022}{}
+\subsection{Matrix Groups}
+For \(F\) a field (e.g. \(\mathbb{C}\) or \(\nicefrac{\mathbb{Z}}{p\mathbb{Z}}\)), Let \(GL_n(G)\) be the \(n\times n\) invertible matrices with entries in \(F\). And let \(SL_n(G) = \ker (\mathrm{det})\).
+
+Let \(Z \trianglelefteq GL_n(F)\) be subgroup of scalar matrices.
+\begin{definition}
+    The \textit{projective general linear group} is
+    \[
+        PGL_n(F) = \nicefrac{GL_n(F)}{Z},
+    \]
+    and the \textit{projective special linear group} is
+    \[
+        PSL_n(G) = \nicefrac{SL_n(F)}{Z\cap SL_n(F)} \cong \nicefrac{Z\cdot SL_n(F)}{Z}\leq PGL_n(F).
+    \]
+\end{definition}
+\begin{example}
+    Consider \(G = GL_n(\nicefrac{\mathbb{Z}}{p\mathbb{Z}})\). A list of \(n\) vectors in \((\nicefrac{\mathbb{Z}}{p\mathbb{Z}})^n\) are the columns of some \(A\in G\) if and only if they are linearly independent. Thus,
+    \begin{align*}
+        \left\vert G \right\vert &= (p^n - 1)(p^n - p)(p^n - p^2)\cdots (p^n - p^{n-1})\\
+        &= p^{1 + 2 + \cdots + n - 1}(p^n - 1)(p^{n-1} - 1)\cdots (p-1)\\
+        &= p^{\binom{n}{2}}\prod\limits_{i=1}^{n} (p^i - 1).
+    \end{align*}
+    So the Sylow p-subgroups have sizes \(p^{\binom{n}{2}}\). Let
+    \[
+        U = \left\{\begin{pmatrix}
+            1 & * & * &  * \\
+            0 & 1 & * &  * \\
+            0 & 0 & 1 &  * \\
+            0 & 0 & 0 &  1 \\
+        \end{pmatrix}\right\} \leq G,
+    \]
+    the set of upper triangular matrices with 1 on the diagonal. Then \(U \in \mathrm{Syl}_p(G)\), since we have \(\binom{n}{2}\) entries in \(U\), and each can take \(p\) values.
+\end{example}
+The group \(PGL_2(\mathbb{C})\) acts on \(\mathbb{C}\cup \{\infty\}\) via Möbius transformations, and similarly, \(PGL_2(\nicefrac{\mathbb{Z}}{p\mathbb{Z}})\) acts on \(\nicefrac{\mathbb{Z}}{p\mathbb{Z}}\cup \{\infty\}\) via the finite field equivalent of Möbius transformation.
+
+Since the scalar matrices act trivially, we obtain an action of \(PGL_2(\nicefrac{\mathbb{Z}}{p\mathbb{Z}})\).
+\begin{lemma}
+    The permutation representation \(PGL_2(\nicefrac{\mathbb{Z}}{p\mathbb{Z}})\to S_{p + 1}\) is injective (in fact in isomorphism if \(p = 2\) or \(p = 3\)).
+\end{lemma}
+\begin{proof}
+    Suppose \(\frac{az + b}{cz + d} = z\) for all \(z \in \nicefrac{\mathbb{\MakeUppercase{Z}}}{p \mathbb{\MakeUppercase{Z}} }\cup \{\infty\}\). Setting \(z = 0\) gives \(b = 0\). Setting \(z = \infty\) gives \(c = 0\). And setting \(z= 1\) gives \(a = d\). So it must be a scalar matrix, hence trivial in \(PGL_2(\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{z}}})\). The isomorphism can be established by considering the sizes of the groups when \(p = 2\) and \(p = 3\).
+\end{proof}

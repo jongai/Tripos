@@ -93,5 +93,35 @@ It is useful to show that the group of a certain order cannot be simple.
         \]
         for \(0 \leq k < p^a\), the number \(p^a m - k\), the numbers \(p^a m - k\) and \(p^a - k\) are divisible by the same powers of \(p\). So \(\left\vert \Omega \right\vert \) is coprime to \(p\). Let \(G\) act on \(\left\vert \Omega \right\vert \) by left multiplication. That is, for \(g \in G\) and \(X \in \Omega\),
         \[g * X = \{gx \mid x \in X\} \in \Omega.\]
+
+        For any \(X \in \Omega\), we have
+        \[
+            \left\vert G_X \right\vert \left\vert \mathrm{orb}_G(X) \right\vert =\left\vert G \right\vert =p^a m.
+        \]
+        Because \(\left\vert \Omega \right\vert \) is coprime to \(p\). We can find some \(X\) such that \(\left\vert \mathrm{orb}_G(X) \right\vert \) is coprime to \(p\). Thus, \(p^a \mid \left\vert G_X \right\vert \).
+
+        On the other hand, if \(g \in G\) and \(x \in X\), then \(g \in (gx^{-1})*X\), and we have
+        \[
+            G = \bigcup_{g\in G}g *X = \bigcup_{y\in \mathrm{orb}_G(x)}y.
+        \]
+        So \(\left\vert G \right\vert \leq  \left\vert \mathrm{orb}_G(X) \right\vert \left\vert X \right\vert\implies \left\vert G_x \right\vert = \frac{\left\vert G \right\vert}{\left\vert \mathrm{orb}_G(X) \right\vert} \leq \left\vert X \right\vert =p^a \).
+
+        Combining the two facts, we have \(\left\vert G_X \right\vert =p^a\), i.e., \(G_x \in \mathrm{Syl}_p(G)\).
+        \item We prove a stronger result.
+        \begin{lemma}
+            If \(p \in \mathrm{Syl}_p(G)\) and \(Q \leq G\) is a p-subgroup, then \(Q \leq gPg^{-1}\) for some \(g \in G\).
+        \end{lemma}
+        The lemma implies Second Sylow Theorem by taking \(Q\) a Sylow subgroup.
+
+        Let \(Q\) act at the set of left cosets \(\nicefrac{G}{P}\) by left multiplication. That is, \(q * gP = (qg)P\). By orbit-stabilizer Theorem, each orbit has size dividing \(\left\vert Q \right\vert\), so each orbit has size 1 or a power of \(p\).
+
+        Since \(\left\vert \nicefrac{G}{P} \right\vert = m\) is coprime to \(p\), there must exist an orbit of size 1. That is, there exists \(g \in G\) such that \(qgP = gP\) for all \(q\). So \(g^{-1}qg \in P\) for all \(q \in Q\). So \(Q \leq gPg^{-1}\).
+        \item Let \(G\) act on \(\mathrm{Syl}_p(G)\) by conjugation. By Second Sylow Theorem, the action is transitive. Thus, orbit-stabilizer implies \(n_p = \left\vert \mathrm{Syl}_p(G) \right\vert\mid \left\vert G \right\vert \).
+
+        Now let \(P \in \mathrm{Syl}_p(G)\). Then \(P\) act on \(\mathrm{Syl}_p(G)\) by conjugation. The orbits have size dividing \(\left\vert P \right\vert = p^a\), the size is either 1 or a power of \(p\). So \(P\) is in an orbit of size 1.
+
+        To show \(n_p \equiv 1 \mod p\), suffices to show that \(\{P\}\) is the only orbit of size one. If \(\{Q\}\) is another orbit of size 1, then \(P\) normalizes \(Q\). That is \(P \leq N_G(Q)\). Note that \(P,Q\) are both Sylow p-subgroups of \(N_G(Q)\).
+
+        Thus, by Second Sylow Theorem, \(P\) and \(Q\) are conjugate in \(N_G(Q)\), hence equal since \(Q \trianglelefteq N_G(Q)\). Hence, \(P = Q\) and \(\{P\}\) is the unique orbit of size 1.
     \end{enumerate}
 \end{proof}

@@ -6,7 +6,7 @@
         \item a finite set \(V \in \Sigma\) of vertices;
         \item a finite collection \(E = \{e_i: [0,1] \to \Sigma\}_{i\in E}\) of \textit{edges} such that
         \begin{itemize}
-            \item for all \(i\), \(e_i\) is a continuous injection on its interior and \(e_i^{-1}V = \{e_i(0),e_i(1)\}\),
+            \item for all \(i\), \(e_i\) is a continuous injection on its interior and \(e_i^{-1}V = \{0,1\}\),
             \item \(e_i\) and \(e_j\) have disjoint image except perhaps at their endpoints in \(V\);
         \end{itemize}
         \item such that each connected component of \(\Sigma \setminus (\cup e_i[0,1]\cup V)\) is homeomorphic to an open disc called a \textit{face}. (So the closure of a face has boundary \(\overline{F}\setminus F\) lying in \(E\cup V\)).
@@ -61,7 +61,7 @@ Recalled if \(\Sigma\) is a topological surface, every \(p \in \Sigma\) lies in 
 \begin{definition}
     A pair \((u, \phi)\) where \(u\) is an open set in \(\Sigma\) and \(\phi : u \to V \) an open set in \(\mathbb{R}^2\) which is a homeomorphism is called a \textit{chart} for \(\Sigma\). (If \(p\in u\) we might say "a chart for \(\Sigma\) at \(p\)")
 
-    A collection \(\{(u_i, \phi_1)_{i\in I}\}\) of charts such that \(@cup_{i\in I} = \Sigma\) is called an \textit{atlas} for \(\Sigma\).
+    A collection \(\{(u_i, \phi_1)_{i\in I}\}\) of charts such that \(\cup_{i\in I} = \Sigma\) is called an \textit{atlas} for \(\Sigma\).
 
     The inverse \(\sigma = \phi^{-1}:v \to u \in \Sigma\) is called a \textit{local parametrization} for \(\Sigma\).
 \end{definition}
