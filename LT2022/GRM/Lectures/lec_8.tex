@@ -1,0 +1,122 @@
+\lecture{8}{5 Feb. 2022}{}
+\section{Rings}
+\subsection{Definitions and Examples}
+\leavevmode
+\begin{definition}
+    A \textit{ring} is a triple \((R, + , \cdot)\) consisting of a set \(R\) and two binary operations \(+: R \times R \to R\) and \(\cdot: R \times R \to R\) satisfying the following axioms:
+    \begin{enumerate}
+        \item \(R, +\) is an Abelian group with identity \(0 = 0_R\).
+        \item Multiplication is associative and has an identity. i.e.
+        \[x\cdot(y\cdot z) = (x\cdot y)\cdot z~\forall x,y,z\in R\]
+        and
+        \[\exists 1=1_{R} \in R \text{ s.t. } x\cdot 1 = 1 \cdot x = x~\forall x\in R.\]
+        We say \(R\) is a \textit{commutative} ring if \(x \cdot y = y \cdot x~\forall x,y \in R\). In fact, in this course, we will only consider commutative rings.
+        \item Distributivity: \(x \cdot (y + z) = x \cdot y + x \cdot z\) and \((y + z)\cdot x = y \cdot x + z \cdot x\) for all \(x, y, z \in R\).
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    \leavevmode
+    \begin{enumerate}
+        \item As in case of groups, we need to check closure.
+        \item For \(x\in R\), we write \(-R\) as the inverse of \(x\) under \(+\), and abbreviate \(x + (-y)\) as \(x - y\).
+        \item \(0 \cdot x = (0 + 0)\cdot x = 0 \cdot x + 0 \cdot x \implies 0 \cdot x = 0\quad\forall x \in R\).
+        \item \(\begin{aligned}[t]
+            0 = 0\cdot x &= (1-1)\cdot x\\
+            &= 1\cdot x + (-1)\cdot x\\
+            &= x + (-1)\cdot x\\
+            \implies& (-1)\cdot x = -x\quad \forall x \in R.
+        \end{aligned}\) 
+    \end{enumerate}
+\end{remark}
+\begin{definition}
+    A subset \(S \subseteq R\) is a \textit{subring} (written \(S \leq R\)) if it is a ring under \(+\) and \(\cdot\), with the same identity elements \(0\) and \(1\).
+\end{definition}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item \(\mathbb{Z} \leq \mathbb{Q}\leq \mathbb{R}\leq \mathbb{C}\).
+        \item \(\mathbb{Z}[i] = \{a + bi\mid a,b \in \mathbb{Z}\}\leq \mathbb{C}\) (ring of Gaussian integers).
+        \item \(\mathbb{Q}[\sqrt{2}] = \{a + b \sqrt{2} \mid a, b \in \mathbb{Q}\} \leq \mathbb{R}\).
+        \item \(\nicefrac{\mathbb{Z}}{n\mathbb{Z}}=\{\text{integers mod }n\}\).
+        \item If \(R, S\) are rings, the ring \(R \times S\) is a ring via the operations
+        \begin{itemize}
+            \item \((r_1,s_1) + (r_2, s_2) = (r_1 + r_2, s_1 + s_2)\);
+            \item \((r_1,s_1)\cdot (r_2,s_2) = (r_1 \cdot r_2, s_1 \cdot s_2)\);
+            \item \(0_{R\times S} = (0_R, 0_S)\) and \(1_{R\times S} = (1_R, 1_{S})\).
+        \end{itemize}
+        (Note: \(R \times \{0\}\) is not a subring).
+        \item If \(R\) is a ring, a polynomial \(f\) over \(R\) is an expression \(f = a_0 + a_{1}X + a_2 X^2 + \cdot + a_n X^n, a_i \in R\). "\(X\)" is just a formal symbol.
+
+        The degree of a polynomial is largest \(n \in \mathbb{N}\) such that \(a_n\) is nonzero. We write \(R[X]\) for the set of all polynomials over \(R\).
+
+        If \(g = b_0 + b_1 X + \cdots + b_m X^m\) is another polynomial, set
+        \begin{align*}
+            f + g &= \sum\limits_{i}(a_i + b_i)X^i,\\
+            f \cdot g &= \sum_i(\sum\limits_{j=0}^{i} a_{j}b_{i - j})X^i.
+        \end{align*}
+        Then \(R[X]\) is a ring with identities \(0_R\) and \(1_R\) which are constant polynomials.
+
+        We can identify \(R\) with subring of \(R[X]\) of constant polynomials (i.e. \(\sum\limits_{i}^{} a_i X^i, a_i = 0~\forall i > 0\)).
+    \end{enumerate}
+\end{example}
+\begin{definition}
+    An element \(r \in R\) is a \textit{unit}  if it has an inverse under multiplication, i.e. \(\exists s \in R\) s.t. \(s \cdot r = 1\).
+\end{definition}
+The units in \(R\) form a group \((R^{\times}, \cdot)\) under multiplication.
+\begin{example}
+    \leavevmode
+    \begin{itemize}
+    \item \(\mathbb{Z}^\times = \{\pm 1\}\).
+    \item \(\mathbb{Q}^\times = \mathbb{Q}\setminus \{0\}\) 
+    \end{itemize}
+\end{example}
+\begin{definition}
+    A \textit{field} is a ring with \(0 \neq 1\), such that every non-zero element is a unit.
+\end{definition}
+\begin{example}
+    \(\mathbb{Q}\), \(\nicefrac{\mathbb{Z}}{p\mathbb{Z}}\) with \(p\) prime.
+\end{example}
+\begin{remark}
+    If \(R\) is a ring with \(0 = 1\), then \(x = 1\cdot x = 0 \cdot x = 0\) for all \(x \in R\). And \(R = \{0\}\) is the \textit{trivial ring}.
+\end{remark}
+\begin{proposition}
+    Let \(f, g \in R[X]\). Suppose the leading coefficient of \(g\) is a unit. Then there exist \(q, r \in R[X]\) such that
+    \[
+        f(x) = q(x)g(x) + r(x) \text{ where \(\mathrm{deg}(r) < \mathrm{deg}(g)\)}.
+    \]
+\end{proposition}
+\begin{proof}
+    Induction on \(n = \deg(f)\). Write
+    \begin{align*}
+        f(X) &= a_n X^n + a_{n - 1}X^{n - 1} + \cdots + a_0, &a_n &\neq 0\\
+        g(X) &= b_m X^m + b_{m - 1}X^{m - 1} + \cdots + b_0. &b_m &\in R^\times
+    \end{align*}
+    If \(n < m\), then put \(q = 0, r = f\), and we are done.
+
+    Otherwise, we have \(n \geq m\), and we set
+    \[
+        f_1(X) = f(X) - a_n b_m^{-1}g(X)X^{n - m}
+    \]
+    because \(b_m\) is a unit. The coefficient of \(X^n\) is \(a_n - a_n b_m^{-1} b_m = 0\). Thus, \(\deg(f_1) < n\). By inductive hypothesis \(\exists q_1, r \in R[X]\) such that
+    \[
+        f_1(X) = q_1(X)g(X) + r(X), \text{ where } \deg(r) < \deg(g).
+    \]
+    Therefore,
+    \[
+        f(X) = (q_1(X) + a_n b_m^{-1}X^{n-m})g(X) + r(X).
+    \]
+\end{proof}
+\begin{remark}
+    We often work with polynomials over a field, then we only need the assumption that \(g \neq 0\).
+\end{remark}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item If \(R\) is a ring and \(X\) a set, then the set of all functions \(X \to R\) is a ring under point-wise operations. That is,
+        \begin{align*}
+            (f + g)(x) &= f(x) + g(x);\\
+            (f \cdot g)(x) &= f(x) \cdot g(x).
+        \end{align*}
+        More interesting examples will appear as subrings. For example, the continuous functions from \(\mathbb{R}\to R\).
+    \end{enumerate}
+\end{example}
