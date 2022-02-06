@@ -1,0 +1,98 @@
+\lecture{7}{4 Jan. 2020}{}
+If \(V, V'\) are open subsets of \(\mathbb{R}^2\), and \(f: V \to V'\) a diffeomorphism, then at \(x \in V\), \(\left.Df\right|_x \in GL_2(\mathbb{R})\). (invertible as \(f\) is a diffeomorphism)
+
+Let \(GL^+_2(\mathbb{R}\leq GL_2(\mathbb{R}))\) be the subgroup of matrices of positive determinant. We say \(f\) is \textit{orientation-preserving} if \(\left. Df\right|_x \in GL^+_2(\mathbb{R})\) for all \(x \in V\).
+
+\begin{definition}
+    An abstract smooth surface \(\Sigma\) is \textit{orientable}  if it admits an atlas \(\{(u_i, \phi_i)\mid \cup u_i = \Sigma\}\) such that the transition maps are orientation-preserving diffeomorphisms of open subsets of \(\mathbb{R}^2\).
+
+    A choice of such an atlas is an \textit{orientation} of \(\Sigma\), and we say \(\Sigma\) is \textit{oriented}.
+\end{definition}
+\begin{remark}
+    An oriented atlas (in this sense) belongs to a maximal compatible oriented smooth atlas.
+\end{remark}
+\begin{lemma}
+    If \(\Sigma_1\) and \(\Sigma_2\) are abstract smooth surfaces, and they're diffeomorphic, then \(\Sigma_1\) is orientable if and only if \(\Sigma_2\) is orientable.
+\end{lemma}
+\begin{proof}
+    Supposed \(f: \Sigma_1 \to \Sigma_2\) is a diffeomorphism, and \(\Sigma_2\) is orientable and equipped with an oriented smooth atlas.
+
+    Let's consider the atlas on \(\Sigma_1\) and charts of the form \((f^{-1}u, \left. \phi\circ f \right|_{f^{-1}u})\) where \((u, \phi)\) is a chart at \(f(p)\) in our atlas for \(\Sigma_2\).
+
+    A transition map between 2 such is exactly a transition map in the \(\Sigma_2\) atlas.
+
+    To prove it differently, in the maximal smooth atlas we already have for \(\Sigma_1\), we'll allow charts \((\tilde{U}, \tilde{\psi})\) at \(p\) exact when for any \((U, \psi)\) at \(f(p)\) in the \(\Sigma_2\) atlas, the map \(\psi\circ f \circ \tilde{\psi}^{-1}\) preserves orientation.
+
+    (If atlas on \(\Sigma_2\) was maximal as an oriented atlas, this recover previous set of charts.)
+\end{proof}
+\begin{remark}
+    \leavevmode
+    \begin{enumerate}
+        \item There's no really sensible classification of all smooth or topological surfaces. For example, \(\mathbb{R}^2 \setminus Z\) for \(Z\) closed in \(\mathbb{R}^2\) already realizes uncountably many homeomorphism types.
+
+        By contrast, compact smooth surfaces up to diffeomorphism are classified by the Euler characteristic and the orientability.
+        \item There is a definition of orientation preserving homeomorphism, which needs Algebraic Topology.
+        \item We can get other structures on an abstract smooth surface by asking for a smooth atlas such that if \(\phi_1,\phi_2^{-1}\) is one of our transition maps, then \(\left. D(\phi_1\phi_2^{-1})\right|_x \in G \leq GL_2(\mathbb{R})\) a subgroup of general linear group. For example, taking \(\{e\}\) leads to \textit{Euclidean Surfaces}. And \(G = GL_1(\mathbb{C} \leq GL_2(\mathbb{R}))\) which leads to the theory of Riemann surfaces.
+    \end{enumerate}
+\end{remark}
+\begin{example}
+    We consider the Möbius band created by an open strip \((a,b)\times [c,d]\). It turns out that an abstract smooth surface is orientable if and only if it contains no subsurface homeomorphic to the Möbius band.
+
+    So we say a topological surface is orientable if and only if it contains no subsurface (open set) homeomorphic to a Möbius band, as an ad hoc definition.
+\end{example}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+    \item For \(S^2\) with the atlas of two stereographic projections, you computed the transition maps
+    \[
+        (u,v) \mapsto (\frac{u}{u^2 + v^2}, \frac{v}{u^2 + v^2})
+    \]
+    on \(\mathbb{R}^{2}\setminus \{0\}\) in example sheet 1, and check this is orientation preserving.
+    \item For \(T^2\), we exhibited an atlas such that all the transition maps are translations of \(\mathbb{R}^2\) (restricted to appropriate open discs). So \(T^2\) is oriented (and even Euclidean).
+    \end{enumerate}
+\end{example}
+We want to investigate orientability for surfaces in \(\mathbb{R}^3\) next. Recall an \textit{affine subspace} of a vector space is a translation of a linear subspace.
+\begin{definition}
+    Let \(\Sigma\) be a smooth surface in \(\mathbb{R}^3\) and \(p \in \Sigma\). Fix an allowable parametrization
+    \[
+        \sigma: V \to U \subseteq \Sigma \quad 0 \mapsto p.
+    \]
+
+    Then the \textit{tangent plane} \(T_p\Sigma\) of \(\Sigma\) at \(p\) is \(\Ima(\left.D\sigma\right|_0) \subseteq \mathbb{R}^3\), a 2d vector subspace of \(\mathbb{R}^3\).
+
+    The \textit{affine tangent plane} of \(\Sigma\) at \(p\) is \(p + T_p\Sigma \subseteq \mathbb{R}^3\).
+\end{definition}
+\begin{lemma}
+    \(T_p\Sigma\) is well-defined, i.e., independent of the choice of allowable parametrization near \(p\).
+\end{lemma}
+\begin{proof}
+    We will give two proofs.
+    \begin{enumerate}
+        \item If \(\sigma: V \to U \subseteq \Sigma\) and \(\tilde{\sigma}: \tilde{V} \to \tilde{U} \subseteq \Sigma\) are two allowable parametrizations near \(p\). There is a transition map \(\sigma^{-1}\circ \tilde{\sigma}\) which is a diffeomorphism of open sets in \(\mathbb{R}^2\). That means I can write
+        \[
+            \tilde{\sigma} = \sigma\circ (\sigma^{-1}\circ \tilde{\sigma}).
+        \]
+        Because the transition map is an isomorphism near \(p\), The images of \(\sigma\) and \(\tilde{\sigma}\) are the same.
+        \item Let \(\gamma: (-\epsilon, \epsilon) \to \mathbb{R}^3\) be a smooth map such that \(\gamma\) has image inside \(\Sigma\) and \(\gamma(0) = p\). Then I claim \(\gamma'(0) \in T_p\Sigma\).
+
+        If \(\sigma: V \to U\) is the allowable parametrization around \(p\), and \(\epsilon\) small enough so \(\Ima(\gamma)\in U\), then I can write
+        \[
+            \gamma(t) = \sigma(u(t), v(t))
+        \]
+        for smooth functions \(u, v: (-\epsilon, \epsilon)\to V\). Then
+        \[\gamma'(t)= \sigma_u u'(t) + \sigma_v v'(t) \in \Ima{D\sigma}.\]
+        This exhibits that
+        \[
+            T_{p}\Sigma = \mathrm{Span}\{\gamma'(0)\mid \gamma \text{ a smooth curve as above}\}.
+        \]
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    If \(\Sigma\) is a smooth surface is \(\mathbb{R}^3\) and \(p\in \Sigma\), the \textit{normal direction} to \(\Sigma\) at \(p\) is just \((T_p\Sigma)^{\perp}\) (the Euclidean orthogonal complement of \(T_p\Sigma\) with respect to the Euclidean inner product).
+
+    So at each \(p \in \Sigma\), there are two unit length normal vectors.
+\end{definition}
+The affine tangent plane is the best linear approximation to \(\Sigma\) at \(p\).
+\begin{definition}
+    A smooth surface in \(\mathbb{R}^3\) is \textit{two-sided} if it admits a continuous global choice of unit normal vector.
+\end{definition}
