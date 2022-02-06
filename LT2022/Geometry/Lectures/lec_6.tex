@@ -1,2 +1,134 @@
 \lecture{6}{2 Feb. 2022}{}
-Inverse Function Theorem is about maps \(f: \mathbb{R}^n \to \mathbb{R}^n\) with
+Inverse Function Theorem is about maps \(f: \mathbb{R}^n \to \mathbb{R}^n\) with \(\left.Df\right|_p\) an isomorphism. If we have a map \(f: \mathbb{R}^n \to \mathbb{R}^m\) where \(n > m\), can ask about what to conclude if \(\left. Df\right|_p\) is onto. That is, \(\left. Df\right|_p = (\frac{\partial f_i}{\partial x_j})_{n\times m}\) has full rank. After permuting the co-ordinates, we can assume last \(m\) columns are independent. Then we have the following.
+\begin{theorem}[Implicit Function Theorem]
+    Let \(p = (x_0, y_0) \in U \subseteq \mathbb{R}^k \times \mathbb{R}^l = \{(x,y)\mid x\in \mathbb{R}^k, y\in \mathbb{R}^l\}\) with \(U\) open and a map \(f: U \to \mathbb{R}^l\) that sends \(p \mapsto 0\) with \((\frac{\partial f_i}{\partial y_i})_{l\times l}\) an isomorphism at \(p\). Then there is an open neighborhood of \(x_0 \in V \subseteq \mathbb{R}^k\) and a continuously differentiable map \(g: V \to \mathbb{R}^l\) that maps \(x_0 \mapsto y_0\) such that if \((x,y)\in U \cap (V\times \mathbb{R}^l)\), then
+    \[
+        f(x,y) = 0 \iff y = g(x).
+    \]
+    If \(f\) is smooth, so is \(g\).
+\end{theorem}
+\begin{proof}
+    Introduce
+    \begin{equation*}
+    \begin{aligned}
+      F\colon U & \longrightarrow \mathbb{R}^k \times \mathbb{R}^l\\
+               (x,y) & \longmapsto (x, f(x,y))
+    \end{aligned}
+    \end{equation*}
+    Then \(DF = \begin{pmatrix}
+        I & \frac{\partial f_i}{\partial x_j}\\
+        0 & \frac{\partial f_i}{\partial y_j}\\\end{pmatrix},\) so \(\left.DF\right|_{(x_0,y_0)}\) is an isomorphism.
+
+        So inverse function theorem says that \(F\) is locally invertible near \(F(x_0, y_0)\). That is the point \((x_0, f(x_0, y_0)) = (x_0,0)\). Take a product open neighborhood
+        \[
+            (x_0, 0) \in V \times V' \quad V\subseteq \mathbb{R}^k, V' \subseteq \mathbb{R}^l
+        \]
+        and the continuously differentiable inverse
+        \[
+            G: V \times V' \to U' \subseteq U \subseteq \mathbb{R}^k \times \mathbb{R}^l
+        \]
+        has the property \(F \circ G = \textbf{id}_{V\times V'}\). Write \(G(x,y) = (\phi(x,y), \psi(x,y))\), then
+        \[
+            F\circ G(x, y) = (\phi(x,y), f(\phi(x,y), \psi(x,y))) = (x,y).
+        \]
+        So \(\phi(x,y) = x\). So \(G\) has the form
+        \[
+            (x,y)\mapsto (x, \phi(x,y))
+        \]
+        and \(f(x, \psi(x, y)) = y\) when \((x,y) \in V \times V'\), so \(f(x,y) = 0 \iff y = \psi(x,0)\).
+        
+        Define \(g: V \to \mathbb{R}^l\quad x \mapsto \psi(x, 0)\) and the map does indeed send \(x_0 \mapsto y_0\), and this is what we want.
+\end{proof}
+\begin{example}
+    Let \(f: \mathbb{R}^2 \to \mathbb{R}\) be smooth, \(f(x_0, y_0) = 0\), and suppose \(\left.\frac{\partial f}{\partial y}\right|_{(x_0, y_0)}\). Then there exists a smooth \(g: (x_0 - \epsilon, x_0 + \epsilon)\to \mathbb{R}\), \(g(x_0)=y_0\) such that
+    \[
+        f(x,y) = 0 \iff y = g(x)
+    \]
+    for \((x,y)\) in some open neighborhood of \((x_0, y_0)\).
+
+    Since \(f(x, g(x)) = 0\), we have
+    \[
+        \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y} g'(x) = 0 \implies g'(x) = \frac{f_x}{f_y}
+    \]
+    noting that \(f_y \neq 0\) near \((x_0, y_0)\).
+
+    The level set \(f(x,y) = 0\) is "implicitly" described via \(g\), a function that we have an integral expression.
+\end{example}
+\begin{example}
+    Let \(f: \mathbb{R}^3 \to \mathbb{R}\) be smooth, and \(f(x_0, y_0, z_0) = 0\). Let \(\Sigma = f^{-1}(0)\), and assume that \(\left. Df\right|_{(x_0, y_0,z_0)} \neq 0\). Permuting co-ordinates if necessary, \(\left.\frac{\partial f}{\partial z} \right|_{(x_0,y_0,z_0)} \neq 0\). Then there exists an open neighborhood \((x_0, y_0) \in V \subseteq \mathbb{R}^2\) and a smooth \(g: V \to \mathbb{R}\) that maps \((x_0, y_0) \mapsto z_0\) such that in open set \((x_0, y_0, z_0) \in U\),
+    \[
+        f^{-1}(0)\cap U = \Sigma\cap U = \mathrm{Graph}(g).
+    \]
+    That is, the \(f^{-1}(0)\cap U = \{(x,y,g(x,y))\mid (x,y)\in V\}\).
+\end{example}
+Recall Theorem \eqref{abseq}, and we present a proof.
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item Part 2 implies all others.
+        \begin{itemize}
+            \item If \(\Sigma\) locally is \(\{(x,y,g(x,y))\}\), then one gets a chart from the projection \(\pi_{xy}\) which is smooth and defined on an open neighborhood of points of \(\Sigma\) in its domain. (c.f. last lecture)
+            \item If \(\Sigma\) is locally \(\{(x, y, g(x,y))\}\), it's locally cut out by \(f(x,y,t) = t - g(x,y)\). Clearly \(\frac{\partial f}{\partial z} \neq 0\). So Part 2 implies Part 3.
+            \item The parametrization \(\sigma(x,y)\coloneqq (x,y,g(x,y))\) is allowable as it is smooth and \(\sigma_x = (1,0,g_x)\) and \(\sigma_y = (0,1,g_y)\) are linearly independent and \(\sigma\) is injective.
+        \end{itemize}
+        \item Part 1 implies Part 4 is part of the definition of being a smooth surface in \(\mathbb{R}^3\) and hence locally diffeomorphic to \(\mathbb{R}^2\). (At \(p \in \Sigma\), \(\Sigma\) locally diffeomorphic to \(\mathbb{R}^2\) and the inverse of such a local diffeomorphism gives an allowable parametrization)
+        \item Part 3 to Part 2 was the second example of Implicit Function Theorem.
+        \item We will show Part 4 implying Part 2 and Part 1, and we are done.
+        
+        Let \(p \in \Sigma\) and \(\sigma:V \subseteq \mathbb{R}^2 \to \Sigma\subseteq \mathbb{R}^3\) satisfies \(\sigma(0) = p \in U \subseteq \Sigma\), then if \(\sigma = (\sigma_1(u,v), \sigma_2(u,v),\sigma_3(u,v))\), and
+        \[
+            D\sigma = \begin{pmatrix}
+                \frac{\partial \sigma_1}{\partial u}  &  \frac{\partial \sigma_1}{\partial v}  \\
+                \frac{\partial \sigma_2}{\partial u}  &\frac{\partial \sigma_2}{\partial v}    \\
+                \frac{\partial \sigma_3}{\partial u}  & \frac{\partial \sigma_3}{\partial v}    \\
+            \end{pmatrix}
+        \]
+        has rank 2, and so there exists two rows defining an invertible matrix at \(0\). Suppose without loss of generality that the first 2 rows define an invertible matrix, and let \(\mathrm{pr}\coloneqq \pi_{xy}\) and consider the map \(\mathrm{pr}\circ \sigma: V \to \mathbb{R}^2\).
+
+        By Inverse Function Theorem (since the derivative is an isomorphism at 0) says that it is locally invertible. So \(\Sigma\) is a graph considering the inverse of the projection map, i.e. Part 2 holds.
+
+        Moreover, if we let \(\phi = \mathrm{pr}\circ \sigma\), then
+        \[
+            B(p, \delta) \subseteq \mathbb{R}^3\ni (x,y,z) \mapsto \phi^{-1}(x,y).
+        \]
+        Here \(\phi^{-1}: W \subseteq \mathrm{pr}(B(p, \delta)) \to \Sigma\) which is locally defined, smooth on an open set in \(\mathbb{R}^3\) which is a local inverse of \(\sigma\). That is, \(\sigma^{-1} = \phi^{-1}\circ \mathrm{pr}\).
+
+        So Part 4 implies Part 1.
+    \end{enumerate}
+\end{proof}
+\begin{example}
+    The unit sphere \(S^2 \subseteq \mathbb{R}^2\) is \(f^{-1}(0)\) for
+    \[
+        f: \mathbb{R}^3 \to \mathbb{R} \quad (x,y,z) \mapsto x^2 + y^2 + z^2 - 1.
+    \]
+    If \(p \in S^2\), \(\left. Df\right|_p \neq 0\), so \(S^2\) is a smooth surface in \(\mathbb{R}^3\).
+\end{example}
+\begin{example}[Surfaces of revolution]
+    Let \(\gamma: [a,b] \to \mathbb{R}^3\) be a smooth map with image in the \(x-z\) plane:
+    \[
+        \gamma(t) = (f(t), 0, g(t)).
+    \]
+    We assume that \(\gamma\) is injective, \(\gamma'(t)\neq 0\) for all \(t\) and \(f > 0\).
+
+    The associated \textit{surface of revolution} has allowable parametrizations
+    \[
+        \sigma(u,v) = (f(u)\cos v, f(u)\sin v, g(u))
+    \]
+    where \((u,v) \in (a,b) \times (\theta, \theta + 2 \pi)\) for some initial fixed \(\theta \in [0, 2\pi]\).
+\end{example}
+\begin{note}
+    We first think about the derivatives
+    \begin{align*}
+        \sigma_u &= (f_u(u)\cos v, f_u(u)\sin v, g_u(u)),\\
+        \sigma_v &= (-f(u)\sin v, f(u)\cos v, 0).
+    \end{align*}
+    And we have \(\left\lVert \sigma_u \times \sigma_v\right\rVert=f^2((f')^2 + (g')^2)\neq 0\) by conditions on the original curve \(\gamma\), so \(D\sigma\) has rank 2 and \(\sigma\) is injective on given domain, so allowable.
+\end{note}
+\begin{example}
+    The orthogonal group \(O(3)\) acts on \(S^2\) by diffeomorphisms.
+\end{example}
+\begin{proof}
+    Any \(A\in O(3)\) defines an invertible linear (thus smooth) map \(\mathbb{R}^3 \to \mathbb{R}^3\) preserving \(S^2\). So the induced map on \(S^2\) is by homeomorphism which is smooth in our definition. (It is smooth globally, so smooth locally as well)
+
+    Compare it with the action of the Möbius group on \(S^2 = \mathbb{C}\cup \{\infty\}\).
+\end{proof}
