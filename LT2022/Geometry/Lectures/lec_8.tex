@@ -1,0 +1,22 @@
+\lecture{8}{7 Feb. 2022}{}
+\leavevmode
+\begin{lemma}
+    A smooth surface in \(\mathbb{R}^3\) is orientable with its abstract smooth surface structure if and only if it is two-sided.
+\end{lemma}
+\begin{proof}
+    Let \(\sigma: V \to U \in \Sigma\) be an allowable parametrization for \(U\in \Sigma\) and say \(\sigma(0) = p\). Define the \textit{positive} unit normal with respect to \(\sigma\) at \(p\) to be the normal vector \(n_\sigma(p)\) such that
+    \[
+        \{\sigma_u,\sigma_v,n_\sigma(p)\}, \{e_1, e_2, e_3\}
+    \]
+    are related by a positive determinant change of basis matrix, where \(\{e_1, e_2, e_3\}\) is the standard basis. Explicitly,
+    \[
+        n_\sigma(p) = \frac{\sigma_u \times \sigma_v}{\left\lVert \sigma_{u}\times \sigma_{v}\right\rVert }.
+    \]
+    If \(\tilde{\sigma}\) is another allowable parametrization,
+    \[
+    \begin{aligned}
+      \tilde{\sigma}\colon \tilde{V} & \longrightarrow   \tilde{U}\subseteq \Sigma \\
+      0 &\longmapsto p.
+    \end{aligned}
+    \]
+\end{proof}

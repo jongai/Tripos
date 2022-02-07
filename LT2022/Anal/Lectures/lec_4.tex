@@ -1,0 +1,91 @@
+\lecture{4}{28 Jan. 2022}{}
+\begin{example}
+    To determine the convergence of \(\sum\limits_{n=1}^{\infty} a_n = \frac{n}{2^n}\).
+
+    By ratio test,
+    \[
+        \frac{n + 1}{2^n}\frac{2^n}{n} = \frac{n + 1}{2n}\to \frac{1}{2}<1.
+    \]
+    So we have convergence by ratio test.
+
+    However, \(\sum\limits_{n=1}^{\infty} \frac{1}{n}\) diverges, and ratio test gives limit 1, and \(\sum\limits_{n=1}^{\infty} \frac{1}{n^2}\) converges, and ratio test gives limit 1. So ratio test is inconclusive if the limit is 1.
+
+    Since \(n^{\frac{1}{n}} \to 1\) as \(n \to \infty\), so root test is also inconclusive when the limit is 1.
+
+    To see this limit, write
+    \[
+        n^{\frac{1}{n}} = 1 + \delta_n, ~\delta_n > 0.
+    \]
+    So
+    \[
+        n = (1 + \delta_n)^n > \frac{n(n-1)}{2}\delta_n^2.
+    \]
+    And \(\delta_n^2 < \frac{2}{n - 1}\implies \delta_n \to 0\).
+\end{example}
+\begin{remark}
+    Use the root test when there is a nth power in the series.
+\end{remark}
+\begin{theorem}[Cauchy's Condensation Test]
+    Let \(a_n\) be a decreasing sequence of positive terms. Then \(\sum\limits_{n=1}^{\infty} a_n\) converges if and only if \(\sum\limits_{n=1}^{\infty} 2^n a_{2^n}\) converges.
+\end{theorem}
+\begin{proof}
+    First we observe that if \(a_n\) is decreasing
+    \[a_{2^k} \leq a_{2^{k-1} + i}\leq a_{2^{k-1}}\] 
+    for all \(k \geq 1\) and \(1 \leq i\leq 2^{k-1}\).
+
+    Assume that \(\sum\limits_{n=1}^{\infty} a_n\) converges with sum \(A\). Then
+    \begin{align*}
+    2^{n - 1}a_{2^n} &= \underbrace{a_{2^n} + \cdots a_{2^n}}_{2^{n-1} \text{ times}}\\
+    &\leq a_{2^{n -1 } + 1} + \cdots + a_{2^n}\\
+    &= \sum\limits_{m=2^{n-1}+1}^{2^n} a_m.
+    \end{align*}
+    Thus, \(\sum\limits_{n=1}^{N} 2^{n-1}a_{2^n}\leq \sum\limits_{n=1}^{N} \sum\limits_{m=2^{n-1}+1}^{2^n} a_m = \sum\limits_{m=2}^{2^N} a_m\). So
+    \[
+        \sum\limits_{n=1}^{N} 2^{n}a_{2^n} \leq 2 \sum\limits_{m=2}^{2^N} a_m \leq 2(A-a_1).
+    \]
+    Thus, \(\sum\limits_{n=1}^{N} 2^n a_{2^n}\) being increasing and bounded above, converges.
+
+    Conversely, assume \(\sum\limits_{n=1}^{\infty} 2^n a_{2^n}\) converges to \(B\), then
+    \begin{align*}
+        \sum\limits_{m=2^{n - 1}+1}^{2^n} a_m &= a_{2^{n-1} + 1} + a_{2^{n-1}+2} + \cdots + a_{2^n}\\
+        &\leq \underbrace{a_{2^{n-1}} + \cdots + a_{2^{n-1}}}_{2^{n-1} \text times} = 2^{n-1}a_{2^{n-1}}.
+    \end{align*}
+    Similarly, we have
+    \[
+        \sum\limits_{m=2}^{2^N} a_m = \sum\limits_{n=1}^{N} \sum\limits_{m=2^{n-1}+1}^{2^n} a_m \leq \sum\limits_{n=1}^{N} 2^{n-1}a_{2^{n-1}} \leq B.
+    \]
+    Therefore, \(\sum\limits_{m=1}^{N} a_m\) is a bounded increasing sequence and thus it converges.
+\end{proof}
+\begin{example}
+    \(\sum\limits_{n=1}^{\infty} \frac{1}{n^k}\) for \(k > 0\) converges if and only if \(k > 1\). First we note that \(\frac{1}{n^k}\) is a decreasing sequence of positive terms.
+    \[
+        \frac{1}{(n + 1)k}<\frac{1}{n^k} \iff (\frac{n}{n+1})^k<1 \iff \frac{n}{n+1}<1.
+    \]
+    We use Cauchy condensation test, and we have
+    \begin{align*}
+        2^n a_{2^n} &= 2^{n}\left(\frac{1}{2^n}\right)^k\\
+        &= 2^{n - nk} = (2^{1-k})^n.
+    \end{align*}
+    Which is a geometric series with the ratio \(2^{1-k}\). So \(\sum\limits_{n=1}^{\infty} \frac{1}{n^k}\) converges if and only if \(2^{1-k} < 1 \iff k > 1\).
+\end{example}
+\subsection{Alternating Series}
+\leavevmode
+\begin{theorem}[Alternating Series Test]
+    If \(a_n\) decreases and tends to 0 as \(n \to \infty\), then the series \(\sum\limits_{n=1}^{\infty} (-1)^{n+1}a_n\) converges.
+\end{theorem}
+\begin{example}
+    \(\sum\limits_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}\) converges.
+\end{example}
+\begin{proof}
+    The partial sum is
+    \begin{align*}
+        S_n &= a_1 - a_2 + \cdots + (-1)^{n+1}a_n\\
+        S_{2n} &= (a_1 - a_2) + (a_3 - a_4) + \cdots + (a_{2n - 1} - a_{2n}) \geq S_{2n - 1}\\
+        S_{2n} &= a_1 - (a_2 - a_3) - (a_4 - a_5) - \cdots - (a_{2n - 2} - a_{2n-1}) - a_{2n} \leq a_1
+    \end{align*}
+    So \(S_{2n}\) is increasing and bounded above, implying that \(S_{2n}\to S\). The odd terms satisfy
+    \[
+        S_{2n + 1} = S_{2n} + a_{2n + 1} \to S + 0 = S.
+    \]
+    This implies that \(S_n\) converges to \(S\) as well. Given \(\epsilon\), there exists \(N_1\) such that \(\forall n \geq N_1\), \(\left\vert S_{2n}-S \right\vert < \epsilon\). We also know that there exists \(N_2\) such that \(\forall n \geq N_2\), \(\left\vert S_{2n + 1} - S \right\vert <\epsilon\). Take \(N = 2 \mathop{\max} \{N_1, N_2\} + 1\), then if \(n \geq N\), \(\left\vert S_k - S\right\vert < \epsilon\). So \(S_k \to S\).
+\end{proof}

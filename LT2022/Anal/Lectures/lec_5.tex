@@ -1,0 +1,66 @@
+\lecture{5}{31 Jan. 2022}{}
+\subsection{Absolute Convergence}
+\begin{definition}
+    Take \(a_n \in \mathbb{C}\). If \(\sum\limits_{n=1}^{\infty} \left\vert a_n \right\vert \) is convergent, then the series is called \textit{absolutely convergent}.
+\end{definition}
+\begin{note}
+    Since \(\left\vert a_n \right\vert \geq 0\). We can use the previous tests to check absolute convergence; this is particularly useful for \(a_n \in \mathbb{C}\).
+\end{note}
+\begin{theorem}
+    \label{absiscon}
+    If \(\sum\limits_{n=1}^{\infty} a_n\) is absolutely convergent, then it is convergent.
+\end{theorem}
+\begin{proof}
+    Suppose first \(a_n \in \mathbb{R}\). Let
+    \[
+        v_n = \begin{dcases}
+            a_n, &\text{ if } a_n \geq 0\\
+            0, &\text{ if }a_n < 0 \\
+        \end{dcases}
+    \]
+    and
+    \[
+        w_n = \begin{dcases}
+            0, &\text{ if } a_n \geq 0\\
+            -a_n, &\text{ if }a_n < 0 \\
+        \end{dcases}.
+    \]
+    We have \(v_n = \frac{\left\vert a_n \right\vert +a_n}{2}, w_n = \frac{\left\vert a_n \right\vert -a_n}{2}\). Clearly, \(v_n, w_n \geq 0\). We also have \(\left\vert a_n \right\vert = v_n + w_n \geq v_n, w_n\).
+
+    So by comparison test, if \(\sum\limits_{n=1}^{\infty} \left\vert a_n \right\vert \) converges, \(\sum\limits_{-=1}^{\infty} v_n, \sum\limits_{n=1}^{\infty} w_n\) also converges.
+
+    If \(a_n \in \mathbb{C}\), write \(a_n = x_n + iy_n\). We have \(\left\vert x_n \right\vert, \left\vert y_n \right\vert \leq \left\vert a_n \right\vert \). So \(\sum\limits_{n=1}^{\infty} x_n\) and \(\sum\limits_{n=1}^{\infty} y_n\) are absolutely convergent, so they are convergent. And \(\sum\limits_{n=1}^{\infty} a_n\) converges as well.
+\end{proof}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item \(\sum\limits_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}\) converges but not absolutely convergent.
+        \item \(\sum\limits_{n=1}^{\infty} \frac{z^n}{2^n}\) for \(z \in \mathbb{C}\). We check for absolute convergence first, \(\sum\limits_{n=1}^{\infty} \left(\frac{\left\vert z \right\vert}{2}\right)^n\). So if \(\left\vert z \right\vert < 2\), the series is convergent by absolute convergence.
+
+        Otherwise, if \(\left\vert z \right\vert \geq 2\), \(\left\vert \frac{z}{2} \right\vert \geq 1\). \(a_n\) does not tend to zero, hence the series diverge.
+    \end{enumerate}
+\end{example}
+\begin{notation}
+    If \(\sum\limits_{n=1}^{\infty} a_n\) converges but not absolutely convergent, it is sometimes called \textit{conditional convergent}.
+
+    It is called conditional because the sum to which the series converges is conditional on the order in which elements of the sequence are taken.
+\end{notation}
+\begin{example}[Example Sheet 1, Q7]
+    \(1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots\) and \(1 + \frac{1}{3}-\frac{1}{2}+\frac{1}{5}+\frac{1}{7}-\frac{1}{4}+\cdots\) are two series with different sums. Let \(s_n\) be the partial sum of the first series, and \(t_n\) be the partial sum of the second series, then \(s_n \to s\) and \(t_n \to \frac{3s}{2}\).
+\end{example}
+\begin{definition}
+    Let \(\sigma\) be a bijection of the positive integers, \(a_n' = a_{\sigma(n)}\) is a \textit{rearrangement}.
+\end{definition}
+\begin{theorem}
+    If \(\sum\limits_{n=1}^{\infty} a_n\) is absolutely convergent, every series consisting of the same terms in any order (i.e. a rearrangement) has the same sum.
+\end{theorem}
+\begin{proof}
+    Again we do the proof first for \(a_n \in \mathbb{R}\). Let \(\sum\limits_{n=1}^{\infty} a_n'\) be a rearrangement of \(\sum\limits_{n=1}^{\infty} a_n\). Let \(s_n = \sum\limits_{i=1}^{n} a_i\) and \(t_n = \sum\limits_{i=1}^{n} a'_i\), \(S = \sum\limits_{n=1}^{\infty} a_n\). Suppose first that \(a_n \geq 0\). Given \(n\), we can find \(q\) such that \(s_q\) contains every term of \(t_n\). Because \(a_n \geq 0\), we have
+    \[
+        t_n \leq s_n \leq S.
+    \]
+    So \(t_n\) is an increasing sequence bounded above so \(t_n \to t\), and from the inequality above, \(t \leq s\). By symmetry, we have \(s \leq t \implies s = t\).
+    If \(a_n\) has any negative term, consider \(v_n\) and \(w_n\) from Theorem \eqref{absiscon}. Consider \(\sum\limits_{n=1}^{\infty} a'_n\), \(\sum\limits_{n=1}^{\infty} v'_n\), \(\sum\limits_{n=1}^{\infty} w_n'\). Since \(\sum\limits_{n=1}^{\infty} \left\vert a_n \right\vert\) converges, both \(\sum\limits_{n=1}^{\infty} v_n\) and \(\sum\limits_{n=1}^{\infty} w_n\) converge. Using the fact that \(v_n, w_n \geq 0\), we case above, we have \(\sum\limits_{n=1}^{\infty} v'_n = \sum\limits_{n=1}^{\infty} v_n\) and \(\sum\limits_{n=1}^{\infty} w_n = \sum\limits_{n=1}^{\infty} w'_n\). But \(a_n = v_n - w_n\) so \(\sum\limits_{n=1}^{\infty} a_n = \sum\limits_{n=1}^{\infty} a'_n\).
+
+    For the case \(a_n \in \mathbb{C}\), we write \(a_n = x_n + iy_n\). Since \(\left\vert x_i \right\vert, \left\vert y_i \right\vert \leq \left\vert a_n \right\vert \), \(\sum\limits_{n=1}^{\infty} x_n\) and \(\sum\limits_{n=1}^{\infty} y_n\) are absolutely convergent. By the previous case \(\sum\limits_{n=1}^{\infty} x'_n = \sum\limits_{n=1}^{\infty} x_n\),\(\sum\limits_{n=1}^{\infty} y'_n = \sum\limits_{n=1}^{\infty} y_n\). Since \(a'_n = x_n' + iy_n'\) so \(\sum\limits_{n=1}^{\infty} a_n = \sum\limits_{n=1}^{\infty} a'_n\).
+\end{proof}
