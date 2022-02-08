@@ -16,7 +16,112 @@
     \[
     \begin{aligned}
       \tilde{\sigma}\colon \tilde{V} & \longrightarrow   \tilde{U}\subseteq \Sigma \\
-      0 &\longmapsto p.
+      0 &\longmapsto p,
     \end{aligned}
     \]
+    and suppose \(\Sigma\) is orientable as an abstract smooth surface and \(\tilde{\sigma}\) belongs to the same oriented atlas. So
+    \[
+        \sigma = \tilde{\sigma} \circ \phi
+    \]
+    where \(\phi\) is a transition map. If we write \(\left. D\phi\right|_0 = \begin{pmatrix}
+        \alpha &  \beta \\
+        \gamma &  \delta. \\
+    \end{pmatrix}\) Chain rule says
+    \begin{align*}
+        \sigma_u &=\alpha \tilde{\sigma}_u + \gamma\tilde{\sigma}_v\\
+        \sigma_v &=\beta \tilde{\sigma}_u + \delta\tilde{\sigma}_v
+    \end{align*}
+    and we have \(\sigma_u \times \sigma_v = \det (\left. D\phi\right|_0)\tilde{\sigma}_u \times \tilde{\sigma}_v\). The determinant is positive since \(\sigma, \tilde{\sigma}\) belong to the same oriented atlas, so the positive unit normal at \(p\) was intrinsic; it depends on the orientation of \(\Sigma\) but no choice of allowable parametrization in the oriented atlas. And the expression \(\frac{\sigma_u \times \sigma_v}{\left\lVert \sigma_u \times \sigma_v\right\rVert }\) is continuous. i.e. \(\Sigma\) is 2-sided.
+
+    Conversely, if \(\Sigma\) is 2-sided, and I have a global continuous choice of normal vector. I can consider the subatlas of the natural smooth atlas such that allow a chart \((u, \phi)\) if associated parametrization \(\phi^{-1}=\sigma\) makes \(\{\sigma_u, \sigma_v, n\}\) a positive basis for \(\mathbb{R}^3\). Similarly, we know that the transition maps between such charts have positive determinant, and are orientation-preserving. So \(\Sigma\) is continuous.
 \end{proof}
+\begin{lemma}
+    If \(\Sigma\) is a smooth surface in \(\mathbb{R}^3\) and \(A: \mathbb{R}^3 \to \mathbb{R}^3\) is a smooth map that preserves \(\Sigma\) set-wise. Then
+    \(\left.DA\right|_p:\mathbb{R}^3 \to \mathbb{R}^3\) sends \(T_p\Sigma\) to \(T_{A(p)}\Sigma\) whenever \(p \in \Sigma\).
+\end{lemma}
+\begin{proof}
+    Suppose \(\gamma:(-\epsilon, \epsilon)\to \mathbb{R}^3\) is a smooth map such that \(\Ima(\gamma)\subseteq \Sigma\) and \(\gamma(0)=p\). Recall \(T_p\Sigma\) is spanned by \(\gamma'(0)\) for such \(\gamma\).
+
+    Now \(A \circ \gamma: (-\epsilon,\epsilon) \to \mathbb{R}^3\) also has image in \(\Sigma\), and by chain rule,
+    \[
+        T_{A(p)}\Sigma \ni \left.D(A\circ \gamma)\right|_0 = \left.DA\right|_{\gamma(0)}\cdot \left.D\gamma\right|_0 = \left.DA\right|_p\cdot(\gamma'(0)).
+    \]
+\end{proof}
+\begin{example}
+    If \(S^2 \subseteq \mathbb{R}^3\), then the normal line \((T_p\Sigma)^\perp = (T_p S^2)^\perp = \mathrm{span}(p)\) is the line through \(p\). (since \(SO_3\) acts transitively on \(S^2\), check this at the one point suffices) So there is at each point an outwards-pointing normal vector \(n(p)\). (such that \(p \notin \mathbb{R}_{\geq 0}n(p) + p\))
+
+    So \(S^2\) is 2-sided, and so orientable.
+\end{example}
+\begin{example}[A Möbius Band]
+    Let
+    \[\sigma(t, \theta) = ((1 - t\sin \frac{\theta}{2})\cos \theta, (1 - t\sin \frac{\theta}{2})\sin \theta,t\cos \frac{\theta}{2})),\]
+    where
+    \[
+        (t,\theta) \in V_1 = \{t \in (-\frac{1}{2},\frac{1}{2}), \theta \in (0, 2\pi))\},
+    \]
+    or
+    \[
+        (t,\theta) \in V_2 = \{t \in (-\frac{1}{2},\frac{1}{2}), \theta \in (-\pi, \pi))\}.
+    \]
+    We start with the unit circle \(x^2 + y^2 = 1\) in the \(xy\)-plane (\(t=0\) on the surface), and we take an open interval of length 1. And this line rotates as you move around the circle such that it has rotated by \(\frac{\theta}{2}\) at point \(\theta\).
+
+    We can check if we define \(\sigma_i\) on \(V_i\), then \(\sigma_i\) is allowable. (smooth, injective and \(D\sigma_i\) injective)
+
+    By direct computation, we have
+    \[
+        \sigma_t \times \sigma_\theta = (-\cos \theta \cos \frac{\theta}{2}, - \sin \theta \cos \frac{\theta}{2}, -\sin \frac{\theta}{2}) = n_\theta
+    \]
+    which is already unit length.
+
+    Also note \(\theta \to 0^+, n_\theta \to (-1,0,0)\) and \(\theta \to 2\pi^-, n_\theta \to (1,0,0)\). So the surface is not 2-sided.
+\end{example}
+We're now starting a new chapter on geometry surfaces in \(\mathbb{R}^3\): especially length, area and curvature.
+
+Let \(\gamma: (a,b) \to \mathbb{R}^3\) smooth. The \textit{length} of \(\gamma\) is \(L(\gamma) = \int_a^b \left\lVert \gamma'(t)\right\rVert\,\mathrm{d}t\). If \(s: (A,B) \to (a,b)\) is monotonically increasing, and let \(\tau(t) = \gamma(s(t))\), then
+\[
+    L(\tau)=\int_{A}^{B} \left\lVert \tau'(t)\right\rVert \,\mathrm{d}x=\int_{A}^{B}\left\lVert \gamma(s(t))\right\rVert \left\vert s'(t) \right\vert \,\mathrm{d}x = L(\gamma)
+\]
+by change of variables formula since \(s'(t) \geq 0\).
+\begin{lemma}
+    If \(\gamma:(a,b)\to \mathbb{R}^3\) is continuously differentiable and \(\gamma'(t)\neq 0~\forall t\) then \(\gamma\) can be parametrized by arc-length. (i.e. in a parameter \(s\) such that \(\left\vert \gamma'(s)=1\right\vert~\forall s\))
+\end{lemma}
+\begin{proof}
+    Exercise.
+\end{proof}
+Let \(\Sigma\) be a smooth surface in \(\mathbb{R}^3\) and let \(\sigma: V \to U \subseteq \Sigma\) allowable. If \(\gamma: (a,b) \to \mathbb{R}^3\) is smooth and has image in \(U\), then there exists \(u(t), v(t): (a,b) \to V\) such that \(\gamma(t) = \sigma(u(t), v(t))\). And we have
+\begin{align*}
+    \gamma'(t) &= \sigma_u u'(t)+ \sigma_v v'(t),\\
+    \left\lVert \gamma'(t)\right\rVert^2 &= E u'(t)^2 + 2 F u'(t)v'(t) + G v'(t)^2
+\end{align*}
+where \(\begin{aligned}[t]
+    E &= \langle \sigma_u, \sigma_u\rangle = \left\lVert \sigma_u\right\rVert^2\\
+    F &= \langle \sigma_u, \sigma_v\rangle = \langle \sigma_v, \sigma_u \rangle\\
+    G &= \langle \sigma_v, \sigma_v\rangle = \left\lVert \sigma_v\right\rVert^2
+\end{aligned}\) are smooth functions on \(V\), and \(\langle , \rangle\) is the Euclidean inner product. Note that \(E,F,G\) depend only on \(\sigma\), but not on \(\gamma\).
+
+\begin{definition}
+    The \textit{First Fundamental Form} (FFF) of \(\Sigma\) in the\\ parametrization is the expression
+    \[
+        E \mathrm{d}u^2 + 2F \mathrm{d}u\mathrm{d}v + G \mathrm{d}v^2.
+    \]
+\end{definition}
+The notation is designed to remind you that if \(\gamma: (a,b) \to \mathbb{R}^3\) lands in \(\sigma(V) = U \subseteq \Sigma\), then
+\[
+    L(\gamma) = \int_{a}^{b} \sqrt{Eu'(t)^2 + 2Fu'(t)v'(t) + Gv'(t)^2}  \,\mathrm{d}t
+\]
+where \(\gamma(t) = \sigma(u(t), v(t))\).
+\begin{remark}
+    Really the Euclidean inner product \(\langle,\rangle\) on \(\mathbb{R}^3\) gives me an inner product on \(T_p\Sigma \subseteq \mathbb{R}^3\). If I pick a parametrization \(\sigma\),
+    \[T_p\Sigma = \Ima(\left.D\sigma\right|_0) = \mathrm{span}\{\sigma_u, \sigma_v\}\] given \(\sigma(0) = p\).
+    FFF is a symmetric bilinear form on \(T_p\Sigma\) (varying smoothly in \(p\)), expressed in a basis coming from the parametrization \(\sigma\). So often helpful to consider \(\begin{psmallmatrix}
+        E &  F \\
+        F &  G \\
+    \end{psmallmatrix}\) which is the matrix of the bilinear form.
+\end{remark}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item The plane \(\mathbb{R}^2_{xy}\subseteq \mathbb{R}^3\) has parametrization \(\sigma(u,v) = (u,v,0)\), so \(\sigma_u = (1,0,0)\) and \(\sigma_0,1,0\), so FFF is \(\mathrm{d}u^2 + \mathrm{d}v^2\).
+        \item Or in polar co-ordinates, \(\sigma(r, \theta) = (r\cos \theta, r\sin \theta, 0)\) for \(r \in (0, \infty), \theta \in (0, 2\pi)\). Now we have \(\sigma_r = (\cos \theta, \cos \theta, 0)\) and \(\sigma_\theta = (-r \sin \theta, r\cos \theta, 0)\) and FFF is \(\mathrm{d}r^2 + r^2 \mathrm{d}\theta^2\). So the first fundamental form is dependent on the parametrization.
+    \end{enumerate}
+\end{example}
