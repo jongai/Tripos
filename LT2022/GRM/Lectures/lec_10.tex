@@ -1,0 +1,142 @@
+\lecture{10}{10 Feb. 2022}{}
+\leavevmode
+\begin{theorem}[First Isomorphism Theorem]
+    Let \(\phi: R \to S\) be a ring homomorphism, then \(\ker(\phi) \nsub R\), \(\Ima(\phi)\leq S\) and there exists isomorphism \(\nicefrac{R}{\ker(\phi)}\cong \Ima(\phi)\).
+\end{theorem}
+\begin{proof}
+    We already showed that \(\ker(\phi)\nsub R\) in Lemma \eqref{ringker}, and \(\Ima(\phi)\) is a subgroup of \((S,+)\) by First Isomorphism Theorem for groups. So just need to show that it's closed under multiplication and contains \(1_S\).
+
+    We have \(\phi(r_1)\phi(r_2) = \phi(r_1 r_2)\in \Ima(\phi)\) and \(1_S = \phi(1_R) \in \Ima(\phi)\). Thus, \(\Ima(\phi)\) is a subring of \(S\).
+
+    Let \(K = \ker(\phi)\), and define
+    \[
+    \begin{aligned}
+      \Phi\colon \nicefrac{R}{K} & \longrightarrow \Ima(\phi)      \\
+      r+K          & \longmapsto \phi(r)
+    \end{aligned}.
+    \]
+    Again, by the First Isomorphism Theorem for groups, this is well-defined, a bijection and group homomorphism under addition.
+
+    Also, \(\Phi(1_R + K) = \phi(1_R) = 1_S\), and
+    \begin{align*}
+        \Phi((r_{1}+K)(r_2 + K)) &= \Phi(r_1 r_2 + K)\\
+        &= \phi(r_{1} r_2) = \phi(r_1)\phi(r_2)\\
+        &=\Phi(r_1 + K) \Phi(r_2 + K).
+    \end{align*}
+    Thus, \(\Phi\) is an isomorphism of rings.
+\end{proof}
+\begin{theorem}[Second Isomorphism Theorem]
+    Let \(R\leq S\) and \(J \nsub S\). Then \(R \cap J \nsub R\), \(R + J = \{r + a \mid r \in R, a \in S\}\leq S\) and
+    \[
+        \frac{R}{R\cap J} \cong \frac{R + J}{J}\leq \frac{S}{J}.
+    \]
+\end{theorem}
+\begin{proof}
+    By Second Isomorphism Theorem of groups, \(R + J\) is a subgroup of \((S, +)\), and we have \(1_S = 1_S + 0_S \in R + J\).
+
+    If \(r_1, r_2 \in R\) and \(a_1, a_2 \in J\), we have
+    \begin{align*}
+        (r_1 + a_1)(r_2 + a_2) &= r_{1}r_2 +r_1 a_2 + r_2 a_1 + a_1 a_{2}\\
+        &= r_1 r_2 + a.
+    \end{align*}
+    Thus, \(R+S \leq S\).
+
+    Let \(\phi: R \to \nicefrac{S}{J}, r \mapsto r + J\). Thus is the composition of the inclusion \(R\leq S\), and the quotient map \(S \to \nicefrac{S}{J}\) . We have
+    \begin{align*}
+        \ker(\phi) &= \{r\in R \mid r + J = J\} = R \cap J \nsub R\\
+        \Ima(\phi) &= \{r + J \mid r \in R\} = \frac{R + J}{J} \leq \frac{S}{J}.
+    \end{align*}
+    And by First Isomorphism Theorem, we have
+    \[
+        \frac{R}{R \cap J} \cong \frac{R + J}{J}.
+    \]
+\end{proof}
+\begin{note}
+    Let \(I \nsub R\), there exists a bijection
+    \begin{align*}
+        \{\text{Ideals of }\nicefrac{R}{I}\} &\longleftrightarrow\{\text{Ideals of }R\text{ containing }I\},\\
+        K &\longmapsto \{r\in R\mid r + I \in K\},\\
+        \nicefrac{J}{I}&\longmapsfrom J.
+    \end{align*}
+\end{note}
+\begin{theorem}[Third Isomorphism Theorem]
+    Let \(I\nsub R, J \nsub R\) with \(I \subseteq J\), then \(\nicefrac{J}{I}\nsub \nicefrac{R}{I}\), and
+    \[
+        \frac{\nicefrac{R}{I}}{\nicefrac{J}{I}}\cong \frac{R}{J}.
+    \]
+\end{theorem}
+\begin{proof}
+    Consider
+    \[
+    \begin{aligned}
+      \phi\colon \nicefrac{R}{I} & \longrightarrow \nicefrac{R}{J}      \\
+      r+I          & \longmapsto r+J
+    \end{aligned}.
+    \]
+    This is a surjective ring homomorphism. (well-defined since \(I \subseteq J\)) And
+    \[
+        \ker(\phi) = \{r + I \mid r \in J\} = \nicefrac{J}{I} \nsub \nicefrac{R}{I}.
+    \]
+    Apply First Isomorphism Theorem, and we are done.
+\end{proof}
+\begin{example}
+    There is a surjective ring homomorphism
+    \[
+    \begin{aligned}
+      \phi
+      \colon \mathbb{R}[X] & \longrightarrow   \mathbb{C} \\
+      f(X) = \sum\limits_{n=1}^{\infty} a_n X^n & \longmapsto f(i) = \sum\limits_{n=1}^{\infty} a_n i^n
+    \end{aligned}
+    \]
+    Proposition \eqref{polydiv} implies that \(\ker(\phi) = (X^2 + 1)\).
+
+    First Isomorphism Theorem tells us \(\nicefrac{\mathbb{R}[X]}{(X^{2}+1)}\cong \mathbb{C}\).
+\end{example}
+\begin{example}
+    Let \(R\) a ring, there is a unique ring homomorphism \(i: \mathbb{Z} \to R\), given by
+    \begin{align*}
+        0 &\longmapsto 0_R\\
+        1 &\longmapsto 1_R\\
+        n &\longmapsto \underbrace{1_R + \cdots + 1_R}_{n \text{ times}}\\
+        -n &\longmapsto -(\underbrace{1_R + \cdots + 1_R}_{n \text{ times}}).
+    \end{align*}
+    Since \(\ker(i) \nsub \mathbb{Z}\), we have \(\ker(i) = n\mathbb{Z}\) for some \(n = 0,1,2, \ldots\).
+
+    By First Isomorphism Theorem,
+    \[
+        \nicefrac{\mathbb{Z}}{n\mathbb{Z}}\cong \Ima(i) \leq R.
+    \]
+\end{example}
+\begin{definition}
+    We call \(n\)  the \textit{characteristic} of \(R\).
+\end{definition}
+\begin{example}
+    \(\mathbb{Z},\mathbb{Q},\mathbb{R}\) and \(\mathbb{C}\) all have characteristic 0, and \(\nicefrac{\mathbb{Z}}{p\mathbb{Z}}, \nicefrac{\mathbb{Z}}{p\mathbb{Z}}[X]\) have characteristic \(p\).
+\end{example}
+\subsection{Integral Domains, Maximal Ideals and Prime Ideals}
+\leavevmode
+\begin{definition}
+    An \textit{integral domain}  is a ring with \(0 \neq 1\), and such that for \(a, b \in R\), \(ab = 0 \implies a = 0\) or \(b = 0\).
+
+    A \textit{zero-divisor} in a ring \(R\) is a non-zero element \(a \in R\) such that \(ab = 0\) for some \(0 \neq b \in R\).
+
+    So an integral domain is a ring with no zero-divisors.
+\end{definition}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item All fields are integral domains. (if \(ab = 0\) with \(b \neq 0\), multiply by \(b^{-1}\) to get \(a = 0\))
+        \item Any subring of an integral domain is an integral domain. E.g., \(\mathbb{Z} \leq \mathbb{Q}\), \(\mathbb{Z}[i] \leq \mathbb{C}\).
+        \item \(\mathbb{Z} \times \mathbb{Z}\) is not an integral domain since \((1,0)\cdot (0,1) = (0,0)\).
+    \end{enumerate}
+\end{example}
+\begin{lemma}
+    If \(R\) is an integral domain, so is \(R[X]\).
+\end{lemma}
+\begin{proof}
+    Write \(\begin{aligned}[t]f(x) &= a_m X^m + \cdots + a_1 X + a_0&a_m \neq 0\\ g(x) &= b_n X^n + \cdots + b_1 X + b_0 & b_n \neq 0\end{aligned}\). Then
+    \[
+        f(x)g(x) = a_{m}b_n X^{n + m} + \cdots.
+    \]
+    We know \(a_m b_n \neq 0\) since \(R\) is an integral domain. Then \(\deg(f\cdot g) = m + n\) and \(f\cdot g\) is non-zero.
+\end{proof}

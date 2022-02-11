@@ -28,6 +28,7 @@
 \end{definition}
 \begin{lemma}
     If \(\phi: R\to S\) is a ring homomorphism, then \(\ker(\phi)\) is an ideal of \(R\).
+    \label{ringker}
 \end{lemma}
 \begin{proof}
     Again, \(\phi: (R, +) \to (S, +)\) is a group homomorphism between the additive groups. So \(\ker(\phi)\) is a subgroup of \((R, +)\).
@@ -94,7 +95,7 @@
             \nicefrac{\mathbb{R}[X]}{(X^2 + 1)} = \{f(X) + (X^2 + 1)\mid f(X) \in \mathbb{R}[X]\}.
         \]
         By Proposition \eqref{polydiv}, \(f(X) = q(X)(X^2 + 1) + r(X)\) with \(\deg r < 2\), i.e. \(r(X) = a + bX, a,b \in \mathbb{R}\). Thus,
-        \[\nicefrac{mathbb{R}}{(X^2 + 1)} = \{a + bX + (X^{2} + 1)\mid a, b \in \mathbb{R}\}.\]
+        \[\nicefrac{\mathbb{R}}{(X^2 + 1)} = \{a + bX + (X^{2} + 1)\mid a, b \in \mathbb{R}\}.\]
         If \(a + bX + (X^2 + 1) = a' + b'X + (X^2 + 1)\), then
         \[a - a' + (b - b')X = g(X)(X^2 + 1).\]
         Comparing degrees, we see \(g(x) = 0\) and \(a = a'\) and \(b = b'\). Consider the bijection
@@ -104,9 +105,15 @@
                     a + bX + (X^2 + 1) & \longmapsto a + b i.
         \end{aligned}
         \end{equation*}
-        We show that \(\phi\) is a ring homomorphism. It preserves addition and maps \(1 + (X^2 + 1)\) to 1.
+        We show that \(\phi\) is a ring homomorphism. It preserves addition and maps \(1 + (X^2 + 1)\) to 1. We show that it preserves multiplication.
         \begin{align*}
-            &\phi(a + bX + (X^2 + 1))\phi(c + dX + (X^2 + 1))\\
+            &\phi((a + bX + (X^2 + 1))(c + dX + (X^2 + 1)))\\
+            =&\phi((a + bX)(c+dX) + (X^2 + 1))\\
+            =&\phi(ac + (ad + bc)X + bd(X^2 + 1) - bd + (X^2 + 1))\\
+            =&ac - bd + (ad + bc)i\\
+            =&(a+bi)(c + di)\\
+            =&\phi(a + bX + (X^2 + 1))\phi(c + dX + (X^2 + 1)).
         \end{align*}
+        Thus, \(\nicefrac{\mathbb{R}[X]}{(X^2 + 1)} \cong \mathbb{C}\).
     \end{enumerate}
 \end{example}
