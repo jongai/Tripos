@@ -1,0 +1,75 @@
+\lecture{10}{11 Feb. 2022}{}
+\begin{example}
+    Consider \(f(x) = x^{n}\) with \(n \in \mathbb{Z}, n>0\). When \(n = 1\), clearly we have \(f(x) = x\) and \(f'(x) = 1\).
+
+    We claim that \(f'(x) = nx^{n-1}\), and we prove it by induction, \(f(x) = x x^n = x^{n + 1}\). By product rule and inductive hypothesis,
+    \[
+        f'(x) = x^n + x(nx^{n-1}) = (n + 1) x^n.
+    \]
+
+    Next, we consider \(f(x) = x^{-n}\) with \(n \in \mathbb{Z}, n > 0\). If \(x \neq 0\), use Proposition \eqref{derivprop}, we have
+    \[
+        f'(x) = \frac{-(x^n)'}{x^{2n}} = \frac{-nx^{n-1}}{x^{2n}} = -n x^{-n -1}.
+    \]
+
+    So we know how to find derivatives of polynomials and rational functions.
+\end{example}
+We have the following useful result to differentiate a larger class of functions.
+\begin{theorem}[Chain Rule]
+    If \(f: U \to \mathbb{C}\) is such that \(f(x) \in V\) for \(x \in U\). If \(f\) is differentiable at \(a \in U\) and \(g:V \to \mathbb{C}\) is differentiable at \(f(a)\), then \(g\circ f\) is differentiable at \(a\) with
+    \[
+        (g\circ f)'(a) = f'(a)g'(f(a)).
+    \]
+\end{theorem}
+\begin{proof}
+    We know
+    \[
+        f(x) = f(a) + (x-a)f'(a) + \epsilon_f(x)(x-a)
+    \]
+    such that \(\lim\limits_{x \to a} \epsilon_f(x)= 0\), and
+    \[
+        g(y) = g(b) + (y - b)g'(b) + \epsilon_g(y)(y-b)
+    \]
+    with \(\lim\limits_{y \to b} \epsilon_g(y) = 0\). Let \(b = f(a)\), and set \(\epsilon_f(a) = 0\) and \(\epsilon_g(b) = 0\) to make them continuous at \(x = a\) and \(f = b\). Now \(y = f(x)\) gives
+    \begin{align*}
+        g(f(x)) =& g(b) + (f(x) - b)g'(b) + \epsilon_g(f(x))(f(x) - b)\\
+        =&g(f(a)) + [(x-a)f'(a) + \epsilon_f(x)(x-a)][g'(b) + \epsilon_g(f(x))]\\
+        =& g(f(a)) + (x-a)f'(a)g'(b) +\\
+        &(x-a)[\epsilon_f(x)g'(b) + \epsilon_g(f(x))(f'(a) + \epsilon_f(x))]\\
+        =& g(f(a)) + (x-a)f'(a)g'(b) + (x-a)\sigma(x).
+    \end{align*}
+    So it suffices to show \(\sigma(x) = \epsilon_f(x)g'(b) + \epsilon_g(f(x))(f'(a) + \epsilon_f(x))\) tends to 0 as \(x\) tends to \(a\). We have clearly \(\epsilon_f(x)g'(b) \to 0\), \(\epsilon_g(f(x)) \to 0\) and \(f'(a)+\epsilon_f(x) \to f'(a)\), so \(\lim\limits_{x \to a} \sigma(x) = 0\).
+\end{proof}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item Consider \(f(x) = \sin (x^2)\), and we have
+        \[
+            f'(x) = 2x \cos (x^2).
+        \]
+        \item Consider \(f(x) = \begin{dcases}
+            x \sin (\frac{1}{x}), &\text{ if }x\neq 0 \\
+            0, &\text{ if }x=0 \\
+        \end{dcases}.\) From previous lectures, we know that \(f\) is continuous, and it is differentiable at every \(x \neq 0\) by the previous theorems. At \(x = 0\), take \(t \neq 0\) and we have
+        \[
+            \frac{f(t) - f(0)}{t-0}= \sin(\frac{1}{t}).
+        \]
+        Again from previous lecture, we know \(\lim\limits_{t \to 0} \frac{f(t) - f(0)}{t-0}\) does not exist, so \(f\) is not differentiable at \(x = 0\).
+    \end{enumerate}
+\end{example}
+\subsection{The Mean Value Theorem}
+\leavevmode
+\begin{theorem}[Rolle's Theorem]
+    Let \(f: [a,b] \to \mathbb{R}\) continuous on \([a,b]\) and differentiable on \((a,b)\). If \(f(a) = f(b)\), then there exists \(c \in (a,b)\) such that \(f'(c) = 0\).
+\end{theorem}
+\begin{proof}
+    Let \(M = \mathop{\max}_{x \in [a,b]} f(x)\), and \(m = \mathop{\min}_{x \in [a,b]} f(x)\). Theorem \eqref{evt} says that these values are achieved. Let \(k = f(a) = f(b)\). If \(M = m = k\), then \(f\) is constant and \(f'(c) = 0\) for all \(c \in (a,b)\).
+
+    If \(f\) not constant, then \(M > k\) or \(m < k\). Suppose \(M > k\). By Theorem \eqref{evt}, exist \(c \in (a,b)\) such that \(f(c) = M\).
+
+    If \(f'(c) > 0\), then there are values to right of \(c\) for which \(f(x) > f(c)\) because
+    \[f(h + c) - f(c) = h(f'(c) + \epsilon_f(h)).\]
+    Since \(\epsilon_f(h) \to 0\) as \(h \to 0\), \(f'(c) + \epsilon_f(h) > 0\) for \(h\) small. This contradicts that \(M\) is the maximum. Similarly, if \(f'(c) < 0\), there exists \(x\) to the left of \(c\) for which \(f(x) > f(c)\).
+
+    So we must have \(f'(c) = 0\).
+\end{proof}
