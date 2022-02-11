@@ -1,1 +1,61 @@
 \lecture{7}{4 Jan. 2022}{}
+\subsection{Limit of a function}
+\(f:E\subseteq \mathbb{C} \to \mathbb{C}\). We wish to define what is meant by \(\lim\limits_{z \to a} f(z)\), even when \(a\) might not be in \(E\).
+\begin{example}
+    The limit of \(\frac{\sin z}{z}\) as \(z \to 0\) with \(E = \mathbb{C}\{0\}\).
+
+    Also, if \(E = \{0\}\cup [1,2]\), it does not make sense to speak about points \(z\in E, z\neq 0, z\to 0\).
+\end{example}
+\begin{definition}
+    If \(E \subseteq \mathbb{C}, a \in \mathbb{C}\), we say that \(a\) is a \textit{limit point} of \(E\) if for any \(\delta>0,\exists z \in E\) such that \(0< \left\vert z - a \right\vert < \delta\).
+\end{definition}
+\begin{remark}
+    \(a\) is a limit point if and only if there exists a sequence \(z_n \in E\) such that \(z_n \to a\) and \(z_n \neq a\) for all \(n\).
+\end{remark}
+\begin{definition}
+    If \(f: E \subseteq \mathbb{C}\to \mathbb{C}\) and let \(a\in \mathbb{C}\) be a limit point of \(E\). We say that \(\lim\limits_{z \to a} f(z) = l\) ("\(f\) tends to \(l\) as \(z\) tends to \(a\)") if given \(\epsilon>0, \exists \delta>0\) such that whenever \(0 < \left\vert z-a \right\vert < \delta\) and \(z \in E\), then \(\left\vert f(z) - l \right\vert < \epsilon\).
+
+    Equivalently,  \(f(z_n) \to l\) for every sequence \(z_n \in E, z_n \neq a\) and \(z_n \to a\).
+\end{definition}
+\begin{remark}
+    Straight from the definitions, we have that if \(a \in E\) is limit point, then \(\lim\limits_{z \to a} f(z) = f(a)\) if and only if \(f\) is continuous at \(a\).
+
+    If \(a\in E\) is \textit{isolated}  (i.e. \(a\in E\) is not a limit point), continuity of \(f\) at \(a\) always holds.
+The limit of functions has very similar properties to limit of sequences.
+\begin{enumerate}
+    \item It is unique, \(f(z) \to A\) and \(f(z) \to B\) as \(z \to a\), then
+    \begin{align*}
+        \left\vert A-B \right\vert \leq \left\vert A-f(z) \right\vert + \left\vert f(z) - B \right\vert.
+    \end{align*}
+    If \(z\in E\) is such that \(0 < \left\vert z-a \right\vert < \min\{\delta_1, \delta_2\}\), then \(\left\vert A-B \right\vert < 2\epsilon\). So \(A = B\). The existence of such \(z\) is a consequence of the condition that \(a\) is a limit point of \(E\).
+    \item \(f(z) + g(z) \to A + B\);
+    \item \(f(z) g(z) \to AB\);
+    \item if \(B \neq 0\), \(\frac{f(z)}{g(z)}\to \frac{A}{B}\). All proved in the same way as before.
+\end{enumerate}
+\end{remark}
+\subsection{The Intermediate Value Theorem}
+\leavevmode
+\begin{theorem}[Intermediate Value Theorem]
+    If \(f: [a,b]\to\mathbb{R}\) is continuous and \(f(a) \neq f(b)\), then \(f\) takes every value which lies between \(f(a)\) and \(f(b)\).
+\end{theorem}
+\begin{proof}
+    Without loss of generality, suppose \(f(a) < f(b)\). Take \(f(a) < \eta < f(b)\). Let \(S = \{x \in [a,b]\mid f(x) < \eta\}\). We note that \(a \in S\), so \(S\neq \varnothing \). Clearly \(S\) is bounded above by \(b\). Then there is a supremum \(C\) where \(C \leq b\). By definition of supremum, given \(n\), there exists \(x_n \in S\) such that \(C - \frac{1}{n} < x_n \leq C\). So \(x_n \to C\). Since \(x_n \in A\), \(f(x_n) < \eta\). By continuity of \(f\), \(f(x_n) \to f(C)\). So \(f(c) \leq \eta\).
+    
+    Now observe that \(c \neq b\) because \(f(b) > \eta\). Then for \(n\) large, \(C + \frac{1}{n} \in [a,b]\) and \(C+\frac{1}{n}\to C\). Again by continuity \(f(C + \frac{1}{n})\to f(C)\). But since \(C + \frac{1}{2} > C\), \(f(C + \frac{1}{n})\geq \epsilon\). So \(f(c) \geq \eta \implies f(c) = \eta\).
+\end{proof}
+\begin{remark}
+    The theorem is very useful for finding zeroes or fixed points.
+\end{remark}
+\begin{example}
+    Existence of the \(N\)-th root of a positive real number. Suppose
+    \[
+        f(x) = x^N, \quad x\geq 0.
+    \]
+    Let \(y\) be a positive real number. \(f\) is continuous on \([0, 1 + y]\), so
+    \[
+        0 = f(0) < y < (1 + y)^N = f(1 + y).
+    \]
+    By the IVT, \(C \in (0, 1 + y)\) such that \(f(c) = y\), i.e. \(C^N = y\). \(C\) is a positive \(N\)-th root of \(y\).
+
+    We also have uniqueness. Exercise.
+\end{example}

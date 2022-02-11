@@ -84,6 +84,7 @@ The units in \(R\) form a group \((R^{\times}, \cdot)\) under multiplication.
     \[
         f(x) = q(x)g(x) + r(x) \text{ where \(\mathrm{deg}(r) < \mathrm{deg}(g)\)}.
     \]
+    \label{polydiv}
 \end{proposition}
 \begin{proof}
     Induction on \(n = \deg(f)\). Write
@@ -117,6 +118,9 @@ The units in \(R\) form a group \((R^{\times}, \cdot)\) under multiplication.
             (f + g)(x) &= f(x) + g(x);\\
             (f \cdot g)(x) &= f(x) \cdot g(x).
         \end{align*}
-        More interesting examples will appear as subrings. For example, the continuous functions from \(\mathbb{R}\to R\).
+        More interesting examples will appear as subrings. For example, the continuous functions from \(\mathbb{R}\to \mathbb{R}\) and the polynomial functions \(\mathbb{R} \to \mathbb{R}\) which is \(\mathbb{R}[X]\).
+        \item Power series ring. \(R\llbracket X\rrbracket = \{a_0 + a_{1}X + a_2 X^2 + \cdots \mid a_i \in \mathbb{R}\}\) with the same operation as the polynomial. (you should not think this as infinite sum of elements, but a formal object instead)
+        \item Laurent polynomials.
+        \[R[X, X^{-1}]=\{\sum\limits_{i\in \mathbb{Z}} a_i X^i\mid a_i \in R, a_i \text{ is non-zero for finitely many \(i\)}\}.\]
     \end{enumerate}
 \end{example}

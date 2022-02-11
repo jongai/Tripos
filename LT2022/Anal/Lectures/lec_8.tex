@@ -1,0 +1,55 @@
+\lecture{8}{7 Feb. 2022}{}
+\subsection{Bounds of a Continuous Function}
+\leavevmode
+\begin{theorem}
+    \label{contbounded}
+    Let \(f:[a,b] \to \mathbb{R}\) be continuous. Then there exists \(K\) such that \(\left\vert f(x) \right\vert \leq K\) for all \(x \in [a,b]\).
+\end{theorem}
+\begin{proof}
+    We argue by contradiction. Suppose the statement is false. Then given any integer \(n \geq 1\), there exists \(x_n \in [a,b]\) such that \(\left\vert f(x_n) \right\vert  > n\). By Bolzano-Weierstrass, \(x_n\) has a convergent subsequence \(x_{n_j} \to x\). Since \(a \leq x_{n_j} \leq b\), we must have \(x \in [a,b]\). By the continuity of \(f\), \(f(x_{n_j}) \to f(x)\). But \(\left\vert f(x_{n_j}) \right\vert > nj \to \infty\) as \(j\to \infty\). Contradiction.
+\end{proof}
+\begin{theorem}[Extreme Value Theorem]
+    \label{evt}
+    Let \(f:[a,b] \to \mathbb{R}\) be a continuous function. Then there exists \(x_1, x_2 \in [a,b]\) such that
+    \[
+        f(x_1) \leq f(x) \leq f(x_2)
+    \]
+    for all \(x \in [a,b]\).
+    
+    "A continuous function on a closed bounded interval is bounded and attains its bounds."
+\end{theorem}
+\begin{proof}
+    Let \(A = \{f(x)\mid x \in [a,b]\} = f([a,b])\). By Theorem \eqref{contbounded}, \(A\) is bounded since it is clearly non-empty, it has a supremum \(M\). By definition of supremum, given an integer \(n\geq 1\), there exists \(x_n \in [a,b]\) such that \(M-\frac{1}{n}<f(x_n) \leq M\). From Bolzano-Weierstrass, there exists \(x_{n_j} \to x \in [a,b]\). Since \(f(x_{n_j}) \to M\), by continuity of \(f\), we get that \(f(x) = M\). So \(x_2\coloneqq x\).
+
+    We can prove similarly for the minimum.
+\end{proof}
+\begin{proof}[Proof 2]
+    \(A = f([a,b]), M = \sup A\) as before. Suppose \(\not\exists x_2\) such that \(f(x_2) = M\). Let
+    \[g(x) = \frac{1}{M - f(x)}, x \in [a,b]\]
+    is defined and continuous on \([a,b]\). By Theorem \eqref{contbounded} applied to \(g\), \(\exists k >0\) such that \(g(x) < K\) for all \(x \in [a,b]\). This means that \(f(x) \leq M - \frac{1}{k}\) for all \(x \in [a,b]\). This is absurd because it contradicts that \(M\) is the supremum.
+\end{proof}
+\begin{note}
+    Theorems \eqref{contbounded} and \eqref{evt} are false if the interval is not closed and bounded. For example,
+    \[
+        f: (0,1] \to \mathbb{R}, x \mapsto \frac{1}{x}.
+    \]
+\end{note}
+\subsection{Inverse Functions}
+\leavevmode
+\begin{definition}
+    \(f\) is \textit{increasing} for \(x \in [a,b]\) if \(f(x_1) \leq f(x_2)\) for all \(x_1, x_2\) such that \(a\leq x_1 < x_2 \leq b\).
+
+    If \(f(x_1) < f(x_2)\), we say that \(f\) is \textit{strictly increasing}.
+
+    There are similar definitions for \textit{decreasing} and \textit{strictly decreasing}.
+\end{definition}
+\begin{theorem}
+    \(f: [a,b] \to \mathbb{R}\) is continuous and strictly increasing for \(x \in [a,b]\). Let \( c = f(a)\) and \(d = f(b)\). Then \(f: [a,b] \to [c,d]\) is bijective and the inverse \(g\coloneqq f^{-1}:[c,d] \to [a,b]\) is also continuous and strictly increasing.
+\end{theorem}
+\begin{remark}
+    There is a similar statement for strictly decreasing function. Take \(c < k < d\), from the IVT, \(\exists h \) such that \(f(h) = k\). Since \(f\) is strictly increasing, \(h\) is unique. Define \(g(k) \coloneqq h\) and this gives an inverse \(g: [c,d] \to [a,b]\) for \(f\).
+
+    We first prove that \(g\) is strictly increasing. Take \(y_1 < y_2\) such that \(y_1 = f(x_1)\) and \(y_2 = f(x_2)\). If \(x_2 \leq x_1\), since \(f\) is increasing, \(f(x_2) \leq  f(x_1) \implies y_2 \leq y_1\). Absurd.
+
+    Next we prove continuity. Let \(\epsilon >0\) be given, let \(k_1 = f(h - \epsilon)\) and \(k_2 = f(h + \epsilon)\). Because \(f\) is strictly increasing, we have \( k_1 < k < k_2\). If \(k_1 < y<k_2\), we have \(h-\epsilon<g(y) < h + \epsilon\). So we can just take \(\delta=\min\{k_2 - k, k-k_1\}\). So \(g\) is continuous at \(k\). Here we took \(k \in (c,d)\). A very similar argument establishes continuity at the end points.
+\end{remark}

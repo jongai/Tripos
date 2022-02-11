@@ -1,0 +1,94 @@
+\lecture{9}{9 Feb. 2022}{}
+\section{Differentiability}
+Let \(f: E \subseteq \mathbb{C} \to \mathbb{C}\), most of the time \(E = \text{interval} \subseteq \mathbb{R}\).
+\begin{definition}
+    Let \(x \in E\) be a point such that \(\exists x_n \in E\) with \(x_n \neq x\) and \(x_n \to x\) (i.e. a limit point), \(f\) is said to be \textit{differentiable}  at \(x\) with derivative \(f'(x)\) if
+    \[
+        \lim\limits_{y \to x} \frac{f(y) - f(x)}{y - x} = f'(x).
+    \]
+    If \(f\) is differentiable at each \(x \in E\), we say \(f\) is differentiable on \(E\).
+
+    (Think of \(E\) as an interval or a disc in the case of \(\mathbb{C}\).
+\end{definition}
+\begin{remark}
+    \leavevmode
+    \begin{enumerate}
+        \item Other common notations include \(\frac{\mathrm{d}y}{\mathrm{d}x}\), \(\frac{\mathrm{d}f}{\mathrm{d}x} \).
+        \item \(f'(x) = \lim\limits_{h \to 0} \frac{f(x+h)-f(x)}{h}\). (\(y=x+h\))
+        \item Another look at the definition is the following.
+        
+        Let \(\epsilon(h) \coloneqq f(x + h) - f(x) - hf'(x)\), then \(\lim\limits_{h \to 0} \frac{\epsilon(h)}{h}=0\). We have also
+        \[
+            f(x+h) = f(x) + \underbrace{hf'(x)}_{\text{linear in }h} + \epsilon(h).
+        \]
+
+        Alternative definition of differentiability is \(f\) is differentiable at \(x\) if \(\exists A, E\) such that \(f(x + h) = f(x) + hA + \epsilon(h)\) where \(\lim\limits_{h \to 0} \frac{\epsilon}{h}=0\). If such an \(A\) exists, then it is unique, since \(A = \lim\limits_{h \to 0} \frac{f(x+h) - f(x)}{h}\).
+        \item If \(f\) is differentiable at \(x\), then \(f\) is continuous. Since \(\epsilon(h) \to 0\), then \(f(x + h) \to f(x)\) as \(h \to 0\).
+        \item Alternative ways of writing things:
+        \[
+            f(x + h) = f(x) + hf'(x) + h\epsilon_f(h) \text{ with } \epsilon_f(h) \to 0 \text{ as } h\to 0.
+        \]
+        Or,
+        \[
+            f(x) = f(a) + (x-a)f'(a) + (x-a)\epsilon_f(x) \text{ with } \epsilon_f(x) \to 0 \text{ as } x\to a.
+        \]
+    \end{enumerate}
+\end{remark}
+\begin{example}
+    If we have \(f: \mathbb{R}\to \mathbb{R}\) with \(f(x) = \left\vert x \right\vert \). Clearly, we have
+    \(f'(x) = 1\) if \(x > 0\) and \(f'(x) = -1\) if \(x < 0\). Take \(h_n \downarrow 0\) at \(x = 0\), we have
+    \[
+        \lim\limits_{n \to \infty} \frac{f(h_n) - f(0)}{h_n} = \lim\limits_{n \to \infty} \frac{h_n}{h_n} = 1.
+    \]
+    And take \(h_n \uparrow 0\) at \(x = 0\), we have
+    \[
+        \lim\limits_{n \to \infty} \frac{f(h_n) - f(0)}{h_n} = \lim\limits_{n \to \infty} \frac{-h_n}{h_n} = -1.
+    \]
+    So \(f\) is not differentiable at \(x = 0\).
+\end{example}
+\subsection{Differentiation of Sums, Products, etc}
+\begin{property}
+\leavevmode
+\begin{enumerate}
+    \item If \(f(x) = c\) for all \(x \in E\), then \(f\) is differentiable with \(f'(x) = 0\).
+    \item \(f, g\) are differentiable at \(x\), then so is \(f + g\) and
+    \[
+        (f+g)'(x) = f'(x) + g'(x).
+    \]
+    \item \(f,g\) are differentiable at \(x\), then so is \(fg\) and
+    \[
+        (fg)'(x) = f'(x)g(x) + f(x)g'(x).
+    \]
+    \item \(f\) differentiable at \(x\) and \(f(x) \neq 0\) for all \(x \in E\), then \(\frac{1}{f}\) is differentiable at \(x\) and
+    \[
+        (\frac{1}{f})'(x) = \frac{-f'(x)}{[f(x)]^2}.
+    \]
+\end{enumerate}
+\end{property}
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item \(\lim\limits_{h \to 0} \frac{c-c}{h} = 0\).
+        \item \(\begin{aligned}[t]
+            &\lim\limits_{h \to 0} \frac{f(x+h) + g(x+h) - f(x) - g(x)}{h}\\
+        =& \lim\limits_{h \to 0} \frac{f(x+h)-f(x)}{h} + \lim\limits_{h \to 0} \frac{g(x+h) - g(x)}{h}\\ =& f'(x) + g'(x)\end{aligned}\) using properties of limits.
+        \item Let \(\phi(x) = f(x)g(x)\), then we have
+        \begin{align*}
+            \frac{\phi(x + h) - \phi(x)}{h} &= \frac{f(x+h)g(x+h) - f(x)g(x)}{h}\\
+            &= f(x + h)[\frac{g(x+h)-g(x)}{h}] + g(x)[\frac{f(x+h)-f(x)}{h}].
+        \end{align*}
+        So we have \(\lim\limits_{h \to 0} \frac{\phi(x + h) - \phi(x)}{h} = f(x)g'(x) + f'(x)g(x)\) using standard properties of limits and the fact that \(f\) is continuous at \(x\).
+        \item Define again \(\phi(x) = \frac{1}{f(x)}\), then
+        \begin{align*}
+            \frac{\phi(x + h) - \phi(x)}{h} &= \frac{\frac{1}{f(x + h)} - \frac{1}{f(x)}}{h}\\
+            &= \frac{f(x) - f(x+h)}{hf(x)f(x+h)}.
+        \end{align*}
+        So we have \(\lim\limits_{h \to 0} \frac{\phi(x+h) - \phi(x)}{h} = \frac{-f(x)}{[f(x)]^2}\).
+    \end{enumerate}
+\end{proof}
+\begin{remark}
+    From (3) and (4), we get
+    \[
+        \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}.
+    \] 
+\end{remark}
