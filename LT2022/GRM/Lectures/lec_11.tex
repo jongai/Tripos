@@ -1,0 +1,131 @@
+\lecture{11}{12 Feb. 2022}{}
+\leavevmode
+\begin{lemma}
+    Let \(R\) be an integral domain, and \(f \neq 0 \in R[X]\). Let \(\mathrm{Roots}(f)=\{a\in R \mid f(a) = 0\}\}\). Then
+    \[
+        \left\vert \mathrm{Roots}(f) \right\vert \leq \deg(f).
+    \]
+\end{lemma}
+\begin{proof}
+    Example sheet.
+\end{proof}
+\begin{theorem}
+    Let \(F\) be a field. Then any finite subgroup of \(G \leq (F^\times, \cdot)\) is cyclic.
+\end{theorem}
+\begin{proof}
+    \(G\) is a finite Abelian group because we are working with a commutative ring. If \(G\) is not cyclic, then by Structure Theorem for Finite Abelian Groups, \(\exists H \leq G\) such that \(H \cong C_{d_1}\times C_{d_1}\) for some \(d_1 \geq 2\). But then the polynomial
+    \[
+        f(X) = X^{d_1} - 1 \in F[X]
+    \]
+    has degree \(d_1\), and has more than \(d_1^2\) roots contradicting the above lemma.
+\end{proof}
+\begin{example}
+    \((\nicefrac{\mathbb{Z}}{p\mathbb{Z}})^\times \) is cyclic. That is, it has a \textit{primitive root}.
+\end{example}
+\begin{proposition}
+    Any finite integral domain is a field.
+\end{proposition}
+\begin{proof}
+    Let \(R\) be a finite integral domain. Let \(a \neq 0 \in R\). Consider the map
+    \[
+    \begin{aligned}
+      \phi\colon R & \longrightarrow R      \\
+      x          & \longmapsto ax
+    \end{aligned}.
+    \]
+    We claim that it is injective. If \(\phi(x) = \phi(y)\), then \(a(x-y) = 0 \implies x = y\) because \(R\) is an integral domain and \(a\) is nonzero.
+
+    Thus, \(\phi\) is injective, and hence surjective since \(R\) is finite. So there exists \(b \in R\) such that \(ab = 1\). That is, \(a\) is a unit. Thus, \(R\) is a field.
+\end{proof}
+\begin{theorem}
+    Let \(R\) be an integral domain. Then there exists a field \(F\) such that
+    \begin{enumerate}
+        \item \(R \leq F\);
+        \item Every element of \(F\) can be written in the form \(a b^{-1}\) where \(a,b \in R\) with \(b \neq 0\).
+    \end{enumerate}
+
+    \(F\) is called the \textit{field of fractions} of \(R\).
+\end{theorem}
+\begin{proof}
+    Consider the set \(S = \{(a,b)\mid b \neq 0\}\}\) and the equivalence relation \(\sim\) given by \((a,b) \sim (c,d) \iff ad - bc = 0\).
+
+    Clearly the relation is reflexive and symmetric.
+    
+    For transitivity, if \((a,b)\sim (c,d)\sim (e,f)\) then
+    \[
+        (ad)f = (bc)f = b(cf) = b(de) \implies d(af-be) = 0.
+    \]
+    Since \(R\) is an integral domain and \(d\neq 0\), this means
+    \[af - be = 0 \implies (a,b) \sim (e,f).\]
+    Let \(F = \nicefrac{S}{\sim}\) and write \(\frac{a}{b}\) for \([(a,b)]\). We define the following operations to make \(F\) a field.
+    \begin{align*}
+        \frac{a}{b} + \frac{c}{d} &= \frac{ad + bc}{bd}\\
+        \frac{a}{b}\cdot \frac{c}{d} = \frac{ac}{bd}.
+    \end{align*}
+    Can be checked that these operations are well-defined and make \(F\) into a ring with \(0_F = \frac{0_R}{1_R}\) and \(1_F = \frac{1_R}{1_R}\).
+
+    If \(\frac{a}{b} \neq \frac{b}{a}\), then \(a \neq 0_R\). And we have
+    \[
+        \frac{a}{b}\cdot \frac{b}{a} = \frac{ab}{ba}=\frac{1_R}{1_R} = 1_F.
+    \]
+    So \(F\) is a field.
+
+    We can identify \(R\) with the subring \(\{\frac{r}{1_R}\mid r \in R\}\). We also have \(\frac{a}{b} = a\cdot b^{-1}\).
+\end{proof}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item \(\mathbb{Z}\) is an integral domain with field of fractions \(\mathbb{Q}\).
+        \item \(\mathbb{C}[X]\) has field of fractions \(\mathbb{C}(X)\) called the field of rational functions in \(X\).
+    \end{enumerate}
+\end{example}
+\begin{definition}
+    An ideal \(I \nsub R\) is \textit{maximal} is \(I \neq R\) and if \(I \subseteq J \nsub R\), then \(J = I\) or \(J = R\).
+\end{definition}
+\begin{lemma}
+    A (non-zero) ring \(R\) is a field if and only if its only ideals are \(\{0\}\) are \(R\).
+\end{lemma}
+\begin{proof}
+    \(\implies\) direction. If \(0 \neq I \nsub R \) then \(I\) contains a unit and hence \(I = R\).
+
+    \(\impliedby\) direction. If \( 0 \neq  x\in R\), then the ideal \((x)\) is non-zero, hence \((x) = R\), and there exists \(y \in R\) such that \(xy = 1\). That is \(x\) is a unit.
+\end{proof}
+\begin{proposition}
+    Let \(I \nsub R\) be an ideal. \(I\) is maximal if and only if \(\nicefrac{R}{I}\) is a field.
+    \label{maximalfield}
+\end{proposition}
+\begin{proof}
+    \(\nicefrac{R}{I}\) is a field.
+
+    \(\iff \) \(\nicefrac{I}{I}\) and \(\nicefrac{R}{I}\) are the only ideals in \(\nicefrac{R}{I}\).
+
+    \(\iff \) \(I\) and \(R\) are the only ideals in \(R\) containing \(I\).
+
+    \(\iff \) \(I \nsub R\) is maximal.
+\end{proof}
+\begin{definition}
+    An ideal \(I \nsub R\) is \textit{prime} if \(I \neq R\) and whenever \(a,b \in R\) with \(ab \in I\), we have \(a \in I\) or \(b \in I\).
+\end{definition}
+\begin{example}
+    The ideals \(n\mathbb{Z}\nsub \mathbb{Z}\) is a prime ideal if and only if \(n = 0\) or \(n = p\) is a prime number.
+
+    If \(ab \in p\mathbb{Z}\) then \(p \mid ab\), so \(p \mid a\) or \(p \mid b\). So \(a \in p\mathbb{Z}\) or \(b \in p\mathbb{Z}\).
+
+    Conversely, if \(n = uv\) with \(u, v > 1\), then \(uv \in n\mathbb{Z}\), but \(u \notin n\mathbb{Z}\) and \(v \notin n\mathbb{Z}\).
+\end{example}
+\begin{proposition}
+    Let \(I \nsub R\) be an ideal of the ring \(R\). Then \(I\) is prime \(\iff \) \(\nicefrac{R}{I}\) is an integral domain.
+    \label{primeint}
+\end{proposition}
+\begin{proof}
+    \(I\) is prime
+
+    \(\iff \) Whenever \(a,b \in R\) with \(a, b \in I\), we have \(a \in I\) or \(b \in I\).
+
+    \(\iff \) Whenever \(a + I, b + I \in \nicefrac{R}{I}\) with \((a + I)(b + I) = 0 + I\), we have \(a + I = 0 + I\) or \(b + I = 0 + I\).
+
+    \(\iff \) \(\nicefrac{R}{I}\) is an integral domain.
+\end{proof}
+\begin{remark}
+    Proposition \eqref{primeint} and \eqref{maximalfield} show that \(I\) maximal \(\implies\) \(I\) prime ideal.
+\end{remark}

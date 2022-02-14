@@ -1,0 +1,102 @@
+\lecture{9}{9 Feb. 2022}{}
+\leavevmode
+\begin{definition}
+    Let \(\Sigma, \Sigma'\) be smooth surfaces in \(\mathbb{R}\). We say \(\Sigma\) and \(\Sigma'\) are isometric is there is a diffeomorphism \(f: \Sigma \to \Sigma'\) such that for every smooth curve \(\gamma: (a,b) \to \Sigma\),
+    \[
+        L_\Sigma(\gamma) = L_{\Sigma'}(f\circ \phi).
+    \]
+\end{definition}
+\begin{example}
+    If \(\Sigma' = f(\Sigma)\) where \(f: \mathbb{R}^3 \to \mathbb{R}^3\) is a rigid motion; i.e.
+    \[
+        f: v \longmapsto Av + b
+    \]
+    where \(A \in O(3)\) and \(b \in \mathbb{R}^3\). (so \(f\) preserves \(\langle,\rangle_\text{Eucl}\) on \(\mathbb{R}^3\)), then \(f: \Sigma \to \Sigma'\) is an isometry.
+\end{example}
+\begin{note}
+    In the definition, importantly \(f\) is only a priori defined on \(\Sigma\), not all not \(\mathbb{R}^{3}\).
+\end{note}
+Often we're really interested in a local statement.
+
+We say \(\Sigma, \Sigma'\) are \textit{locally isometric} (near point \(p \in \Sigma\) and \(q \in \Sigma'\)) if there exists open neighborhoods \(p \in U \subseteq \Sigma\) and \(q \in U' \subseteq \Sigma'\) which are isometric.
+\begin{lemma}
+    Smooth surfaces \(\Sigma, \Sigma'\) in \(\mathbb{R}^3\) are locally isometric near \(p \in \Sigma\) and \(q \in \Sigma'\) if and only if there exist allowable parametrizations
+    \begin{align*}
+        \sigma: V &\to U \subseteq \Sigma\\
+        \sigma': V &\to U' \subseteq \Sigma'
+    \end{align*}
+    for which the FFFs are equivalent (equal as functions on V).
+\end{lemma}
+\begin{proof}
+    We know (by definition) that the FFF of \(\sigma\) determines the lengths of all curves on \(\Sigma\) inside \(\sigma(V) = U\).
+
+    We will allow length  of curves determine the FFF of the parametrization. Given \(\sigma: V \to U \subseteq \Sigma\), w.l.o.g. \(V = B(0,\delta)\) for some \(\delta > 0\) with \(\sigma(0) = p\), and consider
+    \begin{align*}
+        \gamma_\epsilon: [0, \epsilon] &\to U \subseteq \Sigma \quad \sigma<\delta\\
+        t &\mapsto \sigma(t, 0).
+    \end{align*}
+    Then
+    \begin{align*}
+        \frac{\mathrm{d}}{\mathrm{d}\epsilon}L(\gamma_\epsilon) &= \frac{\mathrm{d}}{\mathrm{d}\epsilon} \int_{0}^{\epsilon} \sqrt{E(t,0)}  \,\mathrm{d}t\\
+        &= \sqrt{E(\epsilon,0)}.
+    \end{align*}
+    So \(\left.\frac{\mathrm{d}}{\mathrm{d}\epsilon}\right|_{\epsilon=0}L(\gamma_\epsilon)= \sqrt{E(0,0)}\). So lengths of curves \(\gamma_\epsilon\) determines \(E\) at \(p\).
+
+    Analogously, \(\chi_\epsilon: [0,\epsilon] \to \Sigma, t \mapsto \sigma(0,t)\), and their lengths determine \(\sqrt{G(0,0)}\).
+
+    Then \(\lambda_\epsilon: [0,\epsilon] \to \Sigma, t \mapsto \sigma(t,t)\) determine \(\sqrt{(E + 2F + G)(0,0)}\), so we can determine \(F\) knowing \(E, G\).
+\end{proof}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item The sphere \(\{x^2 + y^2 + z^2 = a^2\}\subseteq \mathbb{R}^3\) has an open set with allowable parametrization
+        \[
+            \sigma(u,v) = (a\cos u\cos v,a\cos u\sin u,a\sin u)
+        \]
+        with latitude \(u \in (-\pi, \pi)\) and longitude \(v \in (0, 2\pi)\). It parametrizes the complement of a half great circle. We compute the FFF as follows
+        \begin{align*}
+            \sigma_u &= (-a\sin u\cos v, -a\sin u\sin v,a\cos u)\\
+            \sigma_v &= (-a\cos u\sin v,a\cos u\cos v,0).
+        \end{align*}
+        And we have
+        \[
+            E = \sigma_{u} \cdot \sigma_u = a^2, \quad F=\sigma_u \cdot \sigma_v = 0, \quad G = \sigma_v \cdot \sigma_v = a^{2}\cos^{2}u.
+        \]
+        So the FFF is \(a^2 \mathrm{d}u^2 + a^2 \cos ^2 u \mathrm{d}v^2\).
+        \item Surface of revolution: take
+        \[
+            \eta(t) = (f(t), 0, g(t))
+        \]
+        in \(xy\)-plane, and rotate about \(z\) axis; we have
+        \[
+            \sigma(u,v) = (f(u)\cos v, f(u) \sin v,g(u)).
+        \]
+        We have
+        \begin{align*}
+            \sigma_u &= (f_u \cos v, f_u \sin v, g_u)\\
+            \sigma_u &= (f_u \cos v, f_u \sin v, g_u)\\
+            FFF&:(f_u^2 + g_u^2)\mathrm{d}u^2 + f^2\mathrm{d}v^2.
+        \end{align*}
+        \item Cone: If we have a cone with angle \(\tan^{-1}(a)\). For \(u>0, v\in (0,2\pi)\),
+        \[
+            \sigma(u,v) = (au\cos v, au\sin v, u)
+        \]
+        parametrizes complement of one line on the cone. We have from above the FFF being \((1+a^2)\mathrm{d}u^2 + a^{2}u^2\mathrm{d}v^2\).
+        
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[>={[inset=0,angle'=27]Stealth}]
+                \draw [thick,fill=cyan!20](360:2)--(0,0)--(30:2) arc (30:360:2)--cycle;
+                \draw (0,0)--node[below]{$\sqrt{1 + a^2}$} (0:2);
+                \node[above right] at (60:2){\(2\pi a\)};
+                \draw[latex-latex]  (30:0.4) arc(30:360:0.4) node[midway,left]{$\theta$};
+            \end{tikzpicture}
+            \caption{Cone Cut Open}
+            \label{cutcone}
+        \end{figure}
+        If I cut open the cone and unfold it, I get a plane sector as shown in Figure \ref{cutcone}. We have \(\theta = \frac{2\pi a}{\sqrt{1 + a^2} }\). Parametrize this plane sector by
+        \[
+            \sigma(r, \theta) = (\sqrt{1 + a^2}r\cos ()).
+        \]
+    \end{enumerate}
+\end{example}
