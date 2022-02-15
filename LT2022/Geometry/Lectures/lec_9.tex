@@ -89,14 +89,30 @@ We say \(\Sigma, \Sigma'\) are \textit{locally isometric} (near point \(p \in \S
                 \draw [thick,fill=cyan!20](360:2)--(0,0)--(30:2) arc (30:360:2)--cycle;
                 \draw (0,0)--node[below]{$\sqrt{1 + a^2}$} (0:2);
                 \node[above right] at (60:2){\(2\pi a\)};
-                \draw[latex-latex]  (30:0.4) arc(30:360:0.4) node[midway,left]{$\theta$};
+                \draw[latex-latex]  (30:0.4) arc(30:360:0.4) node[midway,left]{$\theta_0$};
             \end{tikzpicture}
             \caption{Cone Cut Open}
             \label{cutcone}
         \end{figure}
-        If I cut open the cone and unfold it, I get a plane sector as shown in Figure \ref{cutcone}. We have \(\theta = \frac{2\pi a}{\sqrt{1 + a^2} }\). Parametrize this plane sector by
+        If I cut open the cone and unfold it, I get a plane sector as shown in Figure \ref{cutcone}. We have \(\theta_0 = \frac{2\pi a}{\sqrt{1 + a^2} }\). Parametrize this plane sector by
         \[
-            \sigma(r, \theta) = (\sqrt{1 + a^2}r\cos ()).
+            \sigma(r, \theta) = (\sqrt{1 + a^2}r\cos\left(\frac{a\theta}{\sqrt{1 + a^2} }\right),\sqrt{1 + a^2}r\sin\left(\frac{a\theta}{\sqrt{1 + a^2} }\right),0)
         \]
+        with \(r > 0, \theta \in (0, \theta_0)\).
+        
+        We have the FFF \((1 + a^2)\mathrm{d}r^2 + r^{2}a^2\mathrm{d}\theta^2\). So the cone is locally isometric to the plane.
+        \begin{note}
+            The cone and the plane cannot be globally isometric, since they are not homeomorphic.
+
+            The cone is homeomorphic to \(S^1 \times \mathbb{R}\); in the plane \(\mathbb{R}^2\), every compact set \(K\) lies inside a larger compact set \(K' = \overline{B(0,N)}\) with \(N > 0\) and such that \(\mathbb{R}^2 \setminus K'\) is connected. But on \(S^1 \times \mathbb{R}\), a circle that goes around the cone would have the property that for any \(K' \supseteq K\), \((S^1 \times \mathbb{R})\setminus K'\) is disconnected.
+
+            So they cannot be homeomorphic since homeomorphism preserves connectedness.
+        \end{note}
     \end{enumerate}
 \end{example}
+Let \(\Sigma\) be a smooth surface in \(\mathbb{R}^3\), \(q \in \Sigma\), and take two allowable parametrizations around \(p\),
+\begin{align*}
+    \sigma:& V \to U \subseteq \Sigma \quad \sigma(0) = p\\
+    \tilde{\sigma}:& \tilde{V} \to U \subseteq \Sigma \quad \tilde{\sigma}(0) = p\\
+\end{align*}
+We have a transition map \(F: \) 
