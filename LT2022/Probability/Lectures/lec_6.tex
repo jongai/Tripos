@@ -6,7 +6,131 @@
         \item \(\probability{}{B\mid B}  = \probability{}{\Omega\mid B} = 1\).
         \item \((A_n)\) disjoint events in \(\mathcal{F}\), we claim
         \[
-            \probability{}{\bigcup_{n\geq 1}A_n \mid B} = \sum\limits_{n\geq 1}\probability{}{A_n \mid B}.
+            \probability{}{\cup_{n\geq 1}A_n \mid B} = \sum\limits_{n\geq 1}\probability{}{A_n \mid B}.
         \]
+        \begin{proof}
+            \(\begin{aligned}[t]
+                \mathbb{P}(\cup_{n\geq 1}A_n \mid B) &= \frac{\probability{}{(\cup_n A_n)\cap B}}{\probability{}{B}}\\
+                &= \frac{\probability{}{\cup_n (A_n \cap B)}}{\probability{}{B}} \quad \text{numerator is a disjoint union}\\
+                &=\frac{\sum\limits_{n}\probability{}{A_n \cap B}}{\probability{}{B}} = \sum\limits_{n\geq 1}\probability{}{A_n \mid B}.
+            \end{aligned}\)\\
+            To prove it, we used the definition, and applied \textbf{P1}, \textbf{P2}, \textbf{P3} to numerator.
+        \end{proof}
+        \item \(\probability{}{\cdot \mid B} \) is a function from \(\mathcal{F} \to [0,1]\) that satisfies the rules to be a probability measure in \(\Omega\). It is often useful to restrict the function to
+        \begin{align*}
+            \Omega' &= B\\
+            \mathcal{F}' &= \mathcal{P}(B),
+        \end{align*}
+        especially in finite/ countable setting. Then \((\Omega', \mathcal{F} ', \probability{}{\cdot\mid B})\) also satisfies rules to be a probability measure on \(\Omega'\).
     \end{enumerate}
 \end{property}
+We have
+\begin{align*}
+    \probability{}{A\cap B} =& \probability{}{A} \probability{}{B\mid A}\\
+    \probability{}{A_1 \cap A_2 \cap \cdots \cap A_n} =& \probability{}{A_1} \probability{}{A_2\mid A_1} \probability{}{A_3 \mid A_1 \cap A_2} \\
+    &\cdots\probability{}{A_n \mid A_1 \cap \cdots \cap A_{n - 1}} 
+\end{align*}
+\begin{example}
+    Uniform permutation \((\sigma(1),\sigma(2), \ldots , \sigma(n)) \in \Sigma_n\). We claim that
+    \begin{align*}
+        &\probability{}{\sigma(k) = i_k \mid \sigma(1) = i, \ldots, \sigma(k - 1) = i_{k-1}}\\
+        =& \begin{dcases}
+            0, &\text{ if } i_k\in \{i, \ldots, i_{k-1}\} \\
+            \frac{1}{n-k+q}, &\text{ if otherwise} \\
+        \end{dcases}
+    \end{align*}
+    \begin{proof}
+    We have
+    \begin{align*}
+        &\probability{}{\sigma(k) = i_k \mid \sigma(1) = i_1, \ldots, \sigma(k - 1) = i_{k-1}}\\
+        =& \frac{\probability{}{\sigma(1)=i_1, \ldots, \sigma(k) = i_k}}{\probability{}{\sigma(1)=i_1,\ldots, \sigma(k-1) = i_{k-1}} }\\
+        =& \frac{\frac{(n - k)!}{n!}}{\frac{(n-k+1)!}{n!}} = \frac{1}{n -k +1}.
+    \end{align*}
+    \end{proof}
+\end{example}
+\subsection{Law of Total Probability \& Bayes' Formula}
+\leavevmode
+\begin{definition}
+    \((B_1, B_2, \ldots) \subseteq \Omega\) is a \textit{partition} of \(\Omega\) if \(\Omega = \cup_n B_n\) and \((B_n)\) are disjoint.
+\end{definition}
+\begin{theorem}
+    \((B_n)\) a finite or countable partition of \(\Omega\) with \(B_n \in \mathcal{F} \) for all \(n\) such that \(\probability{}{B_n} >0\). Then for all \(A \in \mathcal{F} \):
+    \[
+        \probability{}{A} = \sum\limits_{n}\probability{}{A\mid B_n} \probability{}{B_n} .
+    \]
+    This is also called "Partition Theorem".
+\end{theorem}
+\begin{proof}
+    Note that \(\cup_n (A\cap B_n) = A\). So we have
+    \[
+        \probability{}{A} = \sum\limits_{n\geq 1}\probability{}{A\cap B_n} = \sum\limits_{n} \probability{}{A\mid B_N} \probability{}{B_n}.
+    \]
+\end{proof}
+\begin{theorem}[Bayes' Formula]
+    With the same setup as above, we have
+    \[
+        \probability{}{B_n \mid A} = \frac{\probability{}{A \cap B_N}}{\probability{}{A} }= \frac{\probability{}{A\mid B_n} \probability{}{B_n} }{\sum\limits_{m}\probability{}{A\mid B_m} \probability{}{B_m} }.
+    \]
+    Rephrasing for \(n = 2\), we have \(\probability{}{B \mid A} \underbrace{\probability{}{A}}_{given} = \underbrace{\probability{}{A \mid B} \probability{}{B}}_{given} = \probability{}{A\cap B}\).
+\end{theorem}
+\begin{example}
+    Lecture course has \(\frac{2}{3}\) of the lectures on weekdays and \(\frac{1}{3}\) on weekends. We have
+    \begin{align*}
+        \probability{}{\text{forget notes}\mid \text{weekday}} &= \frac{1}{8}\\ 
+        \probability{}{\text{forget notes}\mid \text{weekend}} &= \frac{1}{2}
+    \end{align*}
+    What is \(\probability{}{\text{weekend}\mid \text{forget notes}} \)?
+
+    We have \(B_1 = \{\text{weekday}\}\) and \(B_2 = \{\text{weekend}\}\) and \(A = \{\text{forget notes}\}\). So we have
+    \[
+        \probability{}{A} = \frac{2}{3}\cdot\frac{1}{8}+\frac{1}{3}\cdot\frac{1}{2} = \frac{1}{12} + \frac{1}{6}=\frac{1}{4}.
+    \]
+    And by Bayes' Formula, we have
+    \[
+        \probability{}{B_2 \mid A} = \frac{\frac{1}{3}\cdot \frac{1}{2}}{\frac{1}{4}} = \frac{2}{3}.
+    \]
+\end{example}
+\begin{example}[Disease testing]
+    If \(p\) are infected and \(1-p\) are not, and we have
+    \begin{align*}
+        \probability{}{\text{positive}\mid \text{infected}} = 1 - \alpha\\ 
+        \probability{}{\text{positive}\mid \text{not infected}} = \beta.
+    \end{align*}
+    Ideally, you want both \(\alpha, \beta\) to be small. Of course, we want \(p\) to be small as well. We want to find \( \probability{}{\text{infected}\mid \text{positive}}\). By LTP, we have
+    \[
+        \probability{}{\text{positive}} = p(1-\alpha) + (1-p)\beta.
+    \]
+    Using Bayes', we have
+    \[
+        \probability{}{\text{infected}\mid \text{positive}} = \frac{p(1-\alpha)}{p(1-\alpha)+(1-p)\beta}.
+    \]
+    Suppose \(p \ll \beta\), we have \(p(1-\alpha)\ll (1-p)\beta\). The probability is approximately \(\frac{p(1-\alpha)}{(1-p)\beta} \sim \frac{p}{\beta}\) which is small.
+\end{example}
+\begin{example}[Simpson's Paradox]
+    If the scientists want to know if jelly beans make your tongue change color? Studies give results:
+    \begin{center}
+    \begin{tabular}{c|c|c|c}
+        Oxford & Change & No change & \% change\\
+        \hline
+        Blue & 15 & 22 & 41 \% \\
+        Green & 5 & 8 & 38 \%
+    \end{tabular}
+    \end{center}
+    \begin{center}
+    \begin{tabular}{c|c|c|c}
+        Cambridge & Change & No change & \% change\\
+        \hline
+        Blue & 10 & 3 & 77 \% \\
+        Green & 23 & 14 & 62 \%,
+    \end{tabular}
+    \end{center}
+    but if you add them up, you get
+    \begin{center}
+    \begin{tabular}{c|c|c|c}
+        Total & Change & No change & \% change\\
+        \hline
+        Blue & 25 & 25 & 50 \% \\
+        Green & 28 & 22 & 56 \%.
+    \end{tabular}
+    \end{center}
+\end{example}

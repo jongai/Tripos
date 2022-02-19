@@ -1,0 +1,89 @@
+\lecture{7}{3 Feb. 2022}{}
+We continue from the Simpson's Paradox example. Let \(A = \{\text{change color}\}\), \(B = \{ \text{blue}\}\), \(B^c = \{\text{green}\}\), \(C = \{\text{Cambridge}\}\) and \(C^c = \{\text{Oxford}\}\). We have
+\begin{align*}
+    \probability{}{A\mid B \cap C} &> \probability{}{A \mid B^c \cap C}\\
+    \probability{}{A\mid B \cap C^c} &> \probability{}{A \mid B^c \cap C^c}.
+\end{align*}
+    But it is not true that \(\probability{}{A \mid B} > \probability{}{A \mid B^c} \). LTP for conditional probabilities is the following. Suppose \(C_1, C_2, \ldots\) is a partition of \(B\), and we have
+    \begin{align*}
+        \probability{}{A\mid B} &= \frac{\probability{}{A \cap B}}{\probability{}{B}} = \frac{\probability{}{A \cap (\cup_n C_n)}}{\probability{}{B} }\\
+        &= \frac{\probability{}{\cup_n (A \cap C_n)} }{\probability{}{B} } = \frac{\sum\limits_{n}\probability{}{A \cap C_n} }{\probability{}{B}}\\
+        &= \frac{\sum_n \probability{}{A \mid C_n} \probability{}{C_n}}{\probability{}{B} } = \sum_n \probability{}{A\mid C_n} \frac{\probability{}{B \cap C_n}}{\probability{}{B}}
+    \end{align*}
+    So in conclusion, we have
+    \[
+        \probability{}{A\mid B} = \sum_n \probability{}{A\mid C_n} \probability{}{C_n\mid B} .
+    \]
+Special Case:
+\begin{itemize}
+\item If all \(\probability{}{C_n}\) are equal, then \(\probability{}{C_n \mid B} \) are all equal.
+\item If \(\probability{}{A\mid C_n} \) are all equal. Note that \(\sum_n \probability{}{C_n \mid B}=1\). Then we have
+\[
+    \probability{}{A\mid B} = \probability{}{A\mid C_n}.
+\]
+\end{itemize}
+\begin{example}
+    Uniform permutation \((\sigma(1),\sigma(2), \ldots , \sigma(52)) \in \Sigma_{52}\) ("well-shuffled cards"). We call \(\{1,2,3,4\}\) the aces. We consider \(A= \{\sigma(1), \sigma(2)\text{ aces}\}\), and \(B = \{\sigma(1) \text{ ace}\} = \{\sigma(1) \leq 4\}\), \(C_i = \{\sigma(1) = i\}\).
+
+    Note \(\probability{}{A \mid C_i} = \probability{}{\sigma(2) \in \{1,2,3,4\} \mid \sigma(1) = i} = \frac{3}{51}\)  for \(i \leq 4\) by previous example. And we have \(\probability{}{C_i}  = \frac{1}{52}\). So we have \(\probability{}{A\mid B} = \frac{3}{51}\). In total, we have
+    \[
+        \probability{}{A} = \probability{}{B} \times \probability{}{A\mid B} = \frac{4}{52}\times \frac{3}{51}.
+    \]
+\end{example}
+\section{Discrete Random Variables}
+Motivation: Roll two dices. \(\Omega=\{1, \ldots,6\}^2 = \{(i,j)\mid 1\leq i,j \leq 6\}\). If we restrict attention to first dice \(\{(i,j)\mid i = 3\}\); sum of dices \(\{(i,j) \mid i + j = 8\}\); max of dice \(\{(i,j)\mid i,j \leq 4, i\text{ or }j=4\}\).
+
+Goal: "Random real-valued measurements".
+
+\begin{definition}
+    A \textit{discrete random variable} \(X\) (often denoted by RV) on a probability space \((\Omega, \mathcal{F}, \probability{}{})\) is a function \(X: \Omega\to \mathbb{R}\) such that
+    \begin{enumerate}
+        \item \(\{\omega \in \Omega\mid X(\omega) = x\}\in \mathcal{F} \).
+        \item \(\Ima(X)\) is finite or countable (subset of \(\mathbb{R}\)).
+    \end{enumerate}
+    We can write \(\{\omega \in \Omega\mid X(\omega) = x\}\) as \(\{X = x\}\). So \(\probability{}{X=x} \) is valid. And the image is often \(\mathbb{Z}\) or \(\{0,1\}\) for example, instead of \(\{\text{Heads}, \text{Tails}\}\).
+
+    If \(\Omega\) is finite or countable, and \(\mathcal{F}=\mathcal{P} (\Omega)\), both requirements hold automatically.
+\end{definition}
+\begin{example}[Part II Applied Probability]
+    If we consider the arrival problem, we have \(\Omega=\{\text{countable subsets } (a_1,a_2, \ldots) \text{ of }(0, \infty)\}\). Then,
+    \begin{align*}
+        N_t &= \text{number of arrivals by time t}\\
+        &= \left\vert \{a_i \mid a_i \leq t\} \right\vert \in \{0,1,2, \ldots\}
+    \end{align*}
+    is a discrete RV for each time \(t\).
+\end{example}
+\begin{definition}
+    The \textit{probability mass function} (p.m.f.) of discrete RV \(X\) is the function \(p_X:\mathbb{R} \to [0,1]\) given by
+    \[
+        p_X(x) = \probability{}{X = x}\quad \forall x \in \mathbb{R}.
+    \]
+\end{definition}
+\begin{note}
+    \leavevmode
+    \begin{itemize}
+    \item If \(x \notin \Ima(X)\) (that is, \(X(\omega)\) never takes value \(x\)), then
+    \[p_X(x) = \probability{}{\omega \in \Omega\mid X(\omega) = x}=\probability{}{\varnothing} = 0.\]
+    \item \(\begin{aligned}[t]\sum\limits_{x\in \Ima(X)}p_X(x) &= \sum\limits_{x\in \Ima(x)}\probability{}{\{\omega \in \Omega\mid X(\omega) = x\}}\\
+    &=\probability{}{\cup_{x\in \Ima(X)}\{\omega\in \Omega\mid X(\omega)=x\}}=\probability{}{\Omega} = 1 \end{aligned}\).
+    \end{itemize}
+\end{note}
+\begin{example}[Indicator Function]
+    Event \(A\in \mathcal{F} \), define \(\mathbf{1}_A:\omega \to \mathbb{R}\) by
+    \[
+    \textbf{1}_A(\omega) = \begin{dcases}
+        1, &\text{ if } \omega \in A\\
+        0, &\text{ if }\omega \notin A \\
+    \end{dcases}
+    \]
+    called the \textit{indicated function} of \(A\). \(\textbf{1}_{A}\) is a discrete RV with \(\Ima(\textbf{1}) = \{0,1\}\). The probability mass function is
+    \begin{align*}
+        p_{\textbf{1}_A}(1) &= \probability{}{\textbf{1}_A = 1} = \probability{}{A}\\
+        p_{\textbf{1}_A}(0) &= \probability{}{\textbf{1}_A = 0} = \probability{}{A^c} = 1 - \probability{}{A} \\
+        p_{\textbf{1}_A}(x) = 0 \quad \forall x \notin \{0,1\}.
+    \end{align*}
+    It encodes "did A happen" as a real number.
+\end{example}
+\begin{remark}
+    Given a probability mass function, we can always construct a probability space \((\Omega, \mathcal{F}, \probability{}{})\) and a RV defined on it with this pmf.
+\end{remark}
