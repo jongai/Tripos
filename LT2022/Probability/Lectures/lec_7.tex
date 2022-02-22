@@ -85,5 +85,10 @@ Goal: "Random real-valued measurements".
     It encodes "did A happen" as a real number.
 \end{example}
 \begin{remark}
-    Given a probability mass function, we can always construct a probability space \((\Omega, \mathcal{F}, \probability{}{})\) and a RV defined on it with this pmf.
+    Given a probability mass function, we can always construct a probability space \((\Omega, \mathcal{F}, \mathbb{P})\) and a RV defined on it with this pmf.
+    \begin{itemize}
+    \item \(\Omega = \Ima(X)\). That is, \(\{x \in \mathbb{R}\mid p_X(x) > 0\}\);
+    \item \(\mathcal{F} = \mathcal{P}(\Omega)\);
+    \item \(\probability{}{\{x\}} = p_X(x)\) and extend it to all \(A \in \mathcal{F}\).
+    \end{itemize}
 \end{remark}
