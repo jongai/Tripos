@@ -1,0 +1,79 @@
+\lecture{13}{17 Feb. 2022}{}
+\(R\) will always be an integral domain in this section.
+\begin{lemma}
+    Let \(R\) be a PID, and \(0 \neq r \in R\), then \(r\) irreducible \(\iff \) \((r)\) is a maximal ideal.
+\end{lemma}
+\begin{proof}
+    \(\implies\) \(r\notin R^\times\) so \((r) \neq R\). Suppose \((r) \subseteq J \subseteq R\) with \(J \nsub R\). Because \(R\) is a PID, \(J = (a)\) for some \(a \in R\). So \(r = ab\) for some \(b \in R\). Since \(r\) is irreducible, either \(a \in R^\times \implies J = R\) or \(b \in R^\times \implies J = (r)\). So \((r)\) is maximal.
+
+    \(\impliedby\) (true for general integral domain) \((r) \neq R\) so \(r \notin R^\times \). Suppose \(r = ab\), then \((r) \subseteq (a) \subseteq R\). Since \((r)\) is maximal, either \((a) = (r) \implies b \in R^\times\) or \((a) = R \implies a \in R^\times\). Thus, \(r\) is irreducible.
+\end{proof}
+\begin{remark}
+    \leavevmode
+    \begin{enumerate}
+        \item "\(\impliedby\)" holds without assuming \(R\) a PID.
+        \item Let \(R\) be a PID, \(0 \neq r \in R\), then \((r)\) maximal \(\iff \) \(r\) irreducible \(\iff \) \(r\) prime \(\iff \) \((r)\) prime. Thus, there is a bijection between non-zero prime ideals and non-zero maximal ideals.
+    \end{enumerate}
+\end{remark}
+\begin{definition}
+    An integral domain is a \textit{Euclidean domain} (ED) if there is a function \(\phi:R\setminus \{0\} \to \mathbb{Z}_{\geq 0}\) (a Euclidean function) such that
+    \begin{enumerate}
+        \item If \(a\mid b\), then \(\phi(a) \leq \phi(b)\);
+        \item If \(a,b \in R\) with \(b \neq 0\), there exists \(q, r \in R\) with \(a = bq + r\) and either \(r = 0\), or \(\phi(r) < \phi(b)\).
+    \end{enumerate}
+\end{definition}
+\begin{example}
+    \(\mathbb{Z}\) is an ED with Euclidean function \(\phi(n) = \left\vert n \right\vert\).
+\end{example}
+\begin{proposition}
+    If \(R\) is a Euclidean domain, then it is a principal ideal domain. (i.e. ED \(\implies\) PID)
+\end{proposition}
+\begin{proof}
+    Let \(R\) have Euclidean function \(\phi: R \setminus \{0\}\to \mathbb{Z}\).
+
+    Let \(I \nsub R\) be a non-zero ideal. Choose \(b \in I\setminus \{0\}\) with \(\phi(b)\) minimal, then \((b) \subseteq I\). For \(a \in I\), write \(a = bq + r\) with \(r,q \in R\) and either \(r = 0\) or \(\phi(r) < \phi(b)\). Since \(r = bq - a \in I\), it cannot have \(\phi(r) < \phi(b)\) by choice of b. Thus, \(a = bq \in (b)\), and hence \(I = (b)\).
+\end{proof}
+\begin{remark}
+    We only used (2) here, but property (1) allows us to describe the units in \(R\) as
+    \[
+        R^\times = \{u \in R\setminus \{0\} \mid \phi(a) = \phi(1)\}.
+    \]
+    In fact, if you can find a function satisfying property (2), you can find another Euclidean function satisfying both properties.
+\end{remark}
+\begin{example}
+    \leavevmode
+    \begin{enumerate}
+        \item If \(F\) is a field, \(F[X]\) is an ED with Euclidean function \(\phi(f) = \deg f\) with \(f \in F[X]\).
+        \item \(R = \mathbb{Z}[i]\) is an ED with Euclidean function \(\phi(a + ib) = N(a + ib) = a^2 + b^2\). Since \(N(z_{1}z_2) = N(z_1)N(z_2)\), property (1) holds.
+        
+        For property (2), let \(z_1, z_2 \in \mathbb{Z}[i]\) with \(z_2 \neq 0\). Consider \(\frac{z_1}{z_2}\in \mathbb{C}\). This has distance less than 1 from the nearest element in \(\mathbb{Z}[i]\). That is, exists \(q \in \mathbb{Z}[i]\) s.t. \(\left\vert \frac{z_1}{z_2}-q \right\vert<1 \).
+
+        Set \(r = z_1 - z_{2}q \in \mathbb{Z}[i]\). Then \(z_1 = z_2 q + r\), and
+        \[
+            \phi(r) = \left\vert r \right\vert^2 = \left\vert z_1 - z_2 q \right\vert^2 < \left\vert z_2 \right\vert^2 = \phi(z_2).
+        \]
+    \end{enumerate}
+    Thus, we have \(\mathbb{Z}[i]\) and \(F[X]\) for \(F\) a field are PIDs.
+\end{example}
+\begin{example}
+    Let \(A\) be an \(n \times n\) matrix over a field \(F\). Let
+    \[I = \{f \in F[X]\mid f(A) = 0\}.\]
+    If \(f, g\in I\), then \((f-g)(A) = f(A) - g(A) = 0\). So \(f-g \in I\), and \(I\) is a subgroup under addition.
+
+    If \(f\in F[x], g\in I\), then \((f\cdot g)(A) = f(A) \cdot g(A) = 0\). So \(f\cdot g \in I\), and \(I\) is closed under addition by elements of the ring.
+
+    Thus, \(I \in F[X]\) is an ideal, and \(I = (f)\) for some \(f \in F[X]\) since \(F[X]\) is PID. We may assume \(f\) is monic upon multiplying by a unit in \(F\).
+
+    Thus, for \(g in F[X]\) such that \(g(A) = 0 \iff g \in I \iff g \in (f)\). That is, \(f \mid g\), so \(f\) is the minimal polynomial of \(A\).
+\end{example}
+\begin{example}[Field of 8]
+    Let \(\mathbb{F}_2 = \nicefrac{\mathbb{Z}}{2\mathbb{Z}}\).
+
+    Let \(f(X) = X^3 + X + 1 \in \mathbb{F}_2[X]\). If \(f(X) = g(X)h(X)\) with \(g, h \in \mathbb{F}_2[X]\) and \(\deg g, \deg h > 0\). Because \(\deg(gh) = \deg g + \deg h\), then either \(\deg g = 1\) or \(\deg f = 1\). And so \(f\) has a root. But \(f(0) = f(1) = 1 \neq 0\). Thus, \(f\) is irreducible.
+
+    Since \(\mathbb{F}_2[X]\) is a PID, \((f) \nsub \mathbb{F}_2[X]\) is a maximal ideal. Hence, \(\nicefrac{\mathbb{F}_2[X]}{(f)}\) is a field. And
+    \[
+        \nicefrac{\mathbb{F}_2[X]}{(f)} = \{aX^2 + bX + c \mid a,b,c \in \mathbb{F}_2\},
+    \]
+    so it is a field of order 8 by checking different \(a,b,c\) gives distinct elements.
+\end{example}

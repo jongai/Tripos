@@ -1,0 +1,97 @@
+\lecture{12}{16 Feb. 2022}{}
+\begin{proof}
+    Let
+    \[
+        \phi(x) = \begin{vmatrix}
+            1 & 1 &  1 \\
+            f(a) & f(x) &  f(b) \\
+            g(a) & g(x) &  g(b) \\
+        \end{vmatrix}.
+    \]
+    We have \(\phi\) continuous on \([a,b]\) and differentiable on \((a,b)\). Also, \(\phi(a) = \phi(b) = 0\). By Rolle's Theorem, there exists \(t \in (a,b)\) such that \(\phi'(t) = 0\), and
+    \begin{align*}
+        \phi'(x) &= f'(x)g(b) - g'(x)f(b)+f(a)g'(x)-g(a)f'(x)\\
+        &= f'(x)[g(b) - g(a)] + g'(x)[f(a) - f(b)].
+    \end{align*}
+    So \(\phi'(t) = 0\) gives the result.
+\end{proof}
+\begin{note}
+Good choice of auxiliary function and Rolle's theorem proves the theorem.
+\end{note}
+\begin{example}[L' Hopital's Rule]
+    If we want to find \(\lim\limits_{x \to 0} \frac{e^{x}-1}{\sin x}\), we have
+    \[
+        \frac{e^x - 1}{\sin x} = \frac{e^x - x^0}{\sin x - \sin 0}= \frac{e^t}{\cos t}
+    \]
+    for some \(t \in (0,x)\) by Cauchy's Mean Value Theorem. So
+    \[
+        \frac{e^x - 1}{\sin x} \to 1
+    \]
+    as \(x \to 0\).
+\end{example}
+Goal: We want to extend the MVT to include higher order derivatives.
+\begin{theorem}[Taylor's Theorem with Lagrange's reminder]
+    Suppose \(f\) and its derivatives up to order \(n - 1\) are continuous in \([a, a + h]\) and \(f^{(n)}\) exists for \(x \in (a, a + h)\), then
+    \[
+        f(a + h) = f(a) + hf'(a) + \frac{h^2}{2!f''(a)} + \cdots + \frac{h^{n-1}f^{(n-1)}(a)}{(n-1)!} + \frac{h^n f^{(n)}(a + \theta h)}{n!}
+    \]
+    where \(\theta \in (0,1)\).
+\end{theorem}
+\begin{note}
+    \leavevmode
+    \begin{enumerate}
+        \item For \(n = 1\), we get back the MVT, so this is an "\(n\)-th order MVT".
+        \item \(R_n = \frac{h^n}{n!}f^{(n)}(a + \theta h)\) is known as Lagrange's form of the remainder.
+    \end{enumerate}
+\end{note}
+\begin{proof}
+    Define for \(0 \leq t \leq h\)
+    \[
+        \phi(t) = f(a + t) - f(a) - tf'(a) - \cdots -\frac{t^{n-1}}{(n-1)!}f^{(n-1)}(a) - \frac{t^n}{n!}b
+    \]
+    where we choose \(b\) such that \(\phi(h) = 0\), and we clearly have \(\phi(0) = 0\). (Recall that in the proof of the MVT, we used \(f(x) - kx\) and picked \(k\) that we can use Rolle's Theorem. We also have that
+    \[\phi(0) = \phi'(0) = \cdots = \phi^{(n-1)}(0) = 0.\] We use Rolle's Theorem \(n\) times. Since \(\phi(0) = \phi(h) = 0\), \(\phi'(h_1) = 0\) for some \(0 < h_1 < h\). And since \(\phi'(0) = \phi'(h_1) = 0\), we have \(\phi''(h_2) = 0\) for some \(0 < h_2 < h_1\). Finally, \(\phi^{(n-1)}(0) = \phi^{(n-1)}(h_{n-1}) = 0\). So \(\phi^{(n)}(h_n)=0\) with \(0<h_n < h_{n-1} < \cdots < h\). So \(h_n = \theta h\) for \(\theta \in (0,1)\), now
+    \[
+        \phi^{(n)}(t) = f^{(n)}(a + t) - b \implies b = f^{(n)}(a + \theta h).
+    \]
+    Set \(t = h\), \(\phi(h) = 0\) and put this value of \(b\) to the second line in the proof.
+\end{proof}
+\begin{theorem}[Taylor's Theorem with Cauchy's reminder]
+    Suppose \(f\) and its derivatives up to order \(n - 1\) are continuous in \([a, a + h]\) and \(f^{(n)}\) exists for \(x \in (a, a + h)\), and if \(a = 0\) for simplification, then we have
+    \[
+        f(h) = f(0) + hf'(0) + \cdots + \frac{h^{n-1}}{(n-1)!}f^{(n-1)}(0) + R_n
+    \]
+    where
+    \[
+        R_n = \frac{(1-\theta)^{n-1}f^{(n)}(\theta h)h^n}{(n-1)!}
+    \]
+    with \(\theta \in (0,1)\).
+\end{theorem}
+\begin{proof}
+    Define
+    \[
+        F(t) = f(h) - f(t) - (h-t)f'(t) - \cdots - \frac{(h-t)^{n-1}f^{(n-1)}(t)}{(n-1)!}
+    \]
+    with \(t \in [0,h]\). Note that we have
+    \begin{align*}
+        F'(t) &= -f'(t) + f'(t) - (h-t)f''(t) + (h-t)f''(t) - \cdots -\frac{(h-t)^{n-1}}{(n-1)!}f^{(n)}(t)\\
+        &= -\frac{(h-t)^{n-1}}{(n-1)!}f^{(n)}(t).
+    \end{align*}
+    Set
+    \[
+        \phi(t) = F(t) - (\frac{h - t}{h})^{p}F(0)
+    \]
+    with \(p \in \mathbb{Z}, 1 \leq p \leq n\). Then \(\phi(0) = \phi(h) = 0\), and by Rolle's, \(\exists \theta \in (0,1)\) such that \(\phi'(\theta h) = 0\). But,
+    \[
+        \phi'(\theta h) = F'(\theta h) + \frac{p(1-\theta)^{p-1}}{h}F(0) = 0.
+    \]
+    So
+    \[
+        0 = -\frac{h^{n-1}(1-\theta)^{n-1}}{(n-1)!}f^{(n)}(\theta h)+\frac{p(1-\theta)^{p-1}}{h}[f(h) - \cdots - \frac{h^{n-1}}{(n-1)!}f^{(n-1)}(0)].
+    \]
+    Rearranging the two sides, and we get
+    \[
+        f(h) = f(0) + hf'(0) + \cdots + \frac{h^{n-1}}{(n-1)!}f^{(n-1)}(0) + \frac{h^n(1-\theta)^{n-1}}{(n-1)!p(1-\theta)^{p-1}}f^{(n)}(\theta h).
+    \]
+    Taking \(p = n\), we get Lagrange's reminder, and taking \(p = 1\) gives Cauchy's reminder.
+\end{proof}
