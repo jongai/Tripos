@@ -10,7 +10,7 @@ In this section, \(R\) is always an integral domain.
     \leavevmode
     \begin{enumerate}
         \item \(a \in R\) is a \textit{unit} if \(\exists b\in R\) with \(ab = 1\). (equivalently, \((a) = R\)) And we write the units in \(R\) as \(R^\times \).
-        \item \(a \in R\) divides \(b \in R\) (written \(a \mid b\)) if \(\exists c \in R\) such that \(b = ac\). (equivalently, \((a) \subseteq (b)\))
+        \item \(a \in R\) divides \(b \in R\) (written \(a \mid b\)) if \(\exists c \in R\) such that \(b = ac\). (equivalently, \((b) \subseteq (a)\))
         \item \(a,b \in R\) are \textit{associates}  if \(a = bc\) for some unit \(c \in R\). (equivalently, \((b) = (a)\))
         \item \(r \in R\) is \textit{irreducible} if \(r\neq 0\), \(r\) is not a unit, and \(r = ab \implies a\) or \(b\) is a unit.
         \item \(r \in R\) is \textit{prime}  if \(r \neq 0\) and \(r\) is not a unit, and \(r\mid ab \implies r \mid a\) or \(r\mid b\).
@@ -32,6 +32,7 @@ In this section, \(R\) is always an integral domain.
     \(\impliedby\) direction. \(\{0\}\nsub R\) is a prime ideal since \(R\) is an integral domain. Let \(r \in R\) be a prime. \((r) \neq R\) since \(r \notin R^\times \). If \(ab \in (r)\), then \(r \mid ab\) so \(r \mid a\) or \(r \mid b\). That is \(a \in (r)\) or \(b \in (r)\); that is, \((r)\) is a prime ideal.
 \end{proof}
 \begin{lemma}
+    \label{primeir}
     If \(r\) is a prime element, then it is irreducible.
 \end{lemma}
 \begin{proof}
@@ -74,6 +75,7 @@ The converse does not hold in general.
 \end{example}
 \begin{proposition}
     Let \(R\) be a PID. Then every irreducible element of \(R\) is a prime.
+    \label{pidprime}
 \end{proposition}
 \begin{proof}
     Let \(r \in R\) be irreducible. If \(r \mid ab\) and \(r \nmid a\), Because \(R\) is a PID, \((a,r) = (d)\) for some \(d \in R\). In particular, \(r = cd\) for some \(c \in R\). Since \(r\) is irreducible, either \(c\) or \(d\) is a unit.
