@@ -1,0 +1,92 @@
+\lecture{14}{21 Feb. 2022}{}
+\section{Power Series}
+We want to look at
+\[
+    \sum\limits_{n=0}^{\infty} a_n z^n,
+\]
+with \(z \in \mathbb{C}, a_n \in \mathbb{C}\). The case \(\sum\limits_{n=0}^{\infty} a_n (z - z_0)^n\), with \(z\) fixed can be reduced to power series around 0 by translation.
+\begin{lemma}
+    \label{smallerrad}
+    If \(\sum\limits_{n=0}^{\infty} a_n z_1^n\) converges and \(\left\vert z \right\vert < \left\vert z_1 \right\vert\), then \(\sum\limits_{n=0}^{\infty} a_n z^n\) converges absolutely.
+\end{lemma}
+\begin{proof}
+    Since \(\sum\limits_{n=0}^{\infty} a_n z_1^n\) converges, \(a_n z_1^n \to 0\). Thus, there exists \( K > 0\) such that \(\left\vert a_n z_1^n \right\vert \leq K\) for all \(n\).
+
+    Then,
+    \[
+        \left\vert a_n z^n \right\vert = \left\vert a_n z^n \right\vert \frac{\left\vert z_1^n \right\vert}{\left\vert z_1^n \right\vert} \leq K \left\vert \frac{z}{z_1} \right\vert^n.
+    \]
+    Since the geometric series \(\sum\limits_{n=0}^{\infty} \left\vert \frac{z}{z_1} \right\vert^n \) converges, the lemma follows by comparison.
+\end{proof}
+Using this lemma, we will prove that every power series has a \textit{radius of convergence}.
+\begin{theorem}
+    \label{thradius}
+    A power series either
+    \begin{enumerate}
+        \item converges absolutely for all \(z\), or
+        \item converges absolutely for all \(z\) inside a circle \(\left\vert z \right\vert = R\) and diverges for all \(z\) outsider it, or
+        \item converges for \(z = 0\) only.
+    \end{enumerate}
+\end{theorem}
+\begin{definition}
+    The circle \(\left\vert z \right\vert = R\) is called the \textit{circle of convergence} and \(R\) the \textit{radius of convergence}.
+
+    In (1) of Theorem \eqref{thradius}, we agree that \(R = \infty\), and in (3) \(R = 0\), so \(R \in [0, \infty]\).
+\end{definition}
+\begin{proof}
+    Let \(S = \{x \in \mathbb{R}\mid x \geq 0, \sum a_n x^n\text{ converges}\}\). Clearly \(0 \in S\). By Lemma \eqref{smallerrad}, if \(x_1 \in S\), then \([0, x_1] \subseteq S\). If \(S = [0, \infty)\), we have case 1.
+
+    Otherwise, there exists a finite supremum for \(S\). \(R = \sup S < \infty, R \geq 0\). If \(R > 0\), we'll prove that if \(\left\vert z_1 \right\vert < R\), then \(\sum a_n z_1^n\) converges absolutely. Pick \(R_0\) such that \(\left\vert z_1 \right\vert < R_0 < R\), then \(R_0 \in S\) and the series converges for \(z = R_0\). By Lemma \eqref{smallerrad}, \(\sum \left\vert a_{n}z_1^n \right\vert\) converges.
+
+    Finally, we show that if \(\left\vert z_2 \right\vert > R\), then the series does not converge for \(z_2\). Pick \(R < R_0 < \left\vert z_2 \right\vert \). If \(\sum a_n z_2^n\) converges, by Lemma \eqref{smallerrad}, \(\sum a_n R_0^n\) would be convergent, which contradicts that \(R = \sup S\).
+\end{proof}
+The following lemma is useful for computing \(R\).
+\begin{lemma}
+    If \(\left\vert \frac{a_{n+1}}{a_n} \right\vert\to \ell \), as \(n \to \infty\), then \(R = \frac{1}{\ell}\).
+\end{lemma}
+\begin{proof}
+    By the ratio test, we have absolute convergence if
+    \[
+        \lim\limits_{n \to \infty} \left\vert \frac{a_{n+1}}{a_n}\frac{z^{n+1}}{z^n} \right\vert = \ell \left\vert z \right\vert < 1.
+    \]
+    So if \(\left\vert z \right\vert < \frac{1}{\ell}\), we have absolute convergence. If \(\left\vert z \right\vert > \frac{1}{\ell}\), the series diverges, again by the ratio test.
+\end{proof}
+\begin{remark}
+    One can also use the Root Test to get that if \(\left\vert a_n \right\vert^{\frac{1}{n}} \to \ell\), then \(R = \frac{1}{\ell}\).
+\end{remark}
+\begin{example}
+    \begin{enumerate}
+        \item \(\sum\limits_{n=0}^{\infty} \frac{z^n}{n!}\).
+        
+        We have
+        \[
+            \left\vert \frac{a_{n+1}}{a_n} \right\vert = \frac{n!}{(n+1)!} = \frac{1}{n + 1} \to 0 = \ell.
+        \]
+        So \(R = \infty \).
+        \item Geometric Series, \(\sum\limits_{n=0}^{\infty} z^n\).
+        
+        By ratio test, we have \(R = 1\). Note that at \(\left\vert z \right\vert = 1\), we have divergence.
+        \item \(\sum\limits_{n=0}^{\infty} n!z^n\).
+
+        We have
+        \[
+            \left\vert \frac{a_{n+1}}{a_n} \right\vert = \frac{(n+1)!}{n!} = n + 1 \to \infty.
+        \]
+        So \(R = 0\).
+        \item \(\sum\limits_{n=1}^{\infty} \frac{z^n}{n}\), and we have \(R = 1\). For \(z = 1\), it diverges. What happens for \(\left\vert z \right\vert = 1\) and \(z \neq 1\)?
+        
+        Consider \(\sum\limits_{n=1}^{\infty} \frac{z^n}{n}(1-z)\), we have the partial sum
+        \begin{align*}
+            S_N &= \sum\limits_{n=1}^{N} (\frac{z^n - z^{n+1}}{n})\\
+            &= \sum\limits_{n=1}^{N} \frac{z^n}{n} - \sum\limits_{n=1}^{\infty} \frac{z^{n+1}}{n}\\
+            &= \sum\limits_{n=1}^{N} \frac{z^n}{n} - \sum\limits_{n=2}^{N+1} \frac{z^n}{n - 1}\\
+            &= z - \frac{z^{N + 1}}{N} + \sum\limits_{n=2}^{N} z^n (\frac{1}{n} - \frac{1}{n - 1})\\
+            &= z - \frac{z^{N + 1}}{N} + \sum\limits_{n=2}^{N} -\frac{z^n}{n(n-1)}.
+        \end{align*}
+        If \(\left\vert z \right\vert = 1\), \(\frac{z^{N + 1}}{N} \to 0\) as \(N \to \infty \) and \(\sum \frac{1}{n(n - 1)}\) converges, so \(S_N\) converges.
+        \item \(\sum\limits_{n=1}^{\infty} \frac{z^n}{n^2}\), and we have \(R = 1\). But it converges for all \(z\) with \(\left\vert z \right\vert = 1\).
+    \end{enumerate}
+\end{example}
+Conclusion is that, in principle, nothing can be said about \(\left\vert z \right\vert = R\) and each case has to be discussed separately.
+
+Within the radius of convergence, ``life is great''. Power series behave as if ``they were polynomials''.

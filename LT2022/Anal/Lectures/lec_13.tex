@@ -1,0 +1,71 @@
+\lecture{13}{18 Feb. 2022}{}
+To get a Taylor series for \(f\), one needs to show that \(R_n \to 0\) as \(n \to \infty\). This requires ``estimates'' and ``effort''.
+\begin{remark}
+    Theorems \eqref{tl} and \eqref{tc} work equally well in an interval \([a + h, a]\) with \(h < 0\).
+\end{remark}
+\begin{example}
+    The binomial series
+    \[
+        f(x) = (1 + x)^r, r\in \mathbb{Q}.
+    \]
+    We claim that \(\left\vert x \right\vert< 1\), then
+    \[
+        (1 + x)^r = 1 + \binom{r}{1}x + \cdots + \binom{r}{n}x^n + \cdots
+    \]
+    where
+    \[
+        \binom{r}{n} = \frac{r(r-1)\cdots (r - n + 1)}{n!}.
+    \]
+    \begin{proof}
+        Clearly,
+        \[
+            f^{(n)}(x) = r(r - 1) \cdots (r - n + 1)(1 + x)^{r-n}.
+        \]
+        If \(r\in \mathbb{Z}_{\geq 0}\), then \(f^{(n+1)}=0\), we have a polynomial of degree \(r\).
+
+        In general, by Lagrange's reminder, we have
+        \[
+            R_n = \frac{x^n}{n!}f^{(n)}(\theta x) = \binom{r}{n}\frac{x^n}{(1+\theta x)^{n - r}}.
+        \]
+        Note that \(\theta\) depends on both \(x\) and \(n\).
+
+        For \(0 < x < 1\), \((1 + \theta x)^{n - r} > 1\) for \(n > r\). Now observe that the series \(\sum \binom{r}{n}x^n\) is absolutely convergent for \(\left\vert x \right\vert < 1\). Indeed, by the ratio test,
+        \begin{align*}
+            a_n &= \binom{r}{n}x^n\\
+            \left\vert \frac{a_{n+1}}{a_n} \right\vert &= \left\vert \frac{r(r-1)(r-n+1)\cdots(r-n)x^{n+1}}{(n+1)!} \right\vert \left\vert \frac{n!}{r(r-1)\cdots (r-n+1)x^n} \right\vert\\
+            &=\left\vert \frac{(r-n)x}{n+1} \right\vert
+        \end{align*}
+        which tends to a value less than 1. In particular, \(a_n \to 0\) and \(\binom{r}{n}x^n \to 0\).
+
+        Hence, for \(n > r\), and \( 0 < x < 1\), we have that \(\left\vert R_n \right\vert \leq \left\vert \binom{r}{n}x^n \right\vert  = \left\vert a_n \right\vert \to 0\) as \(n \to \infty\).
+
+        So the claim is proved in the range \( 0 \leq x < 1\). If \(-1 < x <0\), the argument above breaks, but Cauchy's form for \(R_n\) works.
+        \begin{align*}
+            R_n &= \frac{(1-\theta)^{n-1}r(r-1)\cdots(r-n+1)(1+\theta h)^{r-n}x^n}{(n-1)!}\\
+            &= \frac{r(r-1) \cdots (r-n+1)}{(n-1)!}\frac{(1-\theta)^{n-1}}{(1+\theta x)^{n-r}}x^n\\
+            &= r \binom{r-1}{n-1}x^n (1+\theta x)^{r-1} (\frac{1 - \theta}{1+\theta x})^{n-1}.
+        \end{align*}
+        So \(\left\vert R_n \right\vert \leq \left\vert r \binom{r-1}{n-1}x^n \right\vert (1 + \theta x)^{r-1}\). Check that \((1 + \theta x)^{r-1} \leq \mathop{\max}\{1, (1+x)^{r-1}\}\). Let \(K_r = \left\vert r \right\vert \mathop{\max} \{1, (1+x)^{r-1}\}\) is independent of \(n\). So we have
+        \[
+            \left\vert R_n \right\vert \leq \left\vert K_r \right\vert \left\vert \binom{r-1}{n-1}x^n \right\vert \to 0.
+        \]
+        So \(R_n \to 0\) as \(n \to \infty\).
+    \end{proof}
+\end{example}
+\subsection{Remarks on Complex Differentiation}
+Formally, for function \(f: E \subseteq \mathbb{C} \to \mathbb{C}\), we have properties for sums, products, chain rule etc. But it is much more restrictive than differentiability on the real line.
+\begin{example}
+    \(f: \mathbb{C} \to \mathbb{C}\), with \(z \mapsto \overline{z}\). We consider the sequence \(z_n = z + \frac{1}{n} \to z\).
+    \[
+        \frac{f(z_n) - f(z)}{z_{n}-z} = \frac{\overline{z}+\frac{1}{n}-\overline{z}}{z + \frac{1}{n}-z} = 1.
+    \]
+    If we approach it vertically instead, taking \(z_n = z + \frac{i}{n}\to z\), we have
+    \[
+        \frac{f(z_n)-f(z)}{z_n - z} = \frac{\overline{z} - \frac{i}{n}-\overline{z}}{z + \frac{i}{n}-z} = -1.
+    \]
+    So \(\lim\limits_{w \to z} \frac{f(w)-f(z)}{w-z}\) does not exist. \(f\) is nowhere \(\mathbb{C}\)-differentiable.
+
+    If we consider it as a function on \(\mathbb{R}^2\), \(f(x,y)=(x,-y)\). It is real differentiable.
+
+    In fact, if a function is complex differentiable, it is infinitely complex differentiable. It is discussed in more detail in IB Complex Analysis.
+\end{example}
