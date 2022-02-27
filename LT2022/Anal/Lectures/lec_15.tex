@@ -1,1 +1,38 @@
 \lecture{15}{23 Feb. 2022}{}
+\leavevmode
+\begin{theorem}
+    \label{difpow}
+    \(f(z) = \sum\limits_{n=0}^{\infty} a_n z^n\) has radius convergence \(R\). Then \(f\) is differentiable at all points with \(\left\vert z \right\vert < R\) with
+    \[
+        f'(z) = \sum\limits_{n=1}^{\infty} n a_n z^{n - 1}.
+    \]
+\end{theorem}
+\begin{proof}[Proof (non examinable)]
+   \todo{Watch the lecture and finish the proof.} 
+\end{proof}
+\subsection{The Standard Functions}
+In this section, we will discuss exponential, logarithmic, trigonometric, etc.
+
+We have already seen that
+\[
+    \sum\limits_{n=0}^{\infty} \frac{z^n}{n!}
+\]
+has \(R = \infty\). Define \(e: \mathbb{C} \to \mathbb{C}\), \(z \mapsto \sum\limits_{n=0}^{\infty} \frac{z^n}{n!}\). From Theorem \eqref{difpow}, \(e\) is differentiable, and \(e'(z) = e(z)\).
+
+If \(F: \mathbb{C}\to \mathbb{C}\) has \(F'(z) = 0\) for all \(z \in \mathbb{C}\), then \(F\) is constant.
+\begin{proof}
+    Consider \(g(t) = F(tz)\), and chain rule gives \(g'(t) = F'(tz)z = 0\). If \(g(t) = u(t) + iv(t)\). It is immediate that \(g'(t) = u'(t) + i v'(t)\). So \(u'(t) = v'(t) = 0\). By previously proved corollary, we have \(u(t), v(t)\) constant. Thus, \(F(z)\) is constant.
+\end{proof}
+
+Now let \(a, b \in \mathbb{C}\). Consider
+\[
+    F(z) = e(a + b - z)e(z).
+\]
+We have \(F'(z) = 0\), so \(F\) is constant.
+\[
+    e(a + b - z)e(z) = F(0) = e(a + b).
+\]
+Setting \(z = b\) gives
+\[
+    e(a)e(b) = e(a + b).
+\]
