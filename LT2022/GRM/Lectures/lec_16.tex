@@ -73,6 +73,7 @@ The units in \(\mathbb{Z}[i]\) are \(\pm 1, \pm i\) which are the only elements 
     We also proved (3)\(\implies\)(2) in the process. It is an important result in number theory about sum of squares.
 \end{remark}
 \begin{theorem}
+    \label{ziprime}
     The primes in \(\mathbb{Z}[i]\) (up to associates) are
     \begin{enumerate}
         \item \(a + bi\), where \(a, b \in \mathbb{Z}\) and \(a^2 + b^2 = p\) is a prime number with \(p = 2\) or \(p \equiv 1 \bmod 4\);
@@ -80,11 +81,22 @@ The units in \(\mathbb{Z}[i]\) are \(\pm 1, \pm i\) which are the only elements 
     \end{enumerate}
 \end{theorem}
 \begin{proof}
+    We first prove that they are indeed prime.
     \begin{enumerate}
         \item \(N(a + bi) = p\). If \(a + bi = uv\), then either \(N(u) = 1\) or \(N(v) = 1\). Thus, \(a + bi\) is irreducible and hence prime.
         \item Proposition \eqref{ratprime}.
     \end{enumerate}
     Now let \(z \in \mathbb{Z}[i]\) be a prime (or irreducible). Then \(\overline{z} \in \mathbb{Z}[i]\) is irreducible, and \(N(z) = z \overline{z}\) is a factorization into irreducibles.
 
-    Let \(p \in \mathbb{Z}\) be a prime such that \(p \mid N(z)\) because \(N(z) \neq 1\).
+    Let \(p \in \mathbb{Z}\) be a prime such that \(p \mid N(z)\) because \(N(z) \neq 1\). If \(p \equiv 3 \bmod 4\), then \(p\) is prime in \(\mathbb{Z}[i]\). Thus, \(p \mid z\) or \(p \mid \overline{z}\), so \(p\) is an associate of \(z\) or \(\overline{z}\). Consider the units in \(\mathbb{Z}[i]\), we know \(p\) is an associate of \(z\).
+
+    Otherwise, \(p = 2\) or \(p \equiv 1 \bmod 4\) and
+    \[
+        p = a^2 + b^2 = (a + bi)(a - bi)
+    \]
+    for some \(a, b \in \mathbb{Z}\). Then
+    \[
+        (a + bi)(a - bi) \mid z \overline{z}.
+    \]
+    Thus, \(z\) is an associate of \(a + bi\) or \(a - bi\) by uniqueness of factorization.
 \end{proof}

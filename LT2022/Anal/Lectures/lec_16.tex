@@ -1,0 +1,114 @@
+\lecture{16}{25 Feb. 2022}{}
+Now we restrict to \(\mathbb{R}\), \(e: \mathbb{R} \to \mathbb{R}\).
+\begin{theorem}
+    \leavevmode
+    \begin{enumerate}
+        \item \(e: \mathbb{R}\to \mathbb{R}\) is everywhere differentiable and \(e'(x) = e(x)\).
+        \item \(e(x + y) = e(x) e(y)\).
+        \item \(e(x) > 0\) for all \(x \in \mathbb{R}\).
+        \item \(e\) is strictly increasing.
+        \item \(e(x) \to \infty\) as \(x \to \infty \), and \(e(x) \to 0\) as \(x \to -\infty \).
+        \item \(e: \mathbb{R} \to (0, \infty )\) is a bijection.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    We proved (1) and (2) above.
+
+    To prove (3), clearly we have \(e(x) > 0\) for \(x \geq 0\) and \(e(0) = 1\). Also, \(e(0) = e(x - x) = e(x) e(-x0 = 1\). So \(e(-x) > 0\) for \(x > 0\).
+
+    To prove (4), we have \(e'(x) = e(x) > 0\) so \(e\) is strictly increasing.
+    
+    To prove (5), \(e(x) > 1 + x\) for \(x > 0\). So if \(x \to \infty \), clearly \(e(x) \to \infty \). For \(x > 0\), since \(e(-x) = \frac{1}{e(x)}\), then \(e(x) \to 0\) as \(x \to -\infty \).
+    
+    For (6), injectivity follows right away from being strictly increasing. To prove surjectivity, take any \(y \in (0, \infty)\). Since \(e(x) \to \infty\) as \(x \to \infty \) and \(e(x) \to 0\) as \(x \to -\infty \). We can find \(a, b\) such that \(e(a) < y < e(b)\). By the IVT, there exists \(x \in \mathbb{R}\) such that \(e(x) = y\).
+\end{proof}
+\begin{remark}
+    \(e: (\mathbb{R}, +) \to ((0, \infty), \cdot)\) is a group isomorphism.
+\end{remark}
+Since \(e\) is a bijection, we have an inverse \(\ell: (0, \infty) \to \mathbb{R}\).
+\begin{theorem}
+   \leavevmode
+   \begin{enumerate}
+       \item \(\ell: (0, \infty) \to \mathbb{R}\) is a bijection and \(\ell(e(x)) = x\) for all \(x \in \mathbb{R}\) and \(e(\ell(t)) = t\) for all \(t \in (0, \infty)\).
+       \item \(\ell\) is differentiable and \(\ell'(t) = \frac{1}{t}\).
+       \item \(\ell(xy) = \ell(x) + \ell(y)\) for all \(x, y \in (0, \infty)\).
+   \end{enumerate} 
+\end{theorem}
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item Obvious from the definition of \(e\).
+        \item Inverse rule gives that \(\ell\) is differentiable and
+        \[
+            \ell'(t) = \frac{1}{e'(\ell(t))} = \frac{1}{t}.
+        \]
+        \item From IA Groups, if \(e\) is an isomorphism, so is its inverse.
+    \end{enumerate}
+\end{proof}
+Now define for \(\alpha \in \mathbb{R}\) and \(x > 0\),
+\[
+    r_\alpha(x) = e(\alpha \lambda(x)).
+\]
+\begin{theorem}
+    Suppose \(x, y > 0\), and \(\alpha, \beta\in \mathbb{R}\), then
+    \begin{enumerate}
+        \item \(r_\alpha(xy) = r_\alpha(x)r_\alpha(y)\);
+        \item \(r_{\alpha+\beta} = r_\alpha(x)r_\beta(x)\);
+        \item \(r_\alpha(r_\beta(x)) = r_{\alpha \beta}(x)\);
+        \item \(r_1(x) = x\) and \(r_0(x) = 1\).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \leavevmode
+    \begin{enumerate}
+        \item \(\begin{aligned}[t]r_\alpha(xy) &= e(\alpha \ell(xy))\\
+        &=e(\alpha\ell(x) + \alpha\ell(y))\\
+        &=e(\alpha\ell(x))e(\alpha\ell(y))\\
+        &=r_\alpha(x)r_\alpha(y).\end{aligned}\)
+        \item \(\begin{aligned}[t]
+            r_{\alpha+\beta}(x) &= e((\alpha + \beta)\ell(x))\\
+            &= e(\alpha\ell(x))e(\beta\ell(b))\\
+            &=r_\alpha(x)r_\beta(x).
+        \end{aligned}\) 
+        \item \(\begin{aligned}[t]
+            r_\alpha(r_\beta(x)) &= r_\alpha(e(\beta \ell(x)))\\
+            &= e(\alpha \ell \circ e(\beta\ell(x)))\\
+            &= e(\alpha \beta \ell(x))\\
+            &=r_{\alpha \beta}(x). 
+        \end{aligned}\) 
+        \item \(r_1(x) = e(\ell(x)) = x\) and \(r_0(x) = e(0 \ell(x)) = e(0) = 1\) 
+    \end{enumerate}
+\end{proof}
+For some \(n \in \mathbb{Z}_{\geq 1}\), then
+\[
+    r_n(x) = r_{\underbrace{1 + \cdots + 1}_{n}}(x) = \underbrace{x \cdots x}_{n} = x^n.
+\]
+
+We also have
+\[
+    r_1(x)r_{-1}(x) = r_0(x) = 1 \implies r_{-1}(x) = \frac{1}{x}.
+\]
+So \(r_{-n}(x) = \frac{1}{x^n}\). Next we consider for \(q \in \mathbb{Z}_{\geq 1}\),
+\[
+    (r_{\frac{1}{q}})^q = r_1(x) = x \implies r_{\frac{1}{q}}(x) = x^{\frac{1}{q}}.
+\]
+And thus we also have \(r_{\frac{p}{q}}(x) = (r_{\frac{1}{q}}(x))^p = x^{\frac{p}{q}}\). Thus, \(r_\alpha(x)\) agrees with \(x^\alpha\) when \(\alpha\in \mathbb{Q}\) as previously defined.
+
+Now we give the above functions names:
+\begin{enumerate}
+    \item \(\exp(x) = e(x)\) for \(x \in \mathbb{R}\);
+    \item \(\log x = \ell(x)\) for \(x \in (0, \infty \);
+    \item \(x^\alpha = r_\alpha(x)\) for \(\alpha \in \mathbb{R}, x \in (0, \infty)\).
+\end{enumerate}
+If \(e(x) = e(x \log e)\) where \(e = \sum\limits_{n=0}^{\infty} \frac{1}{n!}\), we have \(e(x) = r_x(e) = e^x\). \(\exp(x)\) is also a power, which we may as well write as \(e^x\).
+
+Finally, we compute
+\begin{align*}
+    (x^\alpha)' &= (e^{\alpha \log x})'\\
+    &= e^{\alpha \log x}\alpha\frac{1}{x}\\
+    &= \alpha x^{\alpha - 1}.
+\end{align*}
+And we have
+\begin{align*}
+    (a^x)' = (e^{x \log a})' = e^{x \log a} \log a = a^x \log a.
+\end{align*}
