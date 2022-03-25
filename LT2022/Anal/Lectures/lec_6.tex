@@ -21,12 +21,11 @@ We prove right away that the two definitions are equivalent.
 
     Let \(\delta=\frac{1}{n}\) from non-continuity defined above, we get \(z_n\) such that \(\abs{z_n - a} <\frac{1}{n}\) and \(\abs{f(z_n) - f(a)} \geq \epsilon\). Clearly \(z_n \to a\), but \(f(z_n)\) does not tend to \(f(a)\) because \(\abs{f(z_n) - f(a)} \geq \epsilon\). Contradiction.
 \end{proof}
-\begin{proposition}{}{}
-    \label{contprop}
+\begin{proposition}{}{contprop}
     \(a \in E\), and \(g, f: E \to \mathbb{C}\) are both continuous at \(a\). So are the functions \(f(z) + g(z)\), \(f(z)g(z)\) and \(\lambda f(z)\) for any constant \(\lambda\). In addition, if \(f(z)\neq 0~\forall z \in E\), then \(\frac{1}{f(z)}\) is continuous at \(a\).
 \end{proposition}
 \begin{proof}
-    Using Definition 1 of continuity, this is obvious, using the analogous results for sequences. (Lemma \eqref{le:limprop})
+    Using Definition 1 of continuity, this is obvious, using the analogous results for sequences. (\cref{le:limprop})
 
     For example,
     \[z_n \to a \implies f(z_n) \to f(a), g(z_n) \to g(a) \implies f(z_n) + g(z_n) \to f(a) + g(a).\]
@@ -37,7 +36,7 @@ The function \(f(z) = z\) is continuous, so by using the proposition, we get tha
     We say that \(f\) is \textit{continuous on \(E\)} if it is continuous at every \(a \in E\).
 \end{note}
 \begin{remark}
-    Still it is instructive to prove Proposition \eqref{contprop} directly from the \(\epsilon\)-\(\delta\) definition.
+    Still it is instructive to prove \cref{pr:contprop} directly from the \(\epsilon\)-\(\delta\) definition.
 \end{remark}
 Next we look at compositions.
 \begin{theorem}{}{}

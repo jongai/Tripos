@@ -26,9 +26,8 @@
     \end{enumerate}
     We say \(I\) is \textit{proper} if \(I \neq R\).
 \end{definition}
-\begin{lemma}{}{}
+\begin{lemma}{}{ringker}
     If \(\phi: R\to S\) is a ring homomorphism, then \(\ker(\phi)\) is an ideal of \(R\).
-    \label{ringker}
 \end{lemma}
 \begin{proof}
     Again, \(\phi: (R, +) \to (S, +)\) is a group homomorphism between the additive groups. So \(\ker(\phi)\) is a subgroup of \((R, +)\).
@@ -94,7 +93,7 @@
         \[
             \nicefrac{\mathbb{R}[X]}{(X^2 + 1)} = \{f(X) + (X^2 + 1)\mid f(X) \in \mathbb{R}[X]\}.
         \]
-        By Proposition \eqref{polydiv}, \(f(X) = q(X)(X^2 + 1) + r(X)\) with \(\deg r < 2\), i.e. \(r(X) = a + bX, a,b \in \mathbb{R}\). Thus,
+        By \cref{pr:polydiv}, \(f(X) = q(X)(X^2 + 1) + r(X)\) with \(\deg r < 2\), i.e. \(r(X) = a + bX, a,b \in \mathbb{R}\). Thus,
         \[\nicefrac{\mathbb{R}}{(X^2 + 1)} = \{a + bX + (X^{2} + 1)\mid a, b \in \mathbb{R}\}.\]
         If \(a + bX + (X^2 + 1) = a' + b'X + (X^2 + 1)\), then
         \[a - a' + (b - b')X = g(X)(X^2 + 1).\]

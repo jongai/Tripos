@@ -1,8 +1,7 @@
 \lecture{15}{22 Feb. 2022}{}
 \subsection{Factorization in Polynomial Rings}
 Goal of today is to prove the following theorem.
-\begin{theorem}{}{}
-    \label{polyufd}
+\begin{theorem}{}{polyufd}
     If \(R\) is a UFD, then \(R[X]\) is a UFD.
 \end{theorem}
 In this section \(R\) is a UFD with field of fractions \(F\). We have \(R[X] \leq F[X]\). Moreover, \(F[X]\) is a ED, hence a PID and UFD.
@@ -11,8 +10,7 @@ In this section \(R\) is a UFD with field of fractions \(F\). We have \(R[X] \le
 
     We say \(f\) is \textit{primitive} if \(c(f)\) is a unit.
 \end{definition}
-\begin{lemma}{}{}
-    \label{primpoly}
+\begin{lemma}{}{primepoly}
     \leavevmode
     \begin{enumerate}
         \item If \(f,g \in R[X]\) are primitive, then \(fg\) is primitive;
@@ -40,15 +38,13 @@ In this section \(R\) is a UFD with field of fractions \(F\). We have \(R[X] \le
 
     Let \(f \in R[X]\). Then \(p \mid f\) in \(R[X]\) if and only if \(p \mid c(f)\) in \(R\). Thus, if \(p \mid gh\) in \(R[X]\), we have \(p \mid c(gh) = c(g)c(h)\). Because \(p\) is prime, we have \(p \mid c(g)\) or \(p \mid c(h)\). So, \(p \mid g\) or \(p \mid h\). That is, \(p\) is prime in \(R[X]\).
 \end{proof}
-\begin{lemma}{}{}
-    \label{guassll}
+\begin{lemma}{}{guassll}
     Let \(f, g \in R[X]\) with \(g\) primitive. If \(g \mid f\) in \(F[X]\), then \(g\mid f\) in \(R[X]\).
 \end{lemma}
 \begin{proof}
     Let \(f = gh\) with \(h \in F[X]\). Let \(0 \neq a \in R\) such that \(ah \in R[X]\), and write \(ah = c(ah)h_0\) with \(h_0\) primitive. Then \(af = c(ah)h_0 g\) with \(h_0 g\) primitive. Taking contents, we find \(a \mid c(ah)\). Thus, \(h \in R[X]\) and \(g \mid f\) in \(R[X]\).
 \end{proof}
-\begin{lemma}{Gauss's Lemma}{}
-    \label{Guassle}
+\begin{lemma}{Gauss's Lemma}{Guassle}
     Let \(f \in R[X]\) be primitive. Then \(f\) irreducible in \(R[X]\implies\) \(f\) irreducible in \(F[X]\).
 \end{lemma}
 \begin{proof}
@@ -58,19 +54,18 @@ In this section \(R\) is a UFD with field of fractions \(F\). We have \(R[X] \le
 
     Let \(\lambda \in F^\times \) such that \(\lambda^{-1}g \in R[X]\) is primitive. (e.g., let \(0 \neq b \in R\) such that \(bg \in R[X]\), then \(bg = c(bg)g_0\) with \(g_0\) primitive, so \(\lambda=\frac{c(bg)}{b}\in R^\times \)). Upon replacing \(g\) be \(\lambda^{-1}g\) and \(h\) by \(\lambda h\), we may assume \(g \in R[X]\) be primitive.
 
-    Then Lemma \eqref{guassll} implies \(h \in R[X]\) and so \(f = gh\) in \(R[X]\), with \(\deg g, \deg h > 0\) so \(f\) is not irreducible, and contradiction.
+    Then \cref{le:guassll} implies \(h \in R[X]\) and so \(f = gh\) in \(R[X]\), with \(\deg g, \deg h > 0\) so \(f\) is not irreducible, and contradiction.
 \end{proof}
 \begin{remark}
     We'll see that the reverse implication also holds.
 \end{remark}
-\begin{lemma}{}{}
-    \label{primepolyprime}
+\begin{lemma}{}{primepolyprime}
     Let \(g \in R[X]\) be a primitive. Then \(g\) prime in \(F[X] \implies g\) prime in \(R[X]\).
 \end{lemma}
 \begin{proof}
-    Suppose \(f_1, f_2 \in R[X]\) and \(g \mid f_1 f_2\) in \(R[X]\). Because \(g\) is prime in \(F[X]\), \(g \mid f_1\) or \(g \mid f_2\) in \(F[X]\). By Lemma \eqref{guassll}, \(g \mid f_1\) or \(g \mid f_2\) in \(R[X]\). That is, \(g\) is prime in \(R[X]\).
+    Suppose \(f_1, f_2 \in R[X]\) and \(g \mid f_1 f_2\) in \(R[X]\). Because \(g\) is prime in \(F[X]\), \(g \mid f_1\) or \(g \mid f_2\) in \(F[X]\). By \cref{le:guassll}, \(g \mid f_1\) or \(g \mid f_2\) in \(R[X]\). That is, \(g\) is prime in \(R[X]\).
 \end{proof}
-\begin{proof}[Proof of Theorem \eqref{polyufd}]
+\begin{proof}[Proof of \cref{th:polyufd}]
     Let \(f \in R[X]\). Write \(f = c(f) f_0\) with \(f_0\in R[X]\) primitive. \(R\) is a UFD, so \(c(f)\) is a product of irreducibles in \(R\), which are also irreducible in \(R[X]\).
 
     If \(f_0\) is not irreducible, say \(f_0 = gh\), then \(\deg g, \deg h > 0\) since \(f_0\) is primitive, and \(g, h\) are also primitive. By induction on degree, \(f_0\) is a product of irreducible in \(R[X]\). This establishes (1) in definition of UFD.
@@ -79,8 +74,8 @@ In this section \(R\) is a UFD with field of fractions \(F\). We have \(R[X] \le
 
     When \(f\) is constant, \(f\) is irreducible in \(R[X] \implies\) \(f\) is irreducible in \(R\implies\) \(f\) prime in \(R\implies\) \(f\) prime in \(R[X]\) by \cref{co:primeinpoly}.
 
-    When \(f\) is primitive, \(f\) irreducible in \(R[X]\implies \) \(f\) is irreducible in \(F[X]\) by Gauss's Lemma. Because \(F[X]\) is a UFD, \(f\) is prime in \(F[X]\implies\) \(f\) prime in \(R[X]\) by Lemma \eqref{primepolyprime}.
+    When \(f\) is primitive, \(f\) irreducible in \(R[X]\implies \) \(f\) is irreducible in \(F[X]\) by Gauss's Lemma. Because \(F[X]\) is a UFD, \(f\) is prime in \(F[X]\implies\) \(f\) prime in \(R[X]\) by \cref{le:primepolyprime}.
 \end{proof}
 \begin{remark}
-    By Lemma \eqref{primeir}, the last three implications are actually if and only if.
+    By \cref{le:primeir}, the last three implications are actually if and only if.
 \end{remark}

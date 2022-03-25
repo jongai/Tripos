@@ -2,8 +2,8 @@
 \begin{example}
     \leavevmode
     \begin{enumerate}
-        \item By Theorem \eqref{polyufd}, \(\mathbb{Z}[X]\) is a UFD.
-        \item \(R[X_1, \ldots, X_n]\) be the polynomial ring in \(X_1, \ldots, X_n\) with coefficients in \(R\). We can define it inductively by \(R[X_1, \ldots, X_n] = R[R_1, \ldots, X_{n-1}][X_n]\). Applying Theorem \eqref{polyufd} inductively, \(R[X_1, \ldots, X_n]\) is a UFD if \(R\) is a UFD.
+        \item By \cref{th:polyufd}, \(\mathbb{Z}[X]\) is a UFD.
+        \item \(R[X_1, \ldots, X_n]\) be the polynomial ring in \(X_1, \ldots, X_n\) with coefficients in \(R\). We can define it inductively by \(R[X_1, \ldots, X_n] = R[R_1, \ldots, X_{n-1}][X_n]\). Applying \cref{th:polyufd} inductively, \(R[X_1, \ldots, X_n]\) is a UFD if \(R\) is a UFD.
     \end{enumerate}
 \end{example}
 \begin{theorem}{Eisenstein's Criterion}{}
@@ -53,8 +53,7 @@ The units in \(\mathbb{Z}[i]\) are \(\pm 1, \pm i\) which are the only elements 
         Similarly, 7 is prime in \(\mathbb{Z}[i]\).
     \end{enumerate}
 \end{example}
-\begin{proposition}{}{}
-    \label{ratprime}
+\begin{proposition}{}{ratprime}
     Let \(p \in \mathbb{Z}\) be a prime number. Then the following are equivalent.
     \begin{enumerate}
         \item \(p\) is not prime in \(\mathbb{Z}[i]\).
@@ -72,8 +71,7 @@ The units in \(\mathbb{Z}[i]\) are \(\pm 1, \pm i\) which are the only elements 
 \begin{remark}
     We also proved (3)\(\implies\)(2) in the process. It is an important result in number theory about sum of squares.
 \end{remark}
-\begin{theorem}{}{}
-    \label{ziprime}
+\begin{theorem}{}{ziprime}
     The primes in \(\mathbb{Z}[i]\) (up to associates) are
     \begin{enumerate}
         \item \(a + bi\), where \(a, b \in \mathbb{Z}\) and \(a^2 + b^2 = p\) is a prime number with \(p = 2\) or \(p \equiv 1 \bmod 4\);
@@ -84,7 +82,7 @@ The units in \(\mathbb{Z}[i]\) are \(\pm 1, \pm i\) which are the only elements 
     We first prove that they are indeed prime.
     \begin{enumerate}
         \item \(N(a + bi) = p\). If \(a + bi = uv\), then either \(N(u) = 1\) or \(N(v) = 1\). Thus, \(a + bi\) is irreducible and hence prime.
-        \item Proposition \eqref{ratprime}.
+        \item \cref{pr:ratprime}.
     \end{enumerate}
     Now let \(z \in \mathbb{Z}[i]\) be a prime (or irreducible). Then \(\overline{z} \in \mathbb{Z}[i]\) is irreducible, and \(N(z) = z \overline{z}\) is a factorization into irreducibles.
 

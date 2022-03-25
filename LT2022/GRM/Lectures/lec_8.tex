@@ -81,12 +81,11 @@ The units in \(R\) form a group \((R^{\times}, \cdot)\) under multiplication.
 \begin{remark}
     If \(R\) is a ring with \(0 = 1\), then \(x = 1\cdot x = 0 \cdot x = 0\) for all \(x \in R\). And \(R = \{0\}\) is the \textit{trivial ring}.
 \end{remark}
-\begin{proposition}{}{}
+\begin{proposition}{}{polydiv}
     Let \(f, g \in R[X]\). Suppose the leading coefficient of \(g\) is a unit. Then there exist \(q, r \in R[X]\) such that
     \[
         f(x) = q(x)g(x) + r(x) \text{ where \(\mathrm{deg}(r) < \mathrm{deg}(g)\)}.
     \]
-    \label{polydiv}
 \end{proposition}
 \begin{proof}
     Induction on \(n = \deg(f)\). Write

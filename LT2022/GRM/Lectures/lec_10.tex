@@ -4,7 +4,7 @@
     Let \(\phi: R \to S\) be a ring homomorphism, then \(\ker(\phi) \nsub R\), \(\ima(\phi)\leq S\) and there exists isomorphism \(\nicefrac{R}{\ker(\phi)}\cong \ima(\phi)\).
 \end{theorem}
 \begin{proof}
-    We already showed that \(\ker(\phi)\nsub R\) in Lemma \eqref{ringker}, and \(\ima(\phi)\) is a subgroup of \((S,+)\) by First Isomorphism Theorem for groups. So just need to show that it's closed under multiplication and contains \(1_S\).
+    We already showed that \(\ker(\phi)\nsub R\) in \cref{le:ringker}, and \(\ima(\phi)\) is a subgroup of \((S,+)\) by First Isomorphism Theorem for groups. So just need to show that it's closed under multiplication and contains \(1_S\).
 
     We have \(\phi(r_1)\phi(r_2) = \phi(r_1 r_2)\in \ima(\phi)\) and \(1_S = \phi(1_R) \in \ima(\phi)\). Thus, \(\ima(\phi)\) is a subring of \(S\).
 
@@ -88,7 +88,7 @@
       f(X) = \sum\limits_{n=1}^{\infty} a_n X^n & \longmapsto f(i) = \sum\limits_{n=1}^{\infty} a_n i^n
     \end{aligned}
     \]
-    Proposition \eqref{polydiv} implies that \(\ker(\phi) = (X^2 + 1)\).
+    \cref{pr:polydiv} implies that \(\ker(\phi) = (X^2 + 1)\).
 
     First Isomorphism Theorem tells us \(\nicefrac{\mathbb{R}[X]}{(X^{2}+1)}\cong \mathbb{C}\).
 \end{example}

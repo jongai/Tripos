@@ -20,9 +20,9 @@
 \begin{example}
     Let \(G = PSL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{5\mathbb{\MakeUppercase{Z}} })\), then \(\abs{G} = \frac{4\cdot 5 \cdot 6}{2} = 60\).
 
-    Let \(G\) act on \(\nicefrac{\mathbb{\MakeUppercase{Z}} }{5\mathbb{\MakeUppercase{Z}}}\cup \{\infty\}\) via the Möbius-like transformation. By Lemma \eqref{pglin}, the permutation representation \(\phi: G \to \mathrm{Sym}(\{0,1,2,3,4,\infty\})\) is injective. We claim that \(\ima(\phi)\leq A_6\); that is, \(\psi:G \to S_6\to \{\pm 1\}\) is trivial.
+    Let \(G\) act on \(\nicefrac{\mathbb{\MakeUppercase{Z}} }{5\mathbb{\MakeUppercase{Z}}}\cup \{\infty\}\) via the Möbius-like transformation. By \eqref{le:pglin}, the permutation representation \(\phi: G \to \mathrm{Sym}(\{0,1,2,3,4,\infty\})\) is injective. We claim that \(\ima(\phi)\leq A_6\); that is, \(\psi:G \to S_6\to \{\pm 1\}\) is trivial.
 
-    Let \(h \in G\) have order \(2^n m\), \(m\) odd. If \(\psi(h^m) = 1\), then \[\psi(h)^m = 1 \implies \psi(h) = 1.\] Noting that \(h^m\) has order \(2^n\), it suffices to show that \(\psi(g) = 1\) for all \(g \in G\) or order a power of 2. By Lemma \eqref{sylowp}, every such \(g\) belongs to a Sylow 2-subgroup.
+    Let \(h \in G\) have order \(2^n m\), \(m\) odd. If \(\psi(h^m) = 1\), then \[\psi(h)^m = 1 \implies \psi(h) = 1.\] Noting that \(h^m\) has order \(2^n\), it suffices to show that \(\psi(g) = 1\) for all \(g \in G\) or order a power of 2. By \cref{le:sylowp}, every such \(g\) belongs to a Sylow 2-subgroup.
 
     It suffices to show that \(\psi(H) = 1\) for \(H\) a particular Sylow 2-subgroup. (since \(\ker(\psi)\) is normal and all Sylow subgroups are conjugate)
 
@@ -54,42 +54,38 @@
 \end{property}
 \subsection{Finite Abelian groups}
 Later in the course we will prove the following result.
-\begin{theorem}{}{}
+\begin{theorem}{}{finab}
     Every finite Abelian group is isomorphic to a product of cyclic groups.
-    \label{finab}
 \end{theorem}
 \begin{note}
     Such an isomorphism is not unique.
 \end{note}
-\begin{lemma}{}{}
+\begin{lemma}{}{cyclicmn}
     If \(m, n \in \mathbb{\MakeUppercase{Z}}_{\geq 1}\) coprime, then \(C_m \times C_n \cong C_{mn}\).
-    \label{cyclicmn}
 \end{lemma}
 \begin{proof}
     Let \(g\) and \(h\) be generators of \(C_n\) and \(C_m\). Then \((g, h) \in C_m \times C_n\) and \((g, h)^r = (g^r, h^r)\). Hence, \((g, h)^r = 1 \iff m \mid r \land n \mid r \iff mn \mid r\). Thus, \((g,h)\) has order \(mn = \abs{C_m \times C_n} \). And we have \( C_m \times C_n \cong C_{mn} = \left\langle(g,h)\right\rangle \).
 \end{proof}
-\begin{corollary}{}{}
+\begin{corollary}{}{primeab}
     Let \(G\) be a finite Abelian group, then \(G \cong C_{n_1} \times C_{n_2} \times \cdots C_{n_k}\) where \(n_i\) is a prime power.
-    \label{primeab}
 \end{corollary}
 \begin{proof}
-    If \(n = p_1^{a_1}\cdots p_r^{a_r}\) (\(p_1,\ldots,p_r\) distinct primes), then Lemma \eqref{cyclicab} shows \(C_n \cong C_{p_1^{a_1}}\times \cdots C_{p_r^{a_r}}\). Writing each of the cyclic groups in Theorem \eqref{finab} in this way gives the result.
+    If \(n = p_1^{a_1}\cdots p_r^{a_r}\) (\(p_1,\ldots,p_r\) distinct primes), then \cref{le:cyclicab} shows \(C_n \cong C_{p_1^{a_1}}\times \cdots C_{p_r^{a_r}}\). Writing each of the cyclic groups in \cref{th:finab} in this way gives the result.
 \end{proof}
-We will prove a refinement of Theorem \eqref{finab}.
-\begin{theorem}{}{}
-    \label{divab}
+We will prove a refinement of \cref{th:finab}.
+\begin{theorem}{}{divab}
     Let \(G\) be a finite Abelian group. Then
     \[G \cong C_{d_1}\times C_{d_2} \times \cdots \times C_{d_t}\]
     for some \(d_1 \mid d_2 \mid \dots \mid d_t\).
 \end{theorem}
 \begin{remark}
-    The integers \(n_1, \ldots, n_k\) in Corollary \eqref{primeab} (up to order) and \(d_1, \ldots, d_t\) in Theorem \eqref{divab} (assuming \(d_1 > 1\)) are uniquely determined by \(G\). (Proof omit)
+    The integers \(n_1, \ldots, n_k\) in \cref{co:primeab} (up to order) and \(d_1, \ldots, d_t\) in \cref{th:divab} (assuming \(d_1 > 1\)) are uniquely determined by \(G\). (Proof omit)
 \end{remark}
 \begin{example}
     \leavevmode
     \begin{enumerate}
         \item The Abelian groups of order 8 are \(C_8\), \(C_2 \times C_4\), \(C_2 \times C_2 \times C_2\).
-        \item The Abelian groups of order 12 are \(C_2 \times C_2 \times C_3\) and \(C_4 \times C_3\) by Theorem \eqref{primeab}, and \(C_2 \times C_6\) and \(C_{12}\) by Theorem \eqref{divab}.
+        \item The Abelian groups of order 12 are \(C_2 \times C_2 \times C_3\) and \(C_4 \times C_3\) by \cref{th:primeab}, and \(C_2 \times C_6\) and \(C_{12}\) by \cref{th:divab}.
     \end{enumerate}
 \end{example}
 \begin{definition}{}{}

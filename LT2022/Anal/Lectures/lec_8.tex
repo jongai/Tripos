@@ -17,7 +17,7 @@
     "A continuous function on a closed bounded interval is bounded and attains its bounds."
 \end{theorem}
 \begin{proof}
-    Let \(A = \{f(x)\mid x \in [a,b]\} = f([a,b])\). By Theorem \eqref{th:contbounded}, \(A\) is bounded since it is clearly non-empty, it has a supremum \(M\). By definition of supremum, given an integer \(n\geq 1\), there exists \(x_n \in [a,b]\) such that \(M-\frac{1}{n}<f(x_n) \leq M\). From Bolzano-Weierstrass, there exists \(x_{n_j} \to x \in [a,b]\). Since \(f(x_{n_j}) \to M\), by continuity of \(f\), we get that \(f(x) = M\). So \(x_2\coloneqq x\).
+    Let \(A = \{f(x)\mid x \in [a,b]\} = f([a,b])\). By \cref{th:contbounded}, \(A\) is bounded since it is clearly non-empty, it has a supremum \(M\). By definition of supremum, given an integer \(n\geq 1\), there exists \(x_n \in [a,b]\) such that \(M-\frac{1}{n}<f(x_n) \leq M\). From Bolzano-Weierstrass, there exists \(x_{n_j} \to x \in [a,b]\). Since \(f(x_{n_j}) \to M\), by continuity of \(f\), we get that \(f(x) = M\). So \(x_2\coloneqq x\).
 
     We can prove similarly for the minimum.
 \end{proof}

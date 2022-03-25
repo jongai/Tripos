@@ -31,9 +31,8 @@
 
     Thus, \(\abs{G_i} =p^i\) for \(0\leq i \leq m = n\).
 \end{proof}
-\begin{lemma}{}{}
+\begin{lemma}{}{cyclicab}
     For \(G\) a group, if \(\nicefrac{G}{Z(G)}\) is cyclic, then \(G\) is Abelian. (so in fact \(\nicefrac{G}{Z(G)} = \textbf{1} \))
-    \label{cyclicab}
 \end{lemma}
 \begin{proof}
     Let \(gZ(G)\) be a generator for \(\nicefrac{G}{Z(G)}\), then each coset is of the form \(g^{rZ(G)}\) for some \(r \in \mathbb{Z}\).
@@ -50,7 +49,7 @@
 \begin{proof}
     We have three choices for the size of the center of the group. Noting that the center cannot be trivial for a p-group. So \(\abs{Z(G)} = p\) or \(\abs{Z(G)} = p^2\).
 
-    If \(\abs{Z(G)} = p\), \(\abs{\nicefrac{G}{Z(G)}} = p\), apply Lemma \eqref{cyclicab}, and we have a contradiction.
+    If \(\abs{Z(G)} = p\), \(\abs{\nicefrac{G}{Z(G)}} = p\), apply \cref{le:cyclicab}, and we have a contradiction.
 
     If \(\abs{Z(G)} = p^2\), then \(Z(G) = G\) so \(G\) is Abelian.
 \end{proof}
@@ -108,9 +107,8 @@ It is useful to show that the group of a certain order cannot be simple.
 
         Combining the two facts, we have \(\abs{G_X} =p^a\), i.e., \(G_x \in \mathrm{Syl}_p(G)\).
         \item We prove a stronger result.
-        \begin{lemma}{}{}
+        \begin{lemma}{}{sylowp}
             If \(P \in \mathrm{Syl}_p(G)\) and \(Q \leq G\) is a p-subgroup, then \(Q \leq gPg^{-1}\) for some \(g \in G\).
-            \label{sylowp}
         \end{lemma}
         The lemma implies Second Sylow Theorem by taking \(Q\) a Sylow subgroup.
 
