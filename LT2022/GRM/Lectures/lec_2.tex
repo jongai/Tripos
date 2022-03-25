@@ -1,6 +1,6 @@
 \lecture{2}{22 Jan. 12:00}{Isomorphism Theorems}
 We will next talk about a special kind of homomorphism.
-\begin{definition}
+\begin{definition}{}{}
     An \textit{isomorphism} of groups is a group homomorphism that is also a bijection.
 
     We say that \(G\) and \(H\) are isomorphic (written \(G\cong H\)) if there exists an isomorphism \(\phi: G \to H\).
@@ -10,13 +10,13 @@ We will next talk about a special kind of homomorphism.
     Check that \(\phi^{-1}: H\to G\) is a group homomorphism.
 \end{exercise}
 
-\begin{theorem}[First Isomorphism Theorem]
-    Let \(\phi:G\to H\) be a group homomorphism. Then \(\ker(\phi)\trianglelefteq\) and \(\nicefrac{G}{\ker(\phi)}\cong \Ima(\phi)\).
+\begin{theorem}{First Isomorphism Theorem}{}
+    Let \(\phi:G\to H\) be a group homomorphism. Then \(\ker(\phi)\trianglelefteq\) and \(\nicefrac{G}{\ker(\phi)}\cong \ima(\phi)\).
 \end{theorem}
 \begin{proof}
     Let \(K = \ker(\phi)\). We already checked that \(K\) is normal.
 
-    Define \(\Phi: \nicefrac{G}{K}\to \Ima(\phi)\), \(gK\mapsto\phi(g)\). We need to check that \(\Phi\) is well-defined first.
+    Define \(\Phi: \nicefrac{G}{K}\to \ima(\phi)\), \(gK\mapsto\phi(g)\). We need to check that \(\Phi\) is well-defined first.
     \begin{align*}
         g_1 K = g_2 K &\iff g_2^{-1}g_1 \in K\\
         &\iff  \phi(g_2^{-1}g_1) = 1\\
@@ -31,7 +31,7 @@ We will next talk about a special kind of homomorphism.
         &=\Phi(g_1 K)\Phi(g_2 K).
     \end{align*}
 
-    Lastly, we show that \(\Phi\) is surjective. Let \(x \in \Ima (\phi)\), say \(x = \phi(g)\) for some \(g \in G\), then \(x = \Phi(gK)\). So it is indeed an isomorphism.
+    Lastly, we show that \(\Phi\) is surjective. Let \(x \in  \ima(\phi)\), say \(x = \phi(g)\) for some \(g \in G\), then \(x = \Phi(gK)\). So it is indeed an isomorphism.
 \end{proof}
 
 \begin{example}
@@ -45,14 +45,14 @@ We will next talk about a special kind of homomorphism.
     Since \(e^{z + w} = e^z e^w\), this is a group homomorphism from \((\mathbb{C}, +) \to (\mathbb{C}, \times)\). It is well known that
     \begin{align*}
         \ker(\phi) &= 2\pi i \mathbb{Z},\\
-        \Ima(\phi) &= \mathbb{C}^\times \quad \text{by existence of \(\log\) }.
+        (\phi) &= \mathbb{C}^\times \quad \text{by existence of \(\log\) }.
     \end{align*}
     Thus, \(\nicefrac{\mathbb{C}}{2\pi i \mathbb{Z}} \cong \mathbb{C}^\times\).
 \end{example}
 
 From the naming for the First Isomorphism Theorem, we have the following Isomorphism Theorems as well.
 
-\begin{theorem}[Second Isomorphsim Theorem]
+\begin{theorem}{Second Isomorphsim Theorem}{}
     Let \(H \leq G\), and \(K \trianglelefteq G\). Then \(HK = \{hk \mid h \in H, k\in K\} \leq G\) and \(H \cap K \trianglelefteq H\). Moreover,
     \[
         \frac{HK}{K} \cong \frac{H}{H\cap K}.
@@ -73,7 +73,7 @@ From the naming for the First Isomorphism Theorem, we have the following Isomorp
     This is the composition of inclusion map \(H \to G\) and quotient map \(G \to \nicefrac{G}{K}\) hence \(\phi\) is a group homomorphism.
     \begin{align*}
         \ker(\phi) &= \{h\in H\mid hK = K\} = H \cap K \trianglelefteq H,\\
-        \Ima(\phi) &= \{hK\mid h\in H\} = \nicefrac{HK}{K}.
+        \ima(\phi) &= \{hK\mid h\in H\} = \nicefrac{HK}{K}.
     \end{align*}
     First isomorphism theorem gives
     \[
@@ -92,7 +92,7 @@ From the naming for the First Isomorphism Theorem, we have the following Isomorp
         \{\text{Normal subgroups of }\nicefrac{G}{K}\} \longleftrightarrow\{\text{Normal subgroups of }G\text{ containing }K\}.
     \]
 \end{remark}
-\begin{theorem}[Third Isomorphism Theorem]
+\begin{theorem}{Third Isomorphism Theorem}{}
     Let \(K \leq  H \leq  G\) be normal subgroups of \(G\). Then
     \[
         \frac{\nicefrac{G}{K}}{\nicefrac{H}{K}}\cong \frac{G}{H}.
@@ -116,7 +116,7 @@ From the naming for the First Isomorphism Theorem, we have the following Isomorp
 If \(K \trianglelefteq G\), then studying the group \(K\) and \(\nicefrac{G}{K}\) gives some information about \(G\).
 
 This approach is not always available.
-\begin{definition}[Simple Group]
+\begin{definition}{Simple Group}{}
     A group \(G\) is \textit{simple} if \(\textbf{1} \) (the trivial subgroup) and \(G\) are its only normal subgroups.
 \end{definition}
 \begin{notation}
@@ -124,15 +124,15 @@ This approach is not always available.
 \end{notation}
 Similar to the prime numbers, we can think of finite simple groups as the building block of finite groups. One of the greatest achievements in math is that we classified \textit{all} finite simple groups!
 
-\begin{lemma}
+\begin{lemma}{}{}
     Let \(G\) be an Abelian group. \(G\) is simple if and only if \(G \cong C_p\) for some prime \(p\).
 \end{lemma}
 \begin{proof}
     We prove the \(\impliedby \) direction first. Let \(H \leq C_p\). Lagrange's Theorem tells us
     \[
-        \left\vert H \right\vert \big\vert \left\vert C_p \right\vert = p.
+        \abs{H} \big\vert \abs{C_p} = p.
     \]
-    So \(\left\vert H \right\vert = 1\) or \(p\) by primality of p. That is, \(H = \{1\}\) or \(C_p\). Thus, \(C_p\) is simple.
+    So \(\abs{H} = 1\) or \(p\) by primality of p. That is, \(H = \{1\}\) or \(C_p\). Thus, \(C_p\) is simple.
 
     To prove the \(\implies\) direction. Let \(1 \neq g \in G\). \(G\) contains the subgroup
     \[
@@ -144,7 +144,7 @@ Similar to the prime numbers, we can think of finite simple groups as the buildi
 
     Otherwise, \(G \cong C_n\) for some \(n\), let \(g\) be a generator. If \(m\mid n\), then \(g^{\nicefrac{n}{m}}\) generates a subgroup of order m. Because \(G\) is simple, the order of the subgroup can only be \(1\) or \(n\). So the only factors of \(n\) is \(1\) and \(n\), and we have \(n\) prime.
 \end{proof}
-\begin{lemma}
+\begin{lemma}{}{compseries}
     If \(G\) is a finite group, then it has a composition series
     \[
         \textbf{1} \cong G_0 \trianglelefteq G_1 \trianglelefteq \ldots \trianglelefteq G_m \cong G
@@ -152,5 +152,4 @@ Similar to the prime numbers, we can think of finite simple groups as the buildi
     with each quotient \(\nicefrac{G_{i+1}}{G_{i}}\) simple.
 
     Note that \(G_i\) need not be normal in \(G\).
-    \label{compseries}
 \end{lemma}

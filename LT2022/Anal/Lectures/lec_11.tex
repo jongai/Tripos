@@ -1,7 +1,6 @@
 \lecture{11}{14 Feb. 2022}{}
 \leavevmode
-\begin{theorem}[Mean Value Theorem]
-    \label{MVT}
+\begin{theorem}{Mean Value Theorem}{MVT}
     Let \(f: [a,b] \to \mathbb{R}\) be a continuous function which is differentiable on \((a,b)\), then \(\exists c \in (a,b)\) such that
     \[
         f(b) - f(a) = f'(c)(b-a).
@@ -21,8 +20,7 @@
     \]
     with \(\theta \in (0,1)\). We need to be careful, and consider \(\theta = \theta(h)\).
 \end{remark}
-\begin{corollary}
-    \label{incder}
+\begin{corollary}{}{incder}
     \(f: [a,b] \to \mathbb{R}\) continuous and differentiable on \((a,b)\).
     \begin{enumerate}
         \item If \(f'(x) > 0\) for all \(x \in (a,b)\), then \(f\) is strictly increasing. (i.e. if \(b \geq y > x \geq a\), then \(f(y) > f(x)\))
@@ -38,15 +36,14 @@
         \item Take \(x \in [a,b]\). Then use the MVT in \([a,x]\) to get \(c \in (a,x)\) such that \(f(x) - f(a) = f'(c) (x-a) = 0\). So \(f(x) = f(a)\) and \(f\) is constant.
     \end{enumerate}
 \end{proof}
-\begin{theorem}[Inverse Function Theorem]
-    \label{alphainv}
+\begin{theorem}{Inverse Function Theorem}{alphainv}
     If \(f:[a,b]\to\mathbb{R}\) continuous and differentiable on \((a,b)\) with \(f'(x) >0\) for all \(x \in (a,b)\). Let \(f(a) = c\) and \(f(b) = d\), then the function \(f:[a,b]\to[c,d]\) is bijective and \(f^{-1}\) is differentiable with
     \[
         (f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}.
     \]
 \end{theorem}
 \begin{proof}
-    By Corollary \eqref{incder}, \(f\) is strictly increasing in \([a,b]\). By theorem \eqref{betainv}, \(\exists g: [c,d] \to [a,b]\) which is a continuous strictly increasing inverse of \(f\). We want to show that \(g\) is differentiable and \(g'(y) = \frac{1}{f'(x)}\) where \(y = f(x)\) and \(x \in (a,b)\).
+    By Corollary \eqref{co:incder}, \(f\) is strictly increasing in \([a,b]\). By theorem \eqref{th:betainv}, \(\exists g: [c,d] \to [a,b]\) which is a continuous strictly increasing inverse of \(f\). We want to show that \(g\) is differentiable and \(g'(y) = \frac{1}{f'(x)}\) where \(y = f(x)\) and \(x \in (a,b)\).
 
     If \(k \neq 0\) is given, let \(h\) be given by \(y + k = f(x + h)\). That is, \(g(y + k) = x + h\) for \(h \neq 0\). Then
     \[
@@ -58,7 +55,7 @@
     \]
 \end{proof}
 \begin{example}
-    We take \(g(x) = x^\frac{1}{q}\) with \(x > 0\) and \(q\) positive integer. So \(f(x) = x^q\), with \(f'(x) = qx^{q-1}\). \(g\) is differentiable and so is \(g\), and by Theorem \eqref{alphainv},
+    We take \(g(x) = x^\frac{1}{q}\) with \(x > 0\) and \(q\) positive integer. So \(f(x) = x^q\), with \(f'(x) = qx^{q-1}\). \(g\) is differentiable and so is \(g\), and by \cref{th:alphainv},
     \[
         g'(x) = \frac{1}{q(x^\frac{1}{q})^{q-1}} = \frac{1}{q}x^{\frac{1}{q} - 1}.
     \]
@@ -71,7 +68,7 @@ Suppose \(f,g: [a,b] \to \mathbb{R}\) continuous and differentiable on \((a,b)\)
     \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{(b-a)f'(s)}{(b-a)g'(t)}=\frac{f'(s)}{g'(t)}.
 \]
 Cauchy showed that we can take \(s = t\).
-\begin{theorem}[Cauchy's Mean Value Theorem]
+\begin{theorem}{Cauchy's Mean Value Theorem}{}
     Let \(f,g: [a,b] \to \mathbb{R}\) be continuous and differentiable on \((a,b)\). Then \(\exists t \in (a,b)\) such that
     \[
         (f(b) - f(a))g'(t) = f'(t)(g(b) - g(a)).

@@ -11,11 +11,11 @@
     \]
     The inductive statement tells us
     \begin{align*}
-        \probability{}{\bigcup_{i=1}^n A_i} =& \sum\limits_{\substack{J\subseteq \{1, \ldots ,n-1 \}\\ J \neq \varnothing}} (-1)^{\left\vert J \right\vert +1} \mathbb{\MakeUppercase{p}}(\bigcap_{i\in J}A_i) + \probability{}{A_n}\\
-        &- \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1 \}\\ J \neq \varnothing }}(-1)^{\left\vert J \right\vert +1}\probability{}{\bigcap_{i\in J \cup \{n\}}A_i}\\
-        =& \sum\limits_{\substack{I\subseteq \{1, \ldots ,n-1 \}\\ I \neq \varnothing}} (-1)^{\left\vert I \right\vert +1} \mathbb{\MakeUppercase{p}}(\bigcap_{i\in I}A_i) + \probability{}{A_n}\\
-        &+ \sum\limits_{\substack{I\subseteq \{1, \ldots , n - 1 \}\\ n\in I, \left\vert I \right\vert \geq 2}}(-1)^{\left\vert I \right\vert +1}\probability{}{\bigcap_{i\in I}A_i}\\
-        =& \sum\limits_{\substack{I \subseteq \{1, \ldots ,n \}\\ I \neq \varnothing}} (-1)^{\left\vert I \right\vert +1} \probability{}{\bigcap_{i\in I}A_i}.
+        \probability{}{\bigcup_{i=1}^n A_i} =& \sum\limits_{\substack{J\subseteq \{1, \ldots ,n-1 \}\\ J \neq \varnothing}} (-1)^{\abs{J} +1} \mathbb{\MakeUppercase{p}}(\bigcap_{i\in J}A_i) + \probability{}{A_n}\\
+        &- \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1 \}\\ J \neq \varnothing }}(-1)^{\abs{J} +1}\probability{}{\bigcap_{i\in J \cup \{n\}}A_i}\\
+        =& \sum\limits_{\substack{I\subseteq \{1, \ldots ,n-1 \}\\ I \neq \varnothing}} (-1)^{\abs{I} +1} \mathbb{\MakeUppercase{p}}(\bigcap_{i\in I}A_i) + \probability{}{A_n}\\
+        &+ \sum\limits_{\substack{I\subseteq \{1, \ldots , n - 1 \}\\ n\in I, \abs{I} \geq 2}}(-1)^{\abs{I} +1}\probability{}{\bigcap_{i\in I}A_i}\\
+        =& \sum\limits_{\substack{I \subseteq \{1, \ldots ,n \}\\ I \neq \varnothing}} (-1)^{\abs{I} +1} \probability{}{\bigcap_{i\in I}A_i}.
     \end{align*}
 \end{proof}
 \subsection{Bonferroni Inequalities}
@@ -34,22 +34,22 @@ Recall countable subadditivity states that \(\probability{}{\cup A_i}\leq \sum \
     We induct on \(r\) and \(n\). When \(r\) is odd
      \begin{align*}
          \probability{}{\bigcup_{i=1}^n A_i} =& \probability{}{\bigcup_{i = 1} A_i} + \probability{}{A_n} - \probability{}{\bigcup_{i=1}^{n-1}(A_i \cap A_n)}\\
-         \leq& \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1\}\\1 \leq  \left\vert J \right\vert \leq r }} (-1)^{\left\vert J \right\vert +1}\probability{}{\bigcap_{i\in J} A_i}+\probability{}{A_n} \\
-         &- \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1\}\\1 \leq  \left\vert J \right\vert \leq r -1}} (-1)^{\left\vert J \right\vert +1}\probability{}{\bigcap_{i\in J \cup \{n\}} A_i}\\
-         \leq& \sum\limits_{\substack{I\subseteq \{1, \ldots , n\}\\1 \leq  \left\vert I \right\vert \leq r }} (-1)^{\left\vert I \right\vert +1}\probability{}{\bigcap_{i\in I} A_i}.
+         \leq& \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1\}\\1 \leq  \abs{J} \leq r }} (-1)^{\abs{J} +1}\probability{}{\bigcap_{i\in J} A_i}+\probability{}{A_n} \\
+         &- \sum\limits_{\substack{J\subseteq \{1, \ldots , n - 1\}\\1 \leq  \abs{J} \leq r -1}} (-1)^{\abs{J} +1}\probability{}{\bigcap_{i\in J \cup \{n\}} A_i}\\
+         \leq& \sum\limits_{\substack{I\subseteq \{1, \ldots , n\}\\1 \leq  \abs{I} \leq r }} (-1)^{\abs{I} +1}\probability{}{\bigcap_{i\in I} A_i}.
      \end{align*}
      And a similar argument follows when \(r\) is even.
 \end{proof}
 \subsection{Counting with IEP}
 Inclusion Exclusion Principle gives up a route to solve questions that do not have a closed form answer.
 
-When we have a uniform probability measure on \(\Omega\) with \(\left\vert \Omega \right\vert < \infty\),
+When we have a uniform probability measure on \(\Omega\) with \(\abs{\Omega} < \infty\),
 \[
-    \probability{}{A} =\frac{\left\vert A \right\vert}{\left\vert \Omega \right\vert }~\forall A \subseteq \Omega.
+    \probability{}{A} =\frac{\abs{A}}{\abs{\Omega} }~\forall A \subseteq \Omega.
 \]
 Then \(\forall A_1, \ldots, A_n \subseteq \Omega \),
 \[
-    \left\vert A_1 \cup \ldots \cup A_n \right\vert = \sum\limits_{k=1}^{n} (-1)^{n+1}\sum\limits_{i_1< \ldots < i_k }\left\vert A_{i_1}\cap \ldots \cap A_{i_k}  \right\vert,
+    \abs{A_1 \cup \ldots \cup A_n} = \sum\limits_{k=1}^{n} (-1)^{n+1}\sum\limits_{i_1< \ldots < i_k }\abs{A_{i_1}\cap \ldots \cap A_{i_k} },
 \]
 and similarly for Bonferroni inequalities.
 
@@ -59,21 +59,21 @@ and similarly for Bonferroni inequalities.
     We have the probability space and event
     \begin{align*}
         \Omega &= \{f:\{1, \ldots ,n\}\to \{1, \ldots , m \}\},\\
-        A &= \{f: \Ima(f) = \{1, \ldots , m \}\}.
+        A &= \{f: \ima(f) = \{1, \ldots , m \}\}.
     \end{align*}
 
-    For all \(i \in \{1, \ldots ,m \}\), let \(B_i = \{f\in \Omega\mid i \notin \Ima(f)\}\). We have the following key observations:
+    For all \(i \in \{1, \ldots ,m \}\), let \(B_i = \{f\in \Omega\mid i \notin \ima(f)\}\). We have the following key observations:
     \begin{itemize}
         \item \(A = B_1^c \cap \ldots B_m^c = (B_1 \cup \ldots \cup B_m )^c \).
-        \item \(\left\vert B_{i_1}\cap \ldots \cap B_{i_k} \right\vert \) is nice to calculate, and we have
+        \item \(\abs{B_{i_1}\cap \ldots \cap B_{i_k}} \) is nice to calculate, and we have
         \[
-            \left\vert B_{i_1}\cap \ldots \cap B_{i_k}  \right\vert = \left\vert \{f\in \Omega\mid i_1, \ldots, i_k \notin \Ima(f) \} \right\vert = (m-k)^n.
+            \abs{B_{i_1}\cap \ldots \cap B_{i_k} } = \abs{\{f\in \Omega\mid i_1, \ldots, i_k \notin \ima(f) \}} = (m-k)^n.
         \]
         So by IEP, we have 
         \begin{align*}
-            \left\vert B_1 \cup \ldots \cup B_m \right\vert &= \sum\limits_{k=1}^{m} (-1)^{k+1}\sum\limits_{i_1<\ldots<i_{k}} \left\vert B_{i_1}\cap \ldots \cap B_{i_k}\right\vert\\
+            \abs{B_1 \cup \ldots \cup B_m} &= \sum\limits_{k=1}^{m} (-1)^{k+1}\sum\limits_{i_1<\ldots<i_{k}} \abs{B_{i_1}\cap \ldots \cap B_{i_k}}\\
             &= \sum\limits_{k=1}^{m} (-1)^{k+1} \binom{m}{k}(m-k)^n.
         \end{align*}
-        So \(\left\vert A \right\vert = m^n - \sum\limits_{k=1}^{m} (-1)^{k+1}\binom{m}{k}(m-k)^n = \sum\limits_{k=0}^{m} (-1)^k \binom{m}{k}(m-k)^n\).
+        So \(\abs{A} = m^n - \sum\limits_{k=1}^{m} (-1)^{k+1}\binom{m}{k}(m-k)^n = \sum\limits_{k=0}^{m} (-1)^k \binom{m}{k}(m-k)^n\).
     \end{itemize}
 \end{example}

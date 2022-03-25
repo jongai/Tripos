@@ -1,9 +1,27 @@
-% Some basic packages
-% Math stuff
-\usepackage{amsmath, amsfonts, mathtools, amsthm, amssymb}
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[parskip=full]{scrartcl}
+% Core Math Packages
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% Core Typesetting Packages
+\usepackage{microtype}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{textcomp}
+\usepackage[sc]{mathpazo}
+\usepackage[english]{isodate}
+
+\setkomafont{title}{\scshape\rmfamily}
+\setkomafont{section}{\LARGE\rmfamily}
+\setkomafont{subsection}{\large\rmfamily}
+% Useful Packages
+\usepackage{tcolorbox}
+\usepackage{nicefrac}
+\usepackage{braket}
+\usepackage[all,error]{onlyamsmath}
+\usepackage{subcaption}
+
 \usepackage[hyphens]{url}
 \usepackage{graphicx}
 \usepackage{float}
@@ -13,29 +31,11 @@
 \usepackage{cleveref}
 \usepackage{tikz-cd}
 % useful macro for class
-\let\originalleft\left
-\let\originalright\right
-\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
-\renewcommand{\right}{\aftergroup\egroup\originalright}
 \newcommand{\probability}[2]{\mathbb{\MakeUppercase{P}}_{#1} \left(#2\right)}
 \newcommand{\variance}[2]{\mathrm{Var}_{#1} \left[ #2 \right]}
 \newcommand{\expectation}[2]{\mathbb{\MakeUppercase{E}}_{#1} \left[#2\right]}
 \newcommand{\at}[3]{\left.#1\right\vert_{#2}^{#3}}
-\newcommand\quotient[2]{
-	\mathchoice
-	{% \displaystyle
-		\text{\raise1ex\hbox{$#1$}\Big/\lower1ex\hbox{$#2$}}%
-	}
-	{% \textstyle
-		#1\,/\,#2
-	}
-	{% \scriptstyle
-		#1\,/\,#2
-	}
-	{% \scriptscriptstyle  
-		#1\,/\,#2
-	}
-}
+
 \newcommand{\identity}{\mathrm{id}}
 \newcommand{\sinc}{\mathop{\mathrm{sinc}}}
 \newcommand{\rect}{\mathop{\mathrm{rect}}}
@@ -45,26 +45,19 @@
 \newcommand{\Homomorphism}{\mathrm{Hom}}
 \newcommand{\Morphism}{\mathrm{Mor}}
 \newcommand{\Object}{\mathrm{Ob}}
-\newcommand{\nsub}{\trianglelefteq}
 \DeclareMathOperator{\lcm}{lcm}
 
 \pdfminorversion=7
 
-% Don't indent paragraphs, leave some space between them
-\usepackage{parskip}
-
 % for the big braces
 \usepackage{bigdelim}
 
-% Hide page number when page is empty
-\usepackage{emptypage}
-\usepackage{subcaption}
 \usepackage{multicol}
 \usepackage{xcolor}
 
 
 % Fancy script capitals
-\usepackage{mathrsfs}
+% \usepackage{mathrsfs}
 \usepackage{cancel}
 % Bold math
 \usepackage{bm}
@@ -96,11 +89,10 @@
 % Environments
 \makeatother
 % For box around Definition, Theorem, etc.
-\usepackage{mdframed}
-\mdfsetup{skipabove=1em,skipbelow=0em}
+\usepackage{tcolorbox}
 \theoremstyle{definition}
-\newmdtheoremenv[nobreak=true]{definition}{Definition}[section]
-\providecommand*\definitionautorefname{Definition}
+\tcbuselibrary{theorems}
+\newtcbtheorem[number within=section, crefname={Definition}{Definitions}]{definition}{Definition}{}{def}
 \newtheorem*{example}{Example}
 \newtheorem*{notation}{Notation}
 \newtheorem*{prev}{As previously seen}
@@ -113,25 +105,20 @@
 \newtheorem*{property}{Property}
 \newtheorem*{intuition}{Intuition}
 \newtheorem*{summary}{Summary}
-\newmdtheoremenv[nobreak=true]{theorem}{Theorem}[section]
-\providecommand*\theoremautorefname{Theorem}
-\newmdtheoremenv[nobreak=true]{lemma}{Lemma}[section]
-\providecommand*\lemmaautorefname{Lemma}
-\newmdtheoremenv[nobreak=true]{corollary}{Corollary}[section]
-\providecommand*\corollaryautorefname{Corollary}
-\newmdtheoremenv[nobreak=true]{proposition}{Proposition}[section]
-\providecommand*\propositionautorefname{Proposition}
-
-\makeatletter
-\def\th@plain{%
-	\thm@notefont{}% same as heading font
-	\itshape % body font
-}
-\def\th@definition{%
-	\thm@notefont{}% same as heading font
-	\normalfont % body font
-}
-\makeatother
+\newtcbtheorem[number within=section, crefname={Theorem}{Theorems}]{theorem}{Theorem}{}{th}
+\newtcbtheorem[number within=section, crefname={Lemma}{Lemmas}]{lemma}{Lemma}{}{le}
+\newtcbtheorem[number within=section, crefname={Corollary}{Corollarys}]{corollary}{Corollary}{}{co}
+\newtcbtheorem[number within=section, crefname={Proposition}{Propositions}]{proposition}{Proposition}{}{pr}
+% \makeatletter
+% \def\th@plain{%
+% 	\thm@notefont{}% same as heading font
+% 	\itshape % body font
+% }
+% \def\th@definition{%
+% 	\thm@notefont{}% same as heading font
+% 	\normalfont % body font
+% }
+% \makeatother
 
 % Fix some spacing
 % http://tex.stackexchange.com/questions/22119/how-can-i-change-the-spacing-before-theorems-with-amsthm
@@ -158,26 +145,21 @@
 }
 
 % These are the fancy headers
-\usepackage{fancyhdr}
-\pagestyle{fancy}
+\usepackage[headsepline]{scrlayer-scrpage}
+\usepackage{lastpage}
+\clearpairofpagestyles
 
-% LE: left even
-% RO: right odd
-% CE, CO: center even, center odd
-% My name for when I print my lecture notes to use for an open book exam.
-% \fancyhead[LE,RO]{Gilles Castel}
-
-\fancyhead[RO,L]{\@lecture} % Right odd,  Left even
-\fancyhead[R,LO]{}          % Right even, Left odd
-\fancyfoot[RO,L]{\thepage}  % Right odd,  Left even
-\fancyfoot[R,LO]{}          % Right even, Left odd
-\fancyfoot[C]{\leftmark}     % Center
+\ohead{\@lecture}
+\ihead{\rightmark}
+\cfoot{\pagemark}
+\renewcommand*\pagemark{{\usekomafont{pagenumber}Page\nobreakspace\thepage\ of \pageref*{LastPage}}}
+\addtokomafont{pageheadfoot}{\upshape}
 
 \makeatother
 
 % TodoNotes and inline notes in fancy boxes
 \usepackage{todonotes}
-\usepackage{tcolorbox}
+\setuptodonotes{inline}
 
 % Make boxes breakable
 \tcbuselibrary{breakable}
@@ -211,4 +193,51 @@
 		}%
 }
 
-\DeclareMathOperator{\Ima}{Im}
+% Custom Commands
+
+% Operators
+\DeclareMathOperator{\ima}{im}
+\DeclareMathOperator{\aut}{Aut}
+
+% abs and norm
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\newcommand{\nsub}{\DOTSB\mathrel{\trianglelefteq}}
+\newcommand{\Z}[1]{\nicefrac{\mathbb{Z}}{#1\mathbb{Z}}}
+
+\newcommand{\fullfunction}[5]{%
+    \begin{array}[t]{@{}r@{}r@{}c@{}l@{}}
+    #1 \colon & #2 & {}\longrightarrow{} & #3 \\
+                & #4 & {}\longmapsto{}     & #5
+    \end{array}
+}
+
+% Commands for derivatives
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\Dif}{\mathop{}\!\mathrm{D}}
+
+\makeatletter
+\newcommand{\spx}[1]{%
+  \if\relax\detokenize{#1}\relax
+    \expandafter\@gobble
+  \else
+    \expandafter\@firstofone
+  \fi
+  {^{#1}}%
+}
+\makeatother
+
+\newcommand\pd[3][]{\frac{\partial\spx{#1}#2}{\partial#3\spx{#1}}}
+\newcommand{\md}[6]{\frac{\partial\spx{#2}#1}{\partial#3\spx{#4}\partial#5\spx{#6}}}
+\newcommand{\od}[3][]{\frac{\dif\spx{#1}#2}{\dif#3\spx{#1}}}

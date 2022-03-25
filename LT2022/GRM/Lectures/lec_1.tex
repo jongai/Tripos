@@ -33,7 +33,7 @@ Allows us to prove Jordan normal form, and classify finite Abelian groups.
 \section{Groups}
 \subsection{Revision and Basic Theory}
 We revisit basic properties and definition from Part IA Groups.
-\begin{definition}[Group]
+\begin{definition}{Group}{}
     A \textit{group} is a pair \((G, \cdot)\) where \(G\) is a set and \(\cdot: G \times G \to G\) is a binary operation satisfying:
     \begin{enumerate}
         \item (Associativity) \(a \cdot (b \cdot c) = (a \cdot b) \cdot c \).
@@ -49,7 +49,7 @@ We revisit basic properties and definition from Part IA Groups.
     \end{enumerate}
 \end{remark}
 
-\begin{definition}[Subgroup]
+\begin{definition}{Subgroup}{}
 A subset \(H \subset G\) is a \textit{subgroup} (written \(H \leq G\)) if \(h\cdot h^{-1}\in H, \forall h,h^\prime \in H\), and \((H, \cdot)\) is a group.
 Remark: A non-empty subset \(H\) of G is a subgroup if \(a, b \in H \implies a\cdot b^{-1}\in H\) 
 \end{definition}
@@ -66,7 +66,7 @@ Remark: A non-empty subset \(H\) of G is a subgroup if \(a, b \in H \implies a\c
     \end{enumerate}
 \end{example}
 
-\begin{definition}[Direct Product]
+\begin{definition}{Direct Product}{}
 The \textit{(direct) product} of groups \(G\) and \(H\) is the set \(G\times H\) with operation given by
 \[
     (g_1, h_1) \cdot (g_2, h_2) = (g_1 g_2, h_1 h_2).
@@ -75,15 +75,15 @@ The \textit{(direct) product} of groups \(G\) and \(H\) is the set \(G\times H\)
 
 Let \(H \leq G\), the \textit{left cosets} of \(H\) in \(G\) are the sets \(gH = \{gh\mid h \in H\}\) for \(g \in G\). These partition \(G\), and each coset has the same cardinality as \(H\). So we can deduce.
 
-\begin{theorem}[Lagrange's Theorem]
-    Let \(G\) be a finite group and \(H \leq  G\), Then \(\left\vert G \right\vert = \left\vert H \right\vert \cdot [G:H]\) where \([G:H]\) is the number of left cosets of \(H\) in \(G\). \([G:H]\) is the \textit{index} of \(H\) in \(G\).
+\begin{theorem}{Lagrange's Theorem}{}
+    Let \(G\) be a finite group and \(H \leq  G\), Then \(\abs{G} = \abs{H} \cdot [G:H]\) where \([G:H]\) is the number of left cosets of \(H\) in \(G\). \([G:H]\) is the \textit{index} of \(H\) in \(G\).
 \end{theorem}
 
 \begin{remark}
     Can also carry this out with right cosets. Lagrange's Theorem then implies that the number of left cosets is the same as the number of right cosets.
 \end{remark}
 
-\begin{definition}[Order]
+\begin{definition}{Order}{}
     Let \(g \in G\). If \(\exists n \geq  1\) s.t. \(g^n = 1\) then the least such n is the \textit{order} of \(g\), otherwise we say that g has infinite order.
 \end{definition}
 
@@ -91,15 +91,15 @@ Let \(H \leq G\), the \textit{left cosets} of \(H\) in \(G\) are the sets \(gH =
     If \(g\) has order \(d\), then
     \begin{enumerate}
         \item \(g^{n} = 1 \implies d \mid n\).
-        \item \(\{1,g, \ldots , g^{d-1}\} \leq G\) and so if \(G\) is finite, then \(d\mid \left\vert G \right\vert \) (by Lagrange's Theorem).
+        \item \(\{1,g, \ldots , g^{d-1}\} \leq G\) and so if \(G\) is finite, then \(d\mid \abs{G} \) (by Lagrange's Theorem).
     \end{enumerate}
 \end{remark}
 
-\begin{definition}[Normal Subgroup]
+\begin{definition}{Normal Subgroup}{}
     A subgroup \(H \leq  G\) is \textit{normal} if \(g^{-1}Hg = H~\forall g \in G\). We write \(H \trianglelefteq G\).
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}{}{}
     If \(H \trianglelefteq G\) then the set \(G / H\) of left cosets of \(H\) in \(G\) is a group (called the \textit{quotient group}) with operation
 \[
     g_1 H \cdot g_2 H = g_1 g_2 H.
@@ -118,12 +118,12 @@ so \(g_1 ^\prime g_2 ^\prime  H = g_1 g_2 H\).
 Associativity is inherited from \(G\), the identity is \(H = e H\), and the inverse of \(g H\) is \(g^{-1} H\).
 \end{proof}
 
-\begin{definition}[Homomorphism]
+\begin{definition}{Homomorphism}{}
     \(G, H\) groups. A function \(\phi: G \to H\) is a group homomorphism if \(\phi(g_1 g_2) = \phi(g_1)\phi(g_2) \forall g_1, g_2 \in G\). It has \textit{kernel}
 \[
     \ker(\phi) = \{y \in G \mid \phi(y) = 1\} \trianglelefteq G,
 \]
-and \textit{image} \(\Ima(\phi)= \{\phi(y)\mid y\in G\} \leq H\).
+and \textit{image} \(\ima(\phi)= \{\phi(y)\mid y\in G\} \leq H\).
 \end{definition}
 
 \begin{proof}

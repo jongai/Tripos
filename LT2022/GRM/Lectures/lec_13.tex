@@ -1,6 +1,6 @@
 \lecture{13}{17 Feb. 2022}{}
 \(R\) will always be an integral domain in this section.
-\begin{lemma}
+\begin{lemma}{}{}
     Let \(R\) be a PID, and \(0 \neq r \in R\), then \(r\) irreducible \(\iff \) \((r)\) is a maximal ideal.
 \end{lemma}
 \begin{proof}
@@ -15,7 +15,7 @@
         \item Let \(R\) be a PID, \(0 \neq r \in R\), then \((r)\) maximal \(\iff \) \(r\) irreducible \(\iff \) \(r\) prime \(\iff \) \((r)\) prime. Thus, there is a bijection between non-zero prime ideals and non-zero maximal ideals.
     \end{enumerate}
 \end{remark}
-\begin{definition}
+\begin{definition}{}{}
     An integral domain is a \textit{Euclidean domain} (ED) if there is a function \(\phi:R\setminus \{0\} \to \mathbb{Z}_{\geq 0}\) (a Euclidean function) such that
     \begin{enumerate}
         \item If \(a\mid b\), then \(\phi(a) \leq \phi(b)\);
@@ -23,9 +23,9 @@
     \end{enumerate}
 \end{definition}
 \begin{example}
-    \(\mathbb{Z}\) is an ED with Euclidean function \(\phi(n) = \left\vert n \right\vert\).
+    \(\mathbb{Z}\) is an ED with Euclidean function \(\phi(n) = \abs{n}\).
 \end{example}
-\begin{proposition}
+\begin{proposition}{}{}
     If \(R\) is a Euclidean domain, then it is a principal ideal domain. (i.e. ED \(\implies\) PID)
 \end{proposition}
 \begin{proof}
@@ -46,11 +46,11 @@
         \item If \(F\) is a field, \(F[X]\) is an ED with Euclidean function \(\phi(f) = \deg f\) with \(f \in F[X]\).
         \item \(R = \mathbb{Z}[i]\) is an ED with Euclidean function \(\phi(a + ib) = N(a + ib) = a^2 + b^2\). Since \(N(z_{1}z_2) = N(z_1)N(z_2)\), property (1) holds.
         
-        For property (2), let \(z_1, z_2 \in \mathbb{Z}[i]\) with \(z_2 \neq 0\). Consider \(\frac{z_1}{z_2}\in \mathbb{C}\). This has distance less than 1 from the nearest element in \(\mathbb{Z}[i]\). That is, exists \(q \in \mathbb{Z}[i]\) s.t. \(\left\vert \frac{z_1}{z_2}-q \right\vert<1 \).
+        For property (2), let \(z_1, z_2 \in \mathbb{Z}[i]\) with \(z_2 \neq 0\). Consider \(\frac{z_1}{z_2}\in \mathbb{C}\). This has distance less than 1 from the nearest element in \(\mathbb{Z}[i]\). That is, exists \(q \in \mathbb{Z}[i]\) s.t. \(\abs{\frac{z_1}{z_2}-q}<1 \).
 
         Set \(r = z_1 - z_{2}q \in \mathbb{Z}[i]\). Then \(z_1 = z_2 q + r\), and
         \[
-            \phi(r) = \left\vert r \right\vert^2 = \left\vert z_1 - z_2 q \right\vert^2 < \left\vert z_2 \right\vert^2 = \phi(z_2).
+            \phi(r) = \abs{r}^2 = \abs{z_1 - z_2 q}^2 < \abs{z_2}^2 = \phi(z_2).
         \]
     \end{enumerate}
     Thus, we have \(\mathbb{Z}[i]\) and \(F[X]\) for \(F\) a field are PIDs.

@@ -6,7 +6,7 @@
         \item \(R[X_1, \ldots, X_n]\) be the polynomial ring in \(X_1, \ldots, X_n\) with coefficients in \(R\). We can define it inductively by \(R[X_1, \ldots, X_n] = R[R_1, \ldots, X_{n-1}][X_n]\). Applying Theorem \eqref{polyufd} inductively, \(R[X_1, \ldots, X_n]\) is a UFD if \(R\) is a UFD.
     \end{enumerate}
 \end{example}
-\begin{theorem}[Eisenstein's Criterion]
+\begin{theorem}{Eisenstein's Criterion}{}
     Let \(R\) be a UFD and \(f(X) = a_n X^n + \cdots + a_1 X + a_0 \in R[X]\) primitive. Suppose \(\exists p \in R\) irreducible such that
     \begin{enumerate}
         \item \(p \nmid a_n\);
@@ -53,7 +53,7 @@ The units in \(\mathbb{Z}[i]\) are \(\pm 1, \pm i\) which are the only elements 
         Similarly, 7 is prime in \(\mathbb{Z}[i]\).
     \end{enumerate}
 \end{example}
-\begin{proposition}
+\begin{proposition}{}{}
     \label{ratprime}
     Let \(p \in \mathbb{Z}\) be a prime number. Then the following are equivalent.
     \begin{enumerate}
@@ -63,7 +63,7 @@ The units in \(\mathbb{Z}[i]\) are \(\pm 1, \pm i\) which are the only elements 
     \end{enumerate}
 \end{proposition}
 \begin{proof}
-    (1)\(\implies\)(2). Let \(p = xy\) where \(x, y \in \mathbb{Z}[i]\) not units. Then \(p^2 = N(p) = N(x)N(y)\), \(N(x),N(y) > 1\). Thus, \(N(x) = N(y) = y\). Writing \(x = a + bi\) gives \(p = N(x) = a^2 + b^2\).
+    (1)\(\implies\)(2). Let \(p = xy\) where \(x, y \in \mathbb{Z}[i]\) not units. Then \(p^2 = N(p) = N(x)N(y)\), \(N(x),N(y) > 1\). Thus, \(N(x) = N(y) = p\). Writing \(x = a + bi\) gives \(p = N(x) = a^2 + b^2\).
 
     (2)\(\implies\)(3). The squares\({}\bmod 4\) are \(0\) and \(1\). Thus, if \(p = a^2 + b^2\), then \(p \not\equiv 3 \bmod 4\).
     
@@ -72,7 +72,7 @@ The units in \(\mathbb{Z}[i]\) are \(\pm 1, \pm i\) which are the only elements 
 \begin{remark}
     We also proved (3)\(\implies\)(2) in the process. It is an important result in number theory about sum of squares.
 \end{remark}
-\begin{theorem}
+\begin{theorem}{}{}
     \label{ziprime}
     The primes in \(\mathbb{Z}[i]\) (up to associates) are
     \begin{enumerate}

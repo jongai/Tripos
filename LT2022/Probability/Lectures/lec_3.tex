@@ -17,7 +17,7 @@
 \end{proof}
 \subsection*{(Ordered) Compositions}
 \leavevmode
-\begin{definition}
+\begin{definition}{}{}
     A \textit{composition} of \(m\) with \(k\) parts is sequence \((m1, \ldots , m_k )\) of non-negative integers with \(\sum\limits_{i=1}^{k} m_i = m\).
 \end{definition}
 We use stars and bars. There are \(m\) stars and \(k - 1\) bars, and
@@ -83,7 +83,7 @@ Recall Definition \eqref{prospace}. We prove the following properties.
         \begin{align*}
             \probability{}{\cup_{i=1}^{n}A_i} = &\sum\limits_{i=1}^{n} \probability{}{A_i} - \sum\limits_{1\leq i_1<i_2\leq n} \probability{}{A_{i_1}\cap A_{i_2}} + \ldots\\
             & + (-1)^{n+1} \probability{}{A_1\cap \ldots \cap A_n }\\
-            =& \sum\limits_{\substack{I \subseteq \{1, \ldots ,n \}\\ I \neq \varnothing}} (-1)^{\left\vert I \right\vert +1} \probability{}{\cap_{i\in I}A_i} .
+            =& \sum\limits_{\substack{I \subseteq \{1, \ldots ,n \}\\ I \neq \varnothing}} (-1)^{\abs{I} +1} \probability{}{\cap_{i\in I}A_i} .
         \end{align*}
     \end{enumerate}
 \end{property}

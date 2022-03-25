@@ -14,7 +14,7 @@ These are charts on \(T^2\), and the transition maps are (restricted to the appr
 
     Being an abstract smooth surface is \textbf{data}. (I have to give you an atlas of charts with smooth transition maps with smooth inverses. There could be many choices)
 \end{remark}
-\begin{definition}
+\begin{definition}{}{}
     Let \(\Sigma\) be an abstract smooth surface, and \(f: \Sigma \to \mathbb{R}^n\) a continuous map.
 
     We say \(f\) is \textit{smooth at a \(p \in \Sigma\)} if whenever \((u , \phi)\) is a chart at \(p\) belonging to the smooth atlas for \(\Sigma\), the map
@@ -28,13 +28,13 @@ These are charts on \(T^2\), and the transition maps are (restricted to the appr
 \begin{note}
     Smoothness of \(f\) at \(p\) is independent of choice of chart \((u, \phi)\) at \(p\) in the smooth atlas, because the transition map between two such charts is diffeomorphic.
 \end{note}
-\begin{definition}
+\begin{definition}{}{}
     If \(\Sigma_1, \Sigma_2\) are abstract smooth surfaces, a map \(f: \Sigma_1 \to \Sigma_2\) is \textit{smooth} if it is smooth in the local charts. That is give \((u, \phi)\) at \(p\) and \((u', \psi)\) at \(f(p)\) (in our chosen smooth atlases), we want \(\psi \circ f \circ \phi^{-1}\) smooth at \(\phi^{-1}(p)\).
 \end{definition}
 \begin{note}
     Again, smoothness of \(f\) does not depend on their choices of charts at \(p, f(p)\) provided I take charts from our smooth atlas.
 \end{note}
-\begin{definition}
+\begin{definition}{}{}
     Abstract smooth surfaces \(\Sigma_1, \Sigma_2\) are \textit{diffeomorphic}  if there exists a homeomorphism
     \[
         f: \Sigma_1 \to \Sigma_2
@@ -47,7 +47,7 @@ These are charts on \(T^2\), and the transition maps are (restricted to the appr
 
 If \(V, V'\) open sets in \(\mathbb{R}^2\), then \(f: V \to V'\) is smooth if it is infinitely differentiable.
 
-\begin{definition}
+\begin{definition}{}{}
     If \(Z \subseteq \mathbb{R}^2\) is an arbitrary subset, we say \(f: Z \to \mathbb{R}^m\) continuous is smooth at \(p \in Z\) if there exists open ball \(p \in B \subseteq \mathbb{R}^n\) and a smooth map \(F: B \to \mathbb{R}^m\) such that
     \[
         \left. F \right|_{B\cap Z} = \left. f \right|_{B\cap Z}.
@@ -55,16 +55,15 @@ If \(V, V'\) open sets in \(\mathbb{R}^2\), then \(f: V \to V'\) is smooth if it
     That is, \(f\) is locally the restriction of a smooth map defined on an open set.
 \end{definition}
 
-\begin{definition}
+\begin{definition}{}{}
     If \(X \subseteq \mathbb{R}^2\) and \(Y \subseteq \mathbb{R}^2\) are subsets, we say \(X\) and \(Y\) are \textit{diffeomorphic} if there exists continuous map \(f: X \to Y\) such that \(f\) is a smooth homeomorphism with smooth inverse.
 \end{definition}
-\begin{definition}
+\begin{definition}{}{}
     A \textit{smooth surface in \(R^3\)} is a subspace \(\Sigma\subseteq \mathbb{R}^3\) such that for all \(p \in \Sigma\), \(\exists\) and open set \(p \in U \subseteq \Sigma\) such that \(U\) is diffeomorphic to an open set in \(\mathbb{R}^2\).
 
     That is, for all \(p \in \Sigma\), there exists open ball \(p \in B \subseteq \mathbb{R}^3\) such that if \(U = B \cap \Sigma\) and a smooth map to an open set \(f: B\to V \subseteq \mathbb{R}^2\) such that \(\left. f\right|_{U}:U\to V\) is a homeomorphism, and the inverse map \(V \to U \subseteq \Sigma \subseteq \mathbb{R}^3\) is also smooth.
 \end{definition}
-\begin{theorem}
-    \label{abseq}
+\begin{theorem}{}{abseq}
     For a subset \(\Sigma\in \mathbb{R}^3\), the following are equivalent:
     \begin{enumerate}
         \item \(\Sigma\) is a smooth surface in \(\mathbb{R}^3\).
@@ -95,7 +94,7 @@ If \(V, V'\) open sets in \(\mathbb{R}^2\), then \(f: V \to V'\) is smooth if it
 \end{remark}
 
 Our next goal is to prove the theorem. The non-trivial work comes from the inverse function theorem.
-\begin{theorem}[Inverse Function Theorem]
+\begin{theorem}{Inverse Function Theorem}{}
     Let \(U\subseteq \mathbb{R}^n\) be an open set and \(f: U \to \mathbb{R}^n\) be continuously differentiable. Let \(p \in U\) and \(f(p) = q\) and suppose \(\left. Df \right|_p\) is invertible.
 
     Then there is an open neighborhood \(V\) of \(q\) and a differentiable map \(g: V \to \mathbb{R}^n\) and \(g(q) = p\) with image an open neighborhood \(U' \subseteq U\) of \(p\) such that \(f \circ g = \textbf{id}_V\). 

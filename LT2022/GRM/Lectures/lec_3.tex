@@ -1,18 +1,18 @@
 \lecture{3}{25 Jan. 1:00}{}
 \begin{proof}
-    Induct on \(\left\vert G \right\vert\). When \(\left\vert G \right\vert =1\), the statement is obviously true.
+    Induct on \(\abs{G}\). When \(\abs{G} =1\), the statement is obviously true.
 
-    If \(\left\vert G \right\vert > 1\), let \(G_{m - 1}\) be a normal subgroup of the largest possible order that is not \(\left\vert G \right\vert \). By the correspondence theorem, \(\nicefrac{G}{G_{m - 1}}\) is simple.
+    If \(\abs{G} > 1\), let \(G_{m - 1}\) be a normal subgroup of the largest possible order that is not \(\abs{G} \). By the correspondence theorem, \(\nicefrac{G}{G_{m - 1}}\) is simple.
 
     Apply inductively to \(G_{m-1}\).
 \end{proof}
 
 \subsection{Group Action}
 \leavevmode
-\begin{definition}
+\begin{definition}{}{}
     For \(X\) a set, let \(\mathrm{Sym}(X)\) be the group of all bijections \(X \to X\) under composition. The identity is \(id = id_X\).
 
-    A group \(G\) is a \textit{permutation group} of degree \(n\) if \(G \leq \mathrm{X}\) with \(\left\vert Z \right\vert = n\).
+    A group \(G\) is a \textit{permutation group} of degree \(n\) if \(G \leq \mathrm{X}\) with \(\abs{Z} = n\).
 \end{definition}
 \begin{example}
     \leavevmode
@@ -21,14 +21,14 @@
     \item \(D_{2n}\), the symmetries of regular n-gon, is a subgroup of \(\mathrm{Sym}(n)\).
     \end{enumerate}
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     An \textit{action} of a group \(G\) on a set \(X\) is a function \(*:G\times X \to  X\) satisfying
     \begin{enumerate}
         \item \(e*x = x\) for all \(x \in X\),
         \item \((g_1g_2)*x = g_1*(g_2*x)\) for all \(g_1, g_2 \in G, x \in X\).
     \end{enumerate}
 \end{definition}
-\begin{proposition}
+\begin{proposition}{}{}
     An action of a group \(G\) on a set \(X\) is equivalent to specifying a group homomorphism \(\phi: G \to \mathrm{Sym}(X)\).
 \end{proposition}
 \begin{proof}
@@ -73,10 +73,10 @@
         \end{aligned}\)
     \end{enumerate}
 \end{proof}
-\begin{definition}
+\begin{definition}{}{}
     We say \(\phi: G \to \mathrm{Sym}(X)\) is a \textit{permutation representation} of \(G\).
 \end{definition}
-\begin{definition}
+\begin{definition}{}{}
     Let \(G\) act on a set \(X\).
     \begin{enumerate}
         \item The \textit{orbit} of \(x\in X\) is \(\mathrm{orb}_G(x) = \{g*x \mid g \in G\}\subseteq X\) 
@@ -88,11 +88,11 @@ There is a bijection \(\mathrm{orb}_G(x) \leftrightarrow \nicefrac{G}{G_x}\), th
 
 In particular, if \(G\) is finite, then
 \[
-    \left\vert G \right\vert = \left\vert \mathrm{orb}_G(x) \right\vert \left\vert G_x \right\vert.
+    \abs{G} = \abs{\mathrm{orb}_G(x)} \abs{G_x}.
 \]
 
 \begin{example}
-    Let \(G\) be the group of all symmetries of a cube, and \(X\) be the set of vertices. Let \(x \in X\) be any vertex \(\left\vert \mathrm{orb}_G(x)\right\vert = 8, \left\vert G_x \right\vert =8  \). So \(\left\vert G \right\vert = 48\).
+    Let \(G\) be the group of all symmetries of a cube, and \(X\) be the set of vertices. Let \(x \in X\) be any vertex \(\abs{\mathrm{orb}_G(x)} = 8, \abs{G_x} =8  \). So \(\abs{G} = 48\).
 \end{example}
 \begin{remark}
     \begin{enumerate}
@@ -110,8 +110,8 @@ In particular, if \(G\) is finite, then
     \]
     Thus, \(G\) injects into \(\mathrm{Sym}(G)\). This proves,
 \end{enumerate}
-\begin{theorem}[Cayley's Theorem]
-    Any finite group \(G\) is isomorphic to a subgroup of \(S_n\) for some \(n\) (take \(n = \left\vert G \right\vert \)).
+\begin{theorem}{Cayley's Theorem}{}
+    Any finite group \(G\) is isomorphic to a subgroup of \(S_n\) for some \(n\) (take \(n = \abs{G} \)).
 \end{theorem}
 \begin{enumerate}
     \setcounter{enumi}{1}
@@ -126,13 +126,13 @@ This action is transitive (since \((x_{2}x_1^{-1})x_{1}H = x_2 H \)) with
 Thus, \(\ker(\phi) = \cap_{x\in G} xHx^{-1}\). This is the largest normal subgroup of \(G\) that is contained in \(H\)
 \end{enumerate}
 \end{example}
-\begin{theorem}
+\begin{theorem}{}{}
     Let \(G\) be a non-Abelian simple group, and \(H\leq G\) a subgroup of index \(n>1\). Then \(n\geq 5\) and \(G\) is isomorphic to a subgroup of \(A_n\).
 \end{theorem}
 \begin{proof}
     Let \(G\) act on \(X = \nicefrac{G}{H}\) by left coset multiplication, and let \(\phi:G \to \mathrm{Sym}(X)\) be associated permutation representation.
 
-    As \(G\) is simple, \(\ker(\phi)=\mathbf{1} \text{ or } G\). Since \(G\) acts transitively on \(X\) and \(\left\vert X \right\vert >1\), \(\ker(\phi) = \textbf{1} \) and \(G \cong \Ima(\phi)\leq S_n\).
+    As \(G\) is simple, \(\ker(\phi)=\mathbf{1} \text{ or } G\). Since \(G\) acts transitively on \(X\) and \(\abs{X} >1\), \(\ker(\phi) = \textbf{1} \) and \(G \cong \ima(\phi)\leq S_n\).
 
     Since \(G \leq S_n\) and \(A_n\) is a normal subgroup of \(S_n\). The Second Isomorphism Theorem gives \( G\cap A_n\cong \nicefrac{GA_n}{A_n} \leq \nicefrac{S_n}{A_n} \cong C_2 \). Because \(G\) is simple, we have \(G\cap A_{n} = 1 \text{ or } G\). If the intersection is trivial, we have an injection into \(C_2\) by First Isomorphism Theorem, but \(G\) is non-Abelian. So we must have
     \[

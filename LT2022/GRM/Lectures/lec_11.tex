@@ -1,15 +1,15 @@
 \lecture{11}{12 Feb. 2022}{}
 \leavevmode
-\begin{lemma}
+\begin{lemma}{}{}
     Let \(R\) be an integral domain, and \(f \neq 0 \in R[X]\). Let \(\mathrm{Roots}(f)=\{a\in R \mid f(a) = 0\}\}\). Then
     \[
-        \left\vert \mathrm{Roots}(f) \right\vert \leq \deg(f).
+        \abs{\mathrm{Roots}(f)} \leq \deg(f).
     \]
 \end{lemma}
 \begin{proof}
     Example sheet.
 \end{proof}
-\begin{theorem}
+\begin{theorem}{}{}
     Let \(F\) be a field. Then any finite subgroup of \(G \leq (F^\times, \cdot)\) is cyclic.
 \end{theorem}
 \begin{proof}
@@ -20,9 +20,9 @@
     has degree \(d_1\), and has \(d_1^2\) roots contradicting the above lemma.
 \end{proof}
 \begin{example}
-    \((\nicefrac{\mathbb{Z}}{p\mathbb{Z}})^\times \) is cyclic. That is, it has a \textit{primitive root}.
+    \((\Z{p})^\times \) is cyclic. That is, it has a \textit{primitive root}.
 \end{example}
-\begin{proposition}
+\begin{proposition}{}{}
     Any finite integral domain is a field.
 \end{proposition}
 \begin{proof}
@@ -37,7 +37,7 @@
 
     Thus, \(\phi\) is injective, and hence surjective since \(R\) is finite. So there exists \(b \in R\) such that \(ab = 1\). That is, \(a\) is a unit. Thus, \(R\) is a field.
 \end{proof}
-\begin{theorem}
+\begin{theorem}{}{}
     Let \(R\) be an integral domain. Then there exists a field \(F\) such that
     \begin{enumerate}
         \item \(R \leq F\);
@@ -79,10 +79,10 @@
         \item \(\mathbb{C}[X]\) has field of fractions \(\mathbb{C}(X)\) called the field of rational functions in \(X\).
     \end{enumerate}
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     An ideal \(I \nsub R\) is \textit{maximal} is \(I \neq R\) and if \(I \subseteq J \nsub R\), then \(J = I\) or \(J = R\).
 \end{definition}
-\begin{lemma}
+\begin{lemma}{}{}
     A (non-zero) ring \(R\) is a field if and only if its only ideals are \(\{0\}\) are \(R\).
 \end{lemma}
 \begin{proof}
@@ -90,9 +90,8 @@
 
     \(\impliedby\) direction. If \( 0 \neq  x\in R\), then the ideal \((x)\) is non-zero, hence \((x) = R\), and there exists \(y \in R\) such that \(xy = 1\). That is \(x\) is a unit.
 \end{proof}
-\begin{proposition}
+\begin{proposition}{}{maxfield}
     Let \(I \nsub R\) be an ideal. \(I\) is maximal if and only if \(\nicefrac{R}{I}\) is a field.
-    \label{maximalfield}
 \end{proposition}
 \begin{proof}
     \(\nicefrac{R}{I}\) is a field.
@@ -103,7 +102,7 @@
 
     \(\iff \) \(I \nsub R\) is maximal.
 \end{proof}
-\begin{definition}
+\begin{definition}{}{}
     An ideal \(I \nsub R\) is \textit{prime} if \(I \neq R\) and whenever \(a,b \in R\) with \(ab \in I\), we have \(a \in I\) or \(b \in I\).
 \end{definition}
 \begin{example}
@@ -113,9 +112,8 @@
 
     Conversely, if \(n = uv\) with \(u, v > 1\), then \(uv \in n\mathbb{Z}\), but \(u \notin n\mathbb{Z}\) and \(v \notin n\mathbb{Z}\).
 \end{example}
-\begin{proposition}
+\begin{proposition}{}{primeint}
     Let \(I \nsub R\) be an ideal of the ring \(R\). Then \(I\) is prime \(\iff \) \(\nicefrac{R}{I}\) is an integral domain.
-    \label{primeint}
 \end{proposition}
 \begin{proof}
     \(I\) is prime
@@ -127,5 +125,5 @@
     \(\iff \) \(\nicefrac{R}{I}\) is an integral domain.
 \end{proof}
 \begin{remark}
-    Proposition \eqref{primeint} and \eqref{maximalfield} show that \(I\) maximal \(\implies\) \(I\) prime ideal.
+    \cref{pr:primeint,pr:maxfield} show that \(I\) maximal \(\implies\) \(I\) prime ideal.
 \end{remark}

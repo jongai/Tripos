@@ -1,7 +1,7 @@
 \lecture{9}{9 Feb. 2022}{}
 \section{Differentiability}
 Let \(f: E \subseteq \mathbb{C} \to \mathbb{C}\), most of the time \(E = \text{interval} \subseteq \mathbb{R}\).
-\begin{definition}
+\begin{definition}{}{}
     Let \(x \in E\) be a point such that \(\exists x_n \in E\) with \(x_n \neq x\) and \(x_n \to x\) (i.e. a limit point), \(f\) is said to be \textit{differentiable}  at \(x\) with derivative \(f'(x)\) if
     \[
         \lim\limits_{y \to x} \frac{f(y) - f(x)}{y - x} = f'(x).
@@ -13,7 +13,7 @@ Let \(f: E \subseteq \mathbb{C} \to \mathbb{C}\), most of the time \(E = \text{i
 \begin{remark}
     \leavevmode
     \begin{enumerate}
-        \item Other common notations include \(\frac{\mathrm{d}y}{\mathrm{d}x}\), \(\frac{\mathrm{d}f}{\mathrm{d}x} \).
+        \item Other common notations include \(\od{y}{x}\), \(\od{f}{x}\).
         \item \(f'(x) = \lim\limits_{h \to 0} \frac{f(x+h)-f(x)}{h}\). (\(y=x+h\))
         \item Another look at the definition is the following.
         
@@ -35,7 +35,7 @@ Let \(f: E \subseteq \mathbb{C} \to \mathbb{C}\), most of the time \(E = \text{i
     \end{enumerate}
 \end{remark}
 \begin{example}
-    If we have \(f: \mathbb{R}\to \mathbb{R}\) with \(f(x) = \left\vert x \right\vert \). Clearly, we have
+    If we have \(f: \mathbb{R}\to \mathbb{R}\) with \(f(x) = \abs{x} \). Clearly, we have
     \(f'(x) = 1\) if \(x > 0\) and \(f'(x) = -1\) if \(x < 0\). Take \(h_n \downarrow 0\) at \(x = 0\), we have
     \[
         \lim\limits_{n \to \infty} \frac{f(h_n) - f(0)}{h_n} = \lim\limits_{n \to \infty} \frac{h_n}{h_n} = 1.

@@ -15,7 +15,7 @@
     So we know how to find derivatives of polynomials and rational functions.
 \end{example}
 We have the following useful result to differentiate a larger class of functions.
-\begin{theorem}[Chain Rule]
+\begin{theorem}{Chain Rule}{}
     If \(f: U \to \mathbb{C}\) is such that \(f(x) \in V\) for \(x \in U\). If \(f\) is differentiable at \(a \in U\) and \(g:V \to \mathbb{C}\) is differentiable at \(f(a)\), then \(g\circ f\) is differentiable at \(a\) with
     \[
         (g\circ f)'(a) = f'(a)g'(f(a)).
@@ -59,13 +59,13 @@ We have the following useful result to differentiate a larger class of functions
 \end{example}
 \subsection{The Mean Value Theorem}
 \leavevmode
-\begin{theorem}[Rolle's Theorem]
+\begin{theorem}{Rolle's Theorem}
     Let \(f: [a,b] \to \mathbb{R}\) continuous on \([a,b]\) and differentiable on \((a,b)\). If \(f(a) = f(b)\), then there exists \(c \in (a,b)\) such that \(f'(c) = 0\).
 \end{theorem}
 \begin{proof}
-    Let \(M = \mathop{\max}_{x \in [a,b]} f(x)\), and \(m = \mathop{\min}_{x \in [a,b]} f(x)\). Theorem \eqref{evt} says that these values are achieved. Let \(k = f(a) = f(b)\). If \(M = m = k\), then \(f\) is constant and \(f'(c) = 0\) for all \(c \in (a,b)\).
+    Let \(M = \mathop{\max}_{x \in [a,b]} f(x)\), and \(m = \mathop{\min}_{x \in [a,b]} f(x)\). \cref{th:evt} says that these values are achieved. Let \(k = f(a) = f(b)\). If \(M = m = k\), then \(f\) is constant and \(f'(c) = 0\) for all \(c \in (a,b)\).
 
-    If \(f\) not constant, then \(M > k\) or \(m < k\). Suppose \(M > k\). By Theorem \eqref{evt}, exist \(c \in (a,b)\) such that \(f(c) = M\).
+    If \(f\) not constant, then \(M > k\) or \(m < k\). Suppose \(M > k\). By \cref{th:evt}, exist \(c \in (a,b)\) such that \(f(c) = M\).
 
     If \(f'(c) > 0\), then there are values to right of \(c\) for which \(f(x) > f(c)\) because
     \[f(h + c) - f(c) = h(f'(c) + \epsilon_f(h)).\]

@@ -18,7 +18,7 @@ We have the following important example,
     \]
     and we have \(S_n(1-x) = 1-x^n\).
 
-    If \(\left\vert x \right\vert <1\), \(x^n\to 0\) and \(S_n \to \frac{1}{1-x}\).
+    If \(\abs{x} <1\), \(x^n\to 0\) and \(S_n \to \frac{1}{1-x}\).
     
     If \(x > 1\), \(x^n \to \infty\) and \(S_n \to \infty\).
 
@@ -29,19 +29,18 @@ We have the following important example,
         0, &\text{ if } n \text{ even}\\
     \end{dcases}\).
 
-    Thus, the geometric series converges if and only if \(\left\vert x \right\vert < 1\).
+    Thus, the geometric series converges if and only if \(\abs{x} < 1\).
 
-    To see for example that \(x^n \to 0\) if \(\left\vert x \right\vert <1\), consider first the case \(0< x< 1\). Write \(\frac{1}{x}=1 + \delta, \delta>0\), so \(x^n = \frac{1}{(1+\delta)^n}\leq \frac{1}{1+n\delta}\to 0\) because \((1+\delta)^n \geq 1 + n\delta\) from binomial expansion.
+    To see for example that \(x^n \to 0\) if \(\abs{x} <1\), consider first the case \(0< x< 1\). Write \(\frac{1}{x}=1 + \delta, \delta>0\), so \(x^n = \frac{1}{(1+\delta)^n}\leq \frac{1}{1+n\delta}\to 0\) because \((1+\delta)^n \geq 1 + n\delta\) from binomial expansion.
 \end{example}
 
-\begin{definition}
-    \leavevmode
+\begin{definition}{}{}
     \(S_n \to \infty\) if given \(A\), there exists an \(N\) such that \(S_n > A\) for all \(n > N\).
 
     \(S_n \to -\infty\) if given \(A\), there exists an \(N\) such that \(S_n < -A\) for all \(n > N\).
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}{}{}
     If \(\sum\limits_{i=1}^{\infty} a_n\) converges, then \(\lim\limits_{i \to \infty} a_i = 0\).
 \end{lemma}
 \begin{proof}
@@ -59,7 +58,7 @@ We have the following important example,
 \end{remark}
 \subsection{Series of Non-negative Terms}
 We first consider sequences with positive terms, but it gives monotonicity of partial sums.
-\begin{theorem}[The Comparison Test]
+\begin{theorem}{The Comparison Test}{}
     Suppose \(0\leq b_n\leq a_n\) for all \(n\). Then if \(\sum\limits_{n=1}^{\infty} a_n\) converges, so does \(\sum\limits_{n=1}^{\infty} b_n\).
 \end{theorem}
 \begin{proof}
@@ -79,7 +78,7 @@ We first consider sequences with positive terms, but it gives monotonicity of pa
     In fact, we get \(\sum\limits_{n=1}^{\frac{1}{n^2}} \leq 1 + 1 = 2\).
 \end{example}
 For the rest of the lecture, we establish two more tests.
-\begin{theorem}[Root test/ Cauchy's Test for Convergence]
+\begin{theorem}{Root test/ Cauchy's Test for Convergence}{}
     Assume \(a_n \geq 0\) and \(a_n^{\nicefrac{1}{n}}\to a\) as \(n\to \infty\). Then if \(a<1\), \(\sum\limits_{n=1}^{\infty} a_n\) converges; if \(a>1\), \(\sum\limits_{n=1}^{\infty} a_n\) diverges.
 \end{theorem}
 \begin{remark}
@@ -96,7 +95,7 @@ For the rest of the lecture, we establish two more tests.
     \[a_n^{\nicefrac{1}{n}}>1\implies a_n > 1.\]
     Thus, \(\sum\limits_{n=1}^{\infty} a_{n}\) diverges, since \(a_n\) does not tend to zero.
 \end{proof}
-\begin{theorem}[Ratio Test/ D'Alembert's Test]
+\begin{theorem}{Ratio Test/ D'Alembert's Test}{}
     Suppose \(a_n > 0\) and \(\frac{a_{n+1}}{a_n}\to \ell\). If \(\ell<1\), \(\sum\limits_{n=1}^{\infty} a_n\) converges. If \(\ell > 1\), \(\sum\limits_{n=1}^{\infty} a_n\) diverges.
 \end{theorem}
 \begin{remark}

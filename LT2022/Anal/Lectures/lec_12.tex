@@ -30,8 +30,7 @@ Good choice of auxiliary function and Rolle's theorem proves the theorem.
     as \(x \to 0\).
 \end{example}
 Goal: We want to extend the MVT to include higher order derivatives.
-\begin{theorem}[Taylor's Theorem with Lagrange's reminder]
-    \label{tl}
+\begin{theorem}{Taylor's Theorem with Lagrange's reminder}{tl}
     Suppose \(f\) and its derivatives up to order \(n - 1\) are continuous in \([a, a + h]\) and \(f^{(n)}\) exists for \(x \in (a, a + h)\), then
     \[
         f(a + h) = f(a) + hf'(a) + \frac{h^2}{2!f''(a)} + \cdots + \frac{h^{n-1}f^{(n-1)}(a)}{(n-1)!} + \frac{h^n f^{(n)}(a + \theta h)}{n!}
@@ -57,8 +56,7 @@ Goal: We want to extend the MVT to include higher order derivatives.
     \]
     Set \(t = h\), \(\phi(h) = 0\) and put this value of \(b\) to the second line in the proof.
 \end{proof}
-\begin{theorem}[Taylor's Theorem with Cauchy's reminder]
-    \label{tc}
+\begin{theorem}{Taylor's Theorem with Cauchy's reminder}{tc}
     Suppose \(f\) and its derivatives up to order \(n - 1\) are continuous in \([a, a + h]\) and \(f^{(n)}\) exists for \(x \in (a, a + h)\), and if \(a = 0\) for simplification, then we have
     \[
         f(h) = f(0) + hf'(0) + \cdots + \frac{h^{n-1}}{(n-1)!}f^{(n-1)}(0) + R_n

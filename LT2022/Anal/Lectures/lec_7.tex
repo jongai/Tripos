@@ -6,14 +6,14 @@
 
     Also, if \(E = \{0\}\cup [1,2]\), it does not make sense to speak about points \(z\in E, z\neq 0, z\to 0\).
 \end{example}
-\begin{definition}
-    If \(E \subseteq \mathbb{C}, a \in \mathbb{C}\), we say that \(a\) is a \textit{limit point} of \(E\) if for any \(\delta>0,\exists z \in E\) such that \(0< \left\vert z - a \right\vert < \delta\).
+\begin{definition}{}{}
+    If \(E \subseteq \mathbb{C}, a \in \mathbb{C}\), we say that \(a\) is a \textit{limit point} of \(E\) if for any \(\delta>0,\exists z \in E\) such that \(0< \abs{z - a} < \delta\).
 \end{definition}
 \begin{remark}
     \(a\) is a limit point if and only if there exists a sequence \(z_n \in E\) such that \(z_n \to a\) and \(z_n \neq a\) for all \(n\).
 \end{remark}
-\begin{definition}
-    If \(f: E \subseteq \mathbb{C}\to \mathbb{C}\) and let \(a\in \mathbb{C}\) be a limit point of \(E\). We say that \(\lim\limits_{z \to a} f(z) = l\) ("\(f\) tends to \(l\) as \(z\) tends to \(a\)") if given \(\epsilon>0, \exists \delta>0\) such that whenever \(0 < \left\vert z-a \right\vert < \delta\) and \(z \in E\), then \(\left\vert f(z) - l \right\vert < \epsilon\).
+\begin{definition}{}{}
+    If \(f: E \subseteq \mathbb{C}\to \mathbb{C}\) and let \(a\in \mathbb{C}\) be a limit point of \(E\). We say that \(\lim\limits_{z \to a} f(z) = l\) ("\(f\) tends to \(l\) as \(z\) tends to \(a\)") if given \(\epsilon>0, \exists \delta>0\) such that whenever \(0 < \abs{z-a} < \delta\) and \(z \in E\), then \(\abs{f(z) - l} < \epsilon\).
 
     Equivalently,  \(f(z_n) \to l\) for every sequence \(z_n \in E, z_n \neq a\) and \(z_n \to a\).
 \end{definition}
@@ -25,9 +25,9 @@ The limit of functions has very similar properties to limit of sequences.
 \begin{enumerate}
     \item It is unique, \(f(z) \to A\) and \(f(z) \to B\) as \(z \to a\), then
     \begin{align*}
-        \left\vert A-B \right\vert \leq \left\vert A-f(z) \right\vert + \left\vert f(z) - B \right\vert.
+        \abs{A-B} \leq \abs{A-f(z)} + \abs{f(z) - B}.
     \end{align*}
-    If \(z\in E\) is such that \(0 < \left\vert z-a \right\vert < \min\{\delta_1, \delta_2\}\), then \(\left\vert A-B \right\vert < 2\epsilon\). So \(A = B\). The existence of such \(z\) is a consequence of the condition that \(a\) is a limit point of \(E\).
+    If \(z\in E\) is such that \(0 < \abs{z-a} < \min\{\delta_1, \delta_2\}\), then \(\abs{A-B} < 2\epsilon\). So \(A = B\). The existence of such \(z\) is a consequence of the condition that \(a\) is a limit point of \(E\).
     \item \(f(z) + g(z) \to A + B\);
     \item \(f(z) g(z) \to AB\);
     \item if \(B \neq 0\), \(\frac{f(z)}{g(z)}\to \frac{A}{B}\). All proved in the same way as before.
@@ -35,7 +35,7 @@ The limit of functions has very similar properties to limit of sequences.
 \end{remark}
 \subsection{The Intermediate Value Theorem}
 \leavevmode
-\begin{theorem}[Intermediate Value Theorem]
+\begin{theorem}{Intermediate Value Theorem}{}
     If \(f: [a,b]\to\mathbb{R}\) is continuous and \(f(a) \neq f(b)\), then \(f\) takes every value which lies between \(f(a)\) and \(f(b)\).
 \end{theorem}
 \begin{proof}

@@ -1,7 +1,6 @@
 \lecture{16}{25 Feb. 2022}{}
 Now we restrict to \(\mathbb{R}\), \(e: \mathbb{R} \to \mathbb{R}\).
-\begin{theorem}
-    \leavevmode
+\begin{theorem}{}{}
     \begin{enumerate}
         \item \(e: \mathbb{R}\to \mathbb{R}\) is everywhere differentiable and \(e'(x) = e(x)\).
         \item \(e(x + y) = e(x) e(y)\).
@@ -26,8 +25,7 @@ Now we restrict to \(\mathbb{R}\), \(e: \mathbb{R} \to \mathbb{R}\).
     \(e: (\mathbb{R}, +) \to ((0, \infty), \cdot)\) is a group isomorphism.
 \end{remark}
 Since \(e\) is a bijection, we have an inverse \(\ell: (0, \infty) \to \mathbb{R}\).
-\begin{theorem}
-   \leavevmode
+\begin{theorem}{}{}
    \begin{enumerate}
        \item \(\ell: (0, \infty) \to \mathbb{R}\) is a bijection and \(\ell(e(x)) = x\) for all \(x \in \mathbb{R}\) and \(e(\ell(t)) = t\) for all \(t \in (0, \infty)\).
        \item \(\ell\) is differentiable and \(\ell'(t) = \frac{1}{t}\).
@@ -49,7 +47,7 @@ Now define for \(\alpha \in \mathbb{R}\) and \(x > 0\),
 \[
     r_\alpha(x) = e(\alpha \lambda(x)).
 \]
-\begin{theorem}
+\begin{theorem}{}{}
     Suppose \(x, y > 0\), and \(\alpha, \beta\in \mathbb{R}\), then
     \begin{enumerate}
         \item \(r_\alpha(xy) = r_\alpha(x)r_\alpha(y)\);
@@ -109,6 +107,6 @@ Finally, we compute
     &= \alpha x^{\alpha - 1}.
 \end{align*}
 And we have
-\begin{align*}
+\[
     (a^x)' = (e^{x \log a})' = e^{x \log a} \log a = a^x \log a.
-\end{align*}
+\]

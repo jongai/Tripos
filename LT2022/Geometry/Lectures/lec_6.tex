@@ -1,6 +1,6 @@
 \lecture{6}{2 Feb. 2022}{}
 Inverse Function Theorem is about maps \(f: \mathbb{R}^n \to \mathbb{R}^n\) with \(\left.Df\right|_p\) an isomorphism. If we have a map \(f: \mathbb{R}^n \to \mathbb{R}^m\) where \(n > m\), can ask about what to conclude if \(\left. Df\right|_p\) is onto. That is, \(\left. Df\right|_p = (\frac{\partial f_i}{\partial x_j})_{n\times m}\) has full rank. After permuting the co-ordinates, we can assume last \(m\) columns are independent. Then we have the following.
-\begin{theorem}[Implicit Function Theorem]
+\begin{theorem}{Implicit Function Theorem}{}
     Let \(p = (x_0, y_0) \in U \subseteq \mathbb{R}^k \times \mathbb{R}^l = \{(x,y)\mid x\in \mathbb{R}^k, y\in \mathbb{R}^l\}\) with \(U\) open and a map \(f: U \to \mathbb{R}^l\) that sends \(p \mapsto 0\) with \((\frac{\partial f_i}{\partial y_i})_{l\times l}\) an isomorphism at \(p\). Then there is an open neighborhood of \(x_0 \in V \subseteq \mathbb{R}^k\) and a continuously differentiable map \(g: V \to \mathbb{R}^l\) that maps \(x_0 \mapsto y_0\) such that if \((x,y)\in U \cap (V\times \mathbb{R}^l)\), then
     \[
         f(x,y) = 0 \iff y = g(x).
@@ -61,7 +61,7 @@ Inverse Function Theorem is about maps \(f: \mathbb{R}^n \to \mathbb{R}^n\) with
     \]
     That is, the \(f^{-1}(0)\cap U = \{(x,y,g(x,y))\mid (x,y)\in V\}\).
 \end{example}
-Recall Theorem \eqref{abseq}, and we present a proof.
+Recall \cref{th:abseq}, and we present a proof.
 \begin{proof}
     \leavevmode
     \begin{enumerate}

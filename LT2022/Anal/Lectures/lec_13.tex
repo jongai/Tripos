@@ -1,14 +1,14 @@
 \lecture{13}{18 Feb. 2022}{}
 To get a Taylor series for \(f\), one needs to show that \(R_n \to 0\) as \(n \to \infty\). This requires ``estimates'' and ``effort''.
 \begin{remark}
-    Theorems \eqref{tl} and \eqref{tc} work equally well in an interval \([a + h, a]\) with \(h < 0\).
+    \cref{th:tl,th:tc} work equally well in an interval \([a + h, a]\) with \(h < 0\).
 \end{remark}
 \begin{example}
     The binomial series
     \[
         f(x) = (1 + x)^r, r\in \mathbb{Q}.
     \]
-    We claim that \(\left\vert x \right\vert< 1\), then
+    We claim that \(\abs{x}< 1\), then
     \[
         (1 + x)^r = 1 + \binom{r}{1}x + \cdots + \binom{r}{n}x^n + \cdots
     \]
@@ -29,15 +29,15 @@ To get a Taylor series for \(f\), one needs to show that \(R_n \to 0\) as \(n \t
         \]
         Note that \(\theta\) depends on both \(x\) and \(n\).
 
-        For \(0 < x < 1\), \((1 + \theta x)^{n - r} > 1\) for \(n > r\). Now observe that the series \(\sum \binom{r}{n}x^n\) is absolutely convergent for \(\left\vert x \right\vert < 1\). Indeed, by the ratio test,
+        For \(0 < x < 1\), \((1 + \theta x)^{n - r} > 1\) for \(n > r\). Now observe that the series \(\sum \binom{r}{n}x^n\) is absolutely convergent for \(\abs{x} < 1\). Indeed, by the ratio test,
         \begin{align*}
             a_n &= \binom{r}{n}x^n\\
-            \left\vert \frac{a_{n+1}}{a_n} \right\vert &= \left\vert \frac{r(r-1)(r-n+1)\cdots(r-n)x^{n+1}}{(n+1)!} \right\vert \left\vert \frac{n!}{r(r-1)\cdots (r-n+1)x^n} \right\vert\\
-            &=\left\vert \frac{(r-n)x}{n+1} \right\vert
+            \abs{\frac{a_{n+1}}{a_n}} &= \abs{\frac{r(r-1)(r-n+1)\cdots(r-n)x^{n+1}}{(n+1)!}} \abs{\frac{n!}{r(r-1)\cdots (r-n+1)x^n}}\\
+            &=\abs{\frac{(r-n)x}{n+1}}
         \end{align*}
         which tends to a value less than 1. In particular, \(a_n \to 0\) and \(\binom{r}{n}x^n \to 0\).
 
-        Hence, for \(n > r\), and \( 0 < x < 1\), we have that \(\left\vert R_n \right\vert \leq \left\vert \binom{r}{n}x^n \right\vert  = \left\vert a_n \right\vert \to 0\) as \(n \to \infty\).
+        Hence, for \(n > r\), and \( 0 < x < 1\), we have that \(\abs{R_n} \leq \abs{\binom{r}{n}x^n}  = \abs{a_n} \to 0\) as \(n \to \infty\).
 
         So the claim is proved in the range \( 0 \leq x < 1\). If \(-1 < x <0\), the argument above breaks, but Cauchy's form for \(R_n\) works.
         \begin{align*}
@@ -45,9 +45,9 @@ To get a Taylor series for \(f\), one needs to show that \(R_n \to 0\) as \(n \t
             &= \frac{r(r-1) \cdots (r-n+1)}{(n-1)!}\frac{(1-\theta)^{n-1}}{(1+\theta x)^{n-r}}x^n\\
             &= r \binom{r-1}{n-1}x^n (1+\theta x)^{r-1} (\frac{1 - \theta}{1+\theta x})^{n-1}.
         \end{align*}
-        So \(\left\vert R_n \right\vert \leq \left\vert r \binom{r-1}{n-1}x^n \right\vert (1 + \theta x)^{r-1}\). Check that \((1 + \theta x)^{r-1} \leq \mathop{\max}\{1, (1+x)^{r-1}\}\). Let \(K_r = \left\vert r \right\vert \mathop{\max} \{1, (1+x)^{r-1}\}\) is independent of \(n\). So we have
+        So \(\abs{R_n} \leq \abs{r \binom{r-1}{n-1}x^n} (1 + \theta x)^{r-1}\). Check that \((1 + \theta x)^{r-1} \leq \mathop{\max}\{1, (1+x)^{r-1}\}\). Let \(K_r = \abs{r} \mathop{\max} \{1, (1+x)^{r-1}\}\) is independent of \(n\). So we have
         \[
-            \left\vert R_n \right\vert \leq \left\vert K_r \right\vert \left\vert \binom{r-1}{n-1}x^n \right\vert \to 0.
+            \abs{R_n} \leq \abs{K_r} \abs{\binom{r-1}{n-1}x^n} \to 0.
         \]
         So \(R_n \to 0\) as \(n \to \infty\).
     \end{proof}

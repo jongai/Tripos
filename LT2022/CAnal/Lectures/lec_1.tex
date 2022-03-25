@@ -10,13 +10,13 @@
     \begin{itemize}
         \item \(\mathbb{C}\): complex plane.
         \item \(\bar{z}\): complex conjugate of \(z \in \mathbb{C}\).
-        \item \(\left\vert z \right\vert \): modulus of \(z \in \mathbb{C}\).
+        \item \(\abs{z} \): modulus of \(z \in \mathbb{C}\).
 
-        Note that \(d(z, w) = \left\vert z - w \right\vert \) defines a metric on \(\mathbb{C}\) (the usual or standard metric).
-        \item \(D(a, r) = \{z\in \mathbb{C}\mid \left\vert z - a \right\vert <r\}\) is the open disk with centre \(a\) and radius \(r\).
+        Note that \(d(z, w) = \abs{z - w} \) defines a metric on \(\mathbb{C}\) (the usual or standard metric).
+        \item \(D(a, r) = \{z\in \mathbb{C}\mid \abs{z - a} <r\}\) is the open disk with centre \(a\) and radius \(r\).
     \end{itemize}
 \end{notation}
-\begin{definition}
+\begin{definition}{}{}
     A subset \(U \in \mathbb{C}\) is \textit{open} if it is open with respect to the above metric, i.e. if for every \(a \in U\) there exists \(r > 0\) 
 \end{definition}
 All topological notions we will use (limits, continuity of function, compactness)
@@ -31,10 +31,10 @@ This course is about complex valued functions of a single complex variables. i.e
 
 Almost exclusively we'll focus on differentiable function \(f\). Let's start by recalling continuity.
 
-\begin{definition}
+\begin{definition}{}{}
     The function \(f\) is \textit{continuous} at a point \(w \in A\) if \(\forall \epsilon > 0, \exists \delta > 0\) such that
     \[
-        z \in A, \left\vert z - w \right\vert <\delta \implies \left\vert f(z)-f(w) < \epsilon \right\vert.
+        z \in A, \abs{z - w} <\delta \implies \abs{f(z)-f(w) < \epsilon}.
     \]
     This is the same as saying that \(\lim\limits_{z \to w} f(z)=f(w)\).
 \end{definition}
@@ -44,7 +44,7 @@ Almost exclusively we'll focus on differentiable function \(f\). Let's start by 
 
 \subsection{Complex Differentiation}
 We extend the definition of derivatives in this section.
-\begin{definition}
+\begin{definition}{}{}
     \begin{enumerate}
         We have some definitions of differentiation in \(\mathbb{C}\) .
         \item \(f\) is \textit{differentiable} at \(w \in U\) if the limit
@@ -78,7 +78,8 @@ Recall from Analysis \& Topology that \(u: U \to \mathbb{R}\) is differentiable 
 
 The answer for the above question though is no. The theorem below characterizes differentiability of \(f\) in terms of \(u\) and \(v\).
 
-\begin{theorem}[Cauchy-Riemann equations]
+\begin{theorem}{Cauchy-Riemann equations}{}
+
     The function \(f = u + iv:U\to \mathbb{C}\) is differentiable at \(w = c + id \in U \iff  u,v: U \to \mathbb{R}\) are differentiable at \((c,d) \in U\) and \(u, v\) satisfy the Cauchy-Riemann equations at \((c,d)\), i.e.
     \begin{align*}
         \frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y}\\
@@ -91,7 +92,7 @@ The answer for the above question though is no. The theorem below characterizes 
     \(f\) is differentiable at \(w\) with derivative \(f'(w) = p + iq\)
     \begin{gather*}
         \iff \lim_{z \to w} \frac{f(z) - f(w)}{z - w} = p + iq\\
-        \iff \lim_{z \to w} \frac{f(z) - f(w) - (z - w)(p + iq)}{\left\vert z-w \right\vert} = 0\\
+        \iff \lim_{z \to w} \frac{f(z) - f(w) - (z - w)(p + iq)}{\abs{z-w}} = 0\\
     \end{gather*}
     Writing \(f = u + iv\) and separating real and imaginary parts, we have
     \begin{align*}

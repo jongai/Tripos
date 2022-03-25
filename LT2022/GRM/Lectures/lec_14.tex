@@ -7,7 +7,7 @@
     \end{align*}
     Suppose otherwise that \(I = (f)\) for some \(f \in \mathbb{Z}[X]\). So \(2 = fg\) for some \(g \in \mathbb{Z}[X]\). Thus, \(\deg f = \deg g = 0\), and \(f \in \mathbb{Z}\). So \(f = \pm 1\) of \(f = \pm 2\). Thus, \(I = \mathbb{Z}[X]\) or \(I = 2\mathbb{Z}[X]\). Contradiction for both cases.
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     An integral domain is a \textit{unique factorization domain} (UFD) if
     \begin{enumerate}
         \item Every non-zero, non-unit element is a product of irreducibles.
@@ -15,8 +15,7 @@
     \end{enumerate}
 \end{definition}
 We want to show that \(\text{PID}\implies \text{UFD}\).
-\begin{proposition}
-    \label{udfprime}
+\begin{proposition}{}{udfprime}
     Let \(R\) be an integral domain satisfying (1) in definition of UFD. Then \(R\) is UFD if and only if every irreducible is prime.
 \end{proposition}
 \begin{proof}
@@ -24,8 +23,7 @@ We want to show that \(\text{PID}\implies \text{UFD}\).
 
     "\(\impliedby\)" Suppose \(p_1\cdots p_m = q_1 \cdots q_n\) with \(p_i, q_i\) irreducible. Since \(p_1\) is prime, and \(p_1 \mid q_1 \cdots q_n\), we have \(p_1 \mid q_i\) for some \(i\). Upon reordering, we have \(p_1 \mid q_1\). That is, \(q_1 = p_1 u\) for some \(u \in R\). But \(q_1\) is irreducible, and \(p_1\) not a unit. Thus, \(p_1, q_1\) are associates. Cancelling \(p_1\) gives \(p_2 \cdots p_m = uq_2 \cdots q_n\). Result then follows by induction.
 \end{proof}
-\begin{lemma}
-    \label{pidisno}
+\begin{lemma}{}{pidisno}
     Let \(R\) be a PID, and let \(I_1 \subseteq I_2 \subseteq I_3 \subseteq \cdots\) be a nested sequence of ideals, then \(\exists N \in \mathbb{N}\) such that \(I_n = I_{n+1}\) for all \(n \geq N\). (Rings satisfying the "ascending chain condition" is called \textit{Noetherian Rings})
 \end{lemma}
 \begin{proof}
@@ -39,7 +37,7 @@ We want to show that \(\text{PID}\implies \text{UFD}\).
     \]
     and so \(I_n = I\).
 \end{proof}
-\begin{theorem}
+\begin{theorem}{}{}
     If \(R\) is a principal ideal domain, then \(R\) is a unique factorization domain. (i.e. PID \(\implies\) UFD)
 \end{theorem}
 \begin{proof}
@@ -51,8 +49,8 @@ We want to show that \(\text{PID}\implies \text{UFD}\).
         \[
             (x)\subsetneq (x_1) \subsetneq (x_2) \subsetneq \cdots,
         \]
-        which is a contradiction to Lemma \eqref{pidisno}.
-        \item By Proposition \eqref{udfprime}, it suffices to show irreducibles are primes. Conclude by Proposition \eqref{pidprime}.
+        which is a contradiction to \cref{le:pidisno}.
+        \item By \cref{pr:udfprime}, it suffices to show irreducibles are primes. Conclude by Proposition \eqref{pidprime}.
     \end{enumerate}
 \end{proof}
 \begin{example}
@@ -64,7 +62,7 @@ We want to show that \(\text{PID}\implies \text{UFD}\).
         \item \(\mathbb{Z}[\frac{1 + \sqrt{-19} }{2}]\) is a PID but not an ED. (It will be proved in Part II Number Fields)
         \item \(\mathbb{Z}[i]\) is an ED.
     \end{enumerate} 
-    \begin{definition}
+    \begin{definition}{}{}
         \(R\) an integral domain, then
         \begin{enumerate}
             \item \(d \in R\) is a \textit{greatest common divisor} of \(a_1, \ldots,a_n \in R\) (written as \(d = \gcd(a_1, \ldots, a_n)\)) if \(d \mid a_i\) for all \(i\) and if \(d' \mid a_i\) for all \(i\), then \(d'\mid d\);
@@ -73,7 +71,7 @@ We want to show that \(\text{PID}\implies \text{UFD}\).
         Both \(\gcd\) and \(\lcm\) (when they exist) are unique up to associates.
     \end{definition}
 \end{example}
-\begin{proposition}
+\begin{proposition}{}{}
     In a UFD, both \(\gcd\) and \(\lcm\) exist.
 \end{proposition}
 \begin{proof}

@@ -1,8 +1,7 @@
 \lecture{15}{23 Feb. 2022}{}
 \leavevmode
-\begin{theorem}
-    \label{difpow}
-    \(f(z) = \sum\limits_{n=0}^{\infty} a_n z^n\) has radius convergence \(R\). Then \(f\) is differentiable at all points with \(\left\vert z \right\vert < R\) with
+\begin{theorem}{}{difpow}
+    \(f(z) = \sum\limits_{n=0}^{\infty} a_n z^n\) has radius convergence \(R\). Then \(f\) is differentiable at all points with \(\abs{z} < R\) with
     \[
         f'(z) = \sum\limits_{n=1}^{\infty} n a_n z^{n - 1}.
     \]
@@ -17,7 +16,7 @@ We have already seen that
 \[
     \sum\limits_{n=0}^{\infty} \frac{z^n}{n!}
 \]
-has \(R = \infty\). Define \(e: \mathbb{C} \to \mathbb{C}\), \(z \mapsto \sum\limits_{n=0}^{\infty} \frac{z^n}{n!}\). From Theorem \eqref{difpow}, \(e\) is differentiable, and \(e'(z) = e(z)\).
+has \(R = \infty\). Define \(e: \mathbb{C} \to \mathbb{C}\), \(z \mapsto \sum\limits_{n=0}^{\infty} \frac{z^n}{n!}\). From Theorem \eqref{th:difpow}, \(e\) is differentiable, and \(e'(z) = e(z)\).
 
 If \(F: \mathbb{C}\to \mathbb{C}\) has \(F'(z) = 0\) for all \(z \in \mathbb{C}\), then \(F\) is constant.
 \begin{proof}

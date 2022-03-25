@@ -1,17 +1,17 @@
 \lecture{10}{10 Feb. 2022}{}
 \leavevmode
-\begin{theorem}[First Isomorphism Theorem]
-    Let \(\phi: R \to S\) be a ring homomorphism, then \(\ker(\phi) \nsub R\), \(\Ima(\phi)\leq S\) and there exists isomorphism \(\nicefrac{R}{\ker(\phi)}\cong \Ima(\phi)\).
+\begin{theorem}{First Isomorphism Theorem}{}
+    Let \(\phi: R \to S\) be a ring homomorphism, then \(\ker(\phi) \nsub R\), \(\ima(\phi)\leq S\) and there exists isomorphism \(\nicefrac{R}{\ker(\phi)}\cong \ima(\phi)\).
 \end{theorem}
 \begin{proof}
-    We already showed that \(\ker(\phi)\nsub R\) in Lemma \eqref{ringker}, and \(\Ima(\phi)\) is a subgroup of \((S,+)\) by First Isomorphism Theorem for groups. So just need to show that it's closed under multiplication and contains \(1_S\).
+    We already showed that \(\ker(\phi)\nsub R\) in Lemma \eqref{ringker}, and \(\ima(\phi)\) is a subgroup of \((S,+)\) by First Isomorphism Theorem for groups. So just need to show that it's closed under multiplication and contains \(1_S\).
 
-    We have \(\phi(r_1)\phi(r_2) = \phi(r_1 r_2)\in \Ima(\phi)\) and \(1_S = \phi(1_R) \in \Ima(\phi)\). Thus, \(\Ima(\phi)\) is a subring of \(S\).
+    We have \(\phi(r_1)\phi(r_2) = \phi(r_1 r_2)\in \ima(\phi)\) and \(1_S = \phi(1_R) \in \ima(\phi)\). Thus, \(\ima(\phi)\) is a subring of \(S\).
 
     Let \(K = \ker(\phi)\), and define
     \[
     \begin{aligned}
-      \Phi\colon \nicefrac{R}{K} & \longrightarrow \Ima(\phi)      \\
+      \Phi\colon \nicefrac{R}{K} & \longrightarrow \ima(\phi)      \\
       r+K          & \longmapsto \phi(r)
     \end{aligned}.
     \]
@@ -25,7 +25,7 @@
     \end{align*}
     Thus, \(\Phi\) is an isomorphism of rings.
 \end{proof}
-\begin{theorem}[Second Isomorphism Theorem]
+\begin{theorem}{Second Isomorphism Theorem}{}
     Let \(R\leq S\) and \(J \nsub S\). Then \(R \cap J \nsub R\), \(R + J = \{r + a \mid r \in R, a \in S\}\leq S\) and
     \[
         \frac{R}{R\cap J} \cong \frac{R + J}{J}\leq \frac{S}{J}.
@@ -44,7 +44,7 @@
     Let \(\phi: R \to \nicefrac{S}{J}, r \mapsto r + J\). Thus is the composition of the inclusion \(R\leq S\), and the quotient map \(S \to \nicefrac{S}{J}\) . We have
     \begin{align*}
         \ker(\phi) &= \{r\in R \mid r + J = J\} = R \cap J \nsub R\\
-        \Ima(\phi) &= \{r + J \mid r \in R\} = \frac{R + J}{J} \leq \frac{S}{J}.
+        \ima(\phi) &= \{r + J \mid r \in R\} = \frac{R + J}{J} \leq \frac{S}{J}.
     \end{align*}
     And by First Isomorphism Theorem, we have
     \[
@@ -59,7 +59,7 @@
         \nicefrac{J}{I}&\longmapsfrom J.
     \end{align*}
 \end{note}
-\begin{theorem}[Third Isomorphism Theorem]
+\begin{theorem}{Third Isomorphism Theorem}{}
     Let \(I\nsub R, J \nsub R\) with \(I \subseteq J\), then \(\nicefrac{J}{I}\nsub \nicefrac{R}{I}\), and
     \[
         \frac{\nicefrac{R}{I}}{\nicefrac{J}{I}}\cong \frac{R}{J}.
@@ -104,10 +104,10 @@
 
     By First Isomorphism Theorem,
     \[
-        \nicefrac{\mathbb{Z}}{n\mathbb{Z}}\cong \Ima(i) \leq R.
+        \nicefrac{\mathbb{Z}}{n\mathbb{Z}}\cong \ima(i) \leq R.
     \]
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     We call \(n\)  the \textit{characteristic} of \(R\).
 \end{definition}
 \begin{example}
@@ -115,7 +115,7 @@
 \end{example}
 \subsection{Integral Domains, Maximal Ideals and Prime Ideals}
 \leavevmode
-\begin{definition}
+\begin{definition}{}{}
     An \textit{integral domain}  is a ring with \(0 \neq 1\), and such that for \(a, b \in R\), \(ab = 0 \implies a = 0\) or \(b = 0\).
 
     A \textit{zero-divisor} in a ring \(R\) is a non-zero element \(a \in R\) such that \(ab = 0\) for some \(0 \neq b \in R\).
@@ -130,7 +130,7 @@
         \item \(\mathbb{Z} \times \mathbb{Z}\) is not an integral domain since \((1,0)\cdot (0,1) = (0,0)\).
     \end{enumerate}
 \end{example}
-\begin{lemma}
+\begin{lemma}{}{}
     If \(R\) is an integral domain, so is \(R[X]\).
 \end{lemma}
 \begin{proof}

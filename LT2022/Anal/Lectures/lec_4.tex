@@ -25,7 +25,7 @@
 \begin{remark}
     Use the root test when there is a nth power in the series.
 \end{remark}
-\begin{theorem}[Cauchy's Condensation Test]
+\begin{theorem}{Cauchy's Condensation Test}{}
     Let \(a_n\) be a decreasing sequence of positive terms. Then \(\sum\limits_{n=1}^{\infty} a_n\) converges if and only if \(\sum\limits_{n=1}^{\infty} 2^n a_{2^n}\) converges.
 \end{theorem}
 \begin{proof}
@@ -70,7 +70,7 @@
 \end{example}
 \subsection{Alternating Series}
 \leavevmode
-\begin{theorem}[Alternating Series Test]
+\begin{theorem}{Alternating Series Test}{}
     If \(a_n\) decreases and tends to 0 as \(n \to \infty\), then the series \(\sum\limits_{n=1}^{\infty} (-1)^{n+1}a_n\) converges.
 \end{theorem}
 \begin{example}
@@ -87,5 +87,5 @@
     \[
         S_{2n + 1} = S_{2n} + a_{2n + 1} \to S + 0 = S.
     \]
-    This implies that \(S_n\) converges to \(S\) as well. Given \(\epsilon\), there exists \(N_1\) such that \(\forall n \geq N_1\), \(\left\vert S_{2n}-S \right\vert < \epsilon\). We also know that there exists \(N_2\) such that \(\forall n \geq N_2\), \(\left\vert S_{2n + 1} - S \right\vert <\epsilon\). Take \(N = 2 \mathop{\max} \{N_1, N_2\} + 1\), then if \(n \geq N\), \(\left\vert S_k - S\right\vert < \epsilon\). So \(S_k \to S\).
+    This implies that \(S_n\) converges to \(S\) as well. Given \(\epsilon\), there exists \(N_1\) such that \(\forall n \geq N_1\), \(\abs{S_{2n}-S} < \epsilon\). We also know that there exists \(N_2\) such that \(\forall n \geq N_2\), \(\abs{S_{2n + 1} - S} <\epsilon\). Take \(N = 2 \mathop{\max} \{N_1, N_2\} + 1\), then if \(n \geq N\), \(\abs{S_k - S} < \epsilon\). So \(S_k \to S\).
 \end{proof}

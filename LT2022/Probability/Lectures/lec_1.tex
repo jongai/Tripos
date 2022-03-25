@@ -9,7 +9,7 @@ If we have a die with outcomes 1, 2, \ldots, 6.
 \end{example}
 \section{Formal Setup}
 We try to define a probability space rigorously in this section.
-\begin{definition}[Probability Space]
+\begin{definition}{Probability Space}{}
     \label{prospace}
     We have the following,
     \begin{enumerate}
@@ -86,17 +86,17 @@ From the axioms, we want to prove the following properties of a probability spac
     \begin{enumerate}
 \item \(\Omega\) finite, \(\Omega = \{w_1, \ldots , w_n \}\), \(\mathcal{F} = \text{all subsets under uniform choice}\).
 
-\(\mathbb{P}:\mathcal{F} \to [0,1], \mathbb{P}(A) = \frac{\left\vert A \right\vert }{\left\vert \Omega \right\vert }\).
-In particular: \(\mathbb{P}(\{w\}) = \frac{1}{\left\vert \Omega \right\vert} \forall w \in \Omega\).
+\(\mathbb{P}:\mathcal{F} \to [0,1], \mathbb{P}(A) = \frac{\abs{A} }{\abs{\Omega} }\).
+In particular: \(\mathbb{P}(\{w\}) = \frac{1}{\abs{\Omega}} \forall w \in \Omega\).
 
 \item If we are choosing without replacement
 \(n\) indistinguishable marbles that are labelled \(\{1, \ldots, n \}\). Pick \(k \leq n\) marbles uniformly at random.
 
-Here we have \(\Omega=\{A \subseteq \{1, \ldots , n \}\), \(\left\vert A \right\vert = k\), \(\left\vert \Omega \right\vert = \binom{n}{k}\).
+Here we have \(\Omega=\{A \subseteq \{1, \ldots , n \}\), \(\abs{A} = k\), \(\abs{\Omega} = \binom{n}{k}\).
 
 \item If we have a well-shuffled deck of cards, and we uniformly chose permutation of 52 cards.
 
-\(\Omega = \{\text{all permutations of 52 cards}\}\). \(\left\vert \Omega \right\vert = 52!\).
+\(\Omega = \{\text{all permutations of 52 cards}\}\). \(\abs{\Omega} = 52!\).
 
 Then we have
 \[

@@ -5,7 +5,7 @@ We first start with distributions with \(\Omega\) finite.
 \subsubsection{Bernoulli Distribution (``biased coin toss'')}
 We have \(X \sim \mathrm{Bern}(p)\) with \(p \in [0,1]\), and
 \begin{align*}
-    \Ima(X) &= \{0,1\}\\
+    \ima(X) &= \{0,1\}\\
     p_X(1) &= \probability{}{X = 1} = p\\
     p_X(0) &= \probability{}{X = 0} = 1-p.
 \end{align*}
@@ -15,7 +15,7 @@ We have \(X \sim \mathrm{Bern}(p)\) with \(p \in [0,1]\), and
 \subsubsection{Binomial Distribution}
 We have \(X \sim \mathrm{Bin}(n,p)\) with \(n \in \mathbb{Z}^+, p \in [0,1]\). (``Toss coin \(n\) times, count number of heads'') We have
 \begin{align*}
-    \Ima(X) &= \{0,1, \ldots, n\}\\
+    \ima(X) &= \{0,1, \ldots, n\}\\
     p_X(k) &= \probability{}{X = k} = \binom{n}{k}p^k (1-p)^{n-k}.
 \end{align*}
 Do check that \(\sum\limits_{k=0}^{n} p_X(k) = 1\) by binomial expansion.
@@ -23,7 +23,7 @@ Next, we consider \(\Omega=\mathbb{N}\). ("Ways of choosing a random integer")
 \subsubsection{Geometric Distribution (``Waiting for success'')}
 We have \(X \sim \mathrm{Geom}(p)\) with \(p \in (0,1]\). (``Toss a coin with \(\probability{}{\text{head}} =p\) until a head appears. Count how many trials were needed'') So
 \begin{align*}
-    \Ima(X) &= \{1,2 \ldots\}\\
+    \ima(X) &= \{1,2 \ldots\}\\
     p_X(k) &= \probability{}{(n-1)\text{ failures, then success on last}} = (1-p)^{k-1}p. 
 \end{align*}
 Indeed, we have
@@ -33,7 +33,7 @@ Indeed, we have
 
 Alternatively, we can count how many failures before a success. So
 \begin{align*}
-    \Ima(Y) &= \{0,1,2, \ldots\}\\
+    \ima(Y) &= \{0,1,2, \ldots\}\\
     p_Y(k) &= \probability{}{k \text{ failures, then success on next}} = (1-p)^k p.
 \end{align*}
 Similarly, we have
@@ -43,7 +43,7 @@ Similarly, we have
 \subsubsection{Poisson Distribution}
 We have \(X \sim \mathrm{Po}(\lambda)\) (or \(\mathrm{Poi}(\lambda)\) with parameter \(\lambda\)), and
 \begin{align*}
-    \Ima(X) &= \{0,1,2, \ldots\}\\
+    \ima(X) &= \{0,1,2, \ldots\}\\
     p_X(k) &= e^{-\lambda}\frac{\lambda^k}{k!}.
 \end{align*}
 Note that \(\sum_{k\geq 0} \probability{}{X = k} = e^{-\lambda} \sum_{k\geq 0}\frac{\lambda^k}{k!}=e^{-\lambda}e^{\lambda} = 1\).
@@ -64,21 +64,21 @@ We have
     \textbf{1}_A \sim \mathrm{Bern}(\frac{1}{3}),~\textbf{1}_B \sim \mathrm{Bern}(\frac{1}{2}),~\textbf{1}_C \sim \mathrm{Bern}(\frac{1}{2}) .
 \]
 Note \(\textbf{1}_A \leq \textbf{1}_B\) for all outcomes, but \(\textbf{1}_A \leq \textbf{1}_C\) is not true for all outcomes.
-\begin{definition}
+\begin{definition}{}{}
     \(X_1, \ldots, X_n\) discrete RVs, then we say \(X_1, \ldots, X_n\) are \textit{independent} if
     \[
         \probability{}{X_1 = x_1, \ldots, X_n = x_n} = \probability{}{X_1 = x_1} \cdots \probability{}{X_n = x_n}\quad \forall x_1, \ldots, x_n \in \mathbb{R}.
     \]
 \end{definition}
 \begin{remark}
-    It suffices to check that \(\forall x_i \in \Ima(X_i)\).
+    It suffices to check that \(\forall x_i \in \ima(X_i)\).
 \end{remark}
 \begin{example}
     \(X_1, \ldots, X_n\) independent RVs each with the \(\mathrm{Bern}(p)\) distribution. We study \(S_n = X_1 + \cdots + X_n\). Then
     \begin{align*}
         \probability{}{S_n = k} &= \sum_{\substack{x_1 + \cdots + x_n = k\\x_i \in \{0,1\}}} \probability{}{X_1 = x_1, \ldots, X_n = x_n}\\
         &= \sum_{\substack{x_1 + \cdots + x_n = k\\x_i \in \{0,1\}}} \probability{}{X_1 = x_1}\cdots\probability{}{X_n = x_n} \text{ by independence}\\
-        &= \sum_{\substack{x_1 + \cdots + x_n = k\\x_i \in \{0,1\}}}p^{\left\vert \{i\mid x_i = 1\} \right\vert}(1-p)^{\left\vert \{i\mid x_i = 0\} \right\vert}\\
+        &= \sum_{\substack{x_1 + \cdots + x_n = k\\x_i \in \{0,1\}}}p^{\abs{\{i\mid x_i = 1\}}}(1-p)^{\abs{\{i\mid x_i = 0\}}}\\
         &= \sum_{\substack{x_1 + \cdots + x_n = k\\x_i \in \{0,1\}}}p^k(1-p)^{n-k}\\
         &= \binom{n}{k}p^k (1-p)^{n-k}.
     \end{align*}

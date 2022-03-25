@@ -33,9 +33,9 @@
 \end{example}
 
 \subsection{Combinatorial Analysis}
-If \(\Omega\) is a finite set such that \(\left\vert \Omega \right\vert = n\),
+If \(\Omega\) is a finite set such that \(\abs{\Omega} = n\),
 \begin{problem}
-    How many ways to partition \(\Omega\) into \(k\) disjoint subsets \(\Omega_1, \ldots \Omega_k \) with \(\left\vert \Omega_i \right\vert =n_i\) (\(\sum\limits_{i=1}^{k} n_i = n\))?
+    How many ways to partition \(\Omega\) into \(k\) disjoint subsets \(\Omega_1, \ldots \Omega_k \) with \(\abs{\Omega_i} =n_i\) (\(\sum\limits_{i=1}^{k} n_i = n\))?
 \end{problem}
 The total number of ways \(M\) is
 \begin{align*}
@@ -73,8 +73,8 @@ which is called the \textit{multinomial coefficient}, and denoted by the last te
 \end{figure}
 We have the following uniform probability space
 \begin{align*}
-    \Omega &= \{(x_0, x_1, \ldots ,x_n) \mid x_0 = 0, \left\vert x_k - x_{k-1} \right\vert = 1, k = 1, \ldots, n\},\\
-    \left\vert \Omega \right\vert &= 2^n.
+    \Omega &= \{(x_0, x_1, \ldots ,x_n) \mid x_0 = 0, \abs{x_k - x_{k-1}} = 1, k = 1, \ldots, n\},\\
+    \abs{\Omega} &= 2^n.
 \end{align*}
 \begin{problem}
     What's \(\probability{}{x_n = 0}\) and \(\probability{}{x_n = n} \)?
@@ -93,7 +93,7 @@ We next present Stirling's Formula, and we adopt the following notation for the 
 \begin{notation}
     If \((a_n)\), \(b_n\) are two sequences, we say \(a_{n} \sim b_n \) as \(n \to \infty\) if \(\frac{a_n}{b_n}\to 1\) as \(n \to \infty\).
 \end{notation}
-\begin{theorem}[Stirling's Formula]
+\begin{theorem}{Stirling's Formula}{}
     \leavevmode
     \[
         n! \sim \sqrt{2\pi} n^{n+\frac{1}{2}}e^{-n} \quad \text{as}\quad n \to \infty.

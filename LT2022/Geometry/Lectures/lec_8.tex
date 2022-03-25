@@ -1,6 +1,6 @@
 \lecture{8}{7 Feb. 2022}{}
 \leavevmode
-\begin{lemma}
+\begin{lemma}{}{}
     A smooth surface in \(\mathbb{R}^3\) is orientable with its abstract smooth surface structure if and only if it is two-sided.
 \end{lemma}
 \begin{proof}
@@ -35,12 +35,12 @@
 
     Conversely, if \(\Sigma\) is 2-sided, and I have a global continuous choice of normal vector. I can consider the subatlas of the natural smooth atlas such that allow a chart \((u, \phi)\) if associated parametrization \(\phi^{-1}=\sigma\) makes \(\{\sigma_u, \sigma_v, n\}\) a positive basis for \(\mathbb{R}^3\). Similarly, we know that the transition maps between such charts have positive determinant, and are orientation-preserving. So \(\Sigma\) is continuous.
 \end{proof}
-\begin{lemma}
+\begin{lemma}{}{}
     If \(\Sigma\) is a smooth surface in \(\mathbb{R}^3\) and \(A: \mathbb{R}^3 \to \mathbb{R}^3\) is a smooth map that preserves \(\Sigma\) set-wise. Then
     \(\left.DA\right|_p:\mathbb{R}^3 \to \mathbb{R}^3\) sends \(T_p\Sigma\) to \(T_{A(p)}\Sigma\) whenever \(p \in \Sigma\).
 \end{lemma}
 \begin{proof}
-    Suppose \(\gamma:(-\epsilon, \epsilon)\to \mathbb{R}^3\) is a smooth map such that \(\Ima(\gamma)\subseteq \Sigma\) and \(\gamma(0)=p\). Recall \(T_p\Sigma\) is spanned by \(\gamma'(0)\) for such \(\gamma\).
+    Suppose \(\gamma:(-\epsilon, \epsilon)\to \mathbb{R}^3\) is a smooth map such that \(\ima(\gamma)\subseteq \Sigma\) and \(\gamma(0)=p\). Recall \(T_p\Sigma\) is spanned by \(\gamma'(0)\) for such \(\gamma\).
 
     Now \(A \circ \gamma: (-\epsilon,\epsilon) \to \mathbb{R}^3\) also has image in \(\Sigma\), and by chain rule,
     \[
@@ -79,11 +79,11 @@ We're now starting a new chapter on geometry surfaces in \(\mathbb{R}^3\): espec
 
 Let \(\gamma: (a,b) \to \mathbb{R}^3\) smooth. The \textit{length} of \(\gamma\) is \(L(\gamma) = \int_a^b \left\lVert \gamma'(t)\right\rVert\,\mathrm{d}t\). If \(s: (A,B) \to (a,b)\) is monotonically increasing, and let \(\tau(t) = \gamma(s(t))\), then
 \[
-    L(\tau)=\int_{A}^{B} \left\lVert \tau'(t)\right\rVert \,\mathrm{d}x=\int_{A}^{B}\left\lVert \gamma(s(t))\right\rVert \left\vert s'(t) \right\vert \,\mathrm{d}x = L(\gamma)
+    L(\tau)=\int_{A}^{B} \left\lVert \tau'(t)\right\rVert \,\mathrm{d}x=\int_{A}^{B}\left\lVert \gamma(s(t))\right\rVert \abs{s'(t)} \,\mathrm{d}x = L(\gamma)
 \]
 by change of variables formula since \(s'(t) \geq 0\).
-\begin{lemma}
-    If \(\gamma:(a,b)\to \mathbb{R}^3\) is continuously differentiable and \(\gamma'(t)\neq 0~\forall t\) then \(\gamma\) can be parametrized by arc-length. (i.e. in a parameter \(s\) such that \(\left\vert \gamma'(s)=1\right\vert~\forall s\))
+\begin{lemma}{}{}
+    If \(\gamma:(a,b)\to \mathbb{R}^3\) is continuously differentiable and \(\gamma'(t)\neq 0~\forall t\) then \(\gamma\) can be parametrized by arc-length. (i.e. in a parameter \(s\) such that \(\abs{\gamma'(s)=1}~\forall s\))
 \end{lemma}
 \begin{proof}
     Exercise.
@@ -99,7 +99,7 @@ where \(\begin{aligned}[t]
     G &= \langle \sigma_v, \sigma_v\rangle = \left\lVert \sigma_v\right\rVert^2
 \end{aligned}\) are smooth functions on \(V\), and \(\langle , \rangle\) is the Euclidean inner product. Note that \(E,F,G\) depend only on \(\sigma\), but not on \(\gamma\).
 
-\begin{definition}
+\begin{definition}{}{}
     The \textit{First Fundamental Form} (FFF) of \(\Sigma\) in the\\ parametrization is the expression
     \[
         E \mathrm{d}u^2 + 2F \mathrm{d}u\mathrm{d}v + G \mathrm{d}v^2.
@@ -112,7 +112,7 @@ The notation is designed to remind you that if \(\gamma: (a,b) \to \mathbb{R}^3\
 where \(\gamma(t) = \sigma(u(t), v(t))\).
 \begin{remark}
     Really the Euclidean inner product \(\langle,\rangle\) on \(\mathbb{R}^3\) gives me an inner product on \(T_p\Sigma \subseteq \mathbb{R}^3\). If I pick a parametrization \(\sigma\),
-    \[T_p\Sigma = \Ima(\left.D\sigma\right|_0) = \mathrm{span}\{\sigma_u, \sigma_v\}\] given \(\sigma(0) = p\).
+    \[T_p\Sigma = \ima(\left.D\sigma\right|_0) = \mathrm{span}\{\sigma_u, \sigma_v\}\] given \(\sigma(0) = p\).
     FFF is a symmetric bilinear form on \(T_p\Sigma\) (varying smoothly in \(p\)), expressed in a basis coming from the parametrization \(\sigma\). So often helpful to consider \(\begin{psmallmatrix}
         E &  F \\
         F &  G \\

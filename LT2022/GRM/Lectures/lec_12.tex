@@ -6,7 +6,7 @@
 \end{remark}
 \subsection{Factorization in Integral Domains}
 In this section, \(R\) is always an integral domain.
-\begin{definition}
+\begin{definition}{}{}
     \leavevmode
     \begin{enumerate}
         \item \(a \in R\) is a \textit{unit} if \(\exists b\in R\) with \(ab = 1\). (equivalently, \((a) = R\)) And we write the units in \(R\) as \(R^\times \).
@@ -23,7 +23,7 @@ In this section, \(R\) is always an integral domain.
     \item \(2X\) is irreducible in \(\mathbb{Q}[X]\), but not in \(\mathbb{Z}[X]\).
     \end{enumerate}
 \end{note}
-\begin{lemma}
+\begin{lemma}{}{}
     \((r) \nsub R\) is a prime ideal if and only if \(r = 0\) or \(r\) is prime.
 \end{lemma}
 \begin{proof}
@@ -31,7 +31,7 @@ In this section, \(R\) is always an integral domain.
 
     \(\impliedby\) direction. \(\{0\}\nsub R\) is a prime ideal since \(R\) is an integral domain. Let \(r \in R\) be a prime. \((r) \neq R\) since \(r \notin R^\times \). If \(ab \in (r)\), then \(r \mid ab\) so \(r \mid a\) or \(r \mid b\). That is \(a \in (r)\) or \(b \in (r)\); that is, \((r)\) is a prime ideal.
 \end{proof}
-\begin{lemma}
+\begin{lemma}{}{}
     \label{primeir}
     If \(r\) is a prime element, then it is irreducible.
 \end{lemma}
@@ -67,13 +67,13 @@ The converse does not hold in general.
         \item \(2\cdot 3 = (1 + \sqrt{-5})(1 - \sqrt{-5})\) gives two different factorization into irreducibles. Since \(R^\times = \{\pm 1\}\), the irreducibles are not associates, so they are really different factorizations.
     \end{enumerate}
 \end{remark}
-\begin{definition}
+\begin{definition}{}{}
     An integral domain \(R\) is a \textit{principal ideal domain} (PID) if any ideal \(I \nsub R\) is principal, i.e. \(I = (r)\) for some \(r \in R\).
 \end{definition}
 \begin{example}
     \(\mathbb{Z}\) is a PID as proved in previous lecture.
 \end{example}
-\begin{proposition}
+\begin{proposition}{}{}
     Let \(R\) be a PID. Then every irreducible element of \(R\) is a prime.
     \label{pidprime}
 \end{proposition}

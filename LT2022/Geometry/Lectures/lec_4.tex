@@ -1,6 +1,6 @@
 \lecture{4}{28 Jan. 2022}{}
 \leavevmode
-\begin{definition}
+\begin{definition}{}{}
     A \textit{subdivision} of a compact topological surface \(\Sigma\) comprises
     \begin{enumerate}
         \item a finite set \(V \in \Sigma\) of vertices;
@@ -23,10 +23,10 @@
         \item By our definition, we can have degenerate subdivisions like a subdivision of \(S^2\) with 1 vertex, 0 edge and 1 face.
     \end{itemize}
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     The \textit{Euler characteristic} of a subdivision is the number \(\# V - \# E + \# F\).
 \end{definition}
-\begin{theorem}
+\begin{theorem}{}{}
     \leavevmode
     \begin{enumerate}
         \item Every compact topological surface admits subdivision, and indeed triangulation.
@@ -58,7 +58,7 @@
     \end{enumerate}
 \end{remark}
 Recalled if \(\Sigma\) is a topological surface, every \(p \in \Sigma\) lies in an open neighborhood \(p \in u \subseteq \Sigma\) with \(u\) homeomorphic to an open disc (or equivalently to \(\mathbb{R}^2\)).
-\begin{definition}
+\begin{definition}{}{}
     A pair \((u, \phi)\) where \(u\) is an open set in \(\Sigma\) and \(\phi : u \to V \) an open set in \(\mathbb{R}^2\) which is a homeomorphism is called a \textit{chart} for \(\Sigma\). (If \(p\in u\) we might say "a chart for \(\Sigma\) at \(p\)")
 
     A collection \(\{(u_i, \phi_1)_{i\in I}\}\) of charts such that \(\cup_{i\in I} = \Sigma\) is called an \textit{atlas} for \(\Sigma\).
@@ -72,14 +72,14 @@ Recalled if \(\Sigma\) is a topological surface, every \(p \in \Sigma\) lies in 
         \item For \(S^2\), we have an atlas with 2 charts, the 2 stereographic projections.
     \end{enumerate}
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     Let \((u_i, \phi_i)\) be charts containing \(p\), the map \[\left.\phi_2 \circ \phi_1^{-1} \right|_{\phi_1 (u_1\cap u_2)}\] is called the \textit{transition map} between the charts. This is a homeomorphism of open sets in \(\mathbb{R}^2\)
 \end{definition}
 Recall that if \(V \subseteq \mathbb{R}^2\) and \(V' \subseteq \mathbb{R}^m\) open subsets, then a map \(f: V \to V'\) is called \textit{smooth} if it is infinitely differentiable; that is, it has partial derivatives of all orders of all variables.
 
 If \(n = m\), a homeomorphism \(f: V \to V'\) is called a \textit{diffeomorphism} if it is smooth and has smooth inverse.
 
-\begin{definition}
+\begin{definition}{}{}
     An \textit{abstract smooth surface} \(\Sigma\) is a topological surface with an atlas of charts \(\{(u_i, \phi_i)\}_{i\in I}\) such that all transition maps
     \[
         \phi_i \circ \phi_j^{-1}: \phi_j(u_i\cap u_j) \to \phi_i(u_i \cap u_j)

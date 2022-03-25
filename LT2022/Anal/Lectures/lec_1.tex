@@ -10,13 +10,13 @@ Books:
 \begin{notation}
     We denote sequences by \(a_n\) or \((a_n)^\infty_{n=1}\), with \(a_n \in \mathbb{R}\).
 \end{notation}
-\begin{definition}
-    We say that \(a_n \to a\) as \(n \to \infty\) if given \(\epsilon > 0\), there exists \(N\) such that \(\left\vert a_{n}-a \right\vert < \epsilon \) for all \(n \geq N\).
+\begin{definition}{}{}
+    We say that \(a_n \to a\) as \(n \to \infty\) if given \(\epsilon > 0\), there exists \(N\) such that \(\abs{a_{n}-a} < \epsilon \) for all \(n \geq N\).
 \end{definition}
 \begin{note}
     \(N = N(\epsilon)\) which is dependent on \(\epsilon\). That is, if you want to go closer to \(a\), sometimes you need to go higher in \(N\).
 \end{note}
-\begin{definition}[limit of a sequence]
+\begin{definition}{limit of a sequence}{limseq}
     We say that a sequence is a
     \begin{align*}
         \begin{rcases}
@@ -26,11 +26,11 @@ Books:
         \begin{rcases}
             \textit{strictly increasing sequence if }a_n \leq a_{n+1},\\
             \textit{strictly decreasing sequence if } a_n \geq a_{n+1}.
-        \end{rcases}&\textit{strictly monotone sequence}\\
+        \end{rcases}&\textit{strictly monotone sequence}
     \end{align*}
 \end{definition}
 We also have
-\begin{theorem}[Fundamental Axiom of the Real Numbers]
+\begin{theorem}{Fundamental Axiom of the Real Numbers}{lubp}
     If \(a_n \in \mathbb{R}\) and \(a_n\) is increasing and bounded above by \(A \in R\), then there exists \(a \in \mathbb{R}\) such that \(a_n \to n\) as \(n \to \infty \).
 
     That is, an increasing sequence of real numbers bounded above \textit{converges}.
@@ -42,7 +42,7 @@ We also have
         \item Every non-empty set of real numbers bounded above has a \textit{supremum} (Least Upper Bound Axiom).
     \end{itemize}
 \end{remark}
-\begin{definition}[supremum]
+\begin{definition}{supremum}{supremum}
     For \(S \subseteq \mathbb{R},S\neq \varnothing\). We say that \(\sup S = k\) if 
     \begin{enumerate}
         \item \(x \leq k, \quad \forall x \in S\),
@@ -52,8 +52,7 @@ We also have
 \begin{note}
     Supremum is unique, and there is a similar notion of infimum.
 \end{note}
-\begin{lemma}[Properties of Limits]
-    \label{limprop}
+\begin{lemma}{Properties of Limits}{limprop}
     \leavevmode
     \begin{enumerate}
         \item The limit is unique. That is, if \(a_n \to a\), and \(a_n \to b\), then \(a = b\).
@@ -68,39 +67,38 @@ We also have
 \begin{proof}
     \leavevmode
     \begin{enumerate}
-        \item[1.] Given \(\epsilon > 0\), there exists \(N_1\) such that \(\left\vert a_n - a \right\vert < \epsilon, \forall n \geq N_1\), and there exists \(N_2\) such that \(\left\vert a_n - b \right\vert < \epsilon, \forall n \geq N_2\).
+        \item[1.] Given \(\epsilon > 0\), there exists \(N_1\) such that \(\abs{a_n - a} < \epsilon, \forall n \geq N_1\), and there exists \(N_2\) such that \(\abs{a_n - b} < \epsilon, \forall n \geq N_2\).
 
         Take \(N = \max\{n_1, n_2\}\), then if \(n \geq N\),
         \[
-            \left\vert a - b \right\vert \leq \left\vert a_n - a \right\vert +\left\vert a_n -b \right\vert < 2\epsilon.
+            \abs{a - b} \leq \abs{a_n - a} +\abs{a_n -b} < 2\epsilon.
         \]
-        If \(a \neq b\), take \(\epsilon = \frac{\left\vert a - b \right\vert}{3}\), we have
+        If \(a \neq b\), take \(\epsilon = \frac{\abs{a - b}}{3}\), we have
         \[
-            \left\vert a - b \right\vert < \frac{2}{3}\left\vert a - b \right\vert. \contra
+            \abs{a - b} < \frac{2}{3}\abs{a - b}. \contra
         \]
-        \item[2.] Given \(\epsilon > 0\), there exists \(N\) such that \(\left\vert a_n - a \right\vert < \epsilon, \forall n \geq N\), Since \(n_j \geq j\), we know
+        \item[2.] Given \(\epsilon > 0\), there exists \(N\) such that \(\abs{a_n - a} < \epsilon, \forall n \geq N\), Since \(n_j \geq j\), we know
 
         \[
-            \left\vert a_{n_j} - a \right\vert < \epsilon, \forall j \geq  N.
+            \abs{a_{n_j} - a} < \epsilon, \forall j \geq  N.
         \]
         That is, \(a_{n_j} \to a\) as \(j \to \infty\).
         \item[5.] We have
         \begin{align*}
-            \left\vert a_n b_n - ab \right\vert &\leq \left\vert a_n b_n - a_n b \right\vert + \left\vert a_n b - ab \right\vert\\
-            &= \left\vert a_n \right\vert \left\vert b_n - b \right\vert + \left\vert b \right\vert \left\vert a_n - a \right\vert.
+            \abs{a_n b_n - ab} &\leq \abs{a_n b_n - a_n b} + \abs{a_n b - ab}\\
+            &= \abs{a_n} \abs{b_n - b} + \abs{b} \abs{a_n - a}.
         \end{align*}
-        Given \(\epsilon > 0\), there exists \(N_1\) such that \(\left\vert a_n - a \right\vert < \epsilon, \forall n \geq N_1\), and there exists \(N_2\) such that \(\left\vert b_n - b \right\vert < \epsilon, \forall n \geq N_2\).
+        Given \(\epsilon > 0\), there exists \(N_1\) such that \(\abs{a_n - a} < \epsilon, \forall n \geq N_1\), and there exists \(N_2\) such that \(\abs{b_n - b} < \epsilon, \forall n \geq N_2\).
 
-        If \(n \geq N_1(1)\), \(\left\vert a_n - a \right\vert < 1 \), so \(\left\vert a_n \right\vert \leq \left\vert a \right\vert + 1\).
+        If \(n \geq N_1(1)\), \(\abs{a_n - a} < 1 \), so \(\abs{a_n} \leq \abs{a} + 1\).
 
         We have
         \[
-            \left\vert a_n b_n - ab \right\vert \leq \epsilon(\left\vert a \right\vert +1+\left\vert b \right\vert), \forall n \geq N_3(\epsilon) = \max\{N_1(1),N_1(\epsilon),N_2(\epsilon)\}.
+            \abs{a_n b_n - ab} \leq \epsilon(\abs{a} +1+\abs{b}), \forall n \geq N_3(\epsilon) = \max\{N_1(1),N_1(\epsilon),N_2(\epsilon)\}.
         \]
     \end{enumerate}
 \end{proof}
-\begin{lemma}
-    \leavevmode
+\begin{lemma}{}{}
     \[
         \frac{1}{n} \to 0 \text{ as } n\to \infty.
     \]
@@ -110,17 +108,17 @@ We also have
     
     We claim that \(a = 0\). We have
     \[
-        \frac{1}{2n}=\frac{1}{2}\times \frac{1}{n}\to \frac{a}{2} \text{ by Lemma \eqref{limprop}}.
+        \frac{1}{2n}=\frac{1}{2}\times \frac{1}{n}\to \frac{a}{2} \text{ by \cref{le:limprop}}.
     \]
 
-    But \(\frac{1}{2n}\) is a subsequence, so by Lemma \eqref{limprop} \(\frac{1}{2n}\to a\). By uniqueness of limits proved again in Lemma \eqref{limprop}, we have \(a = \frac{a}{2} \implies a = 0\).
+    But \(\frac{1}{2n}\) is a subsequence, so by \cref{le:limprop} \(\frac{1}{2n}\to a\). By uniqueness of limits proved again in \cref{le:limprop}, we have \(a = \frac{a}{2} \implies a = 0\).
 \end{proof}
 \begin{remark}
     The definition of limit of a sequence makes perfect sense for \(a_n \in \mathbb{C}\) by replacing the absolute value with modulus.
 
-    \begin{definition}
-    We say that \(a_n \to a\) as \(n \to \infty\) if given \(\epsilon > 0\), there exists \(N\) such that \(\left\vert a_{n}-a \right\vert < \epsilon \) for all \(n \geq N\).
+    \begin{definition}{}{}
+    We say that \(a_n \to a\) as \(n \to \infty\) if given \(\epsilon > 0\), there exists \(N\) such that \(\abs{a_{n}-a} < \epsilon \) for all \(n \geq N\).
     \end{definition}
 
-    And the first six parts of Lemma \eqref{limprop} are the same over \(\mathbb{C}\). The last one does not make sense over \(\mathbb{C}\) since it uses the order of \(\mathbb{R}\).
+    And the first six parts of \cref{le:limprop} are the same over \(\mathbb{C}\). The last one does not make sense over \(\mathbb{C}\) since it uses the order of \(\mathbb{R}\).
 \end{remark}

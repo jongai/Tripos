@@ -3,7 +3,7 @@
 \begin{example}
     Here we give a non-example of Cauchy-Riemann equations. When \(f(z) = \overline{z} = x - iy\). For this, \(u(x,y) = x, v(x,y) = -y\), so \(u_x = 1, v_y = 0, v_x = 0, v_y = -1\). So Cauchy-Riemann equations do not hold anywhere, and \(f\) is not differentiable at any point.
 \end{example}
-\begin{corollary}
+\begin{corollary}{}{}
     Let \(f = u + iv: U \to \mathbb{C}\). If \(u, v\) have continuous partial derivatives at a point \((c,d) \in U\) and satisfy the Cauchy-Riemann equations at \((c,d)\), then \(f\) is differentiable at \(w = c + id\).
 
     In particular, if \(u, v\) are \(C^1\) functions on \(U\) satisfying the Cauchy-Riemann equations in \(U\), then \(f\) is holomorphic in \(U\). 
@@ -36,7 +36,7 @@
     That is, real and imaginary parts of a holomorphic function are harmonic.
 \end{note}
 For the next corollary, we need the following,
-\begin{definition}
+\begin{definition}{}{}
     \leavevmode
     \begin{itemize}
         \item A \textit{curve} is a continuous map \(\gamma: [a,b] \to \mathbb{C}\), where \([a,b]\subseteq \mathbb{R}\) is a closed interval. We say that \(\gamma\) is a \textit{\(C^1\) curve} if \(\gamma'\) exists and is continuous on \([a,]\). (If \(\gamma(t) = x(t) + y(t)\) then \(\gamma'(t) = x'(t) + iy'(t)\); at the end points, \(\gamma'\) is the one-sided derivative.)
@@ -44,7 +44,7 @@ For the next corollary, we need the following,
         \item A \textit{domain} is a non-empty, open, path connected subset of \(C\).
     \end{itemize}
 \end{definition}
-\begin{corollary}
+\begin{corollary}{}{}
     If \(U\subseteq C\) is a domain, \(f: U\to \mathbb{C}\) is holomorphic with \(f'(z) = 0\) for every \(z \in U\), then \(f\) is constant.
 \end{corollary}
 \begin{proof}
@@ -54,19 +54,19 @@ So far we've only seen very few explicit holomorphic functions (namely, polynomi
 
 \subsection{Power Series}
 Recall (from IA Analysis)
-\begin{theorem}[Radius of Convergence]
+\begin{theorem}{Radius of Convergence}{}
     If \((c_n)\) is a sequence of complex numbers then there is a unique number \(R \in [0, \infty]\) such that the power series
     \[
         \sum\limits_{i=1}^{\infty} c_n(z-a)^n, z,a\in\mathbb{C}
     \]
-    converges absolutely if \(\left\vert z - a \right\vert <R\) and diverges if \(\left\vert z - a \right\vert > R\). If \(0<r<R\), then the series converges uniformly (with respect to the variable \(z\)) on the compact disk \(\overline{D(a, r)} = \{z\in\mathbb{C}\mid \left\vert z - a \right\vert \leq r\}\).
+    converges absolutely if \(\abs{z - a} <R\) and diverges if \(\abs{z - a} > R\). If \(0<r<R\), then the series converges uniformly (with respect to the variable \(z\)) on the compact disk \(\overline{D(a, r)} = \{z\in\mathbb{C}\mid \abs{z - a} \leq r\}\).
 \end{theorem}
-\(R\) is called the radius of convergence of the power series. Note that there is no claim about convergence when \(\left\vert z - a \right\vert = R, R>0\). There are various expressions for \(R\). For example,
+\(R\) is called the radius of convergence of the power series. Note that there is no claim about convergence when \(\abs{z - a} = R, R>0\). There are various expressions for \(R\). For example,
 \begin{itemize}
-    \item \(R = \sup \{r \geq  0 \mid \left\vert c_n \right\vert r^n \to 0 \text{ as } n \to \infty\}\),
-    \item \(\frac{1}{R} = \limsup_{n\to \infty}\left\vert c_n \right\vert^{\frac{1}{n}}\).
+    \item \(R = \sup \{r \geq  0 \mid \abs{c_n} r^n \to 0 \text{ as } n \to \infty\}\),
+    \item \(\frac{1}{R} = \limsup_{n\to \infty}\abs{c_n}^{\frac{1}{n}}\).
 \end{itemize}
-\begin{theorem}
+\begin{theorem}{}{}
     Let \(\sum\limits_{n=0}^{\infty} c_n(z-a)^n\) be a power series with radius of convergence equal to \(R > 0\). Fix \(a \in \mathbb{C}\), and define \(f: D(a, R) \to \mathbb{C}\) by \(f(z) = \sum\limits_{n=0}^{\infty} (z-a)^n\). Then:
     \begin{enumerate}
         \item \(f\) is holomorphic on \(D(a,R)\);
@@ -88,17 +88,17 @@ Recall (from IA Analysis)
 
         The derived series \(\sum\limits_{n=1}^{\infty} nc_n z^{n-1}\) will have some radius of convergence \(R_1 \in [0,\infty]\).
 
-        To see that \(R_1 \geq  R\), let \(z \in D(0,R)\) be arbitrary, and choose \(\rho\) such that \(\left\vert z \right\vert <\rho<R\). Then
+        To see that \(R_1 \geq  R\), let \(z \in D(0,R)\) be arbitrary, and choose \(\rho\) such that \(\abs{z} <\rho<R\). Then
         \[
-            n\left\vert c_n \right\vert \left\vert z \right\vert ^{n-1}=n\left\vert c_n \right\vert \left\vert \frac{z}{\rho} \right\vert^{n-1}\rho^{n-1}\leq \left\vert c_n \right\vert \rho^{n-1}
+            n\abs{c_n} \abs{z} ^{n-1}=n\abs{c_n} \abs{\frac{z}{\rho}}^{n-1}\rho^{n-1}\leq \abs{c_n} \rho^{n-1}
         \]
-        for sufficient large \(n\) (as \(n\left\vert \frac{z}{\rho} \right\vert^{n-1}\to 0 \) as \(n \to \infty\)). Since \(\sum \left\vert c_n \right\vert p^{n-1}\) converges, it follows that \(\sum\limits_{n=1}^{\infty} n\left\vert c_n \right\vert \left\vert z \right\vert ^{n-1}\) converges. Thus, \(D(0,R) \subseteq D(0,R_1)\); that is, \(R_1 \geq R\).
+        for sufficient large \(n\) (as \(n\abs{\frac{z}{\rho}}^{n-1}\to 0 \) as \(n \to \infty\)). Since \(\sum \abs{c_n} p^{n-1}\) converges, it follows that \(\sum\limits_{n=1}^{\infty} n\abs{c_n} \abs{z} ^{n-1}\) converges. Thus, \(D(0,R) \subseteq D(0,R_1)\); that is, \(R_1 \geq R\).
 
         Since
         \[
-            \left\vert c_n \right\vert \left\vert z \right\vert ^n\leq n \left\vert c_n \right\vert \left\vert z \right\vert ^n = \left\vert z \right\vert (n\left\vert c_n \right\vert \left\vert z \right\vert ^{n-1}),
+            \abs{c_n} \abs{z} ^n\leq n \abs{c_n} \abs{z} ^n = \abs{z} (n\abs{c_n} \abs{z} ^{n-1}),
         \]
-        if \(\sum n \left\vert c_n \right\vert \left\vert z \right\vert ^{n-1}\) converges then so does \(\sum\limits_{n=0}^{\infty} \left\vert c_n \right\vert \left\vert z \right\vert ^n\), so \(R_1\leq R\). So \(R_1 = R\).
+        if \(\sum n \abs{c_n} \abs{z} ^{n-1}\) converges then so does \(\sum\limits_{n=0}^{\infty} \abs{c_n} \abs{z} ^n\), so \(R_1\leq R\). So \(R_1 = R\).
 
         To prove that \(f\) is differentiable with \(f'(z)=\sum\limits_{n=1}^{\infty} nc_n z^{n-1}\), fix \(z \in D(0,R)\). We prove that \(g: D(0,R) \to \mathbb{C}\) is continuous instead.
         \[
@@ -114,7 +114,7 @@ Recall (from IA Analysis)
                 nc_n z^{n-1}, &\text{ if } w = z\\
             \end{dcases}.
         \]
-        \(h_n\) is continuous on \(D(0,R)\) (since \(w \mapsto w^n\) is differentiable with derivative \(nw^{n-1}\)). Using \(\frac{w^n - z^n}{w-z}=\sum\limits_{j=0}^{n-1}z^j w^{n-1-j}\), we get that for any \(r\) with \(\left\vert z \right\vert < r<R\) and any \(w \in D(0,r)\), \(h_n(w) \leq n\left\vert c_n \right\vert r^{n-1} = M_n\). Since \(\sum\limits_{n=1}^{\infty} M_1<\infty\), we have by the Weierstrass M-test, \(\sum h_n\) converges uniformly on \(D(0,r)\). But a uniform limit of continuous functions is continuous, so \(g\) is continuous in \(D(0,r)\) and in particular in \(z\).
+        \(h_n\) is continuous on \(D(0,R)\) (since \(w \mapsto w^n\) is differentiable with derivative \(nw^{n-1}\)). Using \(\frac{w^n - z^n}{w-z}=\sum\limits_{j=0}^{n-1}z^j w^{n-1-j}\), we get that for any \(r\) with \(\abs{z} < r<R\) and any \(w \in D(0,r)\), \(h_n(w) \leq n\abs{c_n} r^{n-1} = M_n\). Since \(\sum\limits_{n=1}^{\infty} M_1<\infty\), we have by the Weierstrass M-test, \(\sum h_n\) converges uniformly on \(D(0,r)\). But a uniform limit of continuous functions is continuous, so \(g\) is continuous in \(D(0,r)\) and in particular in \(z\).
         \item[3.] Repeated apply (2). The formula \(c_n = \frac{f^(n)(a)}{n!}\) follows by differentiating the series \(n\) times and setting \(z = a\).
         \item[4.]
     \end{enumerate}

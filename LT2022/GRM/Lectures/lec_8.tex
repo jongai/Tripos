@@ -2,10 +2,10 @@
 \section{Rings}
 \subsection{Definitions and Examples}
 \leavevmode
-\begin{definition}
+\begin{definition}{}{}
     A \textit{ring} is a triple \((R, + , \cdot)\) consisting of a set \(R\) and two binary operations \(+: R \times R \to R\) and \(\cdot: R \times R \to R\) satisfying the following axioms:
     \begin{enumerate}
-        \item \(R, +\) is an Abelian group with identity \(0 = 0_R\).
+        \item \((R, +)\) is an Abelian group with identity \(0 = 0_R\).
         \item Multiplication is associative and has an identity. i.e.
         \[x\cdot(y\cdot z) = (x\cdot y)\cdot z~\forall x,y,z\in R\]
         and
@@ -28,7 +28,7 @@
         \end{aligned}\) 
     \end{enumerate}
 \end{remark}
-\begin{definition}
+\begin{definition}{}{}
     A subset \(S \subseteq R\) is a \textit{subring} (written \(S \leq R\)) if it is a ring under \(+\) and \(\cdot\), with the same identity elements \(0\) and \(1\).
 \end{definition}
 \begin{example}
@@ -61,7 +61,7 @@
         We can identify \(R\) with subring of \(R[X]\) of constant polynomials (i.e. \(\sum\limits_{i}^{} a_i X^i, a_i = 0~\forall i > 0\)).
     \end{enumerate}
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     An element \(r \in R\) is a \textit{unit}  if it has an inverse under multiplication, i.e. \(\exists s \in R\) s.t. \(s \cdot r = 1\).
 \end{definition}
 The units in \(R\) form a group \((R^{\times}, \cdot)\) under multiplication.
@@ -72,7 +72,7 @@ The units in \(R\) form a group \((R^{\times}, \cdot)\) under multiplication.
     \item \(\mathbb{Q}^\times = \mathbb{Q}\setminus \{0\}\) 
     \end{itemize}
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     A \textit{field} is a ring with \(0 \neq 1\), such that every non-zero element is a unit.
 \end{definition}
 \begin{example}
@@ -81,7 +81,7 @@ The units in \(R\) form a group \((R^{\times}, \cdot)\) under multiplication.
 \begin{remark}
     If \(R\) is a ring with \(0 = 1\), then \(x = 1\cdot x = 0 \cdot x = 0\) for all \(x \in R\). And \(R = \{0\}\) is the \textit{trivial ring}.
 \end{remark}
-\begin{proposition}
+\begin{proposition}{}{}
     Let \(f, g \in R[X]\). Suppose the leading coefficient of \(g\) is a unit. Then there exist \(q, r \in R[X]\) such that
     \[
         f(x) = q(x)g(x) + r(x) \text{ where \(\mathrm{deg}(r) < \mathrm{deg}(g)\)}.

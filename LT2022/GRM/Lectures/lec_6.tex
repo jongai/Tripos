@@ -3,7 +3,7 @@
 For \(F\) a field (e.g. \(\mathbb{C}\) or \(\nicefrac{\mathbb{Z}}{p\mathbb{Z}}\)), Let \(GL_n(G)\) be the \(n\times n\) invertible matrices with entries in \(F\). And let \(SL_n(G) = \ker (\mathrm{det})\).
 
 Let \(Z \trianglelefteq GL_n(F)\) be subgroup of scalar matrices.
-\begin{definition}
+\begin{definition}{}{}
     The \textit{projective general linear group} is
     \[
         PGL_n(F) = \nicefrac{GL_n(F)}{Z},
@@ -16,7 +16,7 @@ Let \(Z \trianglelefteq GL_n(F)\) be subgroup of scalar matrices.
 \begin{example}
     Consider \(G = GL_n(\nicefrac{\mathbb{Z}}{p\mathbb{Z}})\). A list of \(n\) vectors in \((\nicefrac{\mathbb{Z}}{p\mathbb{Z}})^n\) are the columns of some \(A\in G\) if and only if they are linearly independent. Thus,
     \begin{align*}
-        \left\vert G \right\vert &= (p^n - 1)(p^n - p)(p^n - p^2)\cdots (p^n - p^{n-1})\\
+        \abs{G} &= (p^n - 1)(p^n - p)(p^n - p^2)\cdots (p^n - p^{n-1})\\
         &= p^{1 + 2 + \cdots + n - 1}(p^n - 1)(p^{n-1} - 1)\cdots (p-1)\\
         &= p^{\binom{n}{2}}\prod\limits_{i=1}^{n} (p^i - 1).
     \end{align*}
@@ -34,7 +34,7 @@ Let \(Z \trianglelefteq GL_n(F)\) be subgroup of scalar matrices.
 The group \(PGL_2(\mathbb{C})\) acts on \(\mathbb{C}\cup \{\infty\}\) via Möbius transformations, and similarly, \(PGL_2(\nicefrac{\mathbb{Z}}{p\mathbb{Z}})\) acts on \(\nicefrac{\mathbb{Z}}{p\mathbb{Z}}\cup \{\infty\}\) via the finite field equivalent of Möbius transformation.
 
 Since the scalar matrices act trivially, we obtain an action of \(PGL_2(\nicefrac{\mathbb{Z}}{p\mathbb{Z}})\).
-\begin{lemma}
+\begin{lemma}{}{}
     The permutation representation \(PGL_2(\nicefrac{\mathbb{Z}}{p\mathbb{Z}})\to S_{p + 1}\) is injective (in fact in isomorphism if \(p = 2\) or \(p = 3\)).
     \label{pglin}
 \end{lemma}

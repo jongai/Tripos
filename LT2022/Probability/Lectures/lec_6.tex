@@ -50,10 +50,10 @@ We have
 \end{example}
 \subsection{Law of Total Probability \& Bayes' Formula}
 \leavevmode
-\begin{definition}
+\begin{definition}{}{}
     \((B_1, B_2, \ldots) \subseteq \Omega\) is a \textit{partition} of \(\Omega\) if \(\Omega = \cup_n B_n\) and \((B_n)\) are disjoint.
 \end{definition}
-\begin{theorem}
+\begin{theorem}{}{}
     \((B_n)\) a finite or countable partition of \(\Omega\) with \(B_n \in \mathcal{F} \) for all \(n\) such that \(\probability{}{B_n} >0\). Then for all \(A \in \mathcal{F} \):
     \[
         \probability{}{A} = \sum\limits_{n}\probability{}{A\mid B_n} \probability{}{B_n} .
@@ -66,7 +66,7 @@ We have
         \probability{}{A} = \sum\limits_{n\geq 1}\probability{}{A\cap B_n} = \sum\limits_{n} \probability{}{A\mid B_N} \probability{}{B_n}.
     \]
 \end{proof}
-\begin{theorem}[Bayes' Formula]
+\begin{theorem}{Bayes' Formula}{}
     With the same setup as above, we have
     \[
         \probability{}{B_n \mid A} = \frac{\probability{}{A \cap B_N}}{\probability{}{A} }= \frac{\probability{}{A\mid B_n} \probability{}{B_n} }{\sum\limits_{m}\probability{}{A\mid B_m} \probability{}{B_m} }.

@@ -1,27 +1,27 @@
 \lecture{5}{29 Jan. 12:00}{}
 \subsection{p-groups and p-subgroups}
 \leavevmode
-\begin{definition}
-    Let \(p\) be a prime. A finite group \(G\) is a p-group if \(\left\vert G \right\vert = p^n, n\geq 1\).
+\begin{definition}{}{}
+    Let \(p\) be a prime. A finite group \(G\) is a p-group if \(\abs{G} = p^n, n\geq 1\).
 \end{definition}
-\begin{theorem}
+\begin{theorem}{}{}
     If \(G\) is a p-group, then \(Z(G) \neq \textbf{1} \).
 \end{theorem}
 \begin{proof}
     For \(g \in G\), we have by orbit-stabilizer theorem,
-    \[\left\vert \mathrm{ccl}_G(g) \right\vert \left\vert C_G(g) \right\vert = \left\vert G \right\vert = p^n.\] 
-    So each conjugacy class has size a power of \(p\). Since \(G\) is a disjoint union of conjugacy classes, \(\left\vert G \right\vert= \# (\text{conjugacy classes of size 1})\mod p\). It is easy to see that the conjugacy classes of size 1 are precisely the elements in the center of a group. That is, \(\left\vert Z(G)\right\vert \equiv 0 \mod p  \), and hence \(Z(G) \neq \textbf{1}\).
+    \[\abs{\mathrm{ccl}_G(g)} \abs{C_G(g)} = \abs{G} = p^n.\] 
+    So each conjugacy class has size a power of \(p\). Since \(G\) is a disjoint union of conjugacy classes, \(\abs{G}= \# (\text{conjugacy classes of size 1})\mod p\). It is easy to see that the conjugacy classes of size 1 are precisely the elements in the center of a group. That is, \(\abs{Z(G)} \equiv 0 \mod p  \), and hence \(Z(G) \neq \textbf{1}\).
 \end{proof}
 \begin{corollary} The only simple p-group is \(C_p\).
 \end{corollary}
 \begin{proof}
     Let \(G\) be a simple p-group. Since \(Z(G) \trianglelefteq G\), we have \(Z(G) \neq \textbf{1} \), so \(Z(G) = G\). That is \(G\) is Abelian. We know that the only Abelian simple groups are \(C_p\), so \(G = C_p\).
 \end{proof}
-\begin{corollary}
+\begin{corollary}{}{}
     Let \(G\) be a p-group of order \(p^n\). Then \(G\) has a subgroup of order \(p^r\) for all \(0 < r \leq n\).
 \end{corollary}
 \begin{proof}
-    By Lemma \eqref{compseries}, \(G\) has a composition series
+    By \cref{le:compseries}, \(G\) has a composition series
     \[
         \textbf{1} \cong G_0 \trianglelefteq G_1 \trianglelefteq \ldots \trianglelefteq G_m \cong G
     \]
@@ -29,9 +29,9 @@
     
     Because \(G\) is a p-group, each of the quotients is a p-group. So \(\nicefrac{G_{i+1}}{G_i}\cong C_p\).
 
-    Thus, \(\left\vert G_i \right\vert =p^i\) for \(0\leq i \leq m = n\).
+    Thus, \(\abs{G_i} =p^i\) for \(0\leq i \leq m = n\).
 \end{proof}
-\begin{lemma}
+\begin{lemma}{}{}
     For \(G\) a group, if \(\nicefrac{G}{Z(G)}\) is cyclic, then \(G\) is Abelian. (so in fact \(\nicefrac{G}{Z(G)} = \textbf{1} \))
     \label{cyclicab}
 \end{lemma}
@@ -44,26 +44,26 @@
     \]
     So \(G\) is Abelian.
 \end{proof}
-\begin{corollary}
-    If \(\left\vert G \right\vert =p^2\) then \(G\) is Abelian.
+\begin{corollary}{}{}
+    If \(\abs{G} =p^2\) then \(G\) is Abelian.
 \end{corollary}
 \begin{proof}
-    We have three choices for the size of the center of the group. Noting that the center cannot be trivial for a p-group. So \(\left\vert Z(G) \right\vert = p\) or \(\left\vert Z(G) \right\vert = p^2\).
+    We have three choices for the size of the center of the group. Noting that the center cannot be trivial for a p-group. So \(\abs{Z(G)} = p\) or \(\abs{Z(G)} = p^2\).
 
-    If \(\left\vert Z(G) \right\vert = p\), \(\left\vert \nicefrac{G}{Z(G)} \right\vert = p\), apply Lemma \eqref{cyclicab}, and we have a contradiction.
+    If \(\abs{Z(G)} = p\), \(\abs{\nicefrac{G}{Z(G)}} = p\), apply Lemma \eqref{cyclicab}, and we have a contradiction.
 
-    If \(\left\vert Z(G) \right\vert = p^2\), then \(Z(G) = G\) so \(G\) is Abelian.
+    If \(\abs{Z(G)} = p^2\), then \(Z(G) = G\) so \(G\) is Abelian.
 \end{proof}
-Note that this is not true for \(\left\vert G \right\vert = p^3\).
-\begin{theorem}[Sylow Theorems]
+Note that this is not true for \(\abs{G} = p^3\).
+\begin{theorem}{Sylow Theorems}{}
     Let \(G\) be a finite group of order \(p^a m\) where \(p\) is a prime with \(p \nmid m\). Then
     \begin{enumerate}
-        \item The set \(\mathrm{Syl}_p(G) = \{P \leq G\mid \left\vert P \right\vert = p^a\}\) of Sylow p-subgroups is non-empty.
+        \item The set \(\mathrm{Syl}_p(G) = \{P \leq G\mid \abs{P} = p^a\}\) of Sylow p-subgroups is non-empty.
         \item All elements of \(\mathrm{Syl}_p(G)\) are conjugates.
-        \item If \(n_p\coloneqq \left\vert \mathrm{Syl}_p(G) \right\vert \) satisfies \(n_p \equiv 1 \mod p\) and \(n_p \mid \left\vert G \right\vert \) (and so \(n_p\mid m\)).
+        \item If \(n_p\coloneqq \abs{\mathrm{Syl}_p(G)} \) satisfies \(n_p \equiv 1 \mod p\) and \(n_p \mid \abs{G} \) (and so \(n_p\mid m\)).
     \end{enumerate}
 \end{theorem}
-\begin{corollary}
+\begin{corollary}{}{}
     If \(n_p = 1\), then the unique Sylow p-subgroup is normal.
 \end{corollary}
 It is useful to show that the group of a certain order cannot be simple.
@@ -71,10 +71,10 @@ It is useful to show that the group of a certain order cannot be simple.
     Let \(g \in G\), and \(P \in \mathrm{Syl}_p(G)\). Then \(gPg^{-1} = P\) because \(n_p = 1\). Thus, \(P \trianglelefteq G\).
 \end{proof}
 \begin{example}
-    Let \(\left\vert G \right\vert = 1000 = 2^3\cdot 5^3\). Then \(n_5 \equiv 1 \mod 5\) and \(n_5 \mid 8\). So \(n_5 = 1\). Thus, the unique Sylow 5-subgroup is normal and of order \(125\). Hence, \(G\) is not simple.
+    Let \(\abs{G} = 1000 = 2^3\cdot 5^3\). Then \(n_5 \equiv 1 \mod 5\) and \(n_5 \mid 8\). So \(n_5 = 1\). Thus, the unique Sylow 5-subgroup is normal and of order \(125\). Hence, \(G\) is not simple.
 \end{example}
 \begin{example}
-    Let \(\left\vert G \right\vert = 132 = 2^2\cdot 3 \cdot 11\). We have \(n_{11}\equiv 1 \mod 11\) and \(n_{11}\mid 12\), so \(n_{11}=1\) or \(12\).
+    Let \(\abs{G} = 132 = 2^2\cdot 3 \cdot 11\). We have \(n_{11}\equiv 1 \mod 11\) and \(n_{11}\mid 12\), so \(n_{11}=1\) or \(12\).
 
     Suppose that \(G\) is simple. Then \(n_{11} \neq 1\) (otherwise the Sylow 11-subgroup is normal) and hence \(n_{11} = 12\).
 
@@ -82,44 +82,44 @@ It is useful to show that the group of a certain order cannot be simple.
 
     Suppose \(n_3 = 4\). Then letting \(G\) act on \(\mathrm{Syl}_{3}(G)\) by conjugation gives a group homomorphism \(\phi: G \to S_4\). So \(\ker (\phi) \trianglelefteq G \implies \ker(\phi)=1\) or \(G\). But by second Sylow Theorem, the action is transitive, so the kernel must be trivial, but \(132 > 24\), so \(\phi\) cannot possibly be an injection.
 
-    Thus, \(n_{3} = 22\) and \(n_{11 = 12}\). So \(G\) would have \(22\cdot(3-1)\) elements of order 3 and \(G\) has \(12 \cdot (11-1) = 120\) elements of order 11. But \(44 + 120 > 132 = \left\vert G \right\vert \), contradiction.
+    Thus, \(n_{3} = 22\) and \(n_{11 = 12}\). So \(G\) would have \(22\cdot(3-1)\) elements of order 3 and \(G\) has \(12 \cdot (11-1) = 120\) elements of order 11. But \(44 + 120 > 132 = \abs{G} \), contradiction.
 \end{example}
 \begin{proof}[Proof of Sylow Theorems]
-    We have \(\left\vert G \right\vert = p^a m\) where \(p\) is prime and \(p\nmid m\).
+    We have \(\abs{G} = p^a m\) where \(p\) is prime and \(p\nmid m\).
     \begin{enumerate}
         \item Let \(\Omega\) be set of all subsets of \(G\) of order \(p^a\). So
         \[
-            \left\vert \Omega \right\vert =\binom{p^a m}{p^a} = \frac{p^a m}{p^a} \frac{p^a m - 1}{p^a - 1}\cdots \frac{p^a m - p^a + 1}{1}
+            \abs{\Omega} =\binom{p^a m}{p^a} = \frac{p^a m}{p^a} \frac{p^a m - 1}{p^a - 1}\cdots \frac{p^a m - p^a + 1}{1}
         \]
-        for \(0 \leq k < p^a\), the number \(p^a m - k\), the numbers \(p^a m - k\) and \(p^a - k\) are divisible by the same powers of \(p\). So \(\left\vert \Omega \right\vert \) is coprime to \(p\). Let \(G\) act on \(\left\vert \Omega \right\vert \) by left multiplication. That is, for \(g \in G\) and \(X \in \Omega\),
+        for \(0 \leq k < p^a\), the number \(p^a m - k\), the numbers \(p^a m - k\) and \(p^a - k\) are divisible by the same powers of \(p\). So \(\abs{\Omega} \) is coprime to \(p\). Let \(G\) act on \(\abs{\Omega} \) by left multiplication. That is, for \(g \in G\) and \(X \in \Omega\),
         \[g * X = \{gx \mid x \in X\} \in \Omega.\]
 
         For any \(X \in \Omega\), we have
         \[
-            \left\vert G_X \right\vert \left\vert \mathrm{orb}_G(X) \right\vert =\left\vert G \right\vert =p^a m.
+            \abs{G_X} \abs{\mathrm{orb}_G(X)} =\abs{G} =p^a m.
         \]
-        Because \(\left\vert \Omega \right\vert \) is coprime to \(p\). We can find some \(X\) such that \(\left\vert \mathrm{orb}_G(X) \right\vert \) is coprime to \(p\). Thus, \(p^a \mid \left\vert G_X \right\vert \).
+        Because \(\abs{\Omega} \) is coprime to \(p\). We can find some \(X\) such that \(\abs{\mathrm{orb}_G(X)} \) is coprime to \(p\). Thus, \(p^a \mid \abs{G_X} \).
 
         On the other hand, if \(g \in G\) and \(x \in X\), then \(g \in (gx^{-1})*X\), and we have
         \[
             G = \bigcup_{g\in G}g *X = \bigcup_{y\in \mathrm{orb}_G(x)}y.
         \]
-        So \(\left\vert G \right\vert \leq  \left\vert \mathrm{orb}_G(X) \right\vert \left\vert X \right\vert\implies \left\vert G_x \right\vert = \frac{\left\vert G \right\vert}{\left\vert \mathrm{orb}_G(X) \right\vert} \leq \left\vert X \right\vert =p^a \).
+        So \(\abs{G} \leq  \abs{\mathrm{orb}_G(X)} \abs{X}\implies \abs{G_x} = \frac{\abs{G}}{\abs{\mathrm{orb}_G(X)}} \leq \abs{X} =p^a \).
 
-        Combining the two facts, we have \(\left\vert G_X \right\vert =p^a\), i.e., \(G_x \in \mathrm{Syl}_p(G)\).
+        Combining the two facts, we have \(\abs{G_X} =p^a\), i.e., \(G_x \in \mathrm{Syl}_p(G)\).
         \item We prove a stronger result.
-        \begin{lemma}
+        \begin{lemma}{}{}
             If \(P \in \mathrm{Syl}_p(G)\) and \(Q \leq G\) is a p-subgroup, then \(Q \leq gPg^{-1}\) for some \(g \in G\).
             \label{sylowp}
         \end{lemma}
         The lemma implies Second Sylow Theorem by taking \(Q\) a Sylow subgroup.
 
-        Let \(Q\) act at the set of left cosets \(\nicefrac{G}{P}\) by left multiplication. That is, \(q * gP = (qg)P\). By orbit-stabilizer Theorem, each orbit has size dividing \(\left\vert Q \right\vert\), so each orbit has size 1 or a power of \(p\).
+        Let \(Q\) act at the set of left cosets \(\nicefrac{G}{P}\) by left multiplication. That is, \(q * gP = (qg)P\). By orbit-stabilizer Theorem, each orbit has size dividing \(\abs{Q}\), so each orbit has size 1 or a power of \(p\).
 
-        Since \(\left\vert \nicefrac{G}{P} \right\vert = m\) is coprime to \(p\), there must exist an orbit of size 1. That is, there exists \(g \in G\) such that \(qgP = gP\) for all \(q\). So \(g^{-1}qg \in P\) for all \(q \in Q\). So \(Q \leq gPg^{-1}\).
-        \item Let \(G\) act on \(\mathrm{Syl}_p(G)\) by conjugation. By Second Sylow Theorem, the action is transitive. Thus, orbit-stabilizer implies \(n_p = \left\vert \mathrm{Syl}_p(G) \right\vert\mid \left\vert G \right\vert \).
+        Since \(\abs{\nicefrac{G}{P}} = m\) is coprime to \(p\), there must exist an orbit of size 1. That is, there exists \(g \in G\) such that \(qgP = gP\) for all \(q\). So \(g^{-1}qg \in P\) for all \(q \in Q\). So \(Q \leq gPg^{-1}\).
+        \item Let \(G\) act on \(\mathrm{Syl}_p(G)\) by conjugation. By Second Sylow Theorem, the action is transitive. Thus, orbit-stabilizer implies \(n_p = \abs{\mathrm{Syl}_p(G)}\mid \abs{G} \).
 
-        Now let \(P \in \mathrm{Syl}_p(G)\). Then \(P\) act on \(\mathrm{Syl}_p(G)\) by conjugation. The orbits have size dividing \(\left\vert P \right\vert = p^a\), the size is either 1 or a power of \(p\). So \(P\) is in an orbit of size 1.
+        Now let \(P \in \mathrm{Syl}_p(G)\). Then \(P\) act on \(\mathrm{Syl}_p(G)\) by conjugation. The orbits have size dividing \(\abs{P} = p^a\), the size is either 1 or a power of \(p\). So \(P\) is in an orbit of size 1.
 
         To show \(n_p \equiv 1 \mod p\), suffices to show that \(\{P\}\) is the only orbit of size one. If \(\{Q\}\) is another orbit of size 1, then \(P\) normalizes \(Q\). That is \(P \leq N_G(Q)\). Note that \(P,Q\) are both Sylow p-subgroups of \(N_G(Q)\).
 

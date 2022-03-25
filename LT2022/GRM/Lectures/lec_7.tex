@@ -1,13 +1,13 @@
 \lecture{7}{3 Feb. 2022}{}
 \leavevmode
-\begin{lemma}
+\begin{lemma}{}{}
     If \(p\) is an odd prime
     \[
-        \left\vert PSL_2(\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{Z}}}) \right\vert = \frac{p(p-1)(p+1)}{2}.
+        \abs{PSL_2(\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{Z}}})} = \frac{p(p-1)(p+1)}{2}.
     \]
 \end{lemma}
 \begin{proof}
-    From above, \(\left\vert GL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}} }) \right\vert = p(p^2 - 1)(p-1)\). First we note the group homomorphism \(GL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}}})\to (\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{Z}}})^{\times}\) by taking the determinant is surjective. Thus, \(\left\vert SL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}} })\right\vert = \frac{\left\vert GL_2(\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{Z}} })\right\vert}{p - 1} = p(p - 1)(p + 1)\).
+    From above, \(\abs{GL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}} })} = p(p^2 - 1)(p-1)\). First we note the group homomorphism \(GL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}}})\to (\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{Z}}})^{\times}\) by taking the determinant is surjective. Thus, \(\abs{SL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}} })} = \frac{\abs{GL_2(\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{Z}} })}}{p - 1} = p(p - 1)(p + 1)\).
     
     And if a scalar matrix \(\begin{pmatrix}
         \lambda &  0 \\
@@ -15,12 +15,12 @@
     \end{pmatrix} \in SL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p \mathbb{\MakeUppercase{Z}} })\), then \(\lambda^2 \equiv 1 \mod p\), so
     \[p \mid (\lambda-1)(\lambda + 1)\implies \lambda\equiv \pm 1 \mod p.\]
     Thus, \(Z \cap SL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}} }) = \{\pm I\}\), and they are distinct since \(p > 2\). So we have
-    \[\left\vert PSL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}} })\right\vert = \frac{\left\vert SL_2(\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{Z}} })\right\vert}{2} = \frac{p(p - 1)(p + 1)}{2}.\]
+    \[\abs{PSL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{p\mathbb{\MakeUppercase{Z}} })} = \frac{\abs{SL_2(\nicefrac{\mathbb{\MakeUppercase{Z}}}{p\mathbb{\MakeUppercase{Z}} })}}{2} = \frac{p(p - 1)(p + 1)}{2}.\]
 \end{proof}
 \begin{example}
-    Let \(G = PSL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{5\mathbb{\MakeUppercase{Z}} })\), then \(\left\vert G \right\vert = \frac{4\cdot 5 \cdot 6}{2} = 60\).
+    Let \(G = PSL_2(\nicefrac{\mathbb{\MakeUppercase{Z}} }{5\mathbb{\MakeUppercase{Z}} })\), then \(\abs{G} = \frac{4\cdot 5 \cdot 6}{2} = 60\).
 
-    Let \(G\) act on \(\nicefrac{\mathbb{\MakeUppercase{Z}} }{5\mathbb{\MakeUppercase{Z}}}\cup \{\infty\}\) via the Möbius-like transformation. By Lemma \eqref{pglin}, the permutation representation \(\phi: G \to \mathrm{Sym}(\{0,1,2,3,4,\infty\})\) is injective. We claim that \(\Ima (\phi)\leq A_6\); that is, \(\psi:G \to S_6\to \{\pm 1\}\) is trivial.
+    Let \(G\) act on \(\nicefrac{\mathbb{\MakeUppercase{Z}} }{5\mathbb{\MakeUppercase{Z}}}\cup \{\infty\}\) via the Möbius-like transformation. By Lemma \eqref{pglin}, the permutation representation \(\phi: G \to \mathrm{Sym}(\{0,1,2,3,4,\infty\})\) is injective. We claim that \(\ima(\phi)\leq A_6\); that is, \(\psi:G \to S_6\to \{\pm 1\}\) is trivial.
 
     Let \(h \in G\) have order \(2^n m\), \(m\) odd. If \(\psi(h^m) = 1\), then \[\psi(h)^m = 1 \implies \psi(h) = 1.\] Noting that \(h^m\) has order \(2^n\), it suffices to show that \(\psi(g) = 1\) for all \(g \in G\) or order a power of 2. By Lemma \eqref{sylowp}, every such \(g\) belongs to a Sylow 2-subgroup.
 
@@ -43,7 +43,7 @@
         -1 &  0 \\
     \end{pmatrix}\right)=(0~\infty)(1~4)\). Both of which are even permutations. Thus, \(\psi(H) = 1\), and this proves the claim.
 
-    Lastly, by example sheet Q14 tells you if \(G \leq A_6\) and \(\left\vert G \right\vert = 60\) then \(G \cong A_5\).
+    Lastly, by example sheet Q14 tells you if \(G \leq A_6\) and \(\abs{G} = 60\) then \(G \cong A_5\).
 \end{example}
 \begin{property}[not proved in the course]
     \leavevmode
@@ -54,21 +54,21 @@
 \end{property}
 \subsection{Finite Abelian groups}
 Later in the course we will prove the following result.
-\begin{theorem}
+\begin{theorem}{}{}
     Every finite Abelian group is isomorphic to a product of cyclic groups.
     \label{finab}
 \end{theorem}
 \begin{note}
     Such an isomorphism is not unique.
 \end{note}
-\begin{lemma}
+\begin{lemma}{}{}
     If \(m, n \in \mathbb{\MakeUppercase{Z}}_{\geq 1}\) coprime, then \(C_m \times C_n \cong C_{mn}\).
     \label{cyclicmn}
 \end{lemma}
 \begin{proof}
-    Let \(g\) and \(h\) be generators of \(C_n\) and \(C_m\). Then \((g, h) \in C_m \times C_n\) and \((g, h)^r = (g^r, h^r)\). Hence, \((g, h)^r = 1 \iff m \mid r \land n \mid r \iff mn \mid r\). Thus, \((g,h)\) has order \(mn = \left\vert C_m \times C_n \right\vert \). And we have \( C_m \times C_n \cong C_{mn} = \left\langle(g,h)\right\rangle \).
+    Let \(g\) and \(h\) be generators of \(C_n\) and \(C_m\). Then \((g, h) \in C_m \times C_n\) and \((g, h)^r = (g^r, h^r)\). Hence, \((g, h)^r = 1 \iff m \mid r \land n \mid r \iff mn \mid r\). Thus, \((g,h)\) has order \(mn = \abs{C_m \times C_n} \). And we have \( C_m \times C_n \cong C_{mn} = \left\langle(g,h)\right\rangle \).
 \end{proof}
-\begin{corollary}
+\begin{corollary}{}{}
     Let \(G\) be a finite Abelian group, then \(G \cong C_{n_1} \times C_{n_2} \times \cdots C_{n_k}\) where \(n_i\) is a prime power.
     \label{primeab}
 \end{corollary}
@@ -76,7 +76,7 @@ Later in the course we will prove the following result.
     If \(n = p_1^{a_1}\cdots p_r^{a_r}\) (\(p_1,\ldots,p_r\) distinct primes), then Lemma \eqref{cyclicab} shows \(C_n \cong C_{p_1^{a_1}}\times \cdots C_{p_r^{a_r}}\). Writing each of the cyclic groups in Theorem \eqref{finab} in this way gives the result.
 \end{proof}
 We will prove a refinement of Theorem \eqref{finab}.
-\begin{theorem}
+\begin{theorem}{}{}
     \label{divab}
     Let \(G\) be a finite Abelian group. Then
     \[G \cong C_{d_1}\times C_{d_2} \times \cdots \times C_{d_t}\]
@@ -92,13 +92,13 @@ We will prove a refinement of Theorem \eqref{finab}.
         \item The Abelian groups of order 12 are \(C_2 \times C_2 \times C_3\) and \(C_4 \times C_3\) by Theorem \eqref{primeab}, and \(C_2 \times C_6\) and \(C_{12}\) by Theorem \eqref{divab}.
     \end{enumerate}
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     The \textit{exponent} of a group \(G\) is the least integer \(n \geq 1\) such that \(g^n = 1 ~ \forall g\in G\). That is, the \(\operatorname{lcm}\) of all the orders of the elements of \(G\).
 \end{definition}
 \begin{example}
     \(A_4\) has exponent 6. The exponent here is greater than the biggest order of an element of the group.
 \end{example}
-\begin{corollary}
+\begin{corollary}{}{}
     Every finite Abelian group contains an element whose order is the exponent of the group.
 \end{corollary}
 \begin{proof}

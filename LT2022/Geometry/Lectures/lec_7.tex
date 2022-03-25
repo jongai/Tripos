@@ -3,7 +3,7 @@ If \(V, V'\) are open subsets of \(\mathbb{R}^2\), and \(f: V \to V'\) a diffeom
 
 Let \(GL^+_2(\mathbb{R}\leq GL_2(\mathbb{R}))\) be the subgroup of matrices of positive determinant. We say \(f\) is \textit{orientation-preserving} if \(\left. Df\right|_x \in GL^+_2(\mathbb{R})\) for all \(x \in V\).
 
-\begin{definition}
+\begin{definition}{}{}
     An abstract smooth surface \(\Sigma\) is \textit{orientable}  if it admits an atlas \(\{(u_i, \phi_i)\mid \cup u_i = \Sigma\}\) such that the transition maps are orientation-preserving diffeomorphisms of open subsets of \(\mathbb{R}^2\).
 
     A choice of such an atlas is an \textit{orientation} of \(\Sigma\), and we say \(\Sigma\) is \textit{oriented}.
@@ -11,7 +11,7 @@ Let \(GL^+_2(\mathbb{R}\leq GL_2(\mathbb{R}))\) be the subgroup of matrices of p
 \begin{remark}
     An oriented atlas (in this sense) belongs to a maximal compatible oriented smooth atlas.
 \end{remark}
-\begin{lemma}
+\begin{lemma}{}{}
     If \(\Sigma_1\) and \(\Sigma_2\) are abstract smooth surfaces, and they're diffeomorphic, then \(\Sigma_1\) is orientable if and only if \(\Sigma_2\) is orientable.
 \end{lemma}
 \begin{proof}
@@ -52,17 +52,17 @@ Let \(GL^+_2(\mathbb{R}\leq GL_2(\mathbb{R}))\) be the subgroup of matrices of p
     \end{enumerate}
 \end{example}
 We want to investigate orientability for surfaces in \(\mathbb{R}^3\) next. Recall an \textit{affine subspace} of a vector space is a translation of a linear subspace.
-\begin{definition}
+\begin{definition}{}{}
     Let \(\Sigma\) be a smooth surface in \(\mathbb{R}^3\) and \(p \in \Sigma\). Fix an allowable parametrization
     \[
         \sigma: V \to U \subseteq \Sigma \quad 0 \mapsto p.
     \]
 
-    Then the \textit{tangent plane} \(T_p\Sigma\) of \(\Sigma\) at \(p\) is \(\Ima(\left.D\sigma\right|_0) \subseteq \mathbb{R}^3\), a 2d vector subspace of \(\mathbb{R}^3\).
+    Then the \textit{tangent plane} \(T_p\Sigma\) of \(\Sigma\) at \(p\) is \(\ima(\left.D\sigma\right|_0) \subseteq \mathbb{R}^3\), a 2d vector subspace of \(\mathbb{R}^3\).
 
     The \textit{affine tangent plane} of \(\Sigma\) at \(p\) is \(p + T_p\Sigma \subseteq \mathbb{R}^3\).
 \end{definition}
-\begin{lemma}
+\begin{lemma}{}{}
     \(T_p\Sigma\) is well-defined, i.e., independent of the choice of allowable parametrization near \(p\).
 \end{lemma}
 \begin{proof}
@@ -75,24 +75,24 @@ We want to investigate orientability for surfaces in \(\mathbb{R}^3\) next. Reca
         Because the transition map is an isomorphism near \(p\), The images of \(\sigma\) and \(\tilde{\sigma}\) are the same.
         \item Let \(\gamma: (-\epsilon, \epsilon) \to \mathbb{R}^3\) be a smooth map such that \(\gamma\) has image inside \(\Sigma\) and \(\gamma(0) = p\). Then I claim \(\gamma'(0) \in T_p\Sigma\).
 
-        If \(\sigma: V \to U\) is the allowable parametrization around \(p\), and \(\epsilon\) small enough so \(\Ima(\gamma)\in U\), then I can write
+        If \(\sigma: V \to U\) is the allowable parametrization around \(p\), and \(\epsilon\) small enough so \(\ima(\gamma)\in U\), then I can write
         \[
             \gamma(t) = \sigma(u(t), v(t))
         \]
         for smooth functions \(u, v: (-\epsilon, \epsilon)\to V\). Then
-        \[\gamma'(t)= \sigma_u u'(t) + \sigma_v v'(t) \in \Ima{D\sigma}.\]
+        \[\gamma'(t)= \sigma_u u'(t) + \sigma_v v'(t) \in \ima{D\sigma}.\]
         This exhibits that
         \[
             T_{p}\Sigma = \mathrm{span}\{\gamma'(0)\mid \gamma \text{ a smooth curve as above}\}.
         \]
     \end{enumerate}
 \end{proof}
-\begin{definition}
+\begin{definition}{}{}
     If \(\Sigma\) is a smooth surface is \(\mathbb{R}^3\) and \(p\in \Sigma\), the \textit{normal direction} to \(\Sigma\) at \(p\) is just \((T_p\Sigma)^{\perp}\) (the Euclidean orthogonal complement of \(T_p\Sigma\) with respect to the Euclidean inner product).
 
     So at each \(p \in \Sigma\), there are two unit length normal vectors.
 \end{definition}
 The affine tangent plane is the best linear approximation to \(\Sigma\) at \(p\).
-\begin{definition}
+\begin{definition}{}{}
     A smooth surface in \(\mathbb{R}^3\) is \textit{two-sided} if it admits a continuous global choice of unit normal vector.
 \end{definition}

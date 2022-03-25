@@ -35,11 +35,11 @@ Motivation: Roll two dices. \(\Omega=\{1, \ldots,6\}^2 = \{(i,j)\mid 1\leq i,j \
 
 Goal: "Random real-valued measurements".
 
-\begin{definition}
+\begin{definition}{}{}
     A \textit{discrete random variable} \(X\) (often denoted by RV) on a probability space \((\Omega, \mathcal{F}, \probability{}{})\) is a function \(X: \Omega\to \mathbb{R}\) such that
     \begin{enumerate}
         \item \(\{\omega \in \Omega\mid X(\omega) = x\}\in \mathcal{F} \).
-        \item \(\Ima(X)\) is finite or countable (subset of \(\mathbb{R}\)).
+        \item \(\ima(X)\) is finite or countable (subset of \(\mathbb{R}\)).
     \end{enumerate}
     We can write \(\{\omega \in \Omega\mid X(\omega) = x\}\) as \(\{X = x\}\). So \(\probability{}{X=x} \) is valid. And the image is often \(\mathbb{Z}\) or \(\{0,1\}\) for example, instead of \(\{\text{Heads}, \text{Tails}\}\).
 
@@ -49,11 +49,11 @@ Goal: "Random real-valued measurements".
     If we consider the arrival problem, we have \(\Omega=\{\text{countable subsets } (a_1,a_2, \ldots) \text{ of }(0, \infty)\}\). Then,
     \begin{align*}
         N_t &= \text{number of arrivals by time t}\\
-        &= \left\vert \{a_i \mid a_i \leq t\} \right\vert \in \{0,1,2, \ldots\}
+        &= \abs{\{a_i \mid a_i \leq t\}} \in \{0,1,2, \ldots\}
     \end{align*}
     is a discrete RV for each time \(t\).
 \end{example}
-\begin{definition}
+\begin{definition}{}{}
     The \textit{probability mass function} (p.m.f.) of discrete RV \(X\) is the function \(p_X:\mathbb{R} \to [0,1]\) given by
     \[
         p_X(x) = \probability{}{X = x}\quad \forall x \in \mathbb{R}.
@@ -62,10 +62,10 @@ Goal: "Random real-valued measurements".
 \begin{note}
     \leavevmode
     \begin{itemize}
-    \item If \(x \notin \Ima(X)\) (that is, \(X(\omega)\) never takes value \(x\)), then
+    \item If \(x \notin \ima(X)\) (that is, \(X(\omega)\) never takes value \(x\)), then
     \[p_X(x) = \probability{}{\omega \in \Omega\mid X(\omega) = x}=\probability{}{\varnothing} = 0.\]
-    \item \(\begin{aligned}[t]\sum\limits_{x\in \Ima(X)}p_X(x) &= \sum\limits_{x\in \Ima(x)}\probability{}{\{\omega \in \Omega\mid X(\omega) = x\}}\\
-    &=\probability{}{\cup_{x\in \Ima(X)}\{\omega\in \Omega\mid X(\omega)=x\}}=\probability{}{\Omega} = 1 \end{aligned}\).
+    \item \(\begin{aligned}[t]\sum\limits_{x\in (X)}p_X(x) &= \sum\limits_{x\in \ima(x)}\probability{}{\{\omega \in \Omega\mid X(\omega) = x\}}\\
+    &=\probability{}{\cup_{x\in \ima(X)}\{\omega\in \Omega\mid X(\omega)=x\}}=\probability{}{\Omega} = 1 \end{aligned}\).
     \end{itemize}
 \end{note}
 \begin{example}[Indicator Function]
@@ -76,7 +76,7 @@ Goal: "Random real-valued measurements".
         0, &\text{ if }\omega \notin A \\
     \end{dcases}
     \]
-    called the \textit{indicated function} of \(A\). \(\textbf{1}_{A}\) is a discrete RV with \(\Ima(\textbf{1}) = \{0,1\}\). The probability mass function is
+    called the \textit{indicated function} of \(A\). \(\textbf{1}_{A}\) is a discrete RV with \(\ima(\textbf{1}) = \{0,1\}\). The probability mass function is
     \begin{align*}
         p_{\textbf{1}_A}(1) &= \probability{}{\textbf{1}_A = 1} = \probability{}{A}\\
         p_{\textbf{1}_A}(0) &= \probability{}{\textbf{1}_A = 0} = \probability{}{A^c} = 1 - \probability{}{A} \\
@@ -87,7 +87,7 @@ Goal: "Random real-valued measurements".
 \begin{remark}
     Given a probability mass function, we can always construct a probability space \((\Omega, \mathcal{F}, \mathbb{P})\) and a RV defined on it with this pmf.
     \begin{itemize}
-    \item \(\Omega = \Ima(X)\). That is, \(\{x \in \mathbb{R}\mid p_X(x) > 0\}\);
+    \item \(\Omega = \ima(X)\). That is, \(\{x \in \mathbb{R}\mid p_X(x) > 0\}\);
     \item \(\mathcal{F} = \mathcal{P}(\Omega)\);
     \item \(\probability{}{\{x\}} = p_X(x)\) and extend it to all \(A \in \mathcal{F}\).
     \end{itemize}
