@@ -55,9 +55,8 @@
 \usepackage{multicol}
 \usepackage{xcolor}
 
-
 % Fancy script capitals
-% \usepackage{mathrsfs}
+\usepackage{mathrsfs}
 \usepackage{cancel}
 % Bold math
 \usepackage{bm}
@@ -199,6 +198,8 @@
 \DeclareMathOperator{\ima}{im}
 \DeclareMathOperator{\aut}{Aut}
 
+\DeclarePairedDelimiter{\paren}{\lparen}{\rparen}
+
 % abs and norm
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
@@ -241,3 +242,16 @@
 \newcommand\pd[3][]{\frac{\partial\spx{#1}#2}{\partial#3\spx{#1}}}
 \newcommand{\md}[6]{\frac{\partial\spx{#2}#1}{\partial#3\spx{#4}\partial#5\spx{#6}}}
 \newcommand{\od}[3][]{\frac{\dif\spx{#1}#2}{\dif#3\spx{#1}}}
+
+% Evaluate at
+\newcommand{\genericdel}[4]{%
+  \ifcase#3\relax
+  \ifx#1.\else#1\fi#4\ifx#2.\else#2\fi\or
+  \bigl#1#4\bigr#2\or
+  \Bigl#1#4\Bigr#2\or
+  \biggl#1#4\biggr#2\or
+  \Biggl#1#4\Biggr#2\else
+  \left#1#4\right#2\fi
+}
+
+\newcommand{\eval}[2][-1]{\genericdel.|{#1}{#2}}

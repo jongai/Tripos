@@ -1,0 +1,98 @@
+\lecture{18}{2 Mar. 2022}{Hyperbolic Functions}
+\begin{definition}{}{}
+    \begin{align*}
+        \cosh z &= \frac{1}{2}(e^z + e^{-z})\\
+        \sinh z &= \frac{1}{2}(e^z - e^{-z})
+    \end{align*}
+\end{definition}
+We clearly have the relationships
+\begin{align*}
+    \cosh z &= \cos(iz)\\
+    \sinh z &= -i\sin(iz)\\
+    (\cosh z)' &= \sinh z\\
+    (\sinh z)' &= \cosh z\\
+    \cosh^2 z - \sinh^2 z &= 1.
+\end{align*}
+The rest of the trigonometric functions (\(\tan\), \(\cot\), \(\sec\), \(\csc\)) are defined in the usual way.
+
+\section{Integration}
+Suppose we have a function \(f: [a, b] \to \mathbb{R}\) bounded. That is \(\exists K\) such that \(\abs{f(x)} \leq K\) for all \(x \in [a,b]\).
+\begin{definition}{}{}
+    A \textit{dissection} (or \textit{partition}) \(\mathcal{D}\) of \([a,b]\) is a finite subset of \([a,b]\) containing the end points \(a\) and \(b\). We write
+    \[\mathcal{D} = \{x_0,x_1,\dots,x_n\}\]
+    with \(a = x_0 < x_1 < \dots < x_{n-1} < x_n = b\).
+    \todo{A picture of the function}
+\end{definition}
+\begin{definition}{}{}
+    We define the \textit{upper sum} and \textit{lower sum} associated with \(\mathcal{D}\) by
+    \begin{align*}
+        S(f,\mathcal{D}) &= \sum_{j=1}^{n}(x_{j}-x_{j-1}) \smashoperator{\sup_{x \in [x_{j-1},x_j]}} f(x) &\text{(upper)}\\
+        \mathscr{S}(f,\mathcal{D}) &= \sum_{j=1}^{n}(x_{j}-x_{j-1}) \smashoperator{\inf_{x \in [x_{j-1},x_j]}} f(x)&\text{(lower)}
+    \end{align*}
+\end{definition}
+Clearly, \(\mathscr{S}(f,\mathcal{D}) \leq S(f,\mathcal{D})\) for any \(\mathcal{D}\).
+\begin{lemma}{}{}
+    If \(\mathcal{D}, \mathcal{D}'\) are dissections with \(\mathcal{D}'\supseteq\mathcal{D}\), then
+    \[
+        S(f,\mathcal{D}) \geq S(f,\mathcal{D}')\geq \mathscr{S}(f,\mathcal{D}') \geq \mathscr{S}(f,\mathcal{D}).
+    \]
+\end{lemma}
+\begin{proof}
+    \(S(f,\mathcal{D}')\geq \mathscr{S}(f,\mathcal{D}')\) is obvious.
+
+    Suppose \(\mathcal{D}'\) contains an extra point than \(\mathcal{D}\), let's say \(y \in (x_{r_1},x_r)\). Clearly,
+    \[
+        \smashoperator{\sup_{x\in [x_{r-1},y]}}f(x),\smashoperator{\sup_{x\in [y,x_r]}}f(x) \leq \smashoperator{\sup_{x\in [x_{r-1},x_r]}}f(x).
+    \]
+    So we have
+    \[
+        (x_r - x_{r-1})\smashoperator{\sup_{x\in[x_{r-1},x_r]}}f(x)\geq (y - x_{r-1})\smashoperator{\sup_{x\in[x_{r-1},y]}}f(x)+(x_r - y)\smashoperator{\sup_{x\in[y,x_r]}}f(x).
+    \]
+    And the same argument goes for \(\mathscr{S}\) and the same if \(\mathcal{D}'\) has more extra points than \(\mathcal{D}\).
+\end{proof}
+\begin{lemma}{}{arbdis}
+    Suppose \(\mathcal{D}_1, \mathcal{D}_2\) are two arbitrary dissections. Then
+    \[
+        S(f, \mathcal{D}_1) \geq S(f,\mathcal{D}_1 \cup \mathcal{D}_2) \geq \mathscr{S}(f,\mathcal{D}_1\cup \mathcal{D}_2) \geq \mathscr{S}(f,\mathcal{D}_2).
+    \]
+    So \(S(f, \mathcal{D}_1)\geq \mathscr{S}(f,\mathcal{D}_2)\).
+\end{lemma}
+\begin{proof}
+    Take \(\mathcal{D}' = \mathcal{D}_1\cup \mathcal{D}_2\supseteq \mathcal{D}_1,\mathcal{D}_2\) and apply the previous lemma.
+\end{proof}
+\begin{definition}{}{}
+    The \textit{upper integral} of \(f\) is \(I^\ast(f) = \inf_{\mathcal{D}}S(f,\mathcal{D})\).
+
+    The \textit{lower integer} of \(f\) is \(I_\ast(f) = \sup_{\mathcal{D}}\mathscr{S}(f, \mathcal{D})\).
+\end{definition}
+The supremum, infimum always exists by \cref{le:arbdis} and picking an arbitrary \(\mathcal{D}_1, \mathcal{D}_2\) respectively.
+
+And by \cref{le:arbdis},
+\[
+    I^*(f) \geq I_*(f)
+\]
+because
+\begin{align*}
+    S(f, \mathcal{D}_1) &\geq \mathscr{S}(f,\mathcal{D}_2)\\
+    I^*(f) = \smash{\inf_{\mathcal{D}_1} S(f,\mathcal{D}_1)} &\geq \mathscr{S}(f,\mathcal{D}_2)\\
+    I^*(f) &\geq \sup_{\mathcal{D}_2}\mathscr{S}(f,\mathcal{D}_2) = I_*(f).
+\end{align*}
+\begin{definition}{}{}
+    A bounded function \(f: [a,b] \to \mathbb{R}\) is said to be \textit{Riemann integrable} (or just \textit{integrable}) if \(I^*(f) = I_*(f)\).
+
+    And we set
+    \[
+        \int_a^b f(x) \dif x = I^*(f) = I_*(f) = \int_a^b f.
+    \]
+\end{definition}
+\begin{example}
+    The function \(f(x) = \begin{dcases}
+        1, &\text{ if } x\in \mathbb{Q}\cap [0,1]\\
+        0, &\text{ if } x\notin \mathbb{Q}\cap [0,1]\\
+    \end{dcases}\) is not Riemann integrable since
+    \begin{gather*}
+        \smashoperator{\sup_{[x_{j-1},x_j]}}f(x) = 1,\qquad \smashoperator{\inf_{[x_{j-1},x_j]}}f(x) = 0\\
+        \implies S(f, \mathcal{D}) = 1,\qquad \mathscr{S}(f, \mathcal{D}) = 1 \qquad \forall \mathcal{D}
+    \end{gather*}
+    So \(I^*(f) = 1\), but \(I_*(f) = 0\).
+\end{example}

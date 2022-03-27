@@ -16,7 +16,7 @@
     Then \(f\) is irreducible in \(R[X]\).
 \end{theorem}
 \begin{proof}
-    Suppose \(f = gh\) with \(g, h \in R[X]\) not units. \(f\) primitive implies that \(\deg g, \deg h > 0\). Let \(g = r_k X^k + \cdots + r_1 X + r_0\), and \(h = s_l X^l + \cdots + s_1 X + s_0\) with \(k + l = n\). Then \(p \nmid a_n = r_k s_l \implies p \nmid r_k\) and \(p \nmid s_l\), and \(p \mid a_0 = r_0 s_0\implies p \mid r_0\) or \(p \mid s_0\). WLOG, \(p \mid r_0\). Then \(\exists j \leq k\) such that \(p \mid r_0, p \mid r_1, \ldots, r\mid r_{j-1}, r\nmid r_j\), and
+    Suppose \(f = gh\) with \(g, h \in R[X]\) not units. Polynomial \(f\) being primitive implies that \(\deg g, \deg h > 0\). Let \(g = r_k X^k + \cdots + r_1 X + r_0\), and \(h = s_l X^l + \cdots + s_1 X + s_0\) with \(k + l = n\). Then \(p \nmid a_n = r_k s_l \implies p \nmid r_k\) and \(p \nmid s_l\), and \(p \mid a_0 = r_0 s_0\implies p \mid r_0\) or \(p \mid s_0\). WLOG, \(p \mid r_0\). Then \(\exists j \leq k\) such that \(p \mid r_0, p \mid r_1, \ldots, r\mid r_{j-1}, r\nmid r_j\), and
     \[
         a_j = r_0 s_j + r_1 s_{j-1} + \cdots + r_{j-1}s_1 + r_j s_0.
     \]

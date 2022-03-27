@@ -1,1 +1,120 @@
-\lecture{17}{28 Feb. 2022}{}
+\lecture{17}{28 Feb. 2022}{Trigonometric Functions}
+\begin{remark}[``Expoentials beat polynomials'']
+    We have
+    \[
+        \lim_{x \to \infty} \frac{e^x}{x^k} = \infty. \qquad (k > 0)
+    \]
+    We use power series to prove it. We have
+    \[
+        e^x = \sum_{i=0}^{\infty} > \frac{x^n}{n!}. \qquad (x > 0)
+    \]
+    Now we pick \(n > k\), and we have
+    \[
+        \frac{e^x}{x^k} > \frac{x^{n-k}}{n!}\to \infty \text{ as }x\to \infty.
+    \]
+\end{remark}
+\begin{definition}{Trigonometric Functions}{}
+    \begin{align*}
+        \cos z &= 1 - \frac{z^2}{2!} + \frac{z^4}{4!} - \dots = \sum_{k=0}^{\infty} \frac{(-1)^k z^{2k}}{(2k)!}\\
+        \sin z &= z - \frac{z^3}{3!} + \frac{z^5}{5!} - \dots = \sum_{k=0}^{\infty} \frac{(-1)^k z^{2k + 1}}{(2k + 1)!}
+    \end{align*}
+\end{definition}
+Both power series have infinite radius of convergence and by \cref{th:difpow}, we get
+\[
+    (\sin z)' = \cos z,\quad (\cos z)' = -\sin z.
+\]
+
+Also note that we have
+\[
+    e^{iz} = \sum_{n=0}^{\infty} \frac{(iz)^n}{n!} = \sum_{n=1}^{\infty} \frac{(iz)^{2k}}{(2k)!} + \sum_{n=1}^{\infty} \frac{(iz)^{2k + 1}}{(2k + 1)!} = \cos z + i\sin z.
+\]
+Similarly,
+\[
+    e^{-iz} = \cos z - i\sin z.
+\]
+So we can write \(\cos z\) and \(\sin z\) as
+\begin{align*}
+    \cos z &= \frac{1}{2}(e^{iz} + e^{-iz})\\
+    \sin z &= \frac{1}{2i}(e^{iz} - e^{-iz}).
+\end{align*}
+From this, we get many trigonometric identities. For example,
+\[
+    \cos z = \cos (-z), \quad \sin(-z) = -\sin z, \quad \cos(0) = 1, \quad \sin (0) = 0.
+\]
+And the addition formulas
+\begin{enumerate}
+    \item \(\sin (z + w) = \sin z \cos w + \cos z \sin w\);
+    \item \(\cos (z + w) = \cos z \cos w - \sin z \sin w\).
+\end{enumerate}
+They essentially follow from \(e^{a + b} = e^{a}e^{b}\). To prove (2), write
+\[
+    \cos (z + w) = \frac{1}{2}\paren{e^{i(z+w)} + e^{-i(z + w)}},
+\]
+and expand \(\cos z \cos w - \sin z \sin w\) similarly to get the result. We can also get
+\begin{equation}
+    \label{sincos} 
+    \sin^2 z + \cos^2 z = 1 \qquad \forall z \in \mathbb{C}
+\end{equation}
+by direct computation.
+
+Now if \(x \in \mathbb{R}\), then \(\sin x, \cos x \in \mathbb{R}\), and \cref{sincos} gives \(\abs{\sin x},\abs{\cos x} \leq 1\). We should be careful that they don't have to be bounded when \(z\) is not real. For example
+\[
+    \cos(iy) = \frac{1}{e^{-y} + e^y}. \qquad y \in \mathbb{R}
+\]
+So \(\cos(iy) \to \infty\) as \(y \to \infty \).
+
+\begin{proposition}{}{}
+    There is a smallest positive number \(w\) (where \(\sqrt{2} < \frac{w}{2} <\sqrt{3}\)) such that
+    \[
+        \cos \frac{w}{2} = 0.
+    \]
+\end{proposition}
+\begin{proof}
+    If \(0 < x < 2\),
+    \[
+        \sin x = \paren*{x - \frac{x^3}{3!}} + \paren*{\frac{x^5}{5!} - \frac{x^7}{7!}} + \dots > 0
+    \]
+    since \(0 < x < 2 \implies \frac{x^{2n - 1}}{(2n-1)!} > \frac{x^{2n + 1}}{(2n + 1)!}\), and \((\cos x)' = -\sin x < 0\) for \(0 < x < 2\). So \(\cos x\) is strictly decreasing on \((0,2)\). We will show that \(\cos \sqrt{2} >0\) and \(\cos \sqrt{3} < 0\). Then by the intermediate value theorem, the existence of \(w\) follows. Now we prove that.
+    \begin{align*}
+        \cos \sqrt{2} &= \paren*{\frac{(\sqrt{2})^2}{4!} - \frac{(\sqrt{2})^6}{6!}} + \dots > 0\\
+        \cos \sqrt{3} &= 1 - \frac{3}{2} + \frac{9}{4!} - \paren*{\frac{x^6}{6!}-\frac{x^8}{8!}} - \dots = -\frac{1}{8} - \dots < 0,
+    \end{align*}
+    and we are done.
+\end{proof}
+\begin{corollary}{}{}
+    \[
+        \sin \frac{w}{2} = 1.
+    \]
+\end{corollary}
+\begin{proof}
+    We have \(\sin^2 \frac{w}{2} + \cos^2 \frac{w}{2} = 0\), and we know that \(\sin \) is positive on \((0,2)\).
+\end{proof}
+Now we define \(\pi = w\).
+\begin{theorem}{}{}
+    \begin{enumerate}
+        \item \(\sin(z + \frac{\pi}{2}) = \cos z\), \(\cos(z + \frac{\pi}{2}) = - \sin z\);
+        \item \(\sin(z + \pi) = -\sin z\), \(\cos(z + \pi) = - \cos z\);
+        \item \(\sin(z + 2\pi) = \sin z\), \(\cos(z + 2\pi) =  \cos z\).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    It is immediate from addition formulas and \(\cos \frac{\pi}{2} = 0\), \(\sin \frac{\pi}{2} = 1\).
+\end{proof}
+This implies
+\begin{align*}
+    e^{iz + 2\pi i} &= \cos(z + 2\pi) + i \sin(z + 2\pi)\\
+    &= \cos z + i \sin z\\
+    &= e^{iz}.
+\end{align*}
+So \(e^z\) is periodic with period \(2\pi i\).
+\begin{remark}["Relation with geometry"]
+    Given two vectors \(x, y \in \mathbb{R}^2\), define \(x \cdot y\) as in Part IA Vector and Matrices,
+    \[
+        x \cdot y = x_1 y_1 + x_2 y_2.
+    \]
+    Cauchy-Schwarz gives \(\abs{x\cdot y} \leq \norm{x}\norm{y}\). So, for \(x \neq 0\), \(y \neq 0\),
+    \[
+        -1 \leq \frac{x\cdot y}{\norm{x}\norm{y}}\leq 1.
+    \]
+    Define the angle between \(x\) and \(y\) as the unique \(\theta \in [0, \pi]\) with \(\cos \theta = \frac{x \cdot y}{\norm{x}\norm{y}}\). And we recover the unit circle picture by defining angle this way.
+\end{remark}

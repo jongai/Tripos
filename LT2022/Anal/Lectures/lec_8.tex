@@ -5,7 +5,7 @@
     Let \(f:[a,b] \to \mathbb{R}\) be continuous. Then there exists \(K\) such that \(\abs{f(x)} \leq K\) for all \(x \in [a,b]\).
 \end{theorem}
 \begin{proof}
-    We argue by contradiction. Suppose the statement is false. Then given any integer \(n \geq 1\), there exists \(x_n \in [a,b]\) such that \(\abs{f(x_n)}  > n\). By Bolzano-Weierstrass, \(x_n\) has a convergent subsequence \(x_{n_j} \to x\). Since \(a \leq x_{n_j} \leq b\), we must have \(x \in [a,b]\). By the continuity of \(f\), \(f(x_{n_j}) \to f(x)\). But \(\abs{f(x_{n_j})} > nj \to \infty\) as \(j\to \infty\). Contradiction.
+    We argue by contradiction. Suppose the statement is false. Then given any integer \(n \geq 1\), there exists \(x_n \in [a,b]\) such that \(\abs{f(x_n)}  > n\). By Bolzano-Weierstrass, \(x_n\) has a convergent subsequence \(x_{n_j} \to x\). Since \(a \leq x_{n_j} \leq b\), we must have \(x \in [a,b]\). By the continuity of \(f\), \(f(x_{n_j}) \to f(x)\). But \(\abs{f(x_{n_j})} > n_j \to \infty\) as \(j\to \infty\). Contradiction.
 \end{proof}
 \begin{theorem}{Extreme Value Theorem}{evt}
     Let \(f:[a,b] \to \mathbb{R}\) be a continuous function. Then there exists \(x_1, x_2 \in [a,b]\) such that

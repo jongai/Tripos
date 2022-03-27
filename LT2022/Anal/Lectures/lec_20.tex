@@ -1,0 +1,107 @@
+\lecture{20}{7 Mar. 2022}{}
+Functions more complicated than monotone or continuous can be Riemann integrable.
+\begin{example}
+    Consider \(\fullfunction{f}{[0,1]}{\mathbb{R}}{x}{\begin{dcases}
+        \nicefrac{1}{q}, &\text{ if } x = \nicefrac{p}{q}\in(0,1] \text{ in its lowest term}\\
+        0, &\text{ otherwise}
+    \end{dcases}}\). Clearly, \(\mathscr{S}(f,\mathcal{D}) = 0\) for all \(\mathcal{D}\). We will show that given \(\epsilon > 0\), \(\exists \mathcal{D}\) such that \(S(f, \mathcal{D}) < \epsilon\). This implies that \(f\) is integrable with \(\int_0^1 f \dif x = 0\).
+
+    Consider the set
+    \[
+        \set{x \in [0,1] | f(x) \geq \frac{1}{N}} = \set{\frac{p}{q} | 1\leq q \leq N, 1 \leq p \leq q}.
+    \]
+    Take \(N \in \mathbb{N}\) such that \(\frac{1}{N}<\frac{\epsilon}{2}\). This is a finite set with
+    \[
+        0 < t_1 < t_2 < \dots < t_R = 1.
+    \]
+
+    Consider a dissection \(\mathcal{D}\) of \([a,b]\) such that
+    \begin{enumerate}
+        \item Each \(t_k\) with \(1 \leq k \leq R\) is in some \((x_{j-1},x_j)\);
+        \item For all \(k\), the unique interval containing \(t_k\) has length at most \(\nicefrac{\epsilon}{2R}\).
+    \end{enumerate}
+    Such dissection clearly exists. Note that \(f \leq 1\) everywhere, and
+    \[
+        S(f, \mathcal{D}) \leq \frac{1}{N} + \frac{\epsilon}{2} < \epsilon.
+    \]
+    The function is integrable but has countable many discontinuities.
+\end{example}
+\subsection{Elementary Properties of the Integral}
+Let \(f,g\) be bounded and integrable functions on \([a,b]\).
+\begin{enumerate}
+    \item If \(f\leq g\) on \([a,b]\), then
+    \[
+        \int_a^b f \leq \int_a^b g.
+    \]
+    \item \(f + g\) is integrable on \([a,b]\) and
+    \[
+        \int_a^b f + g = \int_a^b f + \int_a^b g.
+    \]
+    \item For any constant \(k\), \(kg\) is integrable and
+    \[
+        \int_a^b kf = k\int^b_a f.
+    \]
+    \item \(\abs{f}\) is integrable and
+    \[
+        \abs{\int_a^b f} \leq \int^b_a\abs{f}.
+    \]
+    \item The product \(fg\) is integrable.
+\end{enumerate}
+\begin{proof}
+    \begin{enumerate}
+        \item If \(f\leq g\), then
+        \begin{align*}
+            \int_a^b f = I^*(f) \leq S(f, \mathcal{D}) \leq S(g, \mathcal{D})\\
+            \implies \int^b_a f = I^*(f) \leq I^*(g) = \int^b_a g.
+        \end{align*}
+        \item We have \(\smashoperator{\sup_{[x_{j-1},x_j]}}(f+g) \leq \smashoperator{\sup_{[x_{j-1},x_j]}}f + \smashoperator{\sup_{[x_{j-1},x_j]}}g\), so
+        \[
+            S(f + g, \mathcal{D}) \leq S(f, \mathcal{D}) + S(g, \mathcal{D}).
+        \]
+        Now for dissections \(\mathcal{D}_1\) and \(\mathcal{D}_2\),
+        \begin{align*}
+            I^*(f + g) &\leq S(f + g, \mathcal{D}_1 \cup \mathcal{D}_2)\\
+            &\leq S(f, \mathcal{D}_1 \cup \mathcal{D}_2) + S(g, \mathcal{D}_1\cup \mathcal{D}_2)\\
+            &\leq S(f,\mathcal{D}_1) + S(g, \mathcal{D}_2).
+        \end{align*}
+        Fix \(\mathcal{D}_1\) and take \(\inf\) over \(\mathcal{D}_2\) to get
+        \[
+            I^*(f + g) \leq S(f, \mathcal{D}_1) + I^*(g).
+        \]
+        Again, take \(\inf\) over all \(\mathcal{D}_1\), we have
+        \[
+            I^*(f + g) \leq I^*(f) + I^*(g) = \int^b_a f + \int^b_a g.
+        \]
+        Similarly, \(\int^b_a f + \int^b_a g\leq I_*(f + g)\), so \(f + g\) is integrable with the integral equal to the sum of integrals.
+        \item Exercise.
+        \item Consider the function \(f_+(x) = \max(f(x),0)\), we have
+        \[
+            \smashoperator{\sup_{[x_{j-1},x_j]}}f_+ - \smashoperator{\inf_{[x_{j-1},x_j]}}f_+\leq \smashoperator{\sup_{[x_{j-1},x_j]}}f - \smashoperator{\inf_{[x_{j-1},x_j]}}f.
+        \]
+        We know that given \(\epsilon>0\), there exists \(\mathcal{D}\) such that
+        \[
+            S(f, \mathcal{D}) - \mathscr{S}(f,\mathcal{D}) = \sum_{j = 1}^{n} (x_j - x_{j-1})(\smashoperator{\sup_{[x_{j-1},x_j]}}f - \smashoperator{\inf_{[x_{j-1},x_j]}}f) < \epsilon.
+        \]
+        By inequality above, we have
+        \[
+            S(f_+, \mathcal{D}) - \mathscr{S}(f_+,\mathcal{D}) \leq S(f, \mathcal{D}) - \mathscr{S}(f,\mathcal{D}) < \epsilon.
+        \]
+        Note \(\abs{f} = 2f_+ - f\), and by (2) and (3), \(\abs{f}\) is integrable. Since \(-\abs{f} \leq f \leq \abs{f}\), and by property (1), \(\abs{\int^b_a f}\leq \int^b_a\abs{f}\).
+        \item Take \(f\) integrable and \(f \geq 0\). Then
+        \begin{align*}
+            \smashoperator{\sup_{[x_{j-1},x_j]}}f^2 &= \paren{\smashoperator{\sup_{[x_{j-1},x_j]}}f}^2 = (M_j)^2\\
+            \smashoperator{\inf_{[x_{j-1},x_j]}}f^2 &= \paren{\smashoperator{\inf_{[x_{j-1},x_j]}}f}^2 = (m_j)^2.
+        \end{align*}
+        Note \(M_j + m_j<2K\) for some \(K\) since \(f\) is bounded. Thus,
+        \begin{align*}
+            S(f^2, \mathcal{D}) - \mathscr{S}(f^2, \mathcal{D}) &= \sum_{j=1}^{n} (x_j - x_{j-1})(M^2_j - m^2_j)\\
+            &= \sum_{j=1}^{n} (x_j - x_{j-1})(M_j + m_j)(M_j - m_j)\\
+            &\leq 2K(S(f,\mathcal{D}) - \mathscr{S}(f, \mathcal{D}))
+        \end{align*}
+        Using \cref{th:intcri}, we deduce that \(f^2\) is integrable. Now take any \(f\), then \(\abs{f}\geq 0\). Since \(f^2 = \abs{f}^2\), we deduce that \(f^2\) is integrable for any \(f\). Finally, for \(fg\), note
+        \[
+            4fg = (f + g)^2 - (f-g)^2.
+        \]
+        And we are done since the right-hand side is integrable.
+    \end{enumerate}
+\end{proof}

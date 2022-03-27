@@ -1,0 +1,113 @@
+\lecture{21}{9 Mar. 2022}{}
+We have an additional property.
+\begin{enumerate}
+    \setcounter{enumi}{5}
+    \item If \(f\) is integrable on \([a,b]\). If \(a < c < b\), then \(f\) is integrable over \([a,c]\) and \(c, b]\), and
+    \[
+        \int^b_a f = \int^c_a f + \int^b_c f.
+    \]
+
+    Conversely, if \(f\) is integrable over \([a,c]\) and \([c,b]\), then \(f\) is integrable over \([a,b]\), and
+    \[
+        \int^b_a f = \int^c_a f + \int^b_c f.
+    \]
+\end{enumerate}
+\begin{proof}
+    We first make two observations. If \(\mathcal{D}_1\) is a dissection of \([a,c]\) and \(\mathcal{D}_2\) is a dissection of \([c,b]\), then \(\mathcal{D} = \mathcal{D}_1 \cup \mathcal{D}_2\) is a dissection of \([a,b]\) and
+    \[
+        S(f, \mathcal{D}_1 \cup \mathcal{D}_2) = S(\eval{f}_{[a,c]},\mathcal{D}_1) + S(\eval{f}_{[c,b]},\mathcal{D}_2).
+    \]
+    Also, if \(\mathcal{D}\) is a dissection of \([a,b]\), then
+    \[
+        S(f,\mathcal{D}) \geq S(f, \mathcal{D}\cup \{c\}) = S(\eval{f}_{[a,c]},\mathcal{D}_1) + S(\eval{f}_{[c,b]},\mathcal{D}_2)
+    \]
+    where \(\mathcal{D}_1\) dissects \([a,c]\) and \(\mathcal{D}_2\) dissects \([c,b]\). From the first inequality, we have
+    \[
+        I^*(f) \leq I^*(\eval{f}_{[a,c]}) + I^*(\eval{f}_{[c,b]}).
+    \]
+    From the second inequality, we have
+    \[
+        I^*(f) \geq I^*(\eval{f}_{[a,c]}) + I^*(\eval{f}_{[c,b]}).
+    \]
+    So, we have
+    \[
+        I^*(f) = I^*(\eval{f}_{[a,c]}) + I^*(\eval{f}_{[c,b]}).
+    \]
+    Similarly, the lower integral
+    \[
+        I_*(f) = I_*(\eval{f}_{[a,c]}) + I_*(\eval{f}_{[c,b]}).
+    \]
+    Thus,
+    \[
+        0\leq I^*(f) - I_*(f) = (I^*(\eval{f}_{[a,c]}) - I_*(\eval{f}_{[a,c]})) + (I^*(\eval{f}_{[c,b]}) - I_*(\eval{f}_{[c,b]})).
+    \]
+    From this (6) follows right away.
+\end{proof}
+We have the convention that if \(a > b\), then
+\[
+    \int^b_a f = - \int^a_b f;
+\]
+If \(a = b\), we agree that its value is zero. With this convention, if \(\abs{f}\leq K\),
+\[
+    \abs{\int^b_a f}\leq K \abs{b - a}.
+\]
+\subsection{The Fundamental Theorem of Calculus}
+Let \(f: [a,b] \to \mathbb{R}\) be a bounded and integrable function, and we write
+\[
+    F(x) = \int_a^x f(t) \dif t. \qquad x \in [a,b]
+\]
+\begin{theorem}{}{}
+    \(F\) is continuous.
+\end{theorem}
+\begin{proof}
+    Consider the difference \(F(x + h) - F(x) = \int_x^{x+h} f(t) \dif t\). We have
+    \begin{align*}
+        \abs{F(x + h) - f(x)} &= \abs{\int_x^{x+h}f(t) \dif t}\\
+        &\leq K\abs{h}
+    \end{align*}
+    if \(\abs{f(t)}\leq K\) for all \(t \in [a,b]\). Now let \(h \to 0\) and we are done. (In fact, \(F\) is Lipschitz continuous)
+\end{proof}
+\begin{theorem}{FTC}{FTC}
+    If in addition \(f\) is continuous at \(x\), then \(F\) is differentiable at \(x\), and
+    \[
+        F'(x) = f(x).
+    \]
+\end{theorem}
+\begin{proof}
+    We consider
+    \begin{align*}
+        &\abs{\frac{F(x + h) - F(x)}{h} - f(x)} \qquad x + h \in [a,b], h \neq 0\\
+        =& \frac{1}{\abs{h}}\abs{\int_x^{x+h}f(t) \dif t - hf(x)}\\
+        =& \frac{1}{\abs{h}}\abs{\int^{x+h}_x f(t) - f(x) \dif t}.
+    \end{align*}
+    Since \(f\) is continuous at \(x\), given \(\epsilon>0\), there exists \(\delta>0\) such that \(\abs{t - x}<\delta\implies \abs{f(t) - f(x)}<\epsilon\). So if \(\abs{h}<\delta\), we have
+    \begin{align*}
+        &\abs{\frac{F(x + h) - F(x)}{h} - f(x)} \leq \frac{1}{\abs{h}}\epsilon\abs{h} = \epsilon.
+    \end{align*}
+    That is,
+    \[
+        F'(x) = \lim_{h \to 0} \frac{F(x+h)-F(x)}{h}=f(x).
+    \]
+\end{proof}
+\begin{example}
+    Consider the function \(f(x) = \begin{dcases} -1, &\text{ if } x \in [-1,0]\\ 1, &\text{ if } x \in (0,1]\\ \end{dcases}\). Taking the integral of \(f\), and we have \(F(x) = -1 + \abs{x}\). It is differentiable everywhere except for \(x = 0\) where there is a discontinuity on \(f\).
+\end{example}
+\begin{corollary}{Integration is the inverse of differentiation}{intinv}
+    If \(f = g'\) is continuous on \([a,b]\), then
+    \[
+        \int_a^x f(t) \dif t = g(x) - g(a). \qquad \forall x\in [a,b].
+    \]
+\end{corollary}
+\begin{proof}
+    From \cref{th:FTC}, \(F - g\) has zero derivative in \([a,b]\). So \(F - g\) is constant, and since \(F(a) = 0\), we have \(F(x) = g(x) - g(a)\).
+\end{proof}
+Every continuous function has an \textit{indefinite integral} or \textit{antiderivative} written \(\int f(x) \dif x\) which is determined up to a constant.
+\begin{remark}
+    We have solved the ODE
+    \[
+    \begin{dcases}
+        y'(x) = f(x)\\
+        y(a) = y_0
+    \end{dcases}.
+    \]
+\end{remark}

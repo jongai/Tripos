@@ -1,0 +1,87 @@
+\lecture{19}{4 Mar. 2022}{}
+We first develop a useful criterion for integrability.
+\begin{theorem}{}{intcri}
+    A bounded function \(f: [a,b] \to \mathbb{R}\) is Riemann integrable if and only if given \(\epsilon > 0\), \(\exists \mathcal{D}\) such that
+    \[
+        S(f, \mathcal{D}) - \mathscr{S}(f,\mathcal{D}) < \epsilon.
+    \]
+\end{theorem}
+\begin{proof}
+    For every dissection \(\mathcal{D}\), we have
+    \[
+        0 \leq I^*(f) - I_*(f) \leq S(f, \mathcal{D}) - \mathscr{S}(f,\mathcal{D}).
+    \]
+
+    If the given condition holds, then for all \(\epsilon > 0\), we can find \(\mathcal{D}\) such that
+    \[
+        0 \leq I^*(f) - I_*(f) \leq S(f, \mathcal{D}) - \mathscr{S}(f,\mathcal{D}) < \epsilon.
+    \]
+    So \(I^*(f) = I_*(f)\).
+
+    Conversely, if \(f\) is integrable, by definition of \(\sup\) and \(\inf\), there are partitions \(\mathcal{D}_1\) and \(\mathcal{D}_2\) such that
+    \begin{align*}
+        \int_a^b f \dif x - \frac{\epsilon}{2} &= I_*(f) - \frac{\epsilon}{2} < \mathscr{S}(f, \mathcal{D}_1)\\
+        \int_a^b f \dif x + \frac{\epsilon}{2} &= I^*(f) + \frac{\epsilon}{2} > S(f, \mathcal{D}_2)
+    \end{align*}
+    By \cref{le:arbdis},
+    \[
+        S(f, \mathcal{D}_1\cup \mathcal{D}_2) - \mathscr{S}(f, \mathcal{D}_1\cup \mathcal{D}_2)\leq S(f,\mathcal{D}_2) - \mathscr{S}(f,\mathcal{D}_1) < \epsilon.
+    \]
+\end{proof}
+
+We now use this criterion to show that monotone and continuous functions are integrable.
+
+\begin{remark}
+    Monotone and continuous functions are bounded.
+\end{remark}
+
+\begin{theorem}{}{}
+    Let \(f: [a,b] \to \mathbb{R}\) be monotone. Then \(f\) is Riemann integrable.
+\end{theorem}
+\begin{proof}
+    Suppose without loss of generality that \(f\) is increasing (same proof for \(f\) decreasing), then \(\sup_{x\in[x_{j-1},x_j]}f(x) = f(x_j)\) and \(\inf_{x\in[x_{j-1},x_j]}f(x) = f(x_{j-1})\). Thus,
+    \[
+        S(f,\mathcal{D}) - \mathscr{S}(f,\mathcal{D}) = \sum_{j=1}^{n} (x_j - x_{j-1})((f(x_j) - f(x_{j-1})).
+    \]
+    Now choose
+    \[
+        \mathcal{D} = \{a, a + \frac{b-a}{n}, a + \frac{2(b-a)}{n} , \dots, b\}.
+    \]
+    In other words, \(x_j = a + \frac{(b-a)j}{n}\) for \(0 \leq j \leq n\). So
+    \[
+        S(f, \mathcal{D}) - \mathscr{S}(f, \mathcal{D}) = \frac{b-a}{n}(f(b) - f(a)).
+    \]
+    Take \(n\) large enough such that \(\frac{b-a}{n}(f(b) - f(a))<\epsilon\) and use \cref{th:intcri}.
+\end{proof}
+To prove that of continuous functions, we need an auxiliary lemma.
+\begin{lemma}{}{contuni}
+    For \(f: [a,b] \to \mathbb{R}\) continuous. Given \(\epsilon > 0\), \(\exists \delta> 0\) such that \(\abs{x-y}<\delta \implies \abs{f(x) - f(y)}<\epsilon\). (\textit{uniform continuity})
+\end{lemma}
+The point is that \(\delta\) works for all \(x, y\) as long as \(\abs{x-y}<\delta\). (in the definition of continuity of \(f\) at \(x\), the \(\delta\) depends on \(x\))
+\begin{proof}
+    Suppose the claim is false. Then \(\exists \epsilon>0\) such that \(\forall \delta > 0\), we can find \(x, y \in [a,b]\) such that \(\abs{x-y} < \delta\), but \(\abs{f(x) - f(y)} \geq \epsilon\).
+
+    Take \(\delta = \frac{1}{n}\) to get \(x_n, y_n \in [a,b]\) with \(\abs{x_n - y_n} < \frac{1}{n}\), but \(\abs{f(x_n) - f(y_n)} \geq \epsilon\). By Bolzano-Weierstrass theorem, we know there exists \(x_{n_k} \to c \in [a,b]\), and
+    \[
+        \abs{y_{n_k} - c} \leq \abs{y_{n_k} - x_{n_k}} + \abs{x_{n_k} - c} \to 0.
+    \]
+    So \(y_{n_k} \to c\). But \(\abs{f(x_{n_k}) - f(y_{n_k})} \geq \epsilon\). Let \(k \to \infty\), by continuity of \(f\),
+    \[
+        \abs{f(c) - f(c)} \geq \epsilon.
+    \]
+    Contradiction.
+\end{proof}
+\begin{theorem}
+    Let \(f: [a,b] \to \mathbb{R}\) be continuous, then \(f\) is Riemann integrable.
+\end{theorem}
+\begin{proof}
+    By \cref{le:contuni}, given \(\epsilon > 0\), \(\exists \delta>0\) such that \(\abs{x-y} < \delta \implies \abs{f(x) - f(y)}<\epsilon\). Let \(\mathcal{D} = \{a, a + \frac{b-a}{n}, a + \frac{2(b-a)}{n} , \dots, b\}\). Choose \(n\) large enough such that \(\frac{b - a}{n}<\delta\), then for \(x, y \in [x_{j - 1}, x_j]\), \(\abs{f(x) - f(y)}<\epsilon\), since \(\abs{x - y} \leq \abs{x_j - x_{j-1}}=\frac{b-a}{n} <\delta\). Observe that
+    \[
+        \max_{x\in[x_{j-1},x_j]}f(x) - \min_{x\in[x_{j-1},x_j]}f(x) = f(p_j) - f(q_j). \qquad p_j,q_j \in [x_{j-1},x_j]
+    \]
+    Minimum and maximum are achieved due to continuity. So
+    \[
+        S(f,\mathcal{D}) - \mathscr{S}(f,\mathcal{D}) = \sum_{j=1}^{n}(x_j - x_{j-1})(f(p_j)-f(q_j)) < \epsilon (b - a).
+    \]
+    And we are done by \cref{th:intcri}.
+\end{proof}
