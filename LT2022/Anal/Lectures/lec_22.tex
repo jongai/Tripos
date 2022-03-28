@@ -1,0 +1,98 @@
+\lecture{22}{11 Mar. 2022}{}
+\begin{corollary}{Integration by Parts}{}
+    Suppose \(f'\) and \(g'\) exist and are continuous on \([a,b]\), then
+    \[
+        \int^b_a f'g = f(b)g(b) - f(a)g(a) - \int^b_a fg'.
+    \]
+\end{corollary}
+\begin{proof}
+    By the product rule,
+    \[
+        (fg)' = f'g + fg'.
+    \]
+    By \cref{th:FTC},
+    \[
+        f(b)g(b) - f(a)g(a) = \int^b_a f'g + \int^b_a fg'.
+    \]
+\end{proof}
+\begin{corollary}{Integration by Substitution}{}
+    Let \(g: [\alpha, \beta] \to [a,b]\) be a continuous function with \(g(\alpha) = a\) and \(g(\beta) = b\), and \(g'\) exists and is continuous on \([\alpha, \beta]\). Let \(f: [a,b] \to \mathbb{R}\) be a continuous function. Then
+    \[
+        \int^b_a f(x) \dif x = \int^\beta_\alpha f(g(t))g'(t) \dif t.
+    \]
+\end{corollary}
+\begin{proof}
+    Set \(F(x) = \int^x_a f(t) \dif t\), and let \(h(t) = F(g(t))\). (defined as \(g\) takes values in \([a,b]\)) Then we have
+    \begin{align*}
+        \int^\beta_\alpha f(g(t))g'(t)\dif t &= \int^\beta_\alpha F'(g(t))g'(t) \dif t\\
+        &= \int^\beta_\alpha h'(t) \dif t\\
+        &= h(\beta) - h(\alpha)\\
+        &= F(b) - F(a)\\
+        &= \int^b_a f(x) \dif x.
+    \end{align*}
+\end{proof}
+\begin{theorem}{Taylor's theorem with remainder an integral}{}
+    Let \(f^(n)(x)\) be continuous for \(x \in [0,h]\). Then
+    \[
+        f(h) = f(0) + \dots + \frac{h^{n-1}f^{(n-1)}(0)}{(n-1)!} + R_n
+    \]
+    where
+    \[
+        R_n = \frac{h^n}{(n-1)!}\int^1_0 (1-t)^{n-1} f^{(n)}(th) \dif t.
+    \]
+\end{theorem}
+\begin{proof}
+    Substitute \(u = th\),
+    \[
+        R_n = \frac{1}{(n-1)!}\int^h_0 (h-u)^{n-1}f^{(n)}(u) \dif u.
+    \]
+    Integrating by parts, we get the following
+    \[
+        R_n = \frac{-h^{n-1}f^{(n-1)}(0)}{(n-1)!} + \frac{1}{(n-2)!}\int^h_0(h-u)^{n-2}f^{(n-1)}(u)\dif u.
+    \]
+    If we integrate by parts \(n-1\) times, we arrive at
+    \begin{align*}
+        R_n &= -\frac{h^{n-1}f^{(n-1)}(0)}{(n-1)!} - \dots - hf'(0) + \int^h_0 f'(u) \dif u\\
+        &= -\frac{h^{n-1}f^{(n-1)}(0)}{(n-1)!} - \dots - hf'(0) + f(h) - f(0).
+    \end{align*}
+\end{proof}
+Now we can get the Cauchy and Lagrange form of the remainder. However, note that the proof above uses continuity of \(f^{(n)}\) not just the existence as we proved before.
+\begin{theorem}{}{intmvt}
+    Suppose \(f,g: [a,b] \to \mathbb{R}\) be continuous functions with \(g(x)\neq 0\) for all \(x \in (a,b)\). Then there exists \(c \in (a,b)\) such that
+    \[
+        \int^b_a f(x)g(x)\dif x = f(c)\int^b_a g(x) \dif x.
+    \]
+\end{theorem}
+\begin{note}
+    If we take \(g(x) = 1\), we get
+    \[
+        \int^b_a f(x) \dif x = f(c) (b-a).
+    \]
+\end{note}
+\begin{proof}
+    We are going to use Cauchy's MVT. (\cref{th:cauchymvt}) Let
+    \[
+        F(x) = \int^x_a fg, \quad G(x) = \int^x_a g.
+    \]
+    \cref{th:cauchymvt} proves the existence of \(c \in (a,b)\) such that
+    \begin{align*}
+        (F(b) - F(a))G'(c) &= F'(c)(G(b) - G(a))\\
+        (\int^b_a fg)g(c) &= f(c)g(c)\int^b_a g
+    \end{align*}
+    Since \(g(c) \neq 0\), we simplify and get the required form.
+\end{proof}
+Now we want to apply this to
+\[
+    R_n = \frac{h^n}{(n-1)!}\int^1_0 (1-t)^{n-1}f^{(n)}(th) \dif t.
+\]
+First we use \cref{th:intmvt} with \(g(x) = 1\), to get
+\[
+    R_n = \frac{h^n}{(n-1)!}(1-\theta)^{n-1}f^{(n)}(\theta
+     h)
+\]
+with some \(\theta \in (0,1)\) which is the Cauchy's form of remainder. To get Lagrange's form, we use \cref{th:intmvt} with \(g(t) = (1-t)^{n-1}\) which is greater than 0 for \(t \in (0,1)\). We know there exists \(\theta \in (0,1)\) such that
+\begin{align*}
+    R_n&=\frac{h^n}{(n-1)!}f^{(n)}(\theta h)\int^1_0 (1-t)^{n-1}\dif t\\
+    &= \frac{h^n}{n!}f^{(n)}(\theta h)
+\end{align*}
+which is the Lagrange's form of the remainder.

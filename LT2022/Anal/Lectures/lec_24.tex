@@ -1,0 +1,94 @@
+\lecture{24}{16 Mar. 2022}{}
+\begin{example}
+    \begin{enumerate}
+        \item The series \(\sum_1^\infty \frac{1}{n^k}\) converges if and only if \(k >1\).
+
+        We proved last lecture that \(\int^\infty_1 \frac{1}{x^k}\) converges if and only if \(k > 1\), and the convergence follows from integral test.
+        \item The series \(\sum^\infty_2 \frac{1}{n \log n}\) is divergent by considering \(f(x) = \frac{1}{x \log x}\) for \(x \geq 2\).
+        \[
+            \int_2^R \frac{\dif x}{x\log x} = \eval[2]{\log(\log x)}^R_2 = \log(\log R) - \log(\log 2) \to \infty
+        \]
+        as \(R \to \infty\). So divergence follows from integral test.
+    \end{enumerate}
+\end{example}
+\begin{corollary}{Euler's constant}{}
+    As \(n \to \infty\), \(1 + \frac{1}{2} + \dots + \frac{1}{n} - \log n \to \gamma\) with \(0 \leq \gamma \leq 1\).
+\end{corollary}
+\begin{proof}
+    Set \(f(x) = \nicefrac{1}{x}\), and use \cref{th:inttest}.
+\end{proof}
+\begin{remark}
+    It is still an open question whether \(\gamma\) is irrational. (\(\gamma \approx 0.577\))
+\end{remark}
+We have seen that monotone functions and continuous function are Riemann integrable. We can generalize this a bit and say that piece-wise continuous functions are integrable.
+
+\begin{definition}
+    A function \(f:[a,b] \to \mathbb{R}\) is said to be piece-wise continuous if there is a dissection \(\mathcal{D} = \{a = x_0, x_1,\dots, x_n = b\}\) such that
+    \begin{enumerate}
+        \item \(f\) is continuous on \((x_{j-1}, x_j)\) for all \(j\);
+        \item the one-sided limits \(\lim_{x \to x_{j-1}^+} f(x), \lim_{x\to x_j^-}f(x)\) exist.
+    \end{enumerate}
+\end{definition}
+It is now an exercise to check that \(f\) is Riemann integrable; just check that \(\eval{f}_{[x_{j-1},x_j]}\) is integrable for each \(j\) (the values of \(f\) at the end points won't really matter) and use additivity of domains.
+\begin{problem}
+    How large can the discontinuity set of \(f\) be while \(f\) is still Riemann integrable?
+\end{problem}
+Recall the example \(f(x) = \begin{dcases}
+    \nicefrac{1}{q}, &x = \nicefrac{p}{q} \\
+    0, &\text{otherwise} \\
+\end{dcases}\) which has a countably infinite set of discontinuities.
+\def\dotfill#1{\cleaders\hbox to #1{.}\hfill}
+\makeatletter
+\def\myrulefill{\leavevmode\leaders\hrule height .7ex width 1ex depth -0.6ex\hfill\kern\z@}
+\makeatother
+
+\noindent\myrulefill\textit{non-examinable}\myrulefill
+
+The question is answered by Henri Lebesgue.
+
+Bounded function \(f: [a,b] \to \mathbb{R}\) is Riemann integrable if and only if the set of discontinuity points has \textit{measure zero}.
+
+\begin{definition}{}{}
+    Let \(\ell(I)\) be the length of an interval \(I\). A subset \(A \subseteq \mathbb{R}\) is said to have \textit{measure zero} if for each \(\epsilon > 0\), there exists a countable collection of intervals \(I_j\) such that \(A \subseteq \cup_{j=1}^\infty I_j\) and \(\sum_{j=1}^\infty \ell(I_j) < \epsilon\).
+\end{definition}
+\begin{lemma}{}{}
+    \begin{enumerate}
+        \item Every countable set has measure zero.
+        \item If \(B\) has measure zero and \(A \subseteq B\), then \(A\) has measure zero.
+        \item If \(A_k\) has measure zero for all \(k \in \mathbb{N}\), then \(\cup_{k\in\mathbb{N}}A_k\) also has measure zero.
+    \end{enumerate}
+\end{lemma}
+We use the \textit{oscillation} of \(f\), which is for \(I\) an interval
+\[
+    \omega_f(I) = \sup_I f - \inf_I f.
+\]
+And the oscillation of \(f\) at a point is
+\[
+    \omega_f(x) = \lim_{\epsilon\to 0} \omega_f(x-\epsilon,x+\epsilon).
+\]
+\begin{lemma}{}{}
+    \(f\) is continuous at \(x\) if and only if \(\omega_f(x) = 0\).
+\end{lemma}
+\begin{proof}[Brief Sketch of proof of Lebesgue's Criterion]
+    We consider the set
+    \[
+        D = \set{x \in [a,b]| f\text{ discontinuous at }x} = \set{x | \omega_f(x) > 0}.
+    \]
+    Let \(N(\alpha) = \set{x|\omega_f(x)\geq \alpha}\), then \(D = \cup^\infty_1 N(\nicefrac{1}{k})\). We want to show that \(D\) has measure zero.
+
+    Let \(\epsilon > 0\) be given, there exists \(\mathcal{D}\) such that
+    \[
+        S(f, \mathcal{D}) - \mathscr{S}(f,\mathcal{D}) = \sum_{j=1}^{n} \omega_f([x_{j-1},x_j])(x_j - x_{j-1}) < \frac{\epsilon \alpha}{2}.
+    \]
+    Consider \(F = \set{j|(x_{j-1},x_j) \cap N(\alpha) \neq \varnothing }\), then for each \(j \in F\),
+    \[
+        \omega_f([x_{j-1},x_j]) \geq \alpha.
+    \]
+    So
+    \[
+        \alpha\sum_{j\in F} (x_j - x_{j-1}) \leq S(f,\mathcal{D}) - \mathscr{S}(f,\mathcal{D}) < \frac{\epsilon \alpha}{2}.
+    \]
+    And \(\sum_{j\in F}(x_j - x_{j-1}) < \nicefrac{\epsilon}{2}\). These cover \(N(\alpha)\) except perhaps for \(\mathcal{D}\). But these can be covered by intervals of total length less than \(\nicefrac{\epsilon}{2}\). So \(N(\alpha)\) can be covered by intervals of total length less than \(\epsilon\). That is, \(N(\alpha)\) has measure zero.
+
+    For the other direction, let \(\epsilon>0\) be given, consider \(N(\epsilon) \subseteq D\), so \(N(\epsilon)\) has measure zero. \(N(\epsilon)\) is closed and bounded, so it can be covered by finitely many open intervals of total length less than \(\epsilon\) because it has measure zero. \(N(\epsilon) = \cup_{i=1}^m U_i\), and \(K = \nicefrac{[a,b]}{\cup^m_i U_i}\) compact. So it can be covered by finitely meany intervals \(J_j\) such that \(\omega_f(J_j) < \epsilon\). And we are done by considering the partition with these intervals.
+\end{proof}

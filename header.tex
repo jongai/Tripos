@@ -1,5 +1,5 @@
 \RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[parskip=full]{scrartcl}
+\documentclass[parskip=full-]{scrartcl}
 % Core Math Packages
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -90,7 +90,8 @@
 % For box around Definition, Theorem, etc.
 \usepackage{tcolorbox}
 \theoremstyle{definition}
-\tcbuselibrary{theorems}
+\tcbuselibrary{theorems, breakable}
+\tcbset{parbox=false}
 \newtcbtheorem[number within=section, crefname={Definition}{Definitions}]{definition}{Definition}{}{def}
 \newtheorem*{example}{Example}
 \newtheorem*{notation}{Notation}
