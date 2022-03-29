@@ -8,5 +8,72 @@
 \begin{proof}
     \(n = a^2 + b^2\) if and only if \(n = N(x)\) for some \(x \in \mathbb{Z}[i]\) if and only if \(n\) is a product of norms of primes in \(\mathbb{Z}[i]\).
 
-    \cref{th:ziprime} implies that the norms of primes in \(\mathbb{Z}[i]\) are the primes \(p \in \mathbb{Z}\) with \(p \not \equiv 3 \bmod 4\)
+    \cref{th:ziprime} implies that the norms of primes in \(\mathbb{Z}[i]\) are the primes \(p \in \mathbb{Z}\) with \(p \not \equiv 3 \bmod 4\), and squares of primes \(p \in \mathbb{Z}\) with \(p \equiv 3 \bmod 4\).
+\end{proof}
+\begin{example}
+    \(65 = 5 \cdot 13\). We factor 5 and 14 into primes in \(\mathbb{Z}[i]\) give
+    \begin{align*}
+        5 &= (2 + i)(2-i)\\
+        13 &= (2 + 3i)(2-3i).
+    \end{align*}
+    Thus, \(65 = (2 + 3i)(2 + i)\overline{(2 + 3i)(2 - i)}\), and \(65 = N((2 + 3i)(2 + i)) = N(1 + 8i)\). So we have \(65 = 1^2 + 8^2\).  But also \(65 = N((2 + i)(2 - 3i)) = N(7 - 4i)\), so \(65 = 7^2 + 4^2\).
+\end{example}
+\begin{definition}{}{}
+    \begin{enumerate}
+        \item \(\alpha \in \mathbb{C}\) is an \textit{algebraic number} if there exists non-zero \(f \in \mathbb{Q}[x]\) with \(f(\alpha) = 0\).
+        \item \(\alpha \in \mathbb{C}\) is an \textit{algebraic integer} if there exists monic \(f \in \mathbb{Z}[x]\) with \(f(\alpha) = 0\).
+    \end{enumerate}
+\end{definition}
+\begin{notation}
+    Let \(R\) be a subring of \(S\), and \(\alpha \in S\), we write \(R[X]\) for the smallest subring of \(S\) containing \(R\) and \(\alpha\). That is, \(R[\alpha] = \ima(R[X] \to S, g(X) \mapsto g(\alpha))\).
+\end{notation}
+Let \(\alpha\) be an algebraic number, and let \(\fullfunction{\phi}{\mathbb{Q}[X]}{\mathbb{C}}{g(X)}{g(\alpha)}\). Because we know \(\mathbb{Q}[X]\) is a PID, \(\ker(\phi) = (f)\) for some \(f \in \mathbb{Q}[X]\). Then \(f \neq 0\) since \(\alpha\) is an algebraic number. Upon multiplying by a unit, we may assume that \(f\) is monic.
+\begin{definition}{}{}
+    \(f\) is the \textit{minimal polynomial} of \(\alpha\).
+\end{definition}
+By first isomorphism theorem, \(\nicefrac{\mathbb{Q}[X]}{(f)}\cong \mathbb{Q}[\alpha] \leq \mathbb{C}\). Thus, \(\mathbb{Q}[\alpha]\) is an integral domain. So \(f\) is irreducible in \(\mathbb{Q}[X]\). Since \(\mathbb{Q}[X]\) is a PID, \((f)\) is a maximal ideal and \(\mathbb{Q}[\alpha]\) is a field.
+
+\begin{proposition}{}{intmin}
+    Let \(\alpha\) be an algebraic integer, and \(f \in \mathbb{Q}[X]\) its minimal polynomial. Then \(f \in \mathbb{Z}[X]\) and \((f) = \ker(\theta)\nsub \mathbb{Z}[X]\) where \(\theta: \mathbb{Z}[X] \to \mathbb{C}\) is the map \(g(X) \mapsto g(\alpha)\).
+\end{proposition}
+\begin{proof}
+    Let \(\lambda \in \mathbb{Q}^\times\) such that \(\lambda f \in \mathbb{Z}[X]\) is primitive. Then \(\lambda f(\alpha) = 0\), so \(\lambda f \in \ker(\theta)\). Let \(g \in \ker(\theta) \nsub \mathbb{Z}[X]\). Then \(g \in \ker(\theta)\) and hence \(\lambda f \mid g\) in \(\mathbb{Q}[X]\). By \cref{le:guassll}, \(\lambda f \mid g\) in \(\mathbb{Z}[X]\) as well. Thus, \(\ker(\theta) = (\lambda f)\).
+
+    Now \(\alpha\) is an algebraic integer, hence there exists \(g \in \ker(\theta)\) monic, then \(\lambda f \mid g\) in \(\mathbb{Z}[X]\). So \(\lambda = \pm 1\). Hence, \(f \in \mathbb{Z}[X]\) and \((f) = \ker(\theta)\).
+\end{proof}
+Let \(\alpha \in \mathbb{C}\) an algebraic integer. Applying isomorphism theorem with \(\theta\) gives
+\[
+    \frac{\mathbb{Z}[X]}{(f)} \cong \mathbb{Z}[\alpha].
+\]
+\begin{example}
+    \(i\), \(\sqrt{2}\), \(\frac{-1 + \sqrt{-3}}{2}\), \(\sqrt[n]{p}\) have minimal polynomials \(X^2 + 1\), \(X^2 - 2\), \(X^2 + X + 1\), \(X^n - p\) respectively. Thus,
+    \[
+        \frac{\mathbb{Z}[X]}{(X^2 + 1)} \cong \mathbb{Z}[i], \quad \frac{\mathbb{Z}[X]}{(X^2 - 2)} \cong \mathbb{Z}[\sqrt{2}], \quad \text{etc.}
+    \]
+\end{example}
+\begin{corollary}{}{}
+    If \(\alpha\) is an algebraic integer and \(\alpha \in \mathbb{Q}\) then \(\alpha \in \mathbb{Z}\).
+\end{corollary}
+\begin{proof}
+    Let \(\alpha \neq 0\) be an algebraic integer. Then by \cref{pr:intmin}, the minimal polynomial has coefficient in \(\mathbb{Z}\). \(\alpha \in \mathbb{Q}\) implies the minimal polynomial is \(X - \alpha\), and so \(\alpha \in \mathbb{Z}\).
+\end{proof}
+\subsection{Noetherian Rings}
+We showed that any PID \(R\) satisfies the \textit{ascending chain condition}. (ACC)
+
+That is, if \(I_1 \subseteq I_2 \subseteq \dots\) are ideals in \(R\), then \(\exists N \in \mathbb{N}\) such that \(I_n = I_{n+1}\) for all \(n \geq N\). More generally, we can prove the following result.
+\begin{lemma}{}{noefinite}
+    Let \(R\) be a ring. \(R\) satisfies ACC \(\iff\) All ideals in \(R\) are finitely generated.
+\end{lemma}
+\begin{proof}
+    We first prove the \(\impliedby\) direction first. Let \(I_1 \subseteq I_2 \subseteq \dots\) by a chain of ideals and \(I = \cup_{n\geq 1} I_n\) which is again an ideal. By assumption, \(I = (a_1, \dots, a_m)\) for some \(a_1, \dots, a_m \in R\) since ideals in \(R\) are finitely generated. These elements belong to a nested union, so \(\exists N \in \mathbb{N}\) such that \(a_1, \dots, a_m \in I_N\). Then for \(n \geq N\),
+    \[
+        (a_1, \dots, a_m) \subseteq I_N \subseteq I_n \subseteq I = (a_1,\dots a_m).
+    \]
+    So we have \(I_n = I_N = I\).
+
+    Next, we prove the \(\implies\) direction. Assume \(J \nsub R\) is not finitely generated. Choose \(a_1 \in J\), then \(J \neq (a_1)\) since \(J\) is not finitely generated. We can choose \(a_2 \in J \setminus (a_1)\), then \(J \neq (a_1, a_2)\). Continuing this process, we obtain a chain of ideals
+    \[
+        (a_1) \subsetneq (a_1, a_2) \subsetneq (a_1, a_2, a_3) \subsetneq \dots.
+    \]
+    The inclusions are strict by the way we picked \(a_1, a_2, \dots\), and it contradicts ACC.
 \end{proof}
