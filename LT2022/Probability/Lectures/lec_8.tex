@@ -20,6 +20,8 @@ We have \(X \sim \mathrm{Bin}(n,p)\) with \(n \in \mathbb{Z}^+, p \in [0,1]\). (
 \end{align*}
 Do check that \(\sum\limits_{k=0}^{n} p_X(k) = 1\) by binomial expansion.
 Next, we consider \(\Omega=\mathbb{N}\). ("Ways of choosing a random integer")
+
+Next, we consider the case when \(\Omega\) is countable. This is slightly deviating from the order which they were taught in the lectures.
 \subsubsection{Geometric Distribution (``Waiting for success'')}
 We have \(X \sim \mathrm{Geom}(p)\) with \(p \in (0,1]\). (``Toss a coin with \(\probability{}{\text{head}} =p\) until a head appears. Count how many trials were needed'') So
 \begin{align*}
@@ -85,7 +87,7 @@ Note \(\textbf{1}_A \leq \textbf{1}_B\) for all outcomes, but \(\textbf{1}_A \le
     So \(S_n \sim \mathrm{Bin}(n, k)\).
 \end{example}
 \begin{example}
-    Consider the uniform permutation \((\sigma(1), \ldots, \sigma(n)\) of the integers \(1, 2, \ldots, n\). We claim that \(\sigma(1)\) and \(\sigma(2)\) are not independent.
+    Consider the uniform permutation \((\sigma(1), \ldots, \sigma(n))\) of the integers \(1, 2, \ldots, n\). We claim that \(\sigma(1)\) and \(\sigma(2)\) are not independent.
 
     It suffices to find \(i_1, i_2\) such that
     \[
