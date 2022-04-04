@@ -1,0 +1,124 @@
+\lecture{12}{15 Feb. 2022}{}
+\begin{example}
+    \(\var(X + Y) = \var(X) + \var(Y)\) if \(X\) and \(Y\) are independent.
+
+    Take \(Y = -X\), \(\var(Y) = \var(-X) = \var(X)\). But
+    \[
+        0 = \var(0) = \var(X + Y) \neq \var(X) + \var(Y) = 2 \var(X)
+    \]
+    unless \(X\) and \(Y\) are deterministic.
+\end{example}
+\begin{example}
+    Again let \((\sigma(1), \dots, \sigma(n))\) uniformly on \(\Sigma_n\), and let \(A_i = \set{\sigma| \sigma(i) = i}\), and \(N = \textbf{1}_{A_1} + \dots + \textbf{1}_{A_n}\) be the number of fixed points. We've already seen
+    \[
+        \ex[N] = n \times\frac{1}{n} = 1.
+    \]
+    Note that the \(A_i\)s are not independent, and
+    \begin{align*}
+        \var(\textbf{1}_{A_i}) &= \frac{1}{n}(1 - \frac{1}{n}) \\
+        \cov(\textbf{1}_{A_i}, \textbf{1}_{A_j}) &= \ex[\textbf{1}_{A_i}\textbf{1}_{A_j}] - \ex[\textbf{1}_{A_i}]\ex[\textbf{1}_{A_j}]\\
+        &= \ex[\textbf{1}_{A_i \cap A_j}] - \ex[\textbf{1}_{A_i}]\ex[\textbf{1}_{A_j}]\\
+        &= \pr(A_i \cap A_j) - \pr(A_i)\pr(A_j)\\
+        &= \frac{1}{n(n - 1)} - \frac{1}{n} \times\frac{1}{n}\\
+        &= \frac{1}{n^2(n - 1)} > 0.
+    \end{align*}
+    So
+    \begin{align*}
+        \var(N) &= \sum_{i=1}^n \var(\textbf{1}_{A_i}) + \sum_{i\neq j}\cov(\textbf{1}_{A_i}, \textbf{1}_{A_j})\\
+        &= n \times \frac{1}{n} (1 - \frac{1}{n}) + n(n-1) \times \frac{1}{n^2(n - 1)j}\\
+        &= 1 - \frac{1}{n} + \frac{1}{n} = 1.
+    \end{align*}
+
+    Compare this with \(\mathrm{Bin}(n, \frac{1}{n})\). The binomial distribution has expectation \(1\) and variance \(1 - \frac{1}{n}\). So the binomial distribution is not too disimilar to the number of fixed points.
+\end{example}
+\begin{theorem}{Chebyshev's Inequality}{}
+    Let \(X\) be a RV, \(\ex[X] = \mu\) and \(\var(X) = \sigma^2 < \infty\), then
+    \[
+        \pr(\abs{X - \mu} \geq \lambda) = \frac{\var(X)}{\lambda^2}.
+    \]
+\end{theorem}
+\begin{remark}
+    It's easier to remember the proof, not the statement.
+\end{remark}
+\begin{proof}
+    Apply Markov's inequality to \((X - \mu)^2\),
+    \[
+        \pr((X - \mu)^2 \geq \lambda^2) \leq \frac{\ex[(X- \mu)^2}{\lambda^2} = \frac{\var(X)}{\lambda^2}.
+    \]
+    And we are done.
+\end{proof}
+\begin{remark}
+    \begin{enumerate}
+        \item If instead we apply Markov's inequality to \(\abs{X - \mu}\), \(\ex[\abs{X - \mu}]\) is less nice than \(\var(X)\).
+        \item Chebyshev's inequality gives better bounds than Markov's inequality.
+        \item Note that it can apply to all RVs, not just \(\geq 0\).
+        \item \(\var(X) < \infty\) is a stronger condition than \(\ex[X] < \infty\).
+    \end{enumerate}
+\end{remark}
+\begin{definition}{}{}
+    Quantity \(\sqrt{\var(X)}\) is called the \textit{standard deviation} of \(X\).
+\end{definition}
+\begin{remark}
+    It has the same unit as \(X\), but it does not have as many nice properties as variance.
+\end{remark}
+If we write \(\lambda = k \sqrt{\sigma^2}\) (``\(k\) standard deviations'') in Chebyshev's inequality, then
+\[
+    \pr(\abs{X - \mu} \geq k \sqrt{\sigma^2}) \leq \frac{1}{k^2}.
+\]
+This is a nice uniform statement.
+\begin{definition}{Conditional Expectation}{}
+    If we have a probability space \((\Omega, \mathcal{F}, \pr)\), we defined
+    \[
+        \pr(A \mid B) = \frac{\pr(A\cap B)}{\pr(B)}.
+    \]
+    The \textit{conditional expectation} with the condition \(B \in \mathcal{F}\) with \(\pr(B) > 0\) and \(X\) a RV is
+    \[
+        \ex[X \mid B] = \frac{\ex[X \textbf{1}_{B}]}{\pr(B)}.
+    \]
+\end{definition}
+\begin{example}
+    If \(X\) is a die uniform on \(\{1, \dots, 6\}\),
+    \[
+        \ex[X \mid X \text{ prime}] = \frac{\frac{1}{6}(0 + 2 + 3 + 0 + 5 + 0)}{\nicefrac{1}{2}} = \frac{1}{3}(2 + 3 + 5) = \frac{10}{3}.
+    \]
+\end{example}
+\begin{remark}
+    An alternative characterization is
+    \[
+        \ex[X \mid B] = \smashoperator{\sum_{x \in \ima(X)}} x \pr(X = x \mid B).
+    \]
+    \begin{proof}
+        \begin{align*}
+            \smashoperator{\sum_{x \in \ima(X)}} x \pr(X = x \mid B) &= \sum \frac{x \pr(\{X = x\}\cap B}{\pr(B)}\\
+            &= \sum \frac{x\pr(X\mathbf{1}_B=x)}{\pr(B)}
+        \end{align*}
+        and note that \(\ex[X \textbf{1}_B] = \sum x \pr(X \textbf{1}_B = x)\).
+    \end{proof}
+\end{remark}
+\begin{theorem}{Law of Total Expectation}{}
+    If \((B_1, B_2, \dots)\) is a finite or countably-infinite partition of \(\Omega\) with \(B_n \in \mathcal{F}\) such that \(\pr(B_n) > 0\) and \(X\) a RV, then
+    \[
+        \ex[X] = \sum_n \ex[X \mid B_n] \pr(B_n).
+    \]
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        \sum_n \ex[X \mid B_n] \pr(B_n) &= \sum_n \ex[X \textbf{1}_{B_n}]\\
+        &= \ex[X \cdot(\textbf{1}_{B_1} + \dots + \textbf{1}_{b_n})]\\
+        &= \ex[X \cdot \textbf{1}] = \ex[X].
+    \end{align*}
+\end{proof}
+\begin{remark}
+    \begin{enumerate}
+        \item We recover Law of Total probability by taking \(X = \textbf{1}_A\).
+        \item Two-stage randomness where \((B_n)\) describes what happens in stage 1.
+    \end{enumerate}
+\end{remark}
+\begin{example}[Random Sums]
+    If \((X_n)_{n \geq 1}\) are IID (independent and identically distributed) with \(\ex[X_n] = \mu\), and \(N \in \{0, 1, 2, \dots\}\) is a random index independent of \((X_n)\). The sum \(S_n = X_1 + \dots + X_n\) has \(\ex[S_n] = n\mu\). The random sum
+    \begin{align*}
+        \ex[S_N] &= \sum_{n \geq 0} \ex[S_N \mid N = n] \pr(N = n)\\
+        &= \sum \ex[S_n] \pr(N = n)\\
+        &= \sum n\mu\pr(N = n) = \mu\ex[N]
+    \end{align*}
+\end{example}

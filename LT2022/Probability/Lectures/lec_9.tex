@@ -66,7 +66,7 @@ For a general \(X\) (not necessarily \(X \geq 0\)),
 \]
 unless \(\sum_{\substack{x > 0\\ x \in \ima(X)}}x \mathbb{P}(X = x) = + \infty\) and \(\sum_{\substack{x < 0\\ x \in \ima(X)}}x \mathbb{P}(X = x) = - \infty\), then we say \(\mathbb{E}[X]\) is not defined. (because we don't want to do arithmetic with infinity)
 
-If only one of them holds, we say that \(\mathbb{E}[X]\) is \(+ \infty\) and \(- \infty\) respectively. (some people say that it is undefined, but the lecturer disagrees with it) If neither of them hold, we say \(X\) is integrable.
+If only one of them holds, we say that \(\mathbb{E}[X]\) is \(+ \infty\) and \(- \infty\) respectively. (some people say that it is undefined, but the lecturer disagrees with it) If neither of them hold, we say \(X\) is \textit{integrable}.
 
 \begin{example}
     Most examples in the course are integrable except the following. Let
@@ -108,7 +108,7 @@ If only one of them holds, we say that \(\mathbb{E}[X]\) is \(+ \infty\) and \(-
             \mathbb{E}[\lambda X + \mu Y] = \lambda \mathbb{E}[X] + \mu\mathbb{E}[Y].
         \]
         \begin{proof}
-            We have
+            For \(\Omega\) countable, we have
             \begin{align*}
                 \mathbb{E}[\lambda X + \mu Y] &= \sum_{\omega\in \Omega} (\lambda X(\omega) + \mu Y(\omega))\mathbb{P}(\{\omega\})\\
                 &= \lambda \sum_{\omega\in\Omega} X(\omega)\mathbb{P}(\{\omega\}) + \mu\sum_{\omega\in\Omega} Y(\omega)\mathbb{P}(\{\omega\})\\
@@ -121,6 +121,6 @@ If only one of them holds, we say that \(\mathbb{E}[X]\) is \(+ \infty\) and \(-
 \end{property}
 \begin{remark}
     \begin{enumerate}
-        \item Independence of not a condition.
+        \item Independence is not a condition.
     \end{enumerate}
 \end{remark}

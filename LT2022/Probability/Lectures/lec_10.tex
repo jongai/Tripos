@@ -1,0 +1,122 @@
+\lecture{10}{10 Feb. 2022}{}
+\begin{corollary}{}{}
+    \(X \geq Y\) then \(\mathbb{E}[X] \geq \mathbb{E}[X]\).
+\end{corollary}
+\begin{proof}
+    Note \(X = (X - Y) + Y\). By linearity of expectation,
+    \[
+        \mathbb{E}[X] = \mathbb{E}[X - Y] + \mathbb{E}[X].
+    \]
+    Because \(X - Y \geq 0\) and property 1, \(\mathbb{E}[X - Y] \geq 0\).
+\end{proof}
+Key applications of expectation are counting problems.
+
+\begin{example}
+    Let \((\sigma(1), \dots, \sigma(n)\) be uniform on \(\Sigma_n\), and \(Z = \abs{\{i : \sigma(i) = i\}}\) be the number of fixed points. Let \(A_i = \{\sigma(i) = i\}\). (recall that \(A_i\) are not independent) Note
+    \[
+        Z = \mathbf{1}_{A_1} + \dots + \textbf{1}_{A_n}.
+    \]
+    And we have
+    \begin{align*}
+        \mathbb{E}[Z] &= \mathbb{E}[\textbf{1}_{A_1} + \dots + \textbf{1}_{A_n}]\\
+        &= \mathbb{E}[\textbf{1}_{A_1}] + \dots + \mathbb{E}[\textbf{1}_{A_n}]\\
+        &= \mathbb{P}(A_1) + \dots + \mathbb{P}(A_n)\\
+        &= \frac{1}{x}\times n = 1.
+    \end{align*}
+
+    Note that this is the same answer as \(\mathrm{Bin}(n, \frac{1}{n})\), but they are not the same distribution.
+\end{example}
+\begin{example}
+    If \(X\) takes values in \(\mathbb{Z}_{\geq 0}\).
+    \[
+        \mathbb{E}[X] = \sum_{k \geq 1} \mathbb{P}(X\geq k).
+    \]
+    \begin{proof}
+        Carefully re-arrange the summands.
+    \end{proof}
+    \begin{proof}
+        Write \(X = \sum_{k\geq 1}\textbf{1}_{X \geq k}\), and take expectation of both sides
+        \[
+            \mathbb{E}[X] = \mathbb{E}[\sum \textbf{1}_{X \geq k}] = \sum \mathbb{E}[\textbf{1}_{X \geq k}] = \sum \mathbb{P}(X \geq k).
+        \]
+    \end{proof}
+\end{example}
+\begin{theorem}{Markov's Inequality}{}
+    Let \(X \geq 0\) be a random variable. Then \(\forall a > 0\),
+    \[
+        \mathbb{P}(X \geq a) \leq \frac{\mathbb{E}[X]}{a}.
+    \]
+\end{theorem}
+\begin{remark}
+    If we take \(a = \frac{\mathbb{E}[X]}{2}\), it is not useful since it just tells us that the probability is less than 2. It gets more useful when \(a\) is large.
+\end{remark}
+\begin{proof}
+    Observe that \(X \geq a \textbf{1}_{X \geq a}\). Taking expectations,
+    \[
+        \mathbb{E}[X] \geq a \mathbb{E}[\textbf{1}_{X \geq a}] = a \mathbb{P}(X \geq a),
+    \]
+    and rearrange.
+\end{proof}
+\begin{remark}
+    This is also true for continuous RVs.
+\end{remark}
+\begin{proposition}{}{}
+    Let \(f: \mathbb{R} \to \mathbb{R}\) be a function, then \(f(X)\) is also a random variable. And
+    \[
+        \mathbb{E}[f(X)] = \sum_{x \in \ima(X)} f(x) \mathbb{P}(X = x)
+    \]
+    when the expectation exists.
+\end{proposition}
+\begin{proof}
+    Let \(A = \ima(f(X)) = \set{f(x) | x\in \ima(X)}\). Starting with the right-hand side,
+    \begin{align*}
+        \sum_{x \in \ima(X)} f(x) \mathbb{P}(X = x) &= \sum_{y \in A}\sum_{\substack{x \in \ima(X)\\f(x) = y}}f(x) \mathbb{P}(X = x)\\
+        &= \sum_{y \in A}y\sum_{\substack{x \in \ima(X)\\f(x) = y}}\mathbb{P}(X = x)\\
+        &= \sum_{y \in A} y \mathbb{P}(f(X) = y)\\
+        &= \mathbb{E}[f(X)]
+    \end{align*}
+\end{proof}
+
+Consider the random variables.
+\begin{align*}
+    U_n &\sim \mathrm{Uniform}(\{-n, -n + 1, \dots, n\})\\
+    V_n &\sim \mathrm{Uniform}(\{-n, n\})\\
+    Z_n &= 0\\
+    S_n &\sim n - 2 \mathrm{Bin}(n, \nicefrac{1}{2})\qquad \text{(random walk for \(n\) step)}
+\end{align*}
+All of these have expectation \(0\). \textit{Variance} ``measure how concentrated a RV is around its mean''.
+\begin{definition}{}{}
+    The \textit{variance} of \(X\) is
+    \[
+        \mathrm{Var(X)} = \mathbb{E}[(X - \mathbb{E}[X])^2].
+    \]
+\end{definition}
+\begin{property}
+    \begin{enumerate}
+        \item \(\mathrm{Var}(X) \geq 0\) with equality if and only if \(\mathbb{P}(X = \mathbb{E}[X]) = 1\).
+        \item Alternatively,
+        \[
+            \var(X) = \ex[X^2] - (\ex[X])^2\\
+        \]
+        \begin{proof}
+            Write \(\mu = \ex[X]\), then
+            \begin{align*}
+                \var(X) &= \ex[(X - \mu)^2]\\
+                &= \ex[X^2 - 2\mu X + \mu^2]\\
+                &= \ex[X^2] - 2\mu\ex[X] + \mu^2\\
+                &= \ex[X^2] - \mu^2.
+            \end{align*}
+        \end{proof}
+        \item If \(\lambda, c \in \mathbb{R}\),
+        \begin{itemize}
+            \item \(\var(\lambda X) = \lambda^2 \var(X)\);
+            \item \(\var(X + c) = \var(X)\);
+            \begin{proof}
+                \(\ex[X + c] = \mu + c\), and
+                \[
+                    \var(X + c) = \ex[(X + c - (\mu + c))^2 = \ex[(X - \mu)^2] = \var(X).
+                \]
+            \end{proof}
+        \end{itemize}
+    \end{enumerate}
+\end{property}

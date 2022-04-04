@@ -1,0 +1,115 @@
+\lecture{11}{12 Feb. 2022}{}
+\begin{example}
+    \(X \sim \mathrm{Poisson}(\lambda)\), then \(\ex[X] = \lambda\), and we have
+    \[
+        \var(X) = \ex[X^2] - \lambda^2.
+    \]
+    "Falling factorial trick": sometimes \(\ex[X(X-1)]\) is easier than \(\ex[X^2]\).
+    \begin{align*}
+        \ex[X(X-1)] &= \sum_{k\geq 2} k(k-1)e^{-\lambda}\frac{\lambda^k}{k!}\\
+        &= \lambda^2 e^{-\lambda} \sum_{k \geq 2} \frac{\lambda^{k - 2}}{(k-2)!} = \lambda^2.
+    \end{align*}
+    And by linearity of expectation,
+    \[
+        \ex[X^2] = \ex[X(X-1)] + \ex[X] = \lambda^2 + \lambda.
+    \]
+    So the variance is \(\var(X) = x\).
+\end{example}
+\begin{example}
+    Take \(Y \sim \mathrm{Geo}(p) \in \{1, 2, 3, \dots\}\), and \(\ex[Y] = \frac{1}{p}\), \(\var(Y) = \frac{1-p}{p^2}\).
+\end{example}
+\begin{note}
+    When \(\lambda\) is large, \(\var(X) = \ex[X]\). When \(p\) is small, \(\var(Y) \approx \frac{1}{p^2} = (\ex[X])^2\). So Poisson distribution is more concentrated.
+\end{note}
+\begin{example}
+    When \(X \sim \mathrm{Bern}(p)\), we have \(\ex[X] = 1 \times p = p\), and \(\ex[X^2] = 1^2 \times p = p\), so
+    \[
+        \var(X) = p - p^2 = p(1-p).
+    \]
+\end{example}
+
+Before we study the variance of binomial distribution, we develop some theory.
+
+\begin{lemma}{}{}
+    If \(X, Y\) are independent RVs, and \(f, g\) functions \(\mathbb{R}\to \mathbb{R}\),
+    \[
+        \ex[f(X)g(X)] = \ex[f(X)]\ex[f(Y)].
+    \]
+\end{lemma}
+\begin{proof}
+    We have
+    \begin{align*}
+        \ex[f(X)g(X)] &= \sum_{\substack{x \in \ima(X)\\y\in\ima(Y)}} f(x)g(y) \mathbb{P}(X = x, Y=y)\\
+        &= \sum_{\substack{x \in \ima(X)\\y\in\ima(Y)}} f(x)g(y) \pr(X = x)\pr(Y=y)\\
+        &= \sum_{x \in \ima(X)}f(X)\pr(X = x) \sum_{y \in \ima(Y)}g(y) \pr(Y = y)\\
+        &= \ex[f(X)]\ex[g(Y)].
+    \end{align*}
+\end{proof}
+\begin{example}
+    If we have \(f(x) = g(x) = x\), then \(\ex[XY] = \ex[X]\ex[Y]\).
+\end{example}
+\begin{example}
+    When \(f(x) = g(x) = z^x\) or \(f(x) = g(x) = e^{tx}\), the lemma is useful.
+\end{example}
+\begin{lemma}{}{}
+    If \(X_1, \dots, X_n\) are independent,
+    \[
+        \var(X_1 + \dots + X_n) = \var(X_1) + \dots + \var(X_n).
+    \]
+\end{lemma}
+\begin{proof}
+    It suffices to prove the case when \(n = 2\). Let \(\ex[X] = \mu\) and \(\ex[Y] = \nu\), and \(\ex[X + Y] = \mu + \nu\).
+    \begin{align*}
+        \var(X + Y) &= \ex[(X + Y - \mu - \nu)^2]\\
+        &= \ex[(X - \mu)^2] + \ex[(Y - \nu)^2] + 2 \ex[(X - \mu)(Y - \nu)]\\
+        &= \var(X) + \var(Y) + 2\ex[X - \mu]\ex[Y - \nu]\\
+        &= \var(X) + \var(Y).
+    \end{align*}
+\end{proof}
+\begin{definition}{}{}
+    If \(X, Y\) are RVs. Their covariance is \(\cov(X, Y) = \ex[(X - \ex[X])(Y - \ex[Y])]\).
+\end{definition}
+\begin{remark}
+    It measures how dependent \(X, Y\) are and in which direction. \(\cov(X, Y) > 0\) means \(X\) large and \(Y\) large, and \(\cov(X, Y) < 0\) means \(X\) large and \(Y\) small.
+\end{remark}
+\begin{property}
+    \begin{enumerate}
+        \item \(\cov(X,Y) = \cov(Y, X)\).
+        \item \(\cov(X, X) = \var(X)\).
+        \item Alternatively,
+        \[
+            \cov(X, Y) = \ex[XY] - \ex[X]\ex[Y].
+        \]
+        It is often more useful, and it's nice if \(\ex[X] = 0\).
+        \begin{proof}
+            \begin{align*}
+                \cov(X,Y) &= \ex[(X - \mu)(Y - \nu)]\\
+                &= \ex[XY] - \mu\ex[Y] - \nu\ex[X] + \mu\nu\\
+                &= \ex[XY] - \ex[X]\ex[Y].
+            \end{align*}
+        \end{proof}
+        \item For \(\lambda, c \in \mathbb{R}\),
+        \begin{itemize}
+            \item \(\cov(c, X) = 0\)
+            \item \(\cov(X + c, Y) = \cov(X, Y)\).
+            \item \(\cov(\lambda X, Y) = \lambda\cov(X, Y)\).
+        \end{itemize}
+        \item \(\var(X + Y) = \var(X) + \var(Y) + 2 \cov(X, Y)\).
+        \item Covariance is linear in each argument. That is,
+        \[
+            \cov(\sum \lambda_i X_i, Y) = \sum \lambda_i \cov(X_i,Y)
+        \]
+        and
+        \[
+            \cov(\sum \lambda_i X_i, \sum \mu_j Y_j) = \sum\sum \lambda_i \mu_j\cov(X_i,Y_j).
+        \]
+        The special case is
+        \begin{align*}
+            \var(\sum_{i =1}^n X_i) &= \cov(\sum_{i = 1}^n X_i, \sum_{i=1}^n X_i)\\
+            &= \sum_{i=1}^n \var(X_i) + \sum_{i\neq j}\cov(X_i, Y_j).
+        \end{align*}
+    \end{enumerate}
+\end{property}
+\begin{remark}
+    We know that \(X, Y\) independent implies \(\cov(X, Y) = 0\), but the converse is false.
+\end{remark}
