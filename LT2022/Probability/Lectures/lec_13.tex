@@ -1,0 +1,88 @@
+\lecture{13}{17 Feb. 2022}{}
+\subsection{Random Walks}
+\begin{definition}{}{}
+    Let \((X_n)_{n \geq 1}\) be IID random variables and
+    \[
+        S_n = x_0 + X_1 + \dots + X_n.
+    \]
+    \((S_0, S_1, \dots)\) is a random process called \textit{random walk} starting from \(x_0\).
+\end{definition}
+\begin{example}
+    We study Simply Random Walk on \(\mathbb{Z}\); that is,
+    \[
+        \pr(X_i = 1) = p, \quad \pr(X_i = -1) = q = 1 - p
+    \]
+    with \(x_0 \in \mathbb{Z}\), and often \(x_0 = 0\).
+
+    When \(p = q = \frac{1}{2}\), it's called \textit{symmetric} simple random walk.
+\end{example}
+\begin{example}
+    \(\pr(S_2 = x_0) = pq + qp = 2pq\).
+\end{example}
+A useful interpretation is a gambler repeated playing a game where he wins £1 with probability \(p\) and loses £1 with probability q. Often, we require the random walk to stop when the gambler has £0.
+\begin{problem}
+    Suppose the gambler starts with £\(x\) at time 0. What is the probability he reaches £\(a\) before £0. (\(0 < x < a\))
+\end{problem}
+\begin{notation}
+    We introduce \(\pr_x(A) = \pr(A \mid x_0 = x)\) to condition on the first step. (``measure of random walk started from \(x_0\)'')
+\end{notation}
+By Law of Total Probability,
+\begin{align*}
+    \pr_x(S \text{ gets to }a\text{ before }0) &= \sum_z \pr_x(S \text{ gets to }a\text{ before }0 \mid S_1 = z)\pr_x(S_1 = z)\\
+    &= \sum_z \pr_z(S \text{ gets to }a\text{ before } 0) \pr_x(S_1 = z)
+\end{align*}
+So \(h_x =\pr_x(S \text{ gets to }a\text{ before } 0)\), and
+\[
+    h_x = p h_{x + 1} + q h_{x - 1}.
+\]
+It is important to specify boundary conditions, and \(h_0 = 0\), \(h_a = 1\).
+
+By Law of Total Expectation, the expected absorption time is
+\[
+    T = \min\set{n\geq 0| S_n=0 \text{ or } S_n = a},
+\]
+the ``First time \(S\) hits \(0\) or \(a\)''. We write
+\[
+    \ex_x[T] = \tau_x
+\]
+for the expected absorption time starting from \(x\). By Law of Total Expectation,
+\begin{align*}
+    \tau_x = \ex_X[T]&=p\ex_x[T \mid S_1 = x + 1] + q \ex_x[T \mid S_1=x-1]\\
+    &= p \ex_{x+1}[T + 1] + q\ex_{x-1}[T+1]\\
+    &= 1 + p\tau_{x+1} + q \tau_{x-1}
+\end{align*}
+The boundary conditions are \(\tau_0 = \tau_a = 0\).
+
+\subsubsection*{Solving Linear Recurrence Relations}
+If we have
+\[
+    ph_{x+1} - h_x + qh_{x-1}=0.
+\]
+This is homogeneous with boundary conditions \(h_0 = 0, h_a = 1\). This is analogous to differential equations, and the solutions form a vector space.
+
+To solve it, we find two linearly independent solutions. Guess \(h_x = \lambda^x\),
+\begin{align*}
+    p\lambda^{x + 1} - \lambda^x + q\lambda^{x - 1} &= 0\\
+    p\lambda^2 - \lambda + q &= 0.
+\end{align*}
+It's quadratics, so we have \(\lambda = 1\) or \(\lambda = \frac{q}{p}\).
+
+When \(p \neq q\), \(h_x = A + B(\frac{q}{p})^x\). Using the boundary conditions, \(h_0 = 0 = A + B\) and \(h_a = 1 = A + B(\frac{q}{p})^a\). So \(h_x = \frac{(\nicefrac{q}{p})^x - 1}{(\nicefrac{q}{p})^a - 1}\)
+
+When \(p = q\), note that \(h_x = x\) is a solution, so the general solution is \(h_x = A + Bx\). Boundary conditions give \(h_0 = 0 = A\) and \(h_a = 1 = A + Ba\). So \(h_x = \frac{x}{a}\).
+
+If \(p = q\), the expected profit if you start from \(x\) and play until time \(T\) is
+\[
+    \ex_x[S_T] = a\pr_x(S_T = a) + 0 \cdot\pr(S_T = 0) = a \cdot \frac{x}{a} = x.
+\]
+This fits out intuition for fair games.
+
+For the inhomogeneous case, we find a particular solution by guess one level more complicated than general solution. We next add on the general solution and solve for boundary condition.
+
+When \(p \neq q\), we guess \(h_x = \frac{x}{q - p}\) works as a particular solution.
+
+When \(p = q\), we guess that \(h_x = Cx^2\) might work. Substituting it in, and we have
+\[
+    \frac{C}{2}(x+1)^2 - Cx^2 +\frac{C}{2}(x-1)^2 = -1 \implies C = -1.
+\]
+So \(h_x = A + Bx - x^2\) is the general solution. The boundary conditions give \(h_x = x(a - x)\). So the expected absorption time is maximized by \(x\) roughly equal to \(\frac{a}{2}\).

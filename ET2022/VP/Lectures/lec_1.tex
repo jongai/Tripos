@@ -1,0 +1,25 @@
+\lecture{1}{29 Apr. 2022}{}
+\section*{Motivation}
+\subsection{The Brachistochrone Problem}
+\begin{problem}
+Particle slides on a wire under influence of gravity between two fixed points \(A\), \(B\). Which shape of the wire gives the shortest travel time, starting from rest?
+\end{problem}
+
+The travel time is \(T = \int_{A}^{B} \frac{\dif \ell}{v(x, y)}\), and by energy conservation, and by energy conservation
+\[
+    \frac{1}{2} mv^2 + mg y = 0 \implies v = \sqrt{-2gy}.
+\]
+So
+\[
+    T[y] = \frac{1}{\sqrt{2g}}\int_{0}^{x_2} \frac{\sqrt{1 + (y')^2}}{\sqrt{-y}} \dif x
+\]
+subject to \(y(0) = 0\), \(y(x_2) = y_2\).
+\subsection{Geodesics}
+\begin{problem}
+    What is the shortest path \(\gamma\) between two points \(A\), \(B\) on a surface.
+\end{problem}
+Take \(\Sigma = \mathbb{R}^2\). The distance along \(\gamma\) is
+\[
+    D[y] = \int_{A}^{B}\dif \ell = \int_{x_1}^{x_2} \sqrt{1 + (y')^2} \dif x,
+\]
+and we want to minimize \(D\) by varying \(\gamma\).

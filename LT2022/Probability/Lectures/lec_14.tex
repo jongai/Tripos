@@ -1,0 +1,51 @@
+\lecture{14}{19 Feb. 2022}{}
+\subsubsection{Gambler's Ruin}
+We have
+\begin{align*}
+    \pr_x(\text{hit }0) &= \lim_{a \to \infty} \pr_x(\text{hit }0\text{ before }a)\\
+    &= \begin{dcases}
+        1 - (\frac{q}{p})^x, &\text{ if } p > q \quad\text{\color{red}Is this true??}\\
+        1, &\text{ if } p \leq q\\
+    \end{dcases}
+\end{align*}
+When \(p = \frac{1}{2}\),
+\[
+    \ex[\text{time to hit }0] \geq \ex[\text{time to hit }0\text{ or }a] = x(a - x) \to \infty.
+\]
+So \(T_x\), the time to hit \(0\) from \(x\) is finite with probability \(1\) but infinite expectation.
+
+\begin{remark}
+    Alternative derivation that \(\ex[T_1] = \infty\).
+    \begin{align*}
+        \ex[T_1] &= \frac{1}{2}\times 1 + \frac{1}{2}(1 + \ex[T_2])\\
+        &= 1 + \ex[T_1].
+    \end{align*}
+    Conclude that \(\ex[T_1] = \infty\).
+\end{remark}
+\subsection{Generating Functions}
+\begin{definition}{}{}
+    If \(X\) is a RV taking values in \(\{0,1,2,\dots\}\), the \textit{probability generating function} of \(X\) is
+    \[
+        G_X(z) = \ex[z^X] = \sum_{k \geq 0}z^k \pr(X = k).
+    \]
+    It can be seen as a function \((-1,1) \to \mathbb{R}\).
+\end{definition}
+\begin{remark}
+    Probability generating functions encodes the distribution of \(X\) as a function with nice analytic properties.
+\end{remark}
+\begin{example}
+    If \(X \sim \mathrm{Bern}(p)\), then
+    \[
+        G_X(z) = z^0 \pr(X=0) + z^1\pr(X = 1) = (1-p) + pz.
+    \]
+\end{example}
+\begin{example}
+    If \(X \sim \mathrm{Poisson}(\lambda)\), then
+    \[
+        G_X(z) = \sum_{k \geq 0}z^k e^{-\lambda}\frac{\lambda^k}{k!} = e^{-\lambda}\sum_{k\geq 0}\frac{(\lambda z)^k}{k!} = e^{\lambda(z-1)}.
+    \]
+\end{example}
+One can recover PMF from PGF. Note that
+\[
+    G_X(0) = 0^0 \pr(X=0) = \pr(X=0).
+\]
