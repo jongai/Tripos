@@ -18,3 +18,6 @@ Here are the notes I took for mathematical tripos at Cambridge.
 [Quantum Physics](https://jongai.github.io/Tripos/LT2022/QPhys/QPhys.pdf) (C. Castelnovo)
 
 [Vector Calculus](https://jongai.github.io/Tripos/LT2022/VC/VC.pdf) (D. Tong)
+
+## Easter 2022
+[Variational Principles](https://jongai.github.io/Tripos/ET2022/VP/VP.pdf) (
