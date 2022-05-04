@@ -23,3 +23,50 @@ Take \(\Sigma = \mathbb{R}^2\). The distance along \(\gamma\) is
     D[y] = \int_{A}^{B}\dif \ell = \int_{x_1}^{x_2} \sqrt{1 + (y')^2} \dif x,
 \]
 and we want to minimize \(D\) by varying \(\gamma\).
+\subsection{Introduction}
+In general, we want to minimize (maximize)
+\[
+    F[y] = \int_{x_1}^{x_2} f(x, y, y') \dif x
+\]
+among all functions s.t. \(y(x_1) = y_1\), \(y(x_2) = y_2\). The expression is a \textit{functional}. (A function on a space of functions). Functions map numbers to numbers, and functionals map functions to numbers.
+
+Area under the graph is when \(f = y\) and the length of a curve is when \(f = \sqrt{1 + (y')^2}\).
+
+Calculus of variations finds extrema of functionals on space of functions.
+\begin{notation}
+    \begin{itemize}
+        \item \(C(\mathbb{R})\) is space of continuous functions on \(\mathbb{R}\).
+        \item \(C^k(\mathbb{R})\) is the space of functions with continuous \(k\)th derivatives.
+        \item \(C^k_{(\alpha,\beta)}\) is the space of functions with continuous \(k\)th derivatives and \(f(\alpha) = f(\beta)\).
+    \end{itemize}
+    We need to specify the function space beforehand. It is a branch of functional analysis---Part III analysis on the space of functions, while Analysis I is analysis on the number line. Variational Principles follows principles in Nature, where the laws follow from extremizing functionals.
+\end{notation}
+
+\begin{example}[Fermat's Principle]
+    Light between two pints travel along paths which require least time.
+\end{example}
+
+\begin{example}[Principle of Least Action]
+    Let \(T\) be the kinetic energy \(\frac{m \abs{\dot{\mathbf{x}}}^2}{2}\) and potential energy \(V = V(\mathbf{x})\).
+    \[
+        S[\gamma] = \int_{t_1}^{t_2} (T - V) \dif t
+    \]
+    is minimized along paths of motion.
+
+    Leibniz commented on this, saying that ``we live in the best of all worlds''.
+
+    Feynman's take on this: ``This is wrong. In quantum theorem the motion takes place along all possible path with different possibilities''. [See Part III QFT]
+\end{example}
+
+In this course, we discuss
+\begin{enumerate}
+    \item necessary condition for extrema of the Euler Lagrange Equations;
+    \item lots of examples (geometry, physics, problems with constraints);
+    \item second variation (some sufficient condition of extrema).
+\end{enumerate}
+The following books will be useful
+\begin{enumerate}
+    \item Gelfand - Fomin ``Calculus of Variations''.
+    \item DAMTP notes (e.g. P. Townsend).
+    \item Lectures are self-contained.
+\end{enumerate}
