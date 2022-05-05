@@ -30,7 +30,7 @@
 \usepackage{booktabs}
 \usepackage[inline]{enumitem}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red]{hyperref}
-\usepackage{cleveref}
+\usepackage[noabbrev]{cleveref}
 \usepackage{tikz-cd}
 % useful macro for class
 \newcommand{\probability}[2]{\mathbb{\MakeUppercase{P}}_{#1} \left(#2\right)}
@@ -91,6 +91,7 @@
 \makeatother
 % For box around Definition, Theorem, etc.
 \usepackage{tcolorbox}
+\numberwithin{equation}{section}
 \theoremstyle{definition}
 \tcbuselibrary{theorems, breakable}
 \tcbset{parbox=false}
@@ -219,6 +220,15 @@
 %
 \let\oldnorm\norm
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%
+\let\oldceil\ceil
+\def\ceil{\@ifstar{\oldceil}{\oldceil*}}
+%
+\let\oldfloor\floor
+\def\floor{\@ifstar{\oldfloor}{\oldfloor*}}
+%
+\let\oldparen\paren
+\def\paren{\@ifstar{\oldparen}{\oldparen*}}
 \makeatother
 
 % Matrix Functions
