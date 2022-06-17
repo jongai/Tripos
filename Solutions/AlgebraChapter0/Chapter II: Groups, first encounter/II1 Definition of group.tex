@@ -1,0 +1,15 @@
+\documentclass[parskip=full, draft]{scrartcl}
+\input{~/Documents/Tripos/Solutions/examplesheet.tex}
+\begin{document}
+\addtitle{Definition of group}
+\listoftodos
+\begin{prob}{3}
+    Prove that \((gh)^{-1} = h^{-1}g^{-1}\) for all elements \(g, h\) of a group \(G\).
+\end{prob}
+\begin{sol}
+    We know that \(gh\) has an inverse, so it suffices to show that \(h^{-1}g^{-1}\) is a left inverse by uniqueness of inverse. We have
+    \[
+        h^{-1}g^{-1}gh = h^{-1}(g^{-1}g)h = h^{-1}eh = h^{-1} h = e.
+    \]
+\end{sol}
+\end{document}

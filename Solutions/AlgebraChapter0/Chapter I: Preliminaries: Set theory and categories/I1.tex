@@ -1,0 +1,36 @@
+\documentclass[parskip=full, draft=true]{scrartcl}
+\input{~/Documents/Tripos/Solutions/category.tex}
+\begin{document}
+\listoftodos
+\addtitle{Naive Set Theory}
+\begin{prob}{1}
+    Locate a discussion of Russell’s paradox, and understand it.
+\end{prob}
+\begin{sol}
+    Russell's paradox proves that there is no set of all sets. Otherwise, consider the set of the form
+    \[
+        S = \set{A | A \notin A}.
+    \]
+    The set is not well-defined since \(S \in S\) and \(S \notin S\) are both impossible, contradicting the law of excluded middle.
+\end{sol}
+\begin{prob}{2}
+    \(\triangleright\) Prove that if \(\sim\) is a relation on a set \(S\), then the corresponding family \(\mathscr{P}_{\sim}\) defined in \S 1.5 is indeed a partition of \(S\): that is, its elements are nonempty, disjoint, and their union is \(S\).
+\end{prob}
+\begin{sol}
+    \todo{Q2}
+\end{sol}
+\begin{prob}{4}
+    How many different equivalence relations may be defined on the set \(\{1, 2, 3\}\)?
+\end{prob}
+\begin{sol}
+    We know that equivalence relations corresponds to partitions, and we consider the total number of partitions. If there is only one partition, there is only one choice. If there are two partitions, there are three choices. If there are three partitions, there is only one partition. So in total, we have 5 different equivalence relations that can be defined on the set \(\{1, 2, 3\}\).
+\end{sol}
+\begin{prob}{5}
+    Give an example of a relation that is reflexive and symmetric but not transitive. What happens if you attempt to use this relation to define a partition on the set? (Hint: Thinking about the second question will help you answer the first one.)
+\end{prob}
+\begin{sol}
+    We can define \(a \mathrel{R} b\) on \(\mathbb{Z}_{>0}\) if \(a \mid b\) or \(b \mid a\). The relation is reflexive because \(a \mid a\). The relation is symmetric because \(a\mathrel{R}b \implies a \mid b \lor b \mid a \implies b \mid a \lor a \mid b \implies b\mathrel{R}a\). However, it is not an equivalence relation as it is not transitive, noting that \(2\mathrel{R}1\) and \(1\mathrel{R}3\) but \(2 \not \mathrel{R} 3\).
+
+    If the relation is not transitive, we no long have \(y \in [x]_R \implies [x]_R = [y]_R\), so the equivalence classes are not disjoint.
+\end{sol}
+\end{document}

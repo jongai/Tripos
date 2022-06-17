@@ -1,0 +1,11 @@
+\documentclass[parskip=full, draft]{scrartcl}
+\input{~/Documents/Tripos/Solutions/category.tex}
+\begin{document}
+\addtitle{Morphisms}
+\begin{prob}{2}
+    In Example 3.3 we have seen how to construct a category from a set endowed with a relation, provided this latter is reflexive and transitive. For what types of relations is the corresponding category a groupoid (cf. Example 4.6)?
+\end{prob}
+\begin{sol}
+    The construction in Example 3.3 requires reflectivity and transitivity for the requirement for identity and composition of morphisms. For the category to be a groupoid, we need every morphism to be isomorphic. In particular, we need \((a, b) \in \Hom_{\cat{C}}(a, b) \implies (b, a) \in \Hom_{\cat{C}}(b, a)\). In the context of the relation, we have \(a\mathrel{R}b \implies b\mathrel{R}a\). That is, the relation is an equivalence relation.
+\end{sol}
+\end{document}

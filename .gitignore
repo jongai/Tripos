@@ -6,6 +6,9 @@
 *.fls
 *.synctex.gz
 *.toc
+*.tdo
 *.DS_Store
 *.json
-/Solutions
+/Solutions/*
+!/Solutions/AlgebraChapter0/
+!/Solutions/AlgebraChapter0/*

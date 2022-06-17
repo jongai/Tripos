@@ -1,0 +1,62 @@
+\documentclass[parskip=full, draft]{scrartcl}
+\input{~/Documents/Tripos/Solutions/category.tex}
+\begin{document}
+\addtitle{The category \(\cat{Grp}\)}
+\listoftodos
+\newpage
+\begin{prob}{1}
+    Let \(\varphi : G \to H\) be a morphism in a category \(\cat{C}\) with products. Explain why there is a unique morphism
+    \[
+        (\varphi \times \varphi) : G \times G \to H \times H.
+    \]
+    (This morphism is defined explicitly for \(C = \cat{Set}\) in \S3.1.)
+\end{prob}
+\begin{sol}
+    By definition of product, we know that \(G \times G\) has natural projections to \(G\)
+    % https://q.uiver.app/?q=WzAsNSxbMCwxLCJHIFxcdGltZXMgRyJdLFsxLDAsIkciXSxbMSwyLCJHIl0sWzIsMCwiSCJdLFsyLDIsIkgiXSxbMCwxLCJcXHBpX0ciXSxbMCwyLCJcXHBpX0cnIiwyXSxbMSwzLCJcXHZhcnBoaSJdLFsyLDQsIlxcdmFycGhpIiwyXSxbMCwzLCJcXHZhcnBoaVxcY2lyY1xccGlfRyIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDQsIlxcdmFycGhpXFxjaXJjXFxwaV9HJyIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+    \[\begin{tikzcd}
+            & G & H \\
+            {G \times G} \\
+            & G & H
+            \arrow["{\pi_G}", from=2-1, to=1-2]
+            \arrow["{\pi_G'}"', from=2-1, to=3-2]
+            \arrow["\varphi", from=1-2, to=1-3]
+            \arrow["\varphi"', from=3-2, to=3-3]
+            \arrow["{\varphi\circ\pi_G}"', dashed, from=2-1, to=1-3]
+            \arrow["{\varphi\circ\pi_G'}", dashed, from=2-1, to=3-3]
+        \end{tikzcd}\]
+    By universal property of product, we know that there exists a unique morphism \(\varphi \times\varphi:G \times G \to H \times H\) such that the following diagram commutes.
+    % https://q.uiver.app/?q=WzAsNCxbMCwxLCJHIFxcdGltZXMgRyJdLFsyLDAsIkgiXSxbMiwyLCJIIl0sWzEsMSwiSCBcXHRpbWVzIEgiXSxbMCwyLCJcXHZhcnBoaVxcY2lyY1xccGlfRyciLDIseyJjdXJ2ZSI6Mn1dLFswLDEsIlxcdmFycGhpXFxjaXJjXFxwaV9HIiwwLHsiY3VydmUiOi0yfV0sWzAsMywiXFx2YXJwaGkgXFx0aW1lcyBcXHZhcnBoaSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDEsIlxccGlfSCIsMl0sWzMsMiwiXFxwaV9IJyJdXQ==
+    \[\begin{tikzcd}
+            && H \\
+            {G \times G} & {H \times H} \\
+            && H
+            \arrow["{\varphi\circ\pi_G'}"', curve={height=12pt}, from=2-1, to=3-3]
+            \arrow["{\varphi\circ\pi_G}", curve={height=-12pt}, from=2-1, to=1-3]
+            \arrow["{\varphi \times \varphi}"', dashed, from=2-1, to=2-2]
+            \arrow["{\pi_H}"', from=2-2, to=1-3]
+            \arrow["{\pi_H'}", from=2-2, to=3-3]
+        \end{tikzcd}\]
+    Putting it together, we know that \(\varphi \times \varphi: G \times G \to H \times H\) is the unique morphism such that the following diagram commutes.
+    % https://q.uiver.app/?q=WzAsNixbMSwwLCJHXFx0aW1lcyBHIl0sWzAsMCwiRyJdLFsyLDAsIkciXSxbMiwxLCJIIl0sWzAsMSwiSCJdLFsxLDEsIkggXFx0aW1lcyBIIl0sWzAsMSwiXFxwaV9HIl0sWzAsMiwiXFxwaV9HJyIsMl0sWzIsMywiXFx2YXJwaGkiLDJdLFsxLDQsIlxcdmFycGhpIl0sWzAsNSwiXFx2YXJwaGkgXFx0aW1lcyBcXHZhcnBoaSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs1LDQsIlxccGlfSCIsMl0sWzUsMywiXFxwaV9IJyJdXQ==
+    \[\begin{tikzcd}
+            G & {G\times G} & G \\
+            H & {H \times H} & H
+            \arrow["{\pi_G}", from=1-2, to=1-1]
+            \arrow["{\pi_G'}"', from=1-2, to=1-3]
+            \arrow["\varphi"', from=1-3, to=2-3]
+            \arrow["\varphi", from=1-1, to=2-1]
+            \arrow["{\varphi \times \varphi}", dashed, from=1-2, to=2-2]
+            \arrow["{\pi_H}"', from=2-2, to=2-1]
+            \arrow["{\pi_H'}", from=2-2, to=2-3]
+        \end{tikzcd}\]
+\end{sol}
+\begin{prob}{4}
+    Let \(G, H\) be groups, and assume that \(G \cong H \times G\). Can you conclude that \(H\) is trivial? (Hint: No. Can you construct a counterexample?)
+\end{prob}
+\begin{sol}
+    When \(G\) is finite, we must have \(H\) trivial by considering \(G\) and \(H\) as sets.
+
+    But it doesn't have to be the case when \(G\) is infinite. Consider the case when \(H = \Z{2}\) and \(G = \prod_{i \in \mathbb{N}} \Z{2}\). Clearly, we must have \(G \cong H \times G\).
+\end{sol}
+\end{document}

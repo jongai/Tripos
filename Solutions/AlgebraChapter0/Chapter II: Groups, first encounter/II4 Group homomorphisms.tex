@@ -1,0 +1,46 @@
+\documentclass[parskip=full, draft]{scrartcl}
+\input{~/Documents/Tripos/Solutions/category.tex}
+\begin{document}
+\addtitle{Group homomorphisms}
+\listoftodos
+\begin{prob}{5}
+    Prove that the groups \((\mathbb{R} \setminus \{0\}, \cdot)\) and \((\mathbb{C} \setminus \{0\}, \cdot)\) are not isomorphic.
+\end{prob}
+\begin{sol}
+    We know that isomorphism preserves order of elements. \(i \in \mathbb{C} \setminus \{0\}\) has order 4, but no element in \(\mathbb{R} \setminus \{0\}\) has order 4 because the only solutions to \(x^4 = 1\) in \(\mathbb{R} \setminus \{0\}\) are \(\pm 1\).
+\end{sol}
+\begin{prob}{6}
+    We have seen that \((\mathbb{R},+)\) and \((\mathbb{R}^{>0},\cdot)\) are isomorphic (Example 4.4). Are the groups \((\mathbb{Q}, +)\) and \((\mathbb{Q}^{>0} , \cdot)\) isomorphic?
+\end{prob}
+\begin{sol}
+    No, the groups cannot be isomorphic. If otherwise, if \(\phi: (\mathbb{Q}, +) \to (\mathbb{Q}^{>0}, \cdot)\) is an isomorphism, we have \(\phi^{-1}(2) \in \mathbb{Q}\). So \(x = \nicefrac{\phi^{-1}(2)}{2} \in \mathbb{Q}\), and
+    \[
+        \phi(x + x) = \phi(\phi^{-1}(2)) = 2 = \phi(x)\phi(x).
+    \]
+    That is \(\phi(x) = \sqrt{2}\), but this is impossible since we know that \(\sqrt{2} \notin \mathbb{Q}\).
+\end{sol}
+\begin{prob}{7}
+    Let \(G\) be a group. Prove that the function \(G\to G\) defined by \(g\mapsto g^{-1}\) is a homomorphism if and only if \(G\) is Abelian. Prove that \(g \mapsto g^2\) is a homomorphism if and only if \(G\) is Abelian.
+\end{prob}
+\begin{sol}
+    If \(\phi(g) = g^{-1}\) is a homomorphism, for any \(g, h \in G\), we have
+    \begin{align*}
+        \phi(g^{-1}h^{-1}) &= (g^{-1}h^{-1})^{-1} = hg\\
+        \phi(g^{-1})\phi(h^{-1}) &= (g^{-1})^{-1}(h^{-1})^{-1} = gh.
+    \end{align*}
+    So \(G\) is Abelian. To prove the other direction, if \(G\) is Abelian, we have for \(g, h \in G\),
+    \begin{align*}
+        \phi(gh) = (gh)^{-1} = h^{-1} g^{-1} = \phi(h)\phi(g) = \phi(g)\phi(h).
+    \end{align*}
+    So \(\phi\) is a homomorphism if \(G\) is Abelian.
+    
+    Similarly, if \(\psi(g) = g^2\) is a homomorphism, for any \(g, h \in G\), we have
+    \[
+        \phi(gh) = ghgh = \phi(g)\phi(h) = g^2 h^2
+    \]
+    By cancellation, we have \(ghgh = g^2 h^2 \implies hg = gh\); that is, \(G\) is Abelian. To prove the other direction, if \(G\) is Abelian, we have for \(g, h \in G\),
+    \begin{align*}
+        \phi(gh) = ghgh = g^2 h^2 = \phi(g)\phi(h).
+    \end{align*}
+\end{sol}
+\end{document}

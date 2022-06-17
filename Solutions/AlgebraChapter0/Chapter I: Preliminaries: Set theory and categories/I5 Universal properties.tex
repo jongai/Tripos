@@ -1,0 +1,34 @@
+\documentclass[parskip=full, draft]{scrartcl}
+\input{~/Documents/Tripos/Solutions/category.tex}
+\begin{document}
+\addtitle{Universal properties}
+\begin{prob}{2}
+    Prove that \(\varnothing\) is the unique initial object in \(\cat{Set}\).
+\end{prob}
+\begin{sol}
+    Assume otherwise \(\varnothing\) and \(\varnothing'\) are two initial objects in \(\cat{Set}\). They must be isomorphic since they are both initial objects. Thus, they are both empty. The statements \(x \in \varnothing \implies x \in \varnothing'\) and \(x \in \varnothing' \implies x \in \varnothing\) are both vacuously true. So \(\varnothing \subseteq \varnothing'\) and \(\varnothing' \subseteq \varnothing'\), implying \(\varnothing = \varnothing'\).
+\end{sol}
+\begin{prob}{3}
+    Prove that final objects are unique up to isomorphism.
+\end{prob}
+\begin{sol}
+    Let \(F_1\), \(F_2\) be two final objects in the category \(\cat{C}\). There is a unique morphism \(F_1 \to F_1\) and \(F_2 \to F_2\), so it must be the identity morphisms \(1_{F_1}\) and \(1_{F_2}\). Because \(F_2\) is a final object, there is a unique morphism \(f: F_1 \to F_2\), and because \(F_1\) is a final object, there is a unique morphism \(g: F_2 \to F_1\). We want to show that \(f\) is an isomorphism. \(gf\) is a morphism from \(F_1\) to \(F_1\), so it must be the identity. That is
+    \[
+        gf = 1_{F_1}.
+    \]
+    Similarly, we have
+    \[
+        fg = 1_{F_2}.
+    \]
+    So \(f\) is an isomorphism, and \(F_1 \cong F_2\).
+    \todo{Q3}
+\end{sol}
+\begin{prob}{6}
+    Consider the category corresponding to endowing (as in Example 3.3) the set \(\mathbb{Z}^+\) of positive integers with the \(divisibility\) relation. Thus, there is exactly one morphism \(d \to m\) in this category if and only if \(d\) divides \(m\) without remainder; there is no morphism between \(d\) and \(m\) otherwise. Show that this category has products and coproducts. What are their `conventional' names?
+\end{prob}
+\begin{sol}
+    If \(a, b \in \mathbb{Z}^+\), and the product \(a \times b\) satisfies the condition that \(d \mid a\) and \(d \mid b\) implies \(d \mid a \times b\). We also want \(a \times b \mid a\) and \(a \times b \mid b\). In other words, we have \(a \times b = \gcd(a, b)\).
+    
+    Similarly, we have \(a \amalg b = \lcm(a, b)\).
+\end{sol}
+\end{document}

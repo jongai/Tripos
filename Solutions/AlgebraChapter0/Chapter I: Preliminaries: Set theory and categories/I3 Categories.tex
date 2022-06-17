@@ -1,0 +1,116 @@
+\documentclass[parskip=full, draft]{scrartcl}
+\input{~/Documents/Tripos/Solutions/category.tex}
+\begin{document}
+\addtitle{Categories}
+\begin{prob}{1}
+    Let \(\cat{C}\) be a category. Consider a structure \(\cat{C}^{op}\) with
+    \begin{itemize}
+        \item \(\Obj(\cat{C}^{op}) := \Obj(\cat{C})\);
+        \item for \(A\), \(B\) objects of \(\cat{C}^{op}\) (hence objects of \(\cat{C}\)), \(\Hom_{\cat{C}^{op}}(A, B) \coloneqq \Hom_{\cat{C}}(B, A)\).
+    \end{itemize}
+
+    Show how to make this into a category (that is, define composition of morphisms in \(\cat{C}^{op}\) and verify the properties listed in \S3.1).
+
+    Intuitively, the `opposite' category \(\cat{C}^{op}\) is simply obtained by `reversing all the arrows' in \(\cat{C}\).
+\end{prob}
+\begin{sol}
+    The morphisms are clearly disjoint by the definition. The composition defined below makes \(\cat{C}^{op}\) into a category.
+    \[
+        \fullfunction{\circ}{\Hom_{\cat{C}^{op}}(A, B) \times \Hom_{\cat{C}^{op}}(B, C)}{\Hom_{\cat{C}^{op}}(A, C)}{(f, g)}{gf}.
+    \]
+    It is well-defined because by definition \(g \in \Hom_{\cat{C}}(C, B)\) and \(f \in \Hom_{\cat{C}}(B, A)\) implies that \(gf \in \Hom_{\cat{C}}(C, A) = \Hom_{\cat{C}^{op}}(A, C)\). The composition is associative by associativity of composition in \(\cat{C}\).
+
+    Lastly, we verify that the identity morphism on \(A \in \cat{C^{op}}\) is the same as the identity morphism of \(A \in \cat{C}\). Clearly \(1_A \in \Hom_{\cat{C}^{op}}(A, A)\). And for \(f \in \Hom_{\cat{C}^{op}}(A, B)\), we have \(f \circ 1_A = 1_A f\). Note that \(f \in \Hom_{\cat{C}}(B, A)\), so \(f \circ 1_A = 1_A f = f\). The left identity works similarly. And \(\cat{C}^{op}\) is a category.
+\end{sol}
+\begin{prob}{2}
+    If \(A\) is a finite set, how large is \(\End_{\mathsf{Set}}(A)\)?
+\end{prob}
+\begin{sol}
+    As shown in the previous section, we have \(\abs{\End_{\cat{Set}}(A)} = \abs{A^A} = \abs{A}^{\abs{A}}\).
+\end{sol}
+\begin{prob}{3}
+    Formulate precisely what it means to say that \(1_a\) is an identity with respect to composition in Example 3.3, and prove this assertion.
+\end{prob}
+\begin{sol}
+    Firstly, for any \(a \in S\), we have \(1_a = (a, a) \in \Hom(a, a)\) because \(\sim\) is a reflexive relation and \(a\sim a\).
+
+    Next, we prove that \(1_a\) is indeed the identity. We want to show that \(1_b f = f 1_a = f\) for all \(f \in \Hom(a, b)\). And it is clearly true since they are all in \(\Hom(a, b)\), and we know that there is a unique morphism from \(a\) to \(b\).
+\end{sol}
+\begin{prob}{4}
+    Can we define a category in the style of Example 3.3 using the relation \(<\) on the set \(\mathbb{Z}\)?
+\end{prob}
+\begin{sol}
+    The construction would no longer work because we are not satisfying the reflectivity requirement in the construction. In particular, if we use the same construction, there will be no identity morphism \(n \to n\) for all \(n \in \mathbb{Z}\).
+\end{sol}
+\begin{prob}{5}
+    Explain in what sense Example 3.4 is an instance of the categories considered in Example 3.3. 
+\end{prob}
+\begin{sol}
+    Example 3.4 is just the category in Example 3.3 with elements in \(\mathscr{P}(S)\), and the reflective and transitive relation is \(\subseteq\).
+\end{sol}
+\begin{prob}{6}
+    Define a category \(\cat{V}\) by taking \(\Obj(\cat{V}) = \mathbb{N}\) and letting \(\Hom_{\cat{V}}(n, m) = \text{the} \) set of \(m \times n\) matrices with real entries, for all \(n, m \in \mathbb{N}\). (We will leave the reader the task of making sense of a matrix with 0 rows or columns.) Use product of matrices to define composition. Does this category `feel' familiar?
+\end{prob}
+\begin{sol}
+    We first verify that \(\cat{V}\) is indeed a category. For any \(n \in \mathbb{N}\), we have the identity \(1_n = \diag(1, \dots, 1) \in \Hom_{\cat{V}}(n, n)\). Clearly, it satisfies the requirements for identity by properties of matrix multiplication.
+    
+    And matrix multiplication as composition is associative by properties of matrix multiplication again. So \(\cat{V}\) is indeed a category.
+    
+    There is a unique morphism \(n \to 0\) that is the linear map mapping all elements of \(\mathbb{R}^n\) to \(0\). And the unique morphism \(0 \to n\) is the linear map mapping \(0\) to \(0\). They compose with the other morphisms giving the trivial linear map in the only reasonable way. Note that this shows that \(0\) is a zero object.
+\end{sol}
+\begin{prob}{7}
+    Define carefully objects and morphisms in Example 3.7, and draw the diagram corresponding to composition.
+\end{prob}
+\begin{sol}
+    An object in \(\cat{C}^A\) is the morphism \(f: A \to Z_1\).
+
+    The morphisms from \(f_1\) to \(f_2\) are the commutative diagrams.
+    % https://q.uiver.app/?q=WzAsMyxbMSwyLCJBIl0sWzAsMCwiWl8xIl0sWzIsMCwiWl8yIl0sWzAsMSwiZl8xIl0sWzAsMiwiZl8yIiwyXSxbMSwyLCJcXHNpZ21hIl1d
+    \[\begin{tikzcd}
+        {Z_1} && {Z_2} \\
+        \\
+        & A
+        \arrow["{f_1}", from=3-2, to=1-1]
+        \arrow["{f_2}"', from=3-2, to=1-3]
+        \arrow["\sigma", from=1-1, to=1-3]
+    \end{tikzcd}\]
+    So we must have \(\sigma f_1 = f_2\).
+
+    The composition \(\sigma: f_1 \to f_2\) and \(\tau: f_2 \to f_3\) is defined as the commutative diagram.
+    % https://q.uiver.app/?q=WzAsMyxbMSwyLCJBIl0sWzAsMCwiWl8xIl0sWzIsMCwiWl8zIl0sWzAsMSwiZl8xIl0sWzAsMiwiZl8zIiwyXSxbMSwyLCJcXHRhdVxcc2lnbWEiXV0=
+    \[\begin{tikzcd}
+        {Z_1} && {Z_3} \\
+        \\
+        & A
+        \arrow["{f_1}", from=3-2, to=1-1]
+        \arrow["{f_3}"', from=3-2, to=1-3]
+        \arrow["\tau\sigma", from=1-1, to=1-3]
+    \end{tikzcd}\]
+    It is well-defined because \(\cat{C}\) is a category.
+\end{sol}
+\begin{prob}{8}
+    A \textit{subcategory} \(\cat{C}'\) of a category \(\cat{C}\) consists of a collection of objects of \(\cat{C}\), with morphisms \(\Hom_{\cat{C}'}(A, B) \subseteq \Hom_{\cat{C}}(A, B)\) for all objects \(A, B\) in \(\Obj(\cat{C}')\), such that identities and compositions in \(\cat{C}\) make \(\cat{C}'\) into a category. A subcategory \(\cat{C}'\) is \textit{full} if \(\Hom_{\cat{C}'} (A, B) = \Hom_{\cat{C}}(A, B)\) for all \(A, B\) in \(\Obj(\cat{C}')\). Construct a category of \textit{infinite sets}  and explain how it may be viewed as a full subcategory of \(\cat{Set}\).
+\end{prob}
+\begin{sol}
+    We will denote the category of infinite sets as \(\cat{InfSet}\).
+    \todo{Q8}
+\end{sol}
+\begin{prob}{9}
+    An alternative to the notion of \textit{multiset}  introduced in \S 2.2 is obtained by considering sets endowed with equivalence relations; equivalent elements are taken to be multiple instances of elements `of the same kind'. Define a notion of morphism between such enhanced sets, obtaining a category \(\cat{MSet}\) containing (a `copy' of) Set as a full subcategory. (There may be more than one reasonable way to do this! This is intentionally an open-ended exercise.) Which objects in \(\cat{MSet}\) determine ordinary multisets as defined in §2.2 and how? Spell out what a morphism of multisets would be from this point of view. (There are several natural notions of morphisms of multisets. Try to define morphisms in \(\cat{MSet}\) so that the notion you obtain for ordinary multisets captures your intuitive understanding of these objects.)
+\end{prob}
+\begin{sol}
+    \todo{Q9}
+\end{sol}
+\begin{prob}{10}
+    Since the objects of a category \(\cat{C}\) are not (necessarily) sets, it is not clear how to make sense of a notion of `subobject' in general. In some situations it does make sense to talk about subobjects, and the subobjects of any given object \(A\) in \(\cat{C}\) are in one-to-one correspondence with the morphisms \(A \to \Omega\) for a fixed, special object \(\Omega\) of \(\cat{C}\), called a subobject classifier. Show that Set has a subobject classifier.
+\end{prob}
+\begin{sol}
+    \todo{Q10}
+\end{sol}
+\begin{prob}{11}
+    Draw the relevant diagrams and define composition and identities for the category \(\cat{C}^{A,B}\) mentioned in Example 3.9. Do the same for the category \(\cat{C}^{\alpha,\beta}\) mentioned in Example 3.10.
+\end{prob}
+\begin{sol}
+    \todo{Q11}
+\end{sol}
+\end{document}
